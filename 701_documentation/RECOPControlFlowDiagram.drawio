@@ -1,0 +1,56 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="x8wHQQhum1Imru96I6WF">
+    <mxGraphModel dx="2046" dy="795" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="FHaGWvgeeuRdlAI7X-Fz-149" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Register File" vertex="1">
+          <mxGeometry height="200" width="120" x="280" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="FHaGWvgeeuRdlAI7X-Fz-150" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="ALU" vertex="1">
+          <mxGeometry height="150" width="120" x="490" y="755" as="geometry" />
+        </mxCell>
+        <mxCell id="FHaGWvgeeuRdlAI7X-Fz-167" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Memory" vertex="1">
+          <mxGeometry height="140" width="120" x="640" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="FHaGWvgeeuRdlAI7X-Fz-168" edge="1" parent="1" source="FHaGWvgeeuRdlAI7X-Fz-169" style="endArrow=none;html=1;rounded=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="FHaGWvgeeuRdlAI7X-Fz-167" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="670" y="700" as="sourcePoint" />
+            <mxPoint x="610" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FHaGWvgeeuRdlAI7X-Fz-169" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="MemWrite：write value to memory" vertex="1">
+          <mxGeometry height="30" width="190" x="580" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="FHaGWvgeeuRdlAI7X-Fz-170" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="FHaGWvgeeuRdlAI7X-Fz-167" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="730" y="700" as="sourcePoint" />
+            <mxPoint x="610" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FHaGWvgeeuRdlAI7X-Fz-171" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="MemRead" vertex="1">
+          <mxGeometry height="30" width="60" x="710" y="670" as="geometry" />
+        </mxCell>
+        <mxCell id="FHaGWvgeeuRdlAI7X-Fz-172" edge="1" parent="1" source="FHaGWvgeeuRdlAI7X-Fz-167" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;edgeStyle=orthogonalEdgeStyle;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="FHaGWvgeeuRdlAI7X-Fz-149" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="980" />
+              <mxPoint x="340" y="980" />
+            </Array>
+            <mxPoint x="560" y="830" as="sourcePoint" />
+            <mxPoint x="700" y="960" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FHaGWvgeeuRdlAI7X-Fz-173" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="load ： load memory to register" vertex="1">
+          <mxGeometry height="30" width="180" x="420" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="FHaGWvgeeuRdlAI7X-Fz-175" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="fetch" vertex="1">
+          <mxGeometry height="60" width="120" x="-40" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="FHaGWvgeeuRdlAI7X-Fz-177" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Decode" vertex="1">
+          <mxGeometry height="60" width="120" x="120" y="790" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

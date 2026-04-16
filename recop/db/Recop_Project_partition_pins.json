@@ -4,131 +4,175 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "ir_operand[0]",
+					"name" : "rf_input_sel[0]",
 					"strict" : false
 				},
 				{
-					"name" : "ir_operand[1]",
+					"name" : "rf_input_sel[1]",
 					"strict" : false
 				},
 				{
-					"name" : "ir_operand[2]",
+					"name" : "rf_input_sel[2]",
 					"strict" : false
 				},
 				{
-					"name" : "ir_operand[3]",
+					"name" : "sop_wr",
 					"strict" : false
 				},
 				{
-					"name" : "ir_operand[4]",
+					"name" : "irq_clr",
 					"strict" : false
 				},
 				{
-					"name" : "ir_operand[5]",
+					"name" : "alu_operation[0]",
 					"strict" : false
 				},
 				{
-					"name" : "ir_operand[6]",
+					"name" : "alu_operation[1]",
 					"strict" : false
 				},
 				{
-					"name" : "ir_operand[7]",
+					"name" : "alu_operation[2]",
 					"strict" : false
 				},
 				{
-					"name" : "ir_operand[8]",
+					"name" : "alu_op1_sel[0]",
 					"strict" : false
 				},
 				{
-					"name" : "ir_operand[9]",
+					"name" : "alu_op2_sel",
 					"strict" : false
 				},
 				{
-					"name" : "ir_operand[10]",
+					"name" : "clr_z_flag",
 					"strict" : false
 				},
 				{
-					"name" : "ir_operand[11]",
+					"name" : "dm_wr_en",
 					"strict" : false
 				},
 				{
-					"name" : "ir_operand[12]",
+					"name" : "dm_addr_sel[0]",
 					"strict" : false
 				},
 				{
-					"name" : "ir_operand[13]",
+					"name" : "dm_addr_sel[1]",
 					"strict" : false
 				},
 				{
-					"name" : "ir_operand[14]",
+					"name" : "dm_data_sel[0]",
 					"strict" : false
 				},
 				{
-					"name" : "ir_operand[15]",
+					"name" : "dm_data_sel[1]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[0]",
+					"name" : "pc_sel[0]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[1]",
+					"name" : "pc_sel[1]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[2]",
+					"name" : "opcode[6]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[3]",
+					"name" : "opcode[1]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[4]",
+					"name" : "opcode[0]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[5]",
+					"name" : "opcode[4]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[6]",
+					"name" : "opcode[5]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[7]",
+					"name" : "opcode[2]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[8]",
+					"name" : "opcode[3]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[9]",
+					"name" : "opcode[7]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[10]",
+					"name" : "z_flag",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[11]",
+					"name" : "rz[12]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[12]",
+					"name" : "rz[13]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[13]",
+					"name" : "rz[14]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[14]",
+					"name" : "rz[15]",
 					"strict" : false
 				},
 				{
-					"name" : "instruction[15]",
+					"name" : "rz[0]",
+					"strict" : false
+				},
+				{
+					"name" : "rz[1]",
+					"strict" : false
+				},
+				{
+					"name" : "rz[2]",
+					"strict" : false
+				},
+				{
+					"name" : "rz[3]",
+					"strict" : false
+				},
+				{
+					"name" : "rz[4]",
+					"strict" : false
+				},
+				{
+					"name" : "rz[5]",
+					"strict" : false
+				},
+				{
+					"name" : "rz[6]",
+					"strict" : false
+				},
+				{
+					"name" : "rz[7]",
+					"strict" : false
+				},
+				{
+					"name" : "rz[8]",
+					"strict" : false
+				},
+				{
+					"name" : "rz[9]",
+					"strict" : false
+				},
+				{
+					"name" : "rz[10]",
+					"strict" : false
+				},
+				{
+					"name" : "rz[11]",
 					"strict" : false
 				}
 			]

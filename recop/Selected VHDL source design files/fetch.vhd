@@ -6,7 +6,7 @@ use ieee.numeric_std.all;
 use work.recop_types.all;
 use work.various_constants.all;
 
-entity fetch is
+entity Fetch is
     port(
         clk : in bit_1;
         init : in bit_1;
@@ -18,9 +18,9 @@ entity fetch is
         
         instruction : out bit_32
     );
-end fetch;
+end Fetch;
 
-architecture beh of fetch is
+architecture beh of Fetch is
     -- fetch internal signals
     signal current_pc   : bit_16;
     signal pc_plus_1    : bit_16;

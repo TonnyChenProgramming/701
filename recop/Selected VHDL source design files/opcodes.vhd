@@ -29,7 +29,7 @@ package opcodes is
 	constant ldr: bit_6 := "000000";
 
 	
--- operations with direct and immediate AM
+-- operations with indirect, direct and immediate AM
 	-- immediate: STR Rz #value
 	-- indirect: STR Rz Rx
 	-- direct: STR Rx Op
@@ -42,13 +42,13 @@ package opcodes is
 	constant jmp: bit_6 := "011000";
 	
 -- operations with direct AM
-   -- direct: PRESENT Rz Rx 
+   -- direct: PRESENT Rz Op 
 	constant present: bit_6 := "011100";
 
 -- operations with immediate and direct AM
-	constant andr: bit_6 := "001000"; --  AND Rz Rx Op
-	constant orr : bit_6 := "001100"; --  OR Rz Rx Op
-	constant addr: bit_6 := "111000"; --  ADD Rz Rx Op
+	constant andr: bit_6 := "001000"; --  AND Rz Rx Op / AND Rz Rz Rx
+	constant orr : bit_6 := "001100"; --  OR Rz Rx Op / OR RZ RZ RX
+	constant addr: bit_6 := "111000"; --  ADD Rz Rx Op / ADD RZ RZ RX
 	constant subr: bit_6  := "000100"; --  SUB Rz Op
 	constant subvr: bit_6 := "000011"; -- SUBV RZ Rx Op
 

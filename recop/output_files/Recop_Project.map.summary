@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Thu Apr 16 13:16:25 2026
+Analysis & Synthesis Status : Successful - Fri Apr 17 00:26:06 2026
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : Recop_Project
-Top-level Entity Name : decode
+Top-level Entity Name : control_signal_generator
 Family : Cyclone IV E
-Total logic elements : 0
-    Total combinational functions : 0
+Total logic elements : 54
+    Total combinational functions : 54
     Dedicated logic registers : 0
 Total registers : 0
-Total pins : 99
+Total pins : 55
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0

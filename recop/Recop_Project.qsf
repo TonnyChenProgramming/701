@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE115F29C7
-set_global_assignment -name TOP_LEVEL_ENTITY decode
+set_global_assignment -name TOP_LEVEL_ENTITY control_signal_generator
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:07:53  APRIL 13, 2026"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
@@ -49,17 +49,6 @@ set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
 set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name VHDL_FILE "Selected VHDL source design files/fetch.vhd"
-set_global_assignment -name VHDL_FILE "../Project1/Selected VHDL source design files/program_counter.vhd"
-set_global_assignment -name VHDL_FILE "../Project1/Selected VHDL source design files/registers.vhd"
-set_global_assignment -name VHDL_FILE "../Project1/Selected VHDL source design files/ALU.vhd"
-set_global_assignment -name VHDL_FILE "../Project1/Selected VHDL source design files/various_constants.vhd"
-set_global_assignment -name VHDL_FILE "../Project1/Selected VHDL source design files/recop_types.vhd"
-set_global_assignment -name VHDL_FILE "../Project1/Selected VHDL source design files/regfile.vhd"
-set_global_assignment -name VHDL_FILE "../Project1/Selected VHDL source design files/recop_top.vhd"
-set_global_assignment -name QIP_FILE "../Project1/Selected VHDL source design files/data_memory_ip.qip"
-set_global_assignment -name VHDL_FILE "../Project1/Selected VHDL source design files/opcodes.vhd"
-set_global_assignment -name QIP_FILE "../Project1/Selected VHDL source design files/instructin_memory_ip.qip"
 set_global_assignment -name VHDL_FILE "Selected VHDL source design files/various_constants.vhd"
 set_global_assignment -name VHDL_FILE "Selected VHDL source design files/registers.vhd"
 set_global_assignment -name VHDL_FILE "Selected VHDL source design files/registerfile.vhd"
@@ -74,10 +63,16 @@ set_global_assignment -name VHDL_FILE "Selected VHDL source design files/opcodes
 set_global_assignment -name VHDL_FILE "Selected VHDL source design files/memory_model.vhd"
 set_global_assignment -name VHDL_FILE "Selected VHDL source design files/memory_arbiter.vhd"
 set_global_assignment -name VHDL_FILE "Selected VHDL source design files/instructin_memory_ip.vhd"
+set_global_assignment -name QIP_FILE "Selected VHDL source design files/instructin_memory_ip.qip"
+set_global_assignment -name SOURCE_FILE "Selected VHDL source design files/instructin_memory_ip.cmp"
+set_global_assignment -name VHDL_FILE "Selected VHDL source design files/fetch.vhd"
 set_global_assignment -name VHDL_FILE "Selected VHDL source design files/execute.vhd"
 set_global_assignment -name VHDL_FILE "Selected VHDL source design files/decode.vhd"
 set_global_assignment -name VHDL_FILE "Selected VHDL source design files/data_memory_ip.vhd"
+set_global_assignment -name QIP_FILE "Selected VHDL source design files/data_memory_ip.qip"
+set_global_assignment -name SOURCE_FILE "Selected VHDL source design files/data_memory_ip.cmp"
 set_global_assignment -name VHDL_FILE "Selected VHDL source design files/data_mem.vhd"
+set_global_assignment -name VHDL_FILE "Selected VHDL source design files/control_signal_generator.vhd"
 set_global_assignment -name VHDL_FILE "Selected VHDL source design files/ALU.vhd"
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top

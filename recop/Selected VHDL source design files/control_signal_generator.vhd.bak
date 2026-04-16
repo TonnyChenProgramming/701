@@ -14,6 +14,7 @@ entity control_signal_generator is
         z_flag : in bit_1;
 
         -- register file related
+        ld_r : out bit_1;
         rf_input_sel : out bit_3;
 		dprr_wren : out bit_1;
 
@@ -39,7 +40,7 @@ entity control_signal_generator is
 
         -- data memory related
         dm_wr_en : out bit_1;
-        dm_addr_sel : out bit_2; 
+        dm_addr_sel : out bit_2; //
         dm_data_sel : out bit_2;
 
         -- branch related
@@ -55,6 +56,7 @@ architecture beh of control_signal_generator is
         begin
 
         -- default zero for all output
+        ld_r          <= register_write_back_disabled; -- default: write back disabled
         rf_input_sel  <= from_ir_operand; -- default: ir_operand
         dprr_wren     <= '0'; -- default: write dprr disabled
 
@@ -98,14 +100,17 @@ architecture beh of control_signal_generator is
                 case opcode(5 downto 0) is
                     when andr =>
                         alu_operation <= alu_and;
+                        ld_r <= register_write_back_enabled; --write back enabled
                         rf_input_sel <= from_aluout; --select aluout
 
                     when orr =>
                         alu_operation <= alu_or;
+                        ld_r <= register_write_back_enabled;
                         rf_input_sel <= from_aluout; 
 
                     when addr =>
                         alu_operation <= alu_add;
+                        ld_r <= register_write_back_enabled;
                         rf_input_sel <= from_aluout; 
 
                     when subr =>
@@ -113,10 +118,11 @@ architecture beh of control_signal_generator is
 
                     when subvr =>
                         alu_operation <= alu_sub;
+                        ld_r <= register_write_back_enabled;
                         rf_input_sel <= from_aluout; 
 
                     when ldr =>
-                        rf_input_sel  <= from_ir_operand;
+                        ld_r <= register_write_back_enabled; --write back enabled and select immediate by default
 
                     when str =>
                         dm_wr_en <= dm_write_enable;
@@ -132,12 +138,7 @@ architecture beh of control_signal_generator is
                         irq_clr <= '1';   
 
                     when sz =>
-                        if z_flag = '1' then
-                            pc_sel <= pc_sel_from_operand;
-                        else
-                            pc_sel <= pc_sel_plus_one;
-                        end if;
-
+                        pc_sel <= pc_sel_from_operand when z_flag = '1' else pc_sel_plus_one;
                     when others =>
                         null;
                 end case;
@@ -145,31 +146,25 @@ architecture beh of control_signal_generator is
                 case opcode(5 downto 0) is
                     when ldr =>
                         dm_addr_sel <= dm_addr_from_ir_operand; -- connect dm address line to immediate
+                        ld_r <= register_write_back_enabled; --write back enabled
                         rf_input_sel <= from_dm_out; -- select dm out
-
                     when str =>
                         dm_wr_en <= dm_write_enable;
                         dm_addr_sel <= dm_addr_from_ir_operand;
                         dm_data_sel <= dm_data_from_rx;
 
                     when present =>
-                        if rz = x"0000" then
-                            pc_sel <= pc_sel_from_operand;
-                        else
-                            pc_sel <= pc_sel_plus_one;
-                        end if;
+                        pc_sel <= pc_sel_from_operand when rz = x"0000" else pc_sel_plus_one;
 
                     when strpc =>
                         dm_wr_en <= dm_write_enable;
                         dm_addr_sel <= dm_addr_from_ir_operand;
                         dm_data_sel <= dm_data_from_pc;
-
                     when ssop =>
                         sop_wr <= '1';
-
                     when lsip =>
+                        ld_r <= register_write_back_enabled;
                         rf_input_sel <= from_sip_hold;
-
                     when others =>
                         null;
                 end case;
@@ -177,17 +172,21 @@ architecture beh of control_signal_generator is
                 case opcode(5 downto 0) is
                     when andr =>
                         alu_operation <= alu_and;
+                        ld_r <= register_write_back_enabled;--write back enabled
                         rf_input_sel <= from_aluout; --select aluout
 
                     when orr =>
                         alu_operation <= alu_or;
+                        ld_r <= register_write_back_enabled;
                         rf_input_sel <= from_aluout; 
 
                     when addr =>
                         alu_operation <= alu_add;
+                        ld_r <= register_write_back_enabled;
                         rf_input_sel <= from_aluout;
 
                     when ldr =>
+                        ld_r <= register_write_back_enabled; --write back enabled and get dm[rx] by default
                         rf_input_sel <= from_dm_out; -- select dm out
 
                     when str =>
@@ -201,8 +200,7 @@ architecture beh of control_signal_generator is
                         alu_op2_sel <= alu_op2_from_rz;
                         alu_op1_sel <= alu_op1_from_rx;
                         alu_operation <= alu_and;
-                        irq_clr <= '1';      
-
+                        irq_clr <= '1';                    
                     when others =>
                         null;
                 end case;                

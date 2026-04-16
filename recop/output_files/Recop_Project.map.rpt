@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Recop_Project
-Thu Apr 16 13:16:25 2026
+Fri Apr 17 00:26:06 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -13,13 +13,11 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. Removed Registers Triggering Further Register Optimizations
- 10. General Register Statistics
- 11. Port Connectivity Checks: "regfile:u_regfile"
- 12. Post-Synthesis Netlist Statistics for Top Partition
- 13. Elapsed Time Per Partition
- 14. Analysis & Synthesis Messages
+  8. General Register Statistics
+  9. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 10. Post-Synthesis Netlist Statistics for Top Partition
+ 11. Elapsed Time Per Partition
+ 12. Analysis & Synthesis Messages
 
 
 
@@ -45,16 +43,16 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Apr 16 13:16:25 2026       ;
+; Analysis & Synthesis Status        ; Successful - Fri Apr 17 00:26:06 2026       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; Recop_Project                               ;
-; Top-level Entity Name              ; decode                                      ;
+; Top-level Entity Name              ; control_signal_generator                    ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 0                                           ;
-;     Total combinational functions  ; 0                                           ;
+; Total logic elements               ; 54                                          ;
+;     Total combinational functions  ; 54                                          ;
 ;     Dedicated logic registers      ; 0                                           ;
 ; Total registers                    ; 0                                           ;
-; Total pins                         ; 99                                          ;
+; Total pins                         ; 55                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -62,90 +60,90 @@ refer to the applicable agreement for further details.
 +------------------------------------+---------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Settings                                                                              ;
-+------------------------------------------------------------------+--------------------+--------------------+
-; Option                                                           ; Setting            ; Default Value      ;
-+------------------------------------------------------------------+--------------------+--------------------+
-; Device                                                           ; EP4CE115F29C7      ;                    ;
-; Top-level entity name                                            ; decode             ; Recop_Project      ;
-; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
-; Use smart compilation                                            ; Off                ; Off                ;
-; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
-; Enable compact report table                                      ; Off                ; Off                ;
-; Restructure Multiplexers                                         ; Auto               ; Auto               ;
-; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
-; Preserve fewer node names                                        ; On                 ; On                 ;
-; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
-; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
-; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
-; State Machine Processing                                         ; Auto               ; Auto               ;
-; Safe State Machine                                               ; Off                ; Off                ;
-; Extract Verilog State Machines                                   ; On                 ; On                 ;
-; Extract VHDL State Machines                                      ; On                 ; On                 ;
-; Ignore Verilog initial constructs                                ; Off                ; Off                ;
-; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
-; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
-; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
-; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
-; Parallel Synthesis                                               ; On                 ; On                 ;
-; DSP Block Balancing                                              ; Auto               ; Auto               ;
-; NOT Gate Push-Back                                               ; On                 ; On                 ;
-; Power-Up Don't Care                                              ; On                 ; On                 ;
-; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
-; Remove Duplicate Registers                                       ; On                 ; On                 ;
-; Ignore CARRY Buffers                                             ; Off                ; Off                ;
-; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
-; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
-; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
-; Ignore LCELL Buffers                                             ; Off                ; Off                ;
-; Ignore SOFT Buffers                                              ; On                 ; On                 ;
-; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
-; Optimization Technique                                           ; Balanced           ; Balanced           ;
-; Carry Chain Length                                               ; 70                 ; 70                 ;
-; Auto Carry Chains                                                ; On                 ; On                 ;
-; Auto Open-Drain Pins                                             ; On                 ; On                 ;
-; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
-; Auto ROM Replacement                                             ; On                 ; On                 ;
-; Auto RAM Replacement                                             ; On                 ; On                 ;
-; Auto DSP Block Replacement                                       ; On                 ; On                 ;
-; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
-; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
-; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
-; Strict RAM Replacement                                           ; Off                ; Off                ;
-; Allow Synchronous Control Signals                                ; On                 ; On                 ;
-; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
-; Auto RAM Block Balancing                                         ; On                 ; On                 ;
-; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
-; Auto Resource Sharing                                            ; Off                ; Off                ;
-; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
-; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
-; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
-; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
-; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
-; Timing-Driven Synthesis                                          ; On                 ; On                 ;
-; Report Parameter Settings                                        ; On                 ; On                 ;
-; Report Source Assignments                                        ; On                 ; On                 ;
-; Report Connectivity Checks                                       ; On                 ; On                 ;
-; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
-; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
-; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
-; HDL message level                                                ; Level2             ; Level2             ;
-; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
-; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
-; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
-; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
-; Clock MUX Protection                                             ; On                 ; On                 ;
-; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
-; Block Design Naming                                              ; Auto               ; Auto               ;
-; SDC constraint protection                                        ; Off                ; Off                ;
-; Synthesis Effort                                                 ; Auto               ; Auto               ;
-; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
-; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
-; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
-; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
-; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
-+------------------------------------------------------------------+--------------------+--------------------+
++------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                    ;
++------------------------------------------------------------------+--------------------------+--------------------+
+; Option                                                           ; Setting                  ; Default Value      ;
++------------------------------------------------------------------+--------------------------+--------------------+
+; Device                                                           ; EP4CE115F29C7            ;                    ;
+; Top-level entity name                                            ; control_signal_generator ; Recop_Project      ;
+; Family name                                                      ; Cyclone IV E             ; Cyclone V          ;
+; Use smart compilation                                            ; Off                      ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                       ; On                 ;
+; Enable compact report table                                      ; Off                      ; Off                ;
+; Restructure Multiplexers                                         ; Auto                     ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                      ; Off                ;
+; Preserve fewer node names                                        ; On                       ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable                   ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001             ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993                ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto                     ; Auto               ;
+; Safe State Machine                                               ; Off                      ; Off                ;
+; Extract Verilog State Machines                                   ; On                       ; On                 ;
+; Extract VHDL State Machines                                      ; On                       ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                      ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000                     ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                      ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                       ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                       ; On                 ;
+; Parallel Synthesis                                               ; On                       ; On                 ;
+; DSP Block Balancing                                              ; Auto                     ; Auto               ;
+; NOT Gate Push-Back                                               ; On                       ; On                 ;
+; Power-Up Don't Care                                              ; On                       ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                      ; Off                ;
+; Remove Duplicate Registers                                       ; On                       ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                      ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                      ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                      ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                      ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                      ; Off                ;
+; Ignore SOFT Buffers                                              ; On                       ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                      ; Off                ;
+; Optimization Technique                                           ; Balanced                 ; Balanced           ;
+; Carry Chain Length                                               ; 70                       ; 70                 ;
+; Auto Carry Chains                                                ; On                       ; On                 ;
+; Auto Open-Drain Pins                                             ; On                       ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                      ; Off                ;
+; Auto ROM Replacement                                             ; On                       ; On                 ;
+; Auto RAM Replacement                                             ; On                       ; On                 ;
+; Auto DSP Block Replacement                                       ; On                       ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto                     ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto                     ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                       ; On                 ;
+; Strict RAM Replacement                                           ; Off                      ; Off                ;
+; Allow Synchronous Control Signals                                ; On                       ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                      ; Off                ;
+; Auto RAM Block Balancing                                         ; On                       ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                      ; Off                ;
+; Auto Resource Sharing                                            ; Off                      ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                      ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                      ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                      ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                       ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                      ; Off                ;
+; Timing-Driven Synthesis                                          ; On                       ; On                 ;
+; Report Parameter Settings                                        ; On                       ; On                 ;
+; Report Source Assignments                                        ; On                       ; On                 ;
+; Report Connectivity Checks                                       ; On                       ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                      ; Off                ;
+; Synchronization Register Chain Length                            ; 2                        ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation       ; Normal compilation ;
+; HDL message level                                                ; Level2                   ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                      ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000                     ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000                     ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                      ; 100                ;
+; Clock MUX Protection                                             ; On                       ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                      ; Off                ;
+; Block Design Naming                                              ; Auto                     ; Auto               ;
+; SDC constraint protection                                        ; Off                      ; Off                ;
+; Synthesis Effort                                                 ; Auto                     ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                       ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                      ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium                   ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto                     ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                       ; On                 ;
++------------------------------------------------------------------+--------------------------+--------------------+
 
 
 +------------------------------------------+
@@ -164,362 +162,58 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                           ;
-+---------------------------------------------------------+-----------------+-----------------+--------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path                        ; Used in Netlist ; File Type       ; File Name with Absolute Path                                             ; Library ;
-+---------------------------------------------------------+-----------------+-----------------+--------------------------------------------------------------------------+---------+
-; Selected VHDL source design files/various_constants.vhd ; yes             ; User VHDL File  ; C:/HDL/701/recop/Selected VHDL source design files/various_constants.vhd ;         ;
-; Selected VHDL source design files/regfile.vhd           ; yes             ; User VHDL File  ; C:/HDL/701/recop/Selected VHDL source design files/regfile.vhd           ;         ;
-; Selected VHDL source design files/recop_types.vhd       ; yes             ; User VHDL File  ; C:/HDL/701/recop/Selected VHDL source design files/recop_types.vhd       ;         ;
-; Selected VHDL source design files/decode.vhd            ; yes             ; User VHDL File  ; C:/HDL/701/recop/Selected VHDL source design files/decode.vhd            ;         ;
-+---------------------------------------------------------+-----------------+-----------------+--------------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                         ;
++----------------------------------------------------------------+-----------------+-----------------+---------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                               ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                    ; Library ;
++----------------------------------------------------------------+-----------------+-----------------+---------------------------------------------------------------------------------+---------+
+; Selected VHDL source design files/various_constants.vhd        ; yes             ; User VHDL File  ; C:/HDL/701/recop/Selected VHDL source design files/various_constants.vhd        ;         ;
+; Selected VHDL source design files/recop_types.vhd              ; yes             ; User VHDL File  ; C:/HDL/701/recop/Selected VHDL source design files/recop_types.vhd              ;         ;
+; Selected VHDL source design files/opcodes.vhd                  ; yes             ; User VHDL File  ; C:/HDL/701/recop/Selected VHDL source design files/opcodes.vhd                  ;         ;
+; Selected VHDL source design files/control_signal_generator.vhd ; yes             ; User VHDL File  ; C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd ;         ;
++----------------------------------------------------------------+-----------------+-----------------+---------------------------------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary         ;
-+---------------------------------------------+-------+
-; Resource                                    ; Usage ;
-+---------------------------------------------+-------+
-;                                             ;       ;
-; Total combinational functions               ; 0     ;
-; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 0     ;
-;     -- 3 input functions                    ; 0     ;
-;     -- <=2 input functions                  ; 0     ;
-;                                             ;       ;
-; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 0     ;
-;     -- arithmetic mode                      ; 0     ;
-;                                             ;       ;
-; Total registers                             ; 0     ;
-;     -- Dedicated logic registers            ; 0     ;
-;     -- I/O registers                        ; 0     ;
-;                                             ;       ;
-; I/O pins                                    ; 99    ;
-;                                             ;       ;
-; Embedded Multiplier 9-bit elements          ; 0     ;
-;                                             ;       ;
-; Maximum fan-out node                        ; clk   ;
-; Maximum fan-out                             ; 1     ;
-; Total fan-out                               ; 115   ;
-; Average fan-out                             ; 0.58  ;
-+---------------------------------------------+-------+
++---------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                   ;
++---------------------------------------------+-----------------+
+; Resource                                    ; Usage           ;
++---------------------------------------------+-----------------+
+; Estimated Total logic elements              ; 54              ;
+;                                             ;                 ;
+; Total combinational functions               ; 54              ;
+; Logic element usage by number of LUT inputs ;                 ;
+;     -- 4 input functions                    ; 41              ;
+;     -- 3 input functions                    ; 6               ;
+;     -- <=2 input functions                  ; 7               ;
+;                                             ;                 ;
+; Logic elements by mode                      ;                 ;
+;     -- normal mode                          ; 54              ;
+;     -- arithmetic mode                      ; 0               ;
+;                                             ;                 ;
+; Total registers                             ; 0               ;
+;     -- Dedicated logic registers            ; 0               ;
+;     -- I/O registers                        ; 0               ;
+;                                             ;                 ;
+; I/O pins                                    ; 55              ;
+;                                             ;                 ;
+; Embedded Multiplier 9-bit elements          ; 0               ;
+;                                             ;                 ;
+; Maximum fan-out node                        ; opcode[7]~input ;
+; Maximum fan-out                             ; 18              ;
+; Total fan-out                               ; 269             ;
+; Average fan-out                             ; 1.64            ;
++---------------------------------------------+-----------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                      ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
-; |decode                    ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 99   ; 0            ; |decode             ; decode      ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                         ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------+--------------------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name       ; Entity Name              ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------+--------------------------+--------------+
+; |control_signal_generator  ; 54 (54)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 55   ; 0            ; |control_signal_generator ; control_signal_generator ; work         ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------+--------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+---------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                    ;
-+-----------------------------------------+---------------------------------------------+
-; Register name                           ; Reason for Removal                          ;
-+-----------------------------------------+---------------------------------------------+
-; regfile:u_regfile|regs[15][15]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[15][14]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[15][13]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[15][12]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[15][11]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[15][10]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[15][9]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[15][8]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[15][7]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[15][6]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[15][5]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[15][4]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[15][3]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[15][2]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[15][1]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[15][0]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[14][15]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[14][14]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[14][13]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[14][12]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[14][11]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[14][10]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[14][9]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[14][8]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[14][7]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[14][6]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[14][5]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[14][4]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[14][3]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[14][2]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[14][1]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[14][0]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[13][15]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[13][14]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[13][13]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[13][12]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[13][11]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[13][10]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[13][9]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[13][8]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[13][7]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[13][6]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[13][5]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[13][4]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[13][3]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[13][2]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[13][1]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[13][0]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[12][15]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[12][14]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[12][13]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[12][12]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[12][11]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[12][10]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[12][9]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[12][8]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[12][7]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[12][6]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[12][5]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[12][4]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[12][3]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[12][2]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[12][1]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[12][0]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[11][15]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[11][14]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[11][13]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[11][12]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[11][11]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[11][10]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[11][9]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[11][8]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[11][7]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[11][6]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[11][5]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[11][4]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[11][3]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[11][2]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[11][1]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[11][0]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[10][15]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[10][14]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[10][13]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[10][12]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[10][11]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[10][10]          ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[10][9]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[10][8]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[10][7]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[10][6]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[10][5]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[10][4]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[10][3]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[10][2]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[10][1]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[10][0]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[9][15]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[9][14]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[9][13]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[9][12]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[9][11]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[9][10]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[9][9]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[9][8]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[9][7]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[9][6]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[9][5]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[9][4]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[9][3]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[9][2]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[9][1]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[9][0]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[8][15]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[8][14]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[8][13]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[8][12]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[8][11]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[8][10]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[8][9]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[8][8]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[8][7]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[8][6]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[8][5]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[8][4]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[8][3]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[8][2]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[8][1]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[8][0]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[7][15]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[7][14]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[7][13]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[7][12]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[7][11]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[7][10]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[7][9]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[7][8]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[7][7]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[7][6]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[7][5]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[7][4]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[7][3]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[7][2]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[7][1]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[7][0]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[6][15]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[6][14]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[6][13]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[6][12]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[6][11]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[6][10]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[6][9]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[6][8]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[6][7]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[6][6]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[6][5]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[6][4]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[6][3]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[6][2]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[6][1]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[6][0]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[5][15]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[5][14]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[5][13]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[5][12]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[5][11]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[5][10]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[5][9]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[5][8]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[5][7]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[5][6]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[5][5]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[5][4]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[5][3]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[5][2]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[5][1]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[5][0]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[4][15]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[4][14]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[4][13]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[4][12]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[4][11]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[4][10]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[4][9]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[4][8]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[4][7]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[4][6]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[4][5]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[4][4]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[4][3]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[4][2]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[4][1]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[4][0]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[3][15]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[3][14]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[3][13]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[3][12]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[3][11]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[3][10]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[3][9]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[3][8]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[3][7]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[3][6]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[3][5]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[3][4]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[3][3]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[3][2]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[3][1]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[3][0]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[2][15]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[2][14]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[2][13]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[2][12]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[2][11]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[2][10]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[2][9]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[2][8]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[2][7]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[2][6]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[2][5]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[2][4]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[2][3]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[2][2]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[2][1]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[2][0]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[1][15]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[1][14]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[1][13]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[1][12]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[1][11]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[1][10]           ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[1][9]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[1][8]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[1][7]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[1][6]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[1][5]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[1][4]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[1][3]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[1][2]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[1][1]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[1][0]            ; Stuck at GND due to stuck port clock_enable ;
-; regfile:u_regfile|regs[0][0]            ; Merged with regfile:u_regfile|regs[0][15]   ;
-; regfile:u_regfile|regs[0][1]            ; Merged with regfile:u_regfile|regs[0][15]   ;
-; regfile:u_regfile|regs[0][2]            ; Merged with regfile:u_regfile|regs[0][15]   ;
-; regfile:u_regfile|regs[0][3]            ; Merged with regfile:u_regfile|regs[0][15]   ;
-; regfile:u_regfile|regs[0][4]            ; Merged with regfile:u_regfile|regs[0][15]   ;
-; regfile:u_regfile|regs[0][5]            ; Merged with regfile:u_regfile|regs[0][15]   ;
-; regfile:u_regfile|regs[0][6]            ; Merged with regfile:u_regfile|regs[0][15]   ;
-; regfile:u_regfile|regs[0][7]            ; Merged with regfile:u_regfile|regs[0][15]   ;
-; regfile:u_regfile|regs[0][8]            ; Merged with regfile:u_regfile|regs[0][15]   ;
-; regfile:u_regfile|regs[0][9]            ; Merged with regfile:u_regfile|regs[0][15]   ;
-; regfile:u_regfile|regs[0][10]           ; Merged with regfile:u_regfile|regs[0][15]   ;
-; regfile:u_regfile|regs[0][11]           ; Merged with regfile:u_regfile|regs[0][15]   ;
-; regfile:u_regfile|regs[0][12]           ; Merged with regfile:u_regfile|regs[0][15]   ;
-; regfile:u_regfile|regs[0][13]           ; Merged with regfile:u_regfile|regs[0][15]   ;
-; regfile:u_regfile|regs[0][14]           ; Merged with regfile:u_regfile|regs[0][15]   ;
-; regfile:u_regfile|regs[0][15]           ; Stuck at GND due to stuck port data_in      ;
-; Total Number of Removed Registers = 256 ;                                             ;
-+-----------------------------------------+---------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                      ;
-+--------------------------------+--------------------------------+----------------------------------------------------------------+
-; Register name                  ; Reason for Removal             ; Registers Removed due to This Register                         ;
-+--------------------------------+--------------------------------+----------------------------------------------------------------+
-; regfile:u_regfile|regs[15][15] ; Stuck at GND                   ; regfile:u_regfile|regs[13][2], regfile:u_regfile|regs[12][3]   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; regfile:u_regfile|regs[15][14] ; Stuck at GND                   ; regfile:u_regfile|regs[13][3], regfile:u_regfile|regs[12][4]   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; regfile:u_regfile|regs[15][13] ; Stuck at GND                   ; regfile:u_regfile|regs[13][4], regfile:u_regfile|regs[12][5]   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; regfile:u_regfile|regs[15][12] ; Stuck at GND                   ; regfile:u_regfile|regs[13][5], regfile:u_regfile|regs[12][6]   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; regfile:u_regfile|regs[15][11] ; Stuck at GND                   ; regfile:u_regfile|regs[13][6], regfile:u_regfile|regs[12][7]   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; regfile:u_regfile|regs[15][10] ; Stuck at GND                   ; regfile:u_regfile|regs[13][7], regfile:u_regfile|regs[12][8]   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; regfile:u_regfile|regs[15][9]  ; Stuck at GND                   ; regfile:u_regfile|regs[13][8], regfile:u_regfile|regs[12][9]   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; regfile:u_regfile|regs[15][8]  ; Stuck at GND                   ; regfile:u_regfile|regs[13][9], regfile:u_regfile|regs[12][10]  ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; regfile:u_regfile|regs[15][7]  ; Stuck at GND                   ; regfile:u_regfile|regs[13][10], regfile:u_regfile|regs[12][11] ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; regfile:u_regfile|regs[15][6]  ; Stuck at GND                   ; regfile:u_regfile|regs[13][11], regfile:u_regfile|regs[12][12] ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; regfile:u_regfile|regs[15][5]  ; Stuck at GND                   ; regfile:u_regfile|regs[13][12], regfile:u_regfile|regs[12][13] ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; regfile:u_regfile|regs[15][4]  ; Stuck at GND                   ; regfile:u_regfile|regs[13][13], regfile:u_regfile|regs[12][14] ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; regfile:u_regfile|regs[15][3]  ; Stuck at GND                   ; regfile:u_regfile|regs[13][14], regfile:u_regfile|regs[12][15] ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; regfile:u_regfile|regs[15][0]  ; Stuck at GND                   ; regfile:u_regfile|regs[14][0], regfile:u_regfile|regs[13][1]   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; regfile:u_regfile|regs[15][2]  ; Stuck at GND                   ; regfile:u_regfile|regs[13][15]                                 ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; regfile:u_regfile|regs[15][1]  ; Stuck at GND                   ; regfile:u_regfile|regs[13][0]                                  ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-+--------------------------------+--------------------------------+----------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -537,23 +231,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------+
-; Port Connectivity Checks: "regfile:u_regfile"  ;
-+--------------+-------+----------+--------------+
-; Port         ; Type  ; Severity ; Details      ;
-+--------------+-------+----------+--------------+
-; ld_r         ; Input ; Info     ; Stuck at GND ;
-; rf_input_sel ; Input ; Info     ; Stuck at GND ;
-; ir_operand   ; Input ; Info     ; Stuck at GND ;
-; dm_out       ; Input ; Info     ; Stuck at GND ;
-; aluout       ; Input ; Info     ; Stuck at GND ;
-; rz_max       ; Input ; Info     ; Stuck at GND ;
-; sip_hold     ; Input ; Info     ; Stuck at GND ;
-; er_temp      ; Input ; Info     ; Stuck at GND ;
-; dprr_res     ; Input ; Info     ; Stuck at GND ;
-; dprr_res_reg ; Input ; Info     ; Stuck at GND ;
-; dprr_wren    ; Input ; Info     ; Stuck at GND ;
-+--------------+-------+----------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |control_signal_generator|Mux36 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
 
 
 +-----------------------------------------------------+
@@ -561,13 +245,16 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 99                          ;
-; cycloneiii_lcell_comb ; 1                           ;
-;     normal            ; 1                           ;
+; boundary_port         ; 55                          ;
+; cycloneiii_lcell_comb ; 55                          ;
+;     normal            ; 55                          ;
 ;         0 data inputs ; 1                           ;
+;         2 data inputs ; 7                           ;
+;         3 data inputs ; 6                           ;
+;         4 data inputs ; 41                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 0.00                        ;
-; Average LUT depth     ; 0.00                        ;
+; Max LUT depth         ; 4.00                        ;
+; Average LUT depth     ; 2.92                        ;
 +-----------------------+-----------------------------+
 
 
@@ -586,25 +273,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Thu Apr 16 13:16:16 2026
+    Info: Processing started: Fri Apr 17 00:25:56 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Recop_Project -c Recop_Project
-Warning (125092): Tcl Script File ../Project1/Selected VHDL source design files/data_memory_ip.qip not found
-    Info (125063): set_global_assignment -name QIP_FILE "../Project1/Selected VHDL source design files/data_memory_ip.qip"
-Warning (125092): Tcl Script File ../Project1/Selected VHDL source design files/instructin_memory_ip.qip not found
-    Info (125063): set_global_assignment -name QIP_FILE "../Project1/Selected VHDL source design files/instructin_memory_ip.qip"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/fetch.vhd
-    Info (12022): Found design unit 1: fetch-beh File: C:/HDL/701/recop/Selected VHDL source design files/fetch.vhd Line: 23
-    Info (12023): Found entity 1: fetch File: C:/HDL/701/recop/Selected VHDL source design files/fetch.vhd Line: 9
-Warning (12019): Can't analyze file -- file ../Project1/Selected VHDL source design files/program_counter.vhd is missing
-Warning (12019): Can't analyze file -- file ../Project1/Selected VHDL source design files/registers.vhd is missing
-Warning (12019): Can't analyze file -- file ../Project1/Selected VHDL source design files/ALU.vhd is missing
-Warning (12019): Can't analyze file -- file ../Project1/Selected VHDL source design files/various_constants.vhd is missing
-Warning (12019): Can't analyze file -- file ../Project1/Selected VHDL source design files/recop_types.vhd is missing
-Warning (12019): Can't analyze file -- file ../Project1/Selected VHDL source design files/regfile.vhd is missing
-Warning (12019): Can't analyze file -- file ../Project1/Selected VHDL source design files/recop_top.vhd is missing
-Warning (12019): Can't analyze file -- file ../Project1/Selected VHDL source design files/opcodes.vhd is missing
 Info (12021): Found 1 design units, including 0 entities, in source file selected vhdl source design files/various_constants.vhd
     Info (12022): Found design unit 1: various_constants File: C:/HDL/701/recop/Selected VHDL source design files/various_constants.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/registers.vhd
@@ -644,99 +316,50 @@ Info (12021): Found 2 design units, including 1 entities, in source file selecte
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/instructin_memory_ip.vhd
     Info (12022): Found design unit 1: instructin_memory_ip-SYN File: C:/HDL/701/recop/Selected VHDL source design files/instructin_memory_ip.vhd Line: 52
     Info (12023): Found entity 1: instructin_memory_ip File: C:/HDL/701/recop/Selected VHDL source design files/instructin_memory_ip.vhd Line: 42
+Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/fetch.vhd
+    Info (12022): Found design unit 1: Fetch-beh File: C:/HDL/701/recop/Selected VHDL source design files/fetch.vhd Line: 23
+    Info (12023): Found entity 1: Fetch File: C:/HDL/701/recop/Selected VHDL source design files/fetch.vhd Line: 9
 Info (12021): Found 0 design units, including 0 entities, in source file selected vhdl source design files/execute.vhd
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/decode.vhd
-    Info (12022): Found design unit 1: decode-beh File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 37
-    Info (12023): Found entity 1: decode File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 9
+    Info (12022): Found design unit 1: DecodeandWriteback-beh File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 68
+    Info (12023): Found entity 1: DecodeandWriteback File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 9
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/data_memory_ip.vhd
     Info (12022): Found design unit 1: data_memory_ip-SYN File: C:/HDL/701/recop/Selected VHDL source design files/data_memory_ip.vhd Line: 54
     Info (12023): Found entity 1: data_memory_ip File: C:/HDL/701/recop/Selected VHDL source design files/data_memory_ip.vhd Line: 42
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/data_mem.vhd
     Info (12022): Found design unit 1: data_mem-SYN File: C:/HDL/701/recop/Selected VHDL source design files/data_mem.vhd Line: 55
     Info (12023): Found entity 1: data_mem File: C:/HDL/701/recop/Selected VHDL source design files/data_mem.vhd Line: 43
+Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/control_signal_generator.vhd
+    Info (12022): Found design unit 1: control_signal_generator-beh File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 52
+    Info (12023): Found entity 1: control_signal_generator File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 10
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/alu.vhd
     Info (12022): Found design unit 1: alu-combined File: C:/HDL/701/recop/Selected VHDL source design files/ALU.vhd Line: 34
     Info (12023): Found entity 1: alu File: C:/HDL/701/recop/Selected VHDL source design files/ALU.vhd Line: 13
-Info (12127): Elaborating entity "decode" for the top level hierarchy
-Info (12128): Elaborating entity "regfile" for hierarchy "regfile:u_regfile" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 71
+Info (12127): Elaborating entity "control_signal_generator" for the top level hierarchy
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "rx[0]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 20
-    Warning (13410): Pin "rx[1]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 20
-    Warning (13410): Pin "rx[2]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 20
-    Warning (13410): Pin "rx[3]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 20
-    Warning (13410): Pin "rx[4]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 20
-    Warning (13410): Pin "rx[5]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 20
-    Warning (13410): Pin "rx[6]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 20
-    Warning (13410): Pin "rx[7]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 20
-    Warning (13410): Pin "rx[8]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 20
-    Warning (13410): Pin "rx[9]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 20
-    Warning (13410): Pin "rx[10]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 20
-    Warning (13410): Pin "rx[11]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 20
-    Warning (13410): Pin "rx[12]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 20
-    Warning (13410): Pin "rx[13]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 20
-    Warning (13410): Pin "rx[14]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 20
-    Warning (13410): Pin "rx[15]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 20
-    Warning (13410): Pin "rz[0]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 21
-    Warning (13410): Pin "rz[1]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 21
-    Warning (13410): Pin "rz[2]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 21
-    Warning (13410): Pin "rz[3]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 21
-    Warning (13410): Pin "rz[4]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 21
-    Warning (13410): Pin "rz[5]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 21
-    Warning (13410): Pin "rz[6]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 21
-    Warning (13410): Pin "rz[7]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 21
-    Warning (13410): Pin "rz[8]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 21
-    Warning (13410): Pin "rz[9]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 21
-    Warning (13410): Pin "rz[10]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 21
-    Warning (13410): Pin "rz[11]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 21
-    Warning (13410): Pin "rz[12]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 21
-    Warning (13410): Pin "rz[13]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 21
-    Warning (13410): Pin "rz[14]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 21
-    Warning (13410): Pin "rz[15]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 21
-    Warning (13410): Pin "r7[0]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 22
-    Warning (13410): Pin "r7[1]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 22
-    Warning (13410): Pin "r7[2]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 22
-    Warning (13410): Pin "r7[3]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 22
-    Warning (13410): Pin "r7[4]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 22
-    Warning (13410): Pin "r7[5]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 22
-    Warning (13410): Pin "r7[6]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 22
-    Warning (13410): Pin "r7[7]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 22
-    Warning (13410): Pin "r7[8]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 22
-    Warning (13410): Pin "r7[9]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 22
-    Warning (13410): Pin "r7[10]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 22
-    Warning (13410): Pin "r7[11]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 22
-    Warning (13410): Pin "r7[12]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 22
-    Warning (13410): Pin "r7[13]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 22
-    Warning (13410): Pin "r7[14]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 22
-    Warning (13410): Pin "r7[15]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 22
+    Warning (13410): Pin "dprr_wren" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 18
+    Warning (13410): Pin "dpcr_lsb_sel" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 21
+    Warning (13410): Pin "dpcr_wr" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 22
+    Warning (13410): Pin "er_wr" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 23
+    Warning (13410): Pin "er_clr" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 24
+    Warning (13410): Pin "eot_wr" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 25
+    Warning (13410): Pin "eot_clr" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 26
+    Warning (13410): Pin "svop_wr" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 27
+    Warning (13410): Pin "irq_wr" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 29
+    Warning (13410): Pin "result_wen" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 31
+    Warning (13410): Pin "result" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 32
+    Warning (13410): Pin "alu_op1_sel[1]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 36
+Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 19 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "clk" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 11
-    Warning (15610): No output dependent on input pin "init" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 12
-    Warning (15610): No output dependent on input pin "reset" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 13
-    Warning (15610): No output dependent on input pin "instruction[24]" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 15
-    Warning (15610): No output dependent on input pin "instruction[25]" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 15
-    Warning (15610): No output dependent on input pin "instruction[26]" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 15
-    Warning (15610): No output dependent on input pin "instruction[27]" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 15
-    Warning (15610): No output dependent on input pin "instruction[28]" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 15
-    Warning (15610): No output dependent on input pin "instruction[29]" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 15
-    Warning (15610): No output dependent on input pin "instruction[30]" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 15
-    Warning (15610): No output dependent on input pin "instruction[31]" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 15
-    Warning (15610): No output dependent on input pin "instruction[19]" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 15
-    Warning (15610): No output dependent on input pin "instruction[18]" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 15
-    Warning (15610): No output dependent on input pin "instruction[17]" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 15
-    Warning (15610): No output dependent on input pin "instruction[16]" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 15
-    Warning (15610): No output dependent on input pin "instruction[23]" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 15
-    Warning (15610): No output dependent on input pin "instruction[22]" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 15
-    Warning (15610): No output dependent on input pin "instruction[21]" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 15
-    Warning (15610): No output dependent on input pin "instruction[20]" File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 15
-Info (21057): Implemented 99 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 35 input pins
-    Info (21059): Implemented 64 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 80 warnings
-    Info: Peak virtual memory: 4795 megabytes
-    Info: Processing ended: Thu Apr 16 13:16:25 2026
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:19
+Info (21057): Implemented 109 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 25 input pins
+    Info (21059): Implemented 30 output pins
+    Info (21061): Implemented 54 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 14 warnings
+    Info: Peak virtual memory: 4794 megabytes
+    Info: Processing ended: Fri Apr 17 00:26:06 2026
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:18
 
 
