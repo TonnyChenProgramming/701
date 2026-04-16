@@ -1,5 +1,5 @@
 Flow report for Recop_Project
-Mon Apr 13 17:32:30 2026
+Thu Apr 16 13:16:40 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,10 +40,10 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Mon Apr 13 17:32:28 2026       ;
+; Flow Status                        ; Successful - Thu Apr 16 13:16:38 2026       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; Recop_Project                               ;
-; Top-level Entity Name              ; recop_top                                   ;
+; Top-level Entity Name              ; decode                                      ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
@@ -51,7 +51,7 @@ refer to the applicable agreement for further details.
 ;     Total combinational functions  ; 0 / 114,480 ( 0 % )                         ;
 ;     Dedicated logic registers      ; 0 / 114,480 ( 0 % )                         ;
 ; Total registers                    ; 0                                           ;
-; Total pins                         ; 69 / 529 ( 13 % )                           ;
+; Total pins                         ; 99 / 529 ( 19 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0 / 3,981,312 ( 0 % )                       ;
 ; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                             ;
@@ -64,31 +64,29 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/13/2026 17:32:06 ;
+; Start date & time ; 04/16/2026 13:16:16 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Recop_Project       ;
 +-------------------+---------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                                                        ;
-+-------------------------------------+------------------------------------------------------------------------+---------------+-------------+------------+
-; Assignment Name                     ; Value                                                                  ; Default Value ; Entity Name ; Section Id ;
-+-------------------------------------+------------------------------------------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 222805334544209.177605832610104                                        ; --            ; --          ; --         ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                                                     ; --            ; --          ; --         ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                                                      ; --            ; --          ; --         ;
-; MISC_FILE                           ; ../Project1/Selected VHDL source design files/data_memory_ip.cmp       ; --            ; --          ; --         ;
-; MISC_FILE                           ; ../Project1/Selected VHDL source design files/instructin_memory_ip.cmp ; --            ; --          ; --         ;
-; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                                                   ; --            ; --          ; --         ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family)                                 ; --            ; recop_top   ; Top        ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                                 ; --            ; recop_top   ; Top        ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                                 ; --            ; recop_top   ; Top        ;
-; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                                    ; --            ; --          ; --         ;
-; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                                  ; --            ; --          ; --         ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                           ; --            ; --          ; --         ;
-; TOP_LEVEL_ENTITY                    ; recop_top                                                              ; Recop_Project ; --          ; --         ;
-+-------------------------------------+------------------------------------------------------------------------+---------------+-------------+------------+
++-------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                        ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
+; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID               ; 88974379506065.177630217627480         ; --            ; --          ; --         ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --            ; --          ; --         ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; decode      ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; decode      ; Top        ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; decode      ; Top        ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                    ; --            ; --          ; --         ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --         ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --          ; --         ;
+; TOP_LEVEL_ENTITY                    ; decode                                 ; Recop_Project ; --          ; --         ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -96,11 +94,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:10     ; 1.0                     ; 4822 MB             ; 00:00:19                           ;
-; Fitter               ; 00:00:07     ; 1.0                     ; 6674 MB             ; 00:00:13                           ;
-; Assembler            ; 00:00:02     ; 1.0                     ; 4694 MB             ; 00:00:02                           ;
-; Timing Analyzer      ; 00:00:01     ; 1.0                     ; 4957 MB             ; 00:00:01                           ;
-; Total                ; 00:00:20     ; --                      ; --                  ; 00:00:35                           ;
+; Analysis & Synthesis ; 00:00:09     ; 1.0                     ; 4795 MB             ; 00:00:19                           ;
+; Fitter               ; 00:00:08     ; 1.0                     ; 5694 MB             ; 00:00:12                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 4687 MB             ; 00:00:02                           ;
+; Timing Analyzer      ; 00:00:02     ; 1.0                     ; 4842 MB             ; 00:00:02                           ;
+; Total                ; 00:00:22     ; --                      ; --                  ; 00:00:35                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -109,10 +107,10 @@ refer to the applicable agreement for further details.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; TonnyLenovo      ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; TonnyLenovo      ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; TonnyLenovo      ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; TonnyLenovo      ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; LAPTOP-0EKOP29Q  ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; LAPTOP-0EKOP29Q  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; LAPTOP-0EKOP29Q  ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; LAPTOP-0EKOP29Q  ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 

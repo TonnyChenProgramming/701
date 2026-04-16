@@ -1,3 +1,6 @@
+--fetch includes program counter, instruction memory
+--decode includes control unit, register file, and sign extend
+-- execute include alu, memory, write back
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -87,6 +90,7 @@ begin
        sel_z <= to_integer(unsigned(instruction(23 downto 20)));
        sel_x <= to_integer(unsigned(instruction(19 downto 16)));
        ir_operand <= instruction(15 downto 0);
+
        u_pc : entity work.program_counter
        port map (
             clk => clk,
@@ -95,12 +99,14 @@ begin
             pc_plus_1 => pc_plus_1,
             current_pc => current_pc
        );
+
        u_im_ip : entity work.instructin_memory_ip
        port map (
             address => current_pc(10 downto 0),
             clock => clk,
             q => instruction
        );
+       
        u_regfile : entity work.regfile
         port map (
             clk          => clk,

@@ -2,7 +2,136 @@
 	"partitions" : [
 		{
 			"name" : "Top",
-			"pins" : []
+			"pins" : [
+				{
+					"name" : "ir_operand[0]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_operand[1]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_operand[2]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_operand[3]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_operand[4]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_operand[5]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_operand[6]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_operand[7]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_operand[8]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_operand[9]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_operand[10]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_operand[11]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_operand[12]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_operand[13]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_operand[14]",
+					"strict" : false
+				},
+				{
+					"name" : "ir_operand[15]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[0]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[1]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[2]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[3]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[4]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[5]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[6]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[7]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[8]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[9]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[10]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[11]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[12]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[13]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[14]",
+					"strict" : false
+				},
+				{
+					"name" : "instruction[15]",
+					"strict" : false
+				}
+			]
 		}
 	]
 }
