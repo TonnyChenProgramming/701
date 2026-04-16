@@ -1,16 +1,20 @@
-Fitter Status : Successful - Thu Apr 16 13:16:34 2026
-Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Fitter Status : Successful - Thu Apr 16 17:51:54 2026
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 Revision Name : Recop_Project
 Top-level Entity Name : decode
-Family : Cyclone IV E
-Device : EP4CE115F29C7
+Family : Cyclone V
+Device : 5CSEMA5F31C6
 Timing Models : Final
-Total logic elements : 0 / 114,480 ( 0 % )
-    Total combinational functions : 0 / 114,480 ( 0 % )
-    Dedicated logic registers : 0 / 114,480 ( 0 % )
+Logic utilization (in ALMs) : 1 / 32,070 ( < 1 % )
 Total registers : 0
-Total pins : 99 / 529 ( 19 % )
+Total pins : 99 / 457 ( 22 % )
 Total virtual pins : 0
-Total memory bits : 0 / 3,981,312 ( 0 % )
-Embedded Multiplier 9-bit elements : 0 / 532 ( 0 % )
-Total PLLs : 0 / 4 ( 0 % )
+Total block memory bits : 0 / 4,065,280 ( 0 % )
+Total RAM Blocks : 0 / 397 ( 0 % )
+Total DSP Blocks : 0 / 87 ( 0 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0 / 6 ( 0 % )
+Total DLLs : 0 / 4 ( 0 % )

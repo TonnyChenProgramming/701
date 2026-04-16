@@ -58,7 +58,7 @@ begin
     --disable all the write back signal for register file
     ld_r <= '0';
     rf_input_sel <= "000";
-	ir_operand_input  <= x"0000";
+	 ir_operand_input  <= x"0000";
     dm_out  <= x"0000";
     aluout  <= x"0000";
     rz_max  <= x"0000";
@@ -72,7 +72,7 @@ begin
     sel_z <= to_integer(unsigned(instruction(23 downto 20)));
     sel_x <= to_integer(unsigned(instruction(19 downto 16)));
     ir_operand <= instruction(15 downto 0);
-    opcode <= instruction(31:24);
+	 opcode <= instruction(31 downto 26);
 
     u_regfile : entity work.regfile
     port map (

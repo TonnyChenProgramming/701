@@ -1,6 +1,6 @@
 Flow report for Recop_Project
-Thu Apr 16 13:16:40 2026
-Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Thu Apr 16 17:52:24 2026
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
 ---------------------
@@ -37,26 +37,29 @@ refer to the applicable agreement for further details.
 
 
 
-+----------------------------------------------------------------------------------+
-; Flow Summary                                                                     ;
-+------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Thu Apr 16 13:16:38 2026       ;
-; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
-; Revision Name                      ; Recop_Project                               ;
-; Top-level Entity Name              ; decode                                      ;
-; Family                             ; Cyclone IV E                                ;
-; Device                             ; EP4CE115F29C7                               ;
-; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 0 / 114,480 ( 0 % )                         ;
-;     Total combinational functions  ; 0 / 114,480 ( 0 % )                         ;
-;     Dedicated logic registers      ; 0 / 114,480 ( 0 % )                         ;
-; Total registers                    ; 0                                           ;
-; Total pins                         ; 99 / 529 ( 19 % )                           ;
-; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0 / 3,981,312 ( 0 % )                       ;
-; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                             ;
-; Total PLLs                         ; 0 / 4 ( 0 % )                               ;
-+------------------------------------+---------------------------------------------+
++-----------------------------------------------------------------------------------+
+; Flow Summary                                                                      ;
++---------------------------------+-------------------------------------------------+
+; Flow Status                     ; Successful - Thu Apr 16 17:52:15 2026           ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
+; Revision Name                   ; Recop_Project                                   ;
+; Top-level Entity Name           ; decode                                          ;
+; Family                          ; Cyclone V                                       ;
+; Device                          ; 5CSEMA5F31C6                                    ;
+; Timing Models                   ; Final                                           ;
+; Logic utilization (in ALMs)     ; 1 / 32,070 ( < 1 % )                            ;
+; Total registers                 ; 0                                               ;
+; Total pins                      ; 99 / 457 ( 22 % )                               ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 0 / 4,065,280 ( 0 % )                           ;
+; Total DSP Blocks                ; 0 / 87 ( 0 % )                                  ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 0 / 6 ( 0 % )                                   ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                                   ;
++---------------------------------+-------------------------------------------------+
 
 
 +-----------------------------------------+
@@ -64,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/16/2026 13:16:16 ;
+; Start date & time ; 04/16/2026 17:50:46 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Recop_Project       ;
 +-------------------+---------------------+
@@ -75,10 +78,10 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 88974379506065.177630217627480         ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 224948461339679.177631864514568        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
-; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --            ; --          ; --         ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE         ; -- (Not supported for targeted family) ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; decode      ; Top        ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; decode      ; Top        ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; decode      ; Top        ;
@@ -94,11 +97,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:09     ; 1.0                     ; 4795 MB             ; 00:00:19                           ;
-; Fitter               ; 00:00:08     ; 1.0                     ; 5694 MB             ; 00:00:12                           ;
-; Assembler            ; 00:00:03     ; 1.0                     ; 4687 MB             ; 00:00:02                           ;
-; Timing Analyzer      ; 00:00:02     ; 1.0                     ; 4842 MB             ; 00:00:02                           ;
-; Total                ; 00:00:22     ; --                      ; --                  ; 00:00:35                           ;
+; Analysis & Synthesis ; 00:00:25     ; 1.0                     ; 4878 MB             ; 00:00:18                           ;
+; Fitter               ; 00:00:42     ; 1.0                     ; 7860 MB             ; 00:02:27                           ;
+; Assembler            ; 00:00:16     ; 1.0                     ; 4850 MB             ; 00:00:07                           ;
+; Timing Analyzer      ; 00:00:07     ; 1.0                     ; 5275 MB             ; 00:00:03                           ;
+; Total                ; 00:01:30     ; --                      ; --                  ; 00:02:55                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -107,10 +110,10 @@ refer to the applicable agreement for further details.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; LAPTOP-0EKOP29Q  ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; LAPTOP-0EKOP29Q  ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; LAPTOP-0EKOP29Q  ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; LAPTOP-0EKOP29Q  ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; EN441226         ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; EN441226         ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; EN441226         ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; EN441226         ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
