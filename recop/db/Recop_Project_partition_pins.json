@@ -84,23 +84,15 @@
 					"strict" : false
 				},
 				{
+					"name" : "pc_write",
+					"strict" : false
+				},
+				{
 					"name" : "opcode[7]",
 					"strict" : false
 				},
 				{
 					"name" : "opcode[6]",
-					"strict" : false
-				},
-				{
-					"name" : "opcode[1]",
-					"strict" : false
-				},
-				{
-					"name" : "opcode[5]",
-					"strict" : false
-				},
-				{
-					"name" : "opcode[4]",
 					"strict" : false
 				},
 				{
@@ -116,19 +108,19 @@
 					"strict" : false
 				},
 				{
+					"name" : "opcode[5]",
+					"strict" : false
+				},
+				{
+					"name" : "opcode[1]",
+					"strict" : false
+				},
+				{
+					"name" : "opcode[4]",
+					"strict" : false
+				},
+				{
 					"name" : "z_flag",
-					"strict" : false
-				},
-				{
-					"name" : "rz[0]",
-					"strict" : false
-				},
-				{
-					"name" : "rz[1]",
-					"strict" : false
-				},
-				{
-					"name" : "rz[2]",
 					"strict" : false
 				},
 				{
@@ -180,7 +172,31 @@
 					"strict" : false
 				},
 				{
+					"name" : "rz[0]",
+					"strict" : false
+				},
+				{
+					"name" : "rz[1]",
+					"strict" : false
+				},
+				{
+					"name" : "rz[2]",
+					"strict" : false
+				},
+				{
 					"name" : "rz[15]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "init",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
 					"strict" : false
 				}
 			]

@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Fri Apr 17 13:31:01 2026
-Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+Analysis & Synthesis Status : Successful - Sat Apr 18 11:35:09 2026
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : Recop_Project
-Top-level Entity Name : control_signal_generator
+Top-level Entity Name : multicycle_moore_machine
 Family : Cyclone IV E
-Total logic elements : 59
-    Total combinational functions : 59
-    Dedicated logic registers : 0
-Total registers : 0
-Total pins : 56
+Total logic elements : 75
+    Total combinational functions : 75
+    Dedicated logic registers : 6
+Total registers : 6
+Total pins : 60
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0

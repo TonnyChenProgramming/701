@@ -11,15 +11,15 @@ entity program_counter is
         init : in bit_1;
         reset : in bit_1;
 
-        pc_plus_1 : in bit_16;
+        pc_write : in bit_1;
+
+        next_pc : in bit_16;
         current_pc:    out bit_16
     );
 end program_counter;
 architecture beh of program_counter is
-    signal next_pc : bit_16;
     begin
 
-        next_pc <= pc_plus_1;
         process (clk, reset)
             begin
                 if reset = '1' then
@@ -27,7 +27,9 @@ architecture beh of program_counter is
                 elsif init = '1' then
                     current_pc <= x"0000";
                 elsif rising_edge(clk) then 
-                    current_pc <= next_pc;
+                    if pc_write = '1' then
+                        current_pc <= next_pc;
+                    end if;
                 end if;
-            end process;	
+        end process;	
 end beh;

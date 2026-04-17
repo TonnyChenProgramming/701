@@ -22,16 +22,19 @@ end Fetch;
 
 architecture beh of Fetch is
     -- fetch internal signals
+	 signal pc_write		: bit_1;
     signal current_pc   : bit_16;
     signal pc_plus_1    : bit_16;
 begin
     pc_plus_1 <= std_logic_vector(unsigned(current_pc) + 1);
+	 pc_write <= '1';
     u_pc : entity work.program_counter
     port map (
         clk => clk,
         init => init, 
         reset => reset,
-        pc_plus_1 => pc_plus_1,
+		  pc_write => pc_write,
+        next_pc => pc_plus_1,
         current_pc => current_pc
     );
     u_im_ip : entity work.instructin_memory_ip
