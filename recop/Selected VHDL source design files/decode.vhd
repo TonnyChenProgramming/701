@@ -1,4 +1,3 @@
---decode includes control unit, register file, and sign extend
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -6,159 +5,159 @@ use ieee.numeric_std.all;
 use work.recop_types.all;
 use work.various_constants.all;
 
-entity DecodeandWriteback is 
+entity DecodeandWriteback is
     port(
-        clk : in bit_1;
-        init : in bit_1;
+        clk   : in bit_1;
+        init  : in bit_1;
         reset : in bit_1;
 
+        -- From fetch
         instruction : in bit_32;
-        --signal for combinational control unit
-        z_flag : in bit_1;
-        --signal for write back stage
-        ld_r   : in bit_1;
-        dm_out : in bit_16;
-        aluout : in bit_16;
-        rz_max : in bit_16;
-        sip_hold : in bit_16;
 
-        --register related output signals
-        rx : out bit_16;
-        rz: out bit_16;
-        r7 : out bit_16;
+        -- From execute (needed for writeback into RF)
+        z_flag   : in bit_1;    -- for CU conditional branch decisions
+        dm_out   : in bit_16;   -- LDR result -> RF
+        aluout   : in bit_16;   -- ALU result -> RF
+        rz_max   : in bit_16;   -- MAX result -> RF
+        sip_hold : in bit_16;   -- SIP value  -> RF (LSIP)
 
-        --control unit output signals
-        
-        -- register file related
+        -- Decoded fields (to execute)
+        rx         : out bit_16;
+        rz         : out bit_16;
+        r7         : out bit_16;
+        ir_operand : out bit_16;
+
+        -- Control signals (to execute and recop_top)
+        ld_r         : out bit_1;
         rf_input_sel : out bit_3;
-		dprr_wren : out bit_1;
+        dprr_wren    : out bit_1;
 
-        -- port register related
-		dpcr_lsb_sel : out bit_1;
-		dpcr_wr : out bit_1;
-		er_wr : out bit_1;
-		er_clr : out bit_1;
-		eot_wr : out bit_1;
-		eot_clr : out bit_1;
-		svop_wr : out bit_1;
-        sop_wr : out bit_1;	
-		irq_wr:out bit_1;
-		irq_clr:out bit_1;
-		result_wen: out bit_1;
-		result :out bit_1;	
+        dpcr_lsb_sel : out bit_1;
+        dpcr_wr      : out bit_1;
+        er_wr        : out bit_1;
+        er_clr       : out bit_1;
+        eot_wr       : out bit_1;
+        eot_clr      : out bit_1;
+        svop_wr      : out bit_1;
+        sop_wr       : out bit_1;
+        irq_wr       : out bit_1;
+        irq_clr      : out bit_1;
+        result_wen   : out bit_1;
+        result       : out bit_1;
 
-        -- alu related
         alu_operation : out bit_3;
-        alu_op1_sel	 : out bit_2;
-	    alu_op2_sel	 : out bit_1;
-        clr_z_flag : out bit_1;
+        alu_op1_sel   : out bit_2;
+        alu_op2_sel   : out bit_1;
+        clr_z_flag    : out bit_1;
 
-        -- data memory related
-        dm_wr_en : out bit_1;
-        dm_addr_sel : out bit_2; 
+        dm_wr_en    : out bit_1;
+        dm_addr_sel : out bit_2;
         dm_data_sel : out bit_2;
 
-        -- branch related
         pc_sel : out bit_2
-
     );
-
 end DecodeandWriteback;
 
 architecture beh of DecodeandWriteback is
-    -- initialise all the write back signal for register file
 
+    -- Internal register address signals (decoded from instruction)
+    signal sel_z : integer range 0 to 15;
+    signal sel_x : integer range 0 to 15;
+
+    -- Internal copies for signals needed by both RF and output
+    signal ir_operand_int  : bit_16;
+    signal rf_input_sel_s  : bit_3;
+    signal dprr_wren_s     : bit_1;
+    signal ld_r_s          : bit_1;
+    signal rz_s            : bit_16;
+    signal opcode          : bit_8;
+
+    -- Unused special inputs (tied off)
     signal er_temp      : bit_1;
     signal dprr_res     : bit_1;
     signal dprr_res_reg : bit_1;
 
-    --declare signals from instruction
-    signal sel_z        :integer range 0 to 15;
-    signal sel_x        :integer range 0 to 15;
-	signal ir_operand	:bit_16;
-    signal opcode       :bit_8;
-
-    -- clone internal used signal for output
-    signal rf_input_sel_s : bit_3;
-    signal dprr_wren_s    : bit_1;
-    signal rz_s           : bit_16;
 begin
 
-    --disable all the write back signal for register file
-    er_temp  <= '0'; 
-    dprr_res  <= '0'; 
-    dprr_res_reg  <= '0'; 
+    -- Tie off unused inputs
+    er_temp      <= '0';
+    dprr_res     <= '0';
+    dprr_res_reg <= '0';
 
-    --assign signals from instruction
-    sel_z <= to_integer(unsigned(instruction(23 downto 20)));
-    sel_x <= to_integer(unsigned(instruction(19 downto 16)));
-    ir_operand <= instruction(15 downto 0);
-    opcode <= instruction(31 downto 24);
+    -- Decode instruction fields
+    -- instruction[31:24] = AM(2) + function(6) = 8-bit opcode for CU
+    -- instruction[23:20] = Rz address
+    -- instruction[19:16] = Rx address
+    -- instruction[15:0]  = immediate / address operand
+    opcode        <= instruction(31 downto 24);
+    sel_z         <= to_integer(unsigned(instruction(23 downto 20)));
+    sel_x         <= to_integer(unsigned(instruction(19 downto 16)));
+    ir_operand_int <= instruction(15 downto 0);
 
-    --send internal signal to output
+    -- Drive outputs from internal signals
+    ir_operand   <= ir_operand_int;
     rf_input_sel <= rf_input_sel_s;
     dprr_wren    <= dprr_wren_s;
+    ld_r         <= ld_r_s;
     rz           <= rz_s;
 
+    -- Register File
     u_regfile : entity work.regfile
-    port map (
-        clk          => clk,
-        init         => init,
-        ld_r         => ld_r,
-        sel_z        => sel_z,
-        sel_x        => sel_x,
-        rx           => rx,
-        rz           => rz_s,
-        rf_input_sel => rf_input_sel_s,
-        ir_operand   => ir_operand,
-        dm_out       => dm_out,
-        aluout       => aluout,
-        rz_max       => rz_max,
-        sip_hold     => sip_hold,
-        er_temp      => er_temp,
-        r7           => r7,
-        dprr_res     => dprr_res,
-        dprr_res_reg => dprr_res_reg,
-        dprr_wren    => dprr_wren_s
-    );
-    u_controlpath : entity work.control_signal_generator
-    port map(
-        opcode       => opcode,
-        rz           => rz_s,
-        z_flag       => z_flag,
+        port map (
+            clk          => clk,
+            init         => init,
+            ld_r         => ld_r_s,
+            sel_z        => sel_z,
+            sel_x        => sel_x,
+            rx           => rx,
+            rz           => rz_s,
+            rf_input_sel => rf_input_sel_s,
+            ir_operand   => ir_operand_int,
+            dm_out       => dm_out,
+            aluout       => aluout,
+            rz_max       => rz_max,
+            sip_hold     => sip_hold,
+            er_temp      => er_temp,
+            r7           => r7,
+            dprr_res     => dprr_res,
+            dprr_res_reg => dprr_res_reg,
+            dprr_wren    => dprr_wren_s
+        );
 
-        -- register file related
-        rf_input_sel => rf_input_sel_s,
-        dprr_wren    => dprr_wren_s,
+    -- Control Signal Generator (combinational)
+    u_cu : entity work.control_signal_generator
+        port map (
+            opcode       => opcode,
+            rz           => rz_s,
+            z_flag       => z_flag,
 
-        -- port register related
-        dpcr_lsb_sel => dpcr_lsb_sel,
-        dpcr_wr      => dpcr_wr,
-        er_wr        => er_wr,
-        er_clr       => er_clr,
-        eot_wr       => eot_wr,
-        eot_clr      => eot_clr,
-        svop_wr      => svop_wr,
-        sop_wr       => sop_wr,
-        irq_wr       => irq_wr,
-        irq_clr      => irq_clr,
-        result_wen   => result_wen,
-        result       => result,
+            ld_r         => ld_r_s,
+            rf_input_sel => rf_input_sel_s,
+            dprr_wren    => dprr_wren_s,
 
-        -- alu related
-        alu_operation => alu_operation,
-        alu_op1_sel   => alu_op1_sel,
-        alu_op2_sel   => alu_op2_sel,
-        clr_z_flag    => clr_z_flag,
+            dpcr_lsb_sel => dpcr_lsb_sel,
+            dpcr_wr      => dpcr_wr,
+            er_wr        => er_wr,
+            er_clr       => er_clr,
+            eot_wr       => eot_wr,
+            eot_clr      => eot_clr,
+            svop_wr      => svop_wr,
+            sop_wr       => sop_wr,
+            irq_wr       => irq_wr,
+            irq_clr      => irq_clr,
+            result_wen   => result_wen,
+            result       => result,
 
-        -- data memory related
-        dm_wr_en        => dm_wr_en,
-        dm_addr_sel => dm_addr_sel,
-        dm_data_sel  => dm_data_sel,
+            alu_operation => alu_operation,
+            alu_op1_sel   => alu_op1_sel,
+            alu_op2_sel   => alu_op2_sel,
+            clr_z_flag    => clr_z_flag,
 
-        -- branch related
-        pc_sel       => pc_sel
-    );
+            dm_wr_en    => dm_wr_en,
+            dm_addr_sel => dm_addr_sel,
+            dm_data_sel => dm_data_sel,
 
+            pc_sel      => pc_sel
+        );
 
 end beh;

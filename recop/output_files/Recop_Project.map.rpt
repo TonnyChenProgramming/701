@@ -1,6 +1,6 @@
 Analysis & Synthesis report for Recop_Project
-Fri Apr 17 00:26:06 2026
-Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Fri Apr 17 13:31:01 2026
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
 ---------------------
@@ -40,24 +40,24 @@ refer to the applicable agreement for further details.
 
 
 
-+----------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                     ;
-+------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Apr 17 00:26:06 2026       ;
-; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
-; Revision Name                      ; Recop_Project                               ;
-; Top-level Entity Name              ; control_signal_generator                    ;
-; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 54                                          ;
-;     Total combinational functions  ; 54                                          ;
-;     Dedicated logic registers      ; 0                                           ;
-; Total registers                    ; 0                                           ;
-; Total pins                         ; 55                                          ;
-; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0                                           ;
-; Embedded Multiplier 9-bit elements ; 0                                           ;
-; Total PLLs                         ; 0                                           ;
-+------------------------------------+---------------------------------------------+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Fri Apr 17 13:31:01 2026           ;
+; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
+; Revision Name                      ; Recop_Project                                   ;
+; Top-level Entity Name              ; control_signal_generator                        ;
+; Family                             ; Cyclone IV E                                    ;
+; Total logic elements               ; 59                                              ;
+;     Total combinational functions  ; 59                                              ;
+;     Dedicated logic registers      ; 0                                               ;
+; Total registers                    ; 0                                               ;
+; Total pins                         ; 56                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------+
@@ -151,8 +151,8 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 8           ;
-; Maximum allowed            ; 4           ;
+; Number detected on machine ; 24          ;
+; Maximum allowed            ; 16          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
 ; Maximum used               ; 1           ;
@@ -162,16 +162,16 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                         ;
-+----------------------------------------------------------------+-----------------+-----------------+---------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path                               ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                    ; Library ;
-+----------------------------------------------------------------+-----------------+-----------------+---------------------------------------------------------------------------------+---------+
-; Selected VHDL source design files/various_constants.vhd        ; yes             ; User VHDL File  ; C:/HDL/701/recop/Selected VHDL source design files/various_constants.vhd        ;         ;
-; Selected VHDL source design files/recop_types.vhd              ; yes             ; User VHDL File  ; C:/HDL/701/recop/Selected VHDL source design files/recop_types.vhd              ;         ;
-; Selected VHDL source design files/opcodes.vhd                  ; yes             ; User VHDL File  ; C:/HDL/701/recop/Selected VHDL source design files/opcodes.vhd                  ;         ;
-; Selected VHDL source design files/control_signal_generator.vhd ; yes             ; User VHDL File  ; C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd ;         ;
-+----------------------------------------------------------------+-----------------+-----------------+---------------------------------------------------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                ;
++----------------------------------------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                               ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                           ; Library ;
++----------------------------------------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------+---------+
+; Selected VHDL source design files/various_constants.vhd        ; yes             ; User VHDL File  ; D:/701-Github/701/recop/Selected VHDL source design files/various_constants.vhd        ;         ;
+; Selected VHDL source design files/recop_types.vhd              ; yes             ; User VHDL File  ; D:/701-Github/701/recop/Selected VHDL source design files/recop_types.vhd              ;         ;
+; Selected VHDL source design files/opcodes.vhd                  ; yes             ; User VHDL File  ; D:/701-Github/701/recop/Selected VHDL source design files/opcodes.vhd                  ;         ;
+; Selected VHDL source design files/control_signal_generator.vhd ; yes             ; User VHDL File  ; D:/701-Github/701/recop/Selected VHDL source design files/control_signal_generator.vhd ;         ;
++----------------------------------------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------+---------+
 
 
 +---------------------------------------------------------------+
@@ -179,30 +179,30 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------------+
 ; Resource                                    ; Usage           ;
 +---------------------------------------------+-----------------+
-; Estimated Total logic elements              ; 54              ;
+; Estimated Total logic elements              ; 59              ;
 ;                                             ;                 ;
-; Total combinational functions               ; 54              ;
+; Total combinational functions               ; 59              ;
 ; Logic element usage by number of LUT inputs ;                 ;
-;     -- 4 input functions                    ; 41              ;
-;     -- 3 input functions                    ; 6               ;
+;     -- 4 input functions                    ; 44              ;
+;     -- 3 input functions                    ; 8               ;
 ;     -- <=2 input functions                  ; 7               ;
 ;                                             ;                 ;
 ; Logic elements by mode                      ;                 ;
-;     -- normal mode                          ; 54              ;
+;     -- normal mode                          ; 59              ;
 ;     -- arithmetic mode                      ; 0               ;
 ;                                             ;                 ;
 ; Total registers                             ; 0               ;
 ;     -- Dedicated logic registers            ; 0               ;
 ;     -- I/O registers                        ; 0               ;
 ;                                             ;                 ;
-; I/O pins                                    ; 55              ;
+; I/O pins                                    ; 56              ;
 ;                                             ;                 ;
 ; Embedded Multiplier 9-bit elements          ; 0               ;
 ;                                             ;                 ;
-; Maximum fan-out node                        ; opcode[7]~input ;
-; Maximum fan-out                             ; 18              ;
-; Total fan-out                               ; 269             ;
-; Average fan-out                             ; 1.64            ;
+; Maximum fan-out node                        ; opcode[5]~input ;
+; Maximum fan-out                             ; 19              ;
+; Total fan-out                               ; 290             ;
+; Average fan-out                             ; 1.70            ;
 +---------------------------------------------+-----------------+
 
 
@@ -211,7 +211,7 @@ refer to the applicable agreement for further details.
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------+--------------------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name       ; Entity Name              ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------+--------------------------+--------------+
-; |control_signal_generator  ; 54 (54)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 55   ; 0            ; |control_signal_generator ; control_signal_generator ; work         ;
+; |control_signal_generator  ; 59 (59)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 56   ; 0            ; |control_signal_generator ; control_signal_generator ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------+--------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -236,7 +236,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output      ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |control_signal_generator|Mux36 ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |control_signal_generator|Mux41 ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |control_signal_generator|Mux33 ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
 
 
@@ -245,16 +246,17 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 55                          ;
-; cycloneiii_lcell_comb ; 55                          ;
-;     normal            ; 55                          ;
+; boundary_port         ; 56                          ;
+; cycloneiii_lcell_comb ; 61                          ;
+;     normal            ; 61                          ;
 ;         0 data inputs ; 1                           ;
+;         1 data inputs ; 1                           ;
 ;         2 data inputs ; 7                           ;
-;         3 data inputs ; 6                           ;
-;         4 data inputs ; 41                          ;
+;         3 data inputs ; 8                           ;
+;         4 data inputs ; 44                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 4.00                        ;
-; Average LUT depth     ; 2.92                        ;
+; Average LUT depth     ; 3.02                        ;
 +-----------------------+-----------------------------+
 
 
@@ -272,94 +274,95 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Fri Apr 17 00:25:56 2026
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+    Info: Processing started: Fri Apr 17 13:30:49 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Recop_Project -c Recop_Project
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (12021): Found 1 design units, including 0 entities, in source file selected vhdl source design files/various_constants.vhd
-    Info (12022): Found design unit 1: various_constants File: C:/HDL/701/recop/Selected VHDL source design files/various_constants.vhd Line: 7
+    Info (12022): Found design unit 1: various_constants File: D:/701-Github/701/recop/Selected VHDL source design files/various_constants.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/registers.vhd
-    Info (12022): Found design unit 1: registers-beh File: C:/HDL/701/recop/Selected VHDL source design files/registers.vhd Line: 48
-    Info (12023): Found entity 1: registers File: C:/HDL/701/recop/Selected VHDL source design files/registers.vhd Line: 12
+    Info (12022): Found design unit 1: registers-beh File: D:/701-Github/701/recop/Selected VHDL source design files/registers.vhd Line: 48
+    Info (12023): Found entity 1: registers File: D:/701-Github/701/recop/Selected VHDL source design files/registers.vhd Line: 12
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/registerfile.vhd
-    Info (12022): Found design unit 1: registerfile-SYN File: C:/HDL/701/recop/Selected VHDL source design files/registerfile.vhd Line: 60
-    Info (12023): Found entity 1: registerfile File: C:/HDL/701/recop/Selected VHDL source design files/registerfile.vhd Line: 44
+    Info (12022): Found design unit 1: registerfile-SYN File: D:/701-Github/701/recop/Selected VHDL source design files/registerfile.vhd Line: 60
+    Info (12023): Found entity 1: registerfile File: D:/701-Github/701/recop/Selected VHDL source design files/registerfile.vhd Line: 44
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/regfile.vhd
-    Info (12022): Found design unit 1: regfile-beh File: C:/HDL/701/recop/Selected VHDL source design files/regfile.vhd Line: 41
-    Info (12023): Found entity 1: regfile File: C:/HDL/701/recop/Selected VHDL source design files/regfile.vhd Line: 11
+    Info (12022): Found design unit 1: regfile-beh File: D:/701-Github/701/recop/Selected VHDL source design files/regfile.vhd Line: 41
+    Info (12023): Found entity 1: regfile File: D:/701-Github/701/recop/Selected VHDL source design files/regfile.vhd Line: 11
 Info (12021): Found 1 design units, including 0 entities, in source file selected vhdl source design files/recop_types.vhd
-    Info (12022): Found design unit 1: recop_types File: C:/HDL/701/recop/Selected VHDL source design files/recop_types.vhd Line: 5
+    Info (12022): Found design unit 1: recop_types File: D:/701-Github/701/recop/Selected VHDL source design files/recop_types.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/recop_top.vhd
-    Info (12022): Found design unit 1: recop_top-beh File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 24
-    Info (12023): Found entity 1: recop_top File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 11
+    Info (12022): Found design unit 1: recop_top-beh File: D:/701-Github/701/recop/Selected VHDL source design files/recop_top.vhd Line: 21
+    Info (12023): Found entity 1: recop_top File: D:/701-Github/701/recop/Selected VHDL source design files/recop_top.vhd Line: 8
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/recop_pll.vhd
-    Info (12022): Found design unit 1: recop_pll-SYN File: C:/HDL/701/recop/Selected VHDL source design files/recop_pll.vhd Line: 52
-    Info (12023): Found entity 1: recop_pll File: C:/HDL/701/recop/Selected VHDL source design files/recop_pll.vhd Line: 43
+    Info (12022): Found design unit 1: recop_pll-SYN File: D:/701-Github/701/recop/Selected VHDL source design files/recop_pll.vhd Line: 52
+    Info (12023): Found entity 1: recop_pll File: D:/701-Github/701/recop/Selected VHDL source design files/recop_pll.vhd Line: 43
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/program_counter.vhd
-    Info (12022): Found design unit 1: program_counter-beh File: C:/HDL/701/recop/Selected VHDL source design files/program_counter.vhd Line: 18
-    Info (12023): Found entity 1: program_counter File: C:/HDL/701/recop/Selected VHDL source design files/program_counter.vhd Line: 8
+    Info (12022): Found design unit 1: program_counter-beh File: D:/701-Github/701/recop/Selected VHDL source design files/program_counter.vhd Line: 18
+    Info (12023): Found entity 1: program_counter File: D:/701-Github/701/recop/Selected VHDL source design files/program_counter.vhd Line: 8
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/prog_mem.vhd
-    Info (12022): Found design unit 1: prog_mem-SYN File: C:/HDL/701/recop/Selected VHDL source design files/prog_mem.vhd Line: 53
-    Info (12023): Found entity 1: prog_mem File: C:/HDL/701/recop/Selected VHDL source design files/prog_mem.vhd Line: 43
+    Info (12022): Found design unit 1: prog_mem-SYN File: D:/701-Github/701/recop/Selected VHDL source design files/prog_mem.vhd Line: 53
+    Info (12023): Found entity 1: prog_mem File: D:/701-Github/701/recop/Selected VHDL source design files/prog_mem.vhd Line: 43
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/pll.vhd
-    Info (12022): Found design unit 1: pll-SYN File: C:/HDL/701/recop/Selected VHDL source design files/pll.vhd Line: 52
-    Info (12023): Found entity 1: pll File: C:/HDL/701/recop/Selected VHDL source design files/pll.vhd Line: 42
+    Info (12022): Found design unit 1: pll-SYN File: D:/701-Github/701/recop/Selected VHDL source design files/pll.vhd Line: 52
+    Info (12023): Found entity 1: pll File: D:/701-Github/701/recop/Selected VHDL source design files/pll.vhd Line: 42
 Info (12021): Found 1 design units, including 0 entities, in source file selected vhdl source design files/opcodes.vhd
-    Info (12022): Found design unit 1: opcodes File: C:/HDL/701/recop/Selected VHDL source design files/opcodes.vhd Line: 7
+    Info (12022): Found design unit 1: opcodes File: D:/701-Github/701/recop/Selected VHDL source design files/opcodes.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/memory_model.vhd
-    Info (12022): Found design unit 1: memory-beh File: C:/HDL/701/recop/Selected VHDL source design files/memory_model.vhd Line: 27
-    Info (12023): Found entity 1: memory File: C:/HDL/701/recop/Selected VHDL source design files/memory_model.vhd Line: 10
+    Info (12022): Found design unit 1: memory-beh File: D:/701-Github/701/recop/Selected VHDL source design files/memory_model.vhd Line: 27
+    Info (12023): Found entity 1: memory File: D:/701-Github/701/recop/Selected VHDL source design files/memory_model.vhd Line: 10
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/memory_arbiter.vhd
-    Info (12022): Found design unit 1: memory_arbiter-behaviour File: C:/HDL/701/recop/Selected VHDL source design files/memory_arbiter.vhd Line: 35
-    Info (12023): Found entity 1: memory_arbiter File: C:/HDL/701/recop/Selected VHDL source design files/memory_arbiter.vhd Line: 11
+    Info (12022): Found design unit 1: memory_arbiter-behaviour File: D:/701-Github/701/recop/Selected VHDL source design files/memory_arbiter.vhd Line: 35
+    Info (12023): Found entity 1: memory_arbiter File: D:/701-Github/701/recop/Selected VHDL source design files/memory_arbiter.vhd Line: 11
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/instructin_memory_ip.vhd
-    Info (12022): Found design unit 1: instructin_memory_ip-SYN File: C:/HDL/701/recop/Selected VHDL source design files/instructin_memory_ip.vhd Line: 52
-    Info (12023): Found entity 1: instructin_memory_ip File: C:/HDL/701/recop/Selected VHDL source design files/instructin_memory_ip.vhd Line: 42
+    Info (12022): Found design unit 1: instructin_memory_ip-SYN File: D:/701-Github/701/recop/Selected VHDL source design files/instructin_memory_ip.vhd Line: 52
+    Info (12023): Found entity 1: instructin_memory_ip File: D:/701-Github/701/recop/Selected VHDL source design files/instructin_memory_ip.vhd Line: 42
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/fetch.vhd
-    Info (12022): Found design unit 1: Fetch-beh File: C:/HDL/701/recop/Selected VHDL source design files/fetch.vhd Line: 23
-    Info (12023): Found entity 1: Fetch File: C:/HDL/701/recop/Selected VHDL source design files/fetch.vhd Line: 9
-Info (12021): Found 0 design units, including 0 entities, in source file selected vhdl source design files/execute.vhd
+    Info (12022): Found design unit 1: Fetch-beh File: D:/701-Github/701/recop/Selected VHDL source design files/fetch.vhd Line: 23
+    Info (12023): Found entity 1: Fetch File: D:/701-Github/701/recop/Selected VHDL source design files/fetch.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/execute.vhd
+    Info (12022): Found design unit 1: execute-beh File: D:/701-Github/701/recop/Selected VHDL source design files/execute.vhd Line: 38
+    Info (12023): Found entity 1: execute File: D:/701-Github/701/recop/Selected VHDL source design files/execute.vhd Line: 9
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/decode.vhd
-    Info (12022): Found design unit 1: DecodeandWriteback-beh File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 68
-    Info (12023): Found entity 1: DecodeandWriteback File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 9
+    Info (12022): Found design unit 1: DecodeandWriteback-beh File: D:/701-Github/701/recop/Selected VHDL source design files/decode.vhd Line: 61
+    Info (12023): Found entity 1: DecodeandWriteback File: D:/701-Github/701/recop/Selected VHDL source design files/decode.vhd Line: 8
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/data_memory_ip.vhd
-    Info (12022): Found design unit 1: data_memory_ip-SYN File: C:/HDL/701/recop/Selected VHDL source design files/data_memory_ip.vhd Line: 54
-    Info (12023): Found entity 1: data_memory_ip File: C:/HDL/701/recop/Selected VHDL source design files/data_memory_ip.vhd Line: 42
+    Info (12022): Found design unit 1: data_memory_ip-SYN File: D:/701-Github/701/recop/Selected VHDL source design files/data_memory_ip.vhd Line: 54
+    Info (12023): Found entity 1: data_memory_ip File: D:/701-Github/701/recop/Selected VHDL source design files/data_memory_ip.vhd Line: 42
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/data_mem.vhd
-    Info (12022): Found design unit 1: data_mem-SYN File: C:/HDL/701/recop/Selected VHDL source design files/data_mem.vhd Line: 55
-    Info (12023): Found entity 1: data_mem File: C:/HDL/701/recop/Selected VHDL source design files/data_mem.vhd Line: 43
+    Info (12022): Found design unit 1: data_mem-SYN File: D:/701-Github/701/recop/Selected VHDL source design files/data_mem.vhd Line: 55
+    Info (12023): Found entity 1: data_mem File: D:/701-Github/701/recop/Selected VHDL source design files/data_mem.vhd Line: 43
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/control_signal_generator.vhd
-    Info (12022): Found design unit 1: control_signal_generator-beh File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 52
-    Info (12023): Found entity 1: control_signal_generator File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 10
+    Info (12022): Found design unit 1: control_signal_generator-beh File: D:/701-Github/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 50
+    Info (12023): Found entity 1: control_signal_generator File: D:/701-Github/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 9
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/alu.vhd
-    Info (12022): Found design unit 1: alu-combined File: C:/HDL/701/recop/Selected VHDL source design files/ALU.vhd Line: 34
-    Info (12023): Found entity 1: alu File: C:/HDL/701/recop/Selected VHDL source design files/ALU.vhd Line: 13
+    Info (12022): Found design unit 1: alu-combined File: D:/701-Github/701/recop/Selected VHDL source design files/ALU.vhd Line: 34
+    Info (12023): Found entity 1: alu File: D:/701-Github/701/recop/Selected VHDL source design files/ALU.vhd Line: 13
 Info (12127): Elaborating entity "control_signal_generator" for the top level hierarchy
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "dprr_wren" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 18
-    Warning (13410): Pin "dpcr_lsb_sel" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 21
-    Warning (13410): Pin "dpcr_wr" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 22
-    Warning (13410): Pin "er_wr" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 23
-    Warning (13410): Pin "er_clr" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 24
-    Warning (13410): Pin "eot_wr" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 25
-    Warning (13410): Pin "eot_clr" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 26
-    Warning (13410): Pin "svop_wr" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 27
-    Warning (13410): Pin "irq_wr" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 29
-    Warning (13410): Pin "result_wen" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 31
-    Warning (13410): Pin "result" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 32
-    Warning (13410): Pin "alu_op1_sel[1]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 36
+    Warning (13410): Pin "dprr_wren" is stuck at GND File: D:/701-Github/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 18
+    Warning (13410): Pin "er_wr" is stuck at GND File: D:/701-Github/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 23
+    Warning (13410): Pin "er_clr" is stuck at GND File: D:/701-Github/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 24
+    Warning (13410): Pin "eot_wr" is stuck at GND File: D:/701-Github/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 25
+    Warning (13410): Pin "eot_clr" is stuck at GND File: D:/701-Github/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 26
+    Warning (13410): Pin "svop_wr" is stuck at GND File: D:/701-Github/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 27
+    Warning (13410): Pin "irq_wr" is stuck at GND File: D:/701-Github/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 29
+    Warning (13410): Pin "irq_clr" is stuck at GND File: D:/701-Github/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 30
+    Warning (13410): Pin "result_wen" is stuck at GND File: D:/701-Github/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 31
+    Warning (13410): Pin "result" is stuck at GND File: D:/701-Github/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 32
+    Warning (13410): Pin "alu_op1_sel[1]" is stuck at GND File: D:/701-Github/701/recop/Selected VHDL source design files/control_signal_generator.vhd Line: 36
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 109 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 115 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 25 input pins
-    Info (21059): Implemented 30 output pins
-    Info (21061): Implemented 54 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 14 warnings
-    Info: Peak virtual memory: 4794 megabytes
-    Info: Processing ended: Fri Apr 17 00:26:06 2026
-    Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:18
+    Info (21059): Implemented 31 output pins
+    Info (21061): Implemented 59 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 13 warnings
+    Info: Peak virtual memory: 4824 megabytes
+    Info: Processing ended: Fri Apr 17 13:31:01 2026
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:19
 
 
