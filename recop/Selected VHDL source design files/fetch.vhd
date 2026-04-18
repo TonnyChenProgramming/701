@@ -37,7 +37,7 @@ begin
         next_pc => pc_plus_1,
         current_pc => current_pc
     );
-    u_im_ip : entity work.instructin_memory_ip
+    u_im_ip : entity work.instruction_memory_ip
     port map (
         address => current_pc(10 downto 0),
         clock => clk,

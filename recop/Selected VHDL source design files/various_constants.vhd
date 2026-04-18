@@ -52,5 +52,6 @@ package various_constants is
     constant pc_sel_plus_one     : bit_2 := "00";
     constant pc_sel_from_operand : bit_2 := "01";
     constant pc_sel_from_rx      : bit_2 := "10";
+    constant pc_sel_from_zero    : bit_2 := "11";
 
 end various_constants;

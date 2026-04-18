@@ -40,7 +40,7 @@ entity control_signal_generator is
 
         -- data memory related
         dm_wr_en : out bit_1;
-        dm_addr_sel : out bit_2; //
+        dm_addr_sel : out bit_2;
         dm_data_sel : out bit_2;
 
         -- branch related

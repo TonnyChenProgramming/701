@@ -75,6 +75,7 @@ begin
     begin
         if reset = '1' then
             state <= S_FETCH;
+            --pc_sel <= pc_sel_from_zero;
         elsif init = '1' then
             state <= S_FETCH;
         elsif rising_edge(clk) then

@@ -1,0 +1,19 @@
+ReCOP Assembly Listing  (v2 – [AM:2][OP:6] encoding)
+========================================================================
+
+  ADDR       HEX   AM  OPCODE     Rz   Rx   OPERAND    SOURCE
+--------------------------------------------------------------------------------
+0x0000  40100005  IMM  LDR       R1   R0          5    LDR   R1  #5
+0x0001  40200003  IMM  LDR       R2   R0          3    LDR   R2  #3
+0x0002  78310002  IMM  ADD       R3   R1          2    ADD   R3  R1  #2
+0x0003  48410001  IMM  AND       R4   R1          1    AND   R4  R1  #1
+0x0004  4C520004  IMM  OR        R5   R2          4    OR    R5  R2  #4
+0x0005  43610002  IMM  SUBV      R6   R1          2    SUBV  R6  R1  #2
+0x0006  44100005  IMM  SUB       R1   R0          5    SUB   R1  #5
+0x0007  40700005  IMM  LDR       R7   R0          5    LDR   R7  #5
+0x0008  40800005  IMM  LDR       R8   R0          5    LDR   R8  #5
+0x0009  40900005  IMM  LDR       R9   R0          5    LDR   R9  #5
+0x000A  F8720000  REG  ADD       R7   R2          0    ADD   R7  R7  R2
+0x000B  C8820000  REG  AND       R8   R2          0    AND   R8  R8  R2
+0x000C  CC920000  REG  OR        R9   R2          0    OR    R9  R9  R2
+0x000D  34000000  INH  NOOP      R0   R0          0    NOOP

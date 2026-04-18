@@ -78,6 +78,7 @@ architecture beh of recop_top is
     signal sip_r         : bit_16;
 
 begin
+	-- initiliase current pc to zero
 	--FSM Moore Machine + control unit
     -- Minimum 3 cycles:
     --   FETCH -> DECODE -> EXECUTE/MEM_WRITE -> FETCH
@@ -137,6 +138,7 @@ begin
         next_pc <= pc_plus_1    when pc_sel_plus_one,
                    ir_operand   when pc_sel_from_operand,
                    rx           when pc_sel_from_rx,
+                   x"0000"      when pc_sel_from_zero,
                    pc_plus_1    when others;
 
     u_pc : entity work.program_counter
@@ -145,18 +147,22 @@ begin
             init       => init,
             reset      => reset,
 
-			pc_write   => pc_write,
+				pc_write   => pc_write,
             next_pc    => next_pc,
             current_pc => current_pc
         );
 
-    u_im_ip : entity work.instructin_memory_ip
-        port map (
-            address => current_pc(10 downto 0),
-            clock   => clk,
-            q       => instruction
-        );
-
+    --u_im_ip : entity work.instruction_memory_ip
+        --port map (
+            --address => current_pc(10 downto 0),
+            --clock   => clk,
+            --q       => instruction
+        --);
+    u_im_comb : entity work.instruction_memory_comb
+			port map (
+        address => current_pc,
+        q => instruction
+			);
 
     -- DECODE AND WRITEBACK
     -- Contains RF only
