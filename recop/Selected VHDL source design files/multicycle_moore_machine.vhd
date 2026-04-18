@@ -204,7 +204,7 @@ begin
     process(state, opcode, rz, z_flag)
     begin
         -- defaults
-        ld_r          <= '0';
+        ld_r          <= '0'; --fsm related
         rf_input_sel  <= from_ir_operand;
         dprr_wren     <= '0';
 
@@ -221,9 +221,9 @@ begin
         result_wen    <= '0';
         result        <= '0';
 
-        alu_operation <= alu_idle;
-        alu_op1_sel   <= alu_op1_from_rx;
-        alu_op2_sel   <= alu_op2_from_rz;
+        --alu_operation <= alu_idle; --fsm related
+        --alu_op1_sel   <= alu_op1_from_rx;
+        --alu_op2_sel   <= alu_op2_from_rz;
         clr_z_flag    <= '0';
 
         dm_wr_en      <= dm_read_enable;
@@ -231,7 +231,7 @@ begin
         dm_data_sel   <= dm_data_from_rx;
 
         pc_sel        <= pc_sel_plus_one;
-        pc_write      <= '0';
+        pc_write      <= '0'; --fsm related
 
         case state is
 
@@ -239,20 +239,23 @@ begin
             -- cycle 1
             --------------------------------------------------------
             when S_FETCH =>
+                
                 pc_write <= '1';
-					 if reset = '1' then
-							pc_sel <= pc_sel_from_zero;
-					 elsif init = '1' then
-							pc_sel <= pc_sel_from_zero;
-					 else
-							pc_sel <= pc_sel_plus_one;
-					 end if;
+                if reset = '1' then
+                    pc_sel <= pc_sel_from_zero;
+                elsif init = '1' then
+                    pc_sel <= pc_sel_from_zero;
+                else
+                    pc_sel <= pc_sel_plus_one;
+                end if;
+
+                alu_operation <= alu_idle;
 
             --------------------------------------------------------
             -- cycle 2
             --------------------------------------------------------
             when S_DECODE =>
-                null;
+                alu_operation <= alu_idle;
 
             --------------------------------------------------------
             -- cycle 3

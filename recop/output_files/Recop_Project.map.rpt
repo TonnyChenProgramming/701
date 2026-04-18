@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Recop_Project
-Sat Apr 18 16:55:49 2026
+Sat Apr 18 18:55:29 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -53,7 +53,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Apr 18 16:55:49 2026       ;
+; Analysis & Synthesis Status        ; Successful - Sat Apr 18 18:55:29 2026       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; Recop_Project                               ;
 ; Top-level Entity Name              ; recop_top                                   ;
@@ -545,78 +545,77 @@ Encoding Type:  One-Hot
 +-------------------------------------------------+---------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                      ;
-+--------------------------------+--------------------------------+----------------------------------------------------------------+
-; Register name                  ; Reason for Removal             ; Registers Removed due to This Register                         ;
-+--------------------------------+--------------------------------+----------------------------------------------------------------+
-; registers:u_registers|dprr[0]  ; Stuck at GND                   ; registers:u_registers|dpcr[29], regfile:u_regfile|regs[0][13], ;
-;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[1][13], regfile:u_regfile|regs[2][13],  ;
-;                                ;                                ; regfile:u_regfile|regs[3][13]                                  ;
-; registers:u_registers|dpcr[16] ; Stuck at GND                   ; regfile:u_regfile|regs[0][0], regfile:u_regfile|regs[1][0],    ;
-;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][0], regfile:u_regfile|regs[3][0],    ;
-;                                ;                                ; registers:u_registers|sip_r[0]                                 ;
-; registers:u_registers|dpcr[31] ; Stuck at GND                   ; regfile:u_regfile|regs[0][15], regfile:u_regfile|regs[1][15],  ;
-;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][15], regfile:u_regfile|regs[3][15]   ;
-; registers:u_registers|dpcr[30] ; Stuck at GND                   ; regfile:u_regfile|regs[0][14], regfile:u_regfile|regs[1][14],  ;
-;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][14], regfile:u_regfile|regs[3][14]   ;
-; registers:u_registers|dpcr[28] ; Stuck at GND                   ; regfile:u_regfile|regs[0][12], regfile:u_regfile|regs[1][12],  ;
-;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][12], regfile:u_regfile|regs[3][12]   ;
-; registers:u_registers|dpcr[27] ; Stuck at GND                   ; regfile:u_regfile|regs[0][11], regfile:u_regfile|regs[1][11],  ;
-;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][11], regfile:u_regfile|regs[3][11]   ;
-; registers:u_registers|dpcr[26] ; Stuck at GND                   ; regfile:u_regfile|regs[0][10], regfile:u_regfile|regs[1][10],  ;
-;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][10], regfile:u_regfile|regs[3][10]   ;
-; registers:u_registers|dpcr[25] ; Stuck at GND                   ; regfile:u_regfile|regs[0][9], regfile:u_regfile|regs[1][9],    ;
-;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][9], regfile:u_regfile|regs[3][9]     ;
-; registers:u_registers|dpcr[24] ; Stuck at GND                   ; regfile:u_regfile|regs[0][8], regfile:u_regfile|regs[1][8],    ;
-;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][8], regfile:u_regfile|regs[3][8]     ;
-; registers:u_registers|dpcr[23] ; Stuck at GND                   ; regfile:u_regfile|regs[0][7], regfile:u_regfile|regs[1][7],    ;
-;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][7], regfile:u_regfile|regs[3][7]     ;
-; registers:u_registers|dpcr[22] ; Stuck at GND                   ; regfile:u_regfile|regs[0][6], regfile:u_regfile|regs[1][6],    ;
-;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][6], regfile:u_regfile|regs[3][6]     ;
-; registers:u_registers|dpcr[21] ; Stuck at GND                   ; regfile:u_regfile|regs[0][5], regfile:u_regfile|regs[1][5],    ;
-;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][5], regfile:u_regfile|regs[3][5]     ;
-; registers:u_registers|dpcr[20] ; Stuck at GND                   ; regfile:u_regfile|regs[0][4], regfile:u_regfile|regs[1][4],    ;
-;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][4], regfile:u_regfile|regs[3][4]     ;
-; registers:u_registers|dpcr[19] ; Stuck at GND                   ; regfile:u_regfile|regs[0][3], regfile:u_regfile|regs[1][3],    ;
-;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][3], regfile:u_regfile|regs[3][3]     ;
-; registers:u_registers|dpcr[18] ; Stuck at GND                   ; regfile:u_regfile|regs[0][2], regfile:u_regfile|regs[1][2],    ;
-;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][2], regfile:u_regfile|regs[3][2]     ;
-; registers:u_registers|dpcr[17] ; Stuck at GND                   ; regfile:u_regfile|regs[0][1], regfile:u_regfile|regs[1][1],    ;
-;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][1], regfile:u_regfile|regs[3][1]     ;
-; registers:u_registers|dpcr[15] ; Stuck at GND                   ; regfile:u_regfile|regs[7][15]                                  ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; registers:u_registers|dpcr[14] ; Stuck at GND                   ; regfile:u_regfile|regs[7][14]                                  ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; registers:u_registers|dpcr[13] ; Stuck at GND                   ; regfile:u_regfile|regs[7][13]                                  ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; registers:u_registers|dpcr[12] ; Stuck at GND                   ; regfile:u_regfile|regs[7][12]                                  ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; registers:u_registers|dpcr[11] ; Stuck at GND                   ; regfile:u_regfile|regs[7][11]                                  ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; registers:u_registers|dpcr[10] ; Stuck at GND                   ; regfile:u_regfile|regs[7][10]                                  ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; registers:u_registers|dpcr[9]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][9]                                   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; registers:u_registers|dpcr[8]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][8]                                   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; registers:u_registers|dpcr[7]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][7]                                   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; registers:u_registers|dpcr[6]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][6]                                   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; registers:u_registers|dpcr[5]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][5]                                   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; registers:u_registers|dpcr[4]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][4]                                   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; registers:u_registers|dpcr[3]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][3]                                   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; registers:u_registers|dpcr[2]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][2]                                   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; registers:u_registers|dpcr[1]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][1]                                   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-; registers:u_registers|dpcr[0]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][0]                                   ;
-;                                ; due to stuck port clock_enable ;                                                                ;
-+--------------------------------+--------------------------------+----------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                     ;
++--------------------------------+--------------------------------+---------------------------------------------------------------+
+; Register name                  ; Reason for Removal             ; Registers Removed due to This Register                        ;
++--------------------------------+--------------------------------+---------------------------------------------------------------+
+; registers:u_registers|dpcr[16] ; Stuck at GND                   ; regfile:u_regfile|regs[0][0], regfile:u_regfile|regs[1][0],   ;
+;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][0], regfile:u_regfile|regs[3][0],   ;
+;                                ;                                ; registers:u_registers|sip_r[0]                                ;
+; registers:u_registers|dpcr[31] ; Stuck at GND                   ; regfile:u_regfile|regs[0][15], regfile:u_regfile|regs[1][15], ;
+;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][15], regfile:u_regfile|regs[3][15]  ;
+; registers:u_registers|dpcr[30] ; Stuck at GND                   ; regfile:u_regfile|regs[0][14], regfile:u_regfile|regs[1][14], ;
+;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][14], regfile:u_regfile|regs[3][14]  ;
+; registers:u_registers|dpcr[29] ; Stuck at GND                   ; regfile:u_regfile|regs[0][13], regfile:u_regfile|regs[1][13], ;
+;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][13], regfile:u_regfile|regs[3][13]  ;
+; registers:u_registers|dpcr[28] ; Stuck at GND                   ; regfile:u_regfile|regs[0][12], regfile:u_regfile|regs[1][12], ;
+;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][12], regfile:u_regfile|regs[3][12]  ;
+; registers:u_registers|dpcr[27] ; Stuck at GND                   ; regfile:u_regfile|regs[0][11], regfile:u_regfile|regs[1][11], ;
+;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][11], regfile:u_regfile|regs[3][11]  ;
+; registers:u_registers|dpcr[26] ; Stuck at GND                   ; regfile:u_regfile|regs[0][10], regfile:u_regfile|regs[1][10], ;
+;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][10], regfile:u_regfile|regs[3][10]  ;
+; registers:u_registers|dpcr[25] ; Stuck at GND                   ; regfile:u_regfile|regs[0][9], regfile:u_regfile|regs[1][9],   ;
+;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][9], regfile:u_regfile|regs[3][9]    ;
+; registers:u_registers|dpcr[24] ; Stuck at GND                   ; regfile:u_regfile|regs[0][8], regfile:u_regfile|regs[1][8],   ;
+;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][8], regfile:u_regfile|regs[3][8]    ;
+; registers:u_registers|dpcr[23] ; Stuck at GND                   ; regfile:u_regfile|regs[0][7], regfile:u_regfile|regs[1][7],   ;
+;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][7], regfile:u_regfile|regs[3][7]    ;
+; registers:u_registers|dpcr[22] ; Stuck at GND                   ; regfile:u_regfile|regs[0][6], regfile:u_regfile|regs[1][6],   ;
+;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][6], regfile:u_regfile|regs[3][6]    ;
+; registers:u_registers|dpcr[21] ; Stuck at GND                   ; regfile:u_regfile|regs[0][5], regfile:u_regfile|regs[1][5],   ;
+;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][5], regfile:u_regfile|regs[3][5]    ;
+; registers:u_registers|dpcr[20] ; Stuck at GND                   ; regfile:u_regfile|regs[0][4], regfile:u_regfile|regs[1][4],   ;
+;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][4], regfile:u_regfile|regs[3][4]    ;
+; registers:u_registers|dpcr[19] ; Stuck at GND                   ; regfile:u_regfile|regs[0][3], regfile:u_regfile|regs[1][3],   ;
+;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][3], regfile:u_regfile|regs[3][3]    ;
+; registers:u_registers|dpcr[18] ; Stuck at GND                   ; regfile:u_regfile|regs[0][2], regfile:u_regfile|regs[1][2],   ;
+;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][2], regfile:u_regfile|regs[3][2]    ;
+; registers:u_registers|dpcr[17] ; Stuck at GND                   ; regfile:u_regfile|regs[0][1], regfile:u_regfile|regs[1][1],   ;
+;                                ; due to stuck port clock_enable ; regfile:u_regfile|regs[2][1], regfile:u_regfile|regs[3][1]    ;
+; registers:u_registers|dpcr[15] ; Stuck at GND                   ; regfile:u_regfile|regs[7][15]                                 ;
+;                                ; due to stuck port clock_enable ;                                                               ;
+; registers:u_registers|dpcr[14] ; Stuck at GND                   ; regfile:u_regfile|regs[7][14]                                 ;
+;                                ; due to stuck port clock_enable ;                                                               ;
+; registers:u_registers|dpcr[13] ; Stuck at GND                   ; regfile:u_regfile|regs[7][13]                                 ;
+;                                ; due to stuck port clock_enable ;                                                               ;
+; registers:u_registers|dpcr[12] ; Stuck at GND                   ; regfile:u_regfile|regs[7][12]                                 ;
+;                                ; due to stuck port clock_enable ;                                                               ;
+; registers:u_registers|dpcr[11] ; Stuck at GND                   ; regfile:u_regfile|regs[7][11]                                 ;
+;                                ; due to stuck port clock_enable ;                                                               ;
+; registers:u_registers|dpcr[10] ; Stuck at GND                   ; regfile:u_regfile|regs[7][10]                                 ;
+;                                ; due to stuck port clock_enable ;                                                               ;
+; registers:u_registers|dpcr[9]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][9]                                  ;
+;                                ; due to stuck port clock_enable ;                                                               ;
+; registers:u_registers|dpcr[8]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][8]                                  ;
+;                                ; due to stuck port clock_enable ;                                                               ;
+; registers:u_registers|dpcr[7]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][7]                                  ;
+;                                ; due to stuck port clock_enable ;                                                               ;
+; registers:u_registers|dpcr[6]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][6]                                  ;
+;                                ; due to stuck port clock_enable ;                                                               ;
+; registers:u_registers|dpcr[5]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][5]                                  ;
+;                                ; due to stuck port clock_enable ;                                                               ;
+; registers:u_registers|dpcr[4]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][4]                                  ;
+;                                ; due to stuck port clock_enable ;                                                               ;
+; registers:u_registers|dpcr[3]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][3]                                  ;
+;                                ; due to stuck port clock_enable ;                                                               ;
+; registers:u_registers|dpcr[2]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][2]                                  ;
+;                                ; due to stuck port clock_enable ;                                                               ;
+; registers:u_registers|dpcr[1]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][1]                                  ;
+;                                ; due to stuck port clock_enable ;                                                               ;
+; registers:u_registers|dpcr[0]  ; Stuck at GND                   ; regfile:u_regfile|regs[7][0]                                  ;
+;                                ; due to stuck port clock_enable ;                                                               ;
++--------------------------------+--------------------------------+---------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -804,7 +803,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Apr 18 16:55:40 2026
+    Info: Processing started: Sat Apr 18 18:55:20 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Recop_Project -c Recop_Project
 Warning (125092): Tcl Script File Selected VHDL source design files/instructin_memory_ip.qip not found
     Info (125063): set_global_assignment -name QIP_FILE "Selected VHDL source design files/instructin_memory_ip.qip"
@@ -882,8 +881,17 @@ Warning (10036): Verilog HDL or VHDL warning at recop_top.vhd(75): object "er" a
 Warning (10036): Verilog HDL or VHDL warning at recop_top.vhd(76): object "eot" assigned a value but never read File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 76
 Warning (10036): Verilog HDL or VHDL warning at recop_top.vhd(77): object "svop" assigned a value but never read File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 77
 Info (12128): Elaborating entity "multicycle_moore_machine" for hierarchy "multicycle_moore_machine:u_cu" File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 87
-Warning (10492): VHDL Process Statement warning at multicycle_moore_machine.vhd(243): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 243
-Warning (10492): VHDL Process Statement warning at multicycle_moore_machine.vhd(245): signal "init" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 245
+Warning (10492): VHDL Process Statement warning at multicycle_moore_machine.vhd(244): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 244
+Warning (10492): VHDL Process Statement warning at multicycle_moore_machine.vhd(246): signal "init" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 246
+Warning (10631): VHDL Process Statement warning at multicycle_moore_machine.vhd(204): inferring latch(es) for signal or variable "alu_operation", which holds its previous value in one or more paths through the process File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
+Warning (10631): VHDL Process Statement warning at multicycle_moore_machine.vhd(204): inferring latch(es) for signal or variable "alu_op1_sel", which holds its previous value in one or more paths through the process File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
+Warning (10631): VHDL Process Statement warning at multicycle_moore_machine.vhd(204): inferring latch(es) for signal or variable "alu_op2_sel", which holds its previous value in one or more paths through the process File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
+Info (10041): Inferred latch for "alu_op2_sel" at multicycle_moore_machine.vhd(204) File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
+Info (10041): Inferred latch for "alu_op1_sel[0]" at multicycle_moore_machine.vhd(204) File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
+Info (10041): Inferred latch for "alu_op1_sel[1]" at multicycle_moore_machine.vhd(204) File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
+Info (10041): Inferred latch for "alu_operation[0]" at multicycle_moore_machine.vhd(204) File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
+Info (10041): Inferred latch for "alu_operation[1]" at multicycle_moore_machine.vhd(204) File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
+Info (10041): Inferred latch for "alu_operation[2]" at multicycle_moore_machine.vhd(204) File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
 Info (12128): Elaborating entity "program_counter" for hierarchy "program_counter:u_pc" File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 144
 Warning (10492): VHDL Process Statement warning at program_counter.vhd(27): signal "init" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/HDL/701/recop/Selected VHDL source design files/program_counter.vhd Line: 27
 Info (12128): Elaborating entity "instruction_memory_comb" for hierarchy "instruction_memory_comb:u_im_comb" File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 161
@@ -1043,9 +1051,9 @@ Info (21057): Implemented 107 device resources after synthesis - the final resou
     Info (21058): Implemented 19 input pins
     Info (21059): Implemented 53 output pins
     Info (21061): Implemented 35 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 96 warnings
-    Info: Peak virtual memory: 4822 megabytes
-    Info: Processing ended: Sat Apr 18 16:55:49 2026
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 99 warnings
+    Info: Peak virtual memory: 4820 megabytes
+    Info: Processing ended: Sat Apr 18 18:55:29 2026
     Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:17
 

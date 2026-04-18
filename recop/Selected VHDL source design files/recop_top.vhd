@@ -159,10 +159,10 @@ begin
             --q       => instruction
         --);
     u_im_comb : entity work.instruction_memory_comb
-			port map (
-        address => current_pc,
-        q => instruction
-			);
+		port map (
+            address => current_pc,
+            q => instruction
+		);
 
     -- DECODE AND WRITEBACK
     -- Contains RF only
