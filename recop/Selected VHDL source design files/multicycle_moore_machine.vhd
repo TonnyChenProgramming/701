@@ -16,6 +16,7 @@ entity multicycle_moore_machine is
         rz       : in  bit_16;
         z_flag   : in  bit_1;
 
+        state_bits : out bit_3;
         -- Register File
         ld_r         : out bit_1;
         rf_input_sel : out bit_3;
@@ -469,6 +470,35 @@ begin
 
             when others =>
                 null;
+        end case;
+    end process;
+    ----------------------------------------------------------------
+    -- 3) Moore output logic
+    -- ALL outputs driven only here
+    ----------------------------------------------------------------
+    process(state)
+    begin
+        case state is
+            when S_FETCH =>
+                state_bits <= "000";
+
+            when S_DECODE =>
+                state_bits <= "001";
+
+            when S_EXECUTE =>
+                state_bits <= "010";
+
+            when S_MEM_READ =>
+                state_bits <= "011";
+
+            when S_MEM_WRITE =>
+                state_bits <= "100";
+
+            when S_WRITEBACK =>
+                state_bits <= "101";
+
+            when others =>
+                state_bits <= "000";
         end case;
     end process;
 

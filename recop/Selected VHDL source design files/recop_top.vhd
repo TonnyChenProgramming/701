@@ -12,6 +12,8 @@ entity recop_top is
         reset : in bit_1;
         sip   : in bit_16;
 
+        current_state_output : out bit_3;
+
         dprr  : out bit_2;
         dpcr  : out bit_32;
         sop   : out bit_16
@@ -31,7 +33,7 @@ architecture beh of recop_top is
     --Decode inputs
     signal sel_z : integer range 0 to 15;
     signal sel_x : integer range 0 to 15;
-    
+
     -- Decode outputs
     signal rx           : bit_16;
     signal rz           : bit_16;
@@ -83,6 +85,7 @@ begin
     --   FETCH -> DECODE -> EXECUTE/MEM_READ -> WRITEBACK -> FETCH
     u_cu : entity work.multicycle_moore_machine
         port map(
+            --inputs
             clk        => clk,
             init       => init,
             reset      => reset,
@@ -91,6 +94,8 @@ begin
             rz           => rz,
             z_flag       => z_flag,
 
+            --outputs
+            state_bits  => current_state_output,
             ld_r         => ld_r,	-- multicycle fsm related
             rf_input_sel => rf_input_sel,
             dprr_wren    => dprr_wren,
