@@ -1,5 +1,5 @@
 Fitter report for Recop_Project
-Sat Apr 18 16:46:06 2026
+Sat Apr 18 16:55:56 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -65,7 +65,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Sat Apr 18 16:46:06 2026       ;
+; Fitter Status                      ; Successful - Sat Apr 18 16:55:56 2026       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; Recop_Project                               ;
 ; Top-level Entity Name              ; recop_top                                   ;
@@ -1927,11 +1927,11 @@ Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:00
+Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Info (144001): Generated suppressed messages file C:/HDL/701/recop/output_files/Recop_Project.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 9 warnings
-    Info: Peak virtual memory: 5695 megabytes
-    Info: Processing ended: Sat Apr 18 16:46:07 2026
+    Info: Peak virtual memory: 5698 megabytes
+    Info: Processing ended: Sat Apr 18 16:55:57 2026
     Info: Elapsed time: 00:00:07
     Info: Total CPU time (on all processors): 00:00:10
 

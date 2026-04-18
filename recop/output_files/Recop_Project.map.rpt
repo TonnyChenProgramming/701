@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Recop_Project
-Sat Apr 18 16:45:59 2026
+Sat Apr 18 16:55:49 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -53,7 +53,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Apr 18 16:45:59 2026       ;
+; Analysis & Synthesis Status        ; Successful - Sat Apr 18 16:55:49 2026       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; Recop_Project                               ;
 ; Top-level Entity Name              ; recop_top                                   ;
@@ -639,6 +639,7 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
+; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |recop_top|program_counter:u_pc|current_pc[10]                ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |recop_top|multicycle_moore_machine:u_cu|next_state.S_EXECUTE ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
 
@@ -803,7 +804,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Apr 18 16:45:50 2026
+    Info: Processing started: Sat Apr 18 16:55:40 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Recop_Project -c Recop_Project
 Warning (125092): Tcl Script File Selected VHDL source design files/instructin_memory_ip.qip not found
     Info (125063): set_global_assignment -name QIP_FILE "Selected VHDL source design files/instructin_memory_ip.qip"
@@ -881,6 +882,8 @@ Warning (10036): Verilog HDL or VHDL warning at recop_top.vhd(75): object "er" a
 Warning (10036): Verilog HDL or VHDL warning at recop_top.vhd(76): object "eot" assigned a value but never read File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 76
 Warning (10036): Verilog HDL or VHDL warning at recop_top.vhd(77): object "svop" assigned a value but never read File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 77
 Info (12128): Elaborating entity "multicycle_moore_machine" for hierarchy "multicycle_moore_machine:u_cu" File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 87
+Warning (10492): VHDL Process Statement warning at multicycle_moore_machine.vhd(243): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 243
+Warning (10492): VHDL Process Statement warning at multicycle_moore_machine.vhd(245): signal "init" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 245
 Info (12128): Elaborating entity "program_counter" for hierarchy "program_counter:u_pc" File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 144
 Warning (10492): VHDL Process Statement warning at program_counter.vhd(27): signal "init" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/HDL/701/recop/Selected VHDL source design files/program_counter.vhd Line: 27
 Info (12128): Elaborating entity "instruction_memory_comb" for hierarchy "instruction_memory_comb:u_im_comb" File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 161
@@ -1040,9 +1043,9 @@ Info (21057): Implemented 107 device resources after synthesis - the final resou
     Info (21058): Implemented 19 input pins
     Info (21059): Implemented 53 output pins
     Info (21061): Implemented 35 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 94 warnings
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 96 warnings
     Info: Peak virtual memory: 4822 megabytes
-    Info: Processing ended: Sat Apr 18 16:45:59 2026
+    Info: Processing ended: Sat Apr 18 16:55:49 2026
     Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:17
 

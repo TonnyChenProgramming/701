@@ -240,7 +240,13 @@ begin
             --------------------------------------------------------
             when S_FETCH =>
                 pc_write <= '1';
-                pc_sel   <= pc_sel_plus_one;
+					 if reset = '1' then
+							pc_sel <= pc_sel_from_zero;
+					 elsif init = '1' then
+							pc_sel <= pc_sel_from_zero;
+					 else
+							pc_sel <= pc_sel_plus_one;
+					 end if;
 
             --------------------------------------------------------
             -- cycle 2

@@ -85,7 +85,9 @@ sop[15] <= registers:u_registers.sop[15]
 
 |recop_top|multicycle_moore_machine:u_cu
 clk => state~1.DATAIN
+init => pc_sel.DATAA
 init => state.S_FETCH.IN0
+reset => pc_sel.OUTPUTSELECT
 reset => state.S_FETCH.IN1
 opcode[0] => Mux0.IN69
 opcode[0] => Mux1.IN69
@@ -370,12 +372,12 @@ alu_op1_sel[1] <= <GND>
 alu_op2_sel <= alu_op2_sel.DB_MAX_OUTPUT_PORT_TYPE
 clr_z_flag <= clr_z_flag.DB_MAX_OUTPUT_PORT_TYPE
 dm_wr_en <= dm_wr_en.DB_MAX_OUTPUT_PORT_TYPE
-dm_addr_sel[0] <= Selector4.DB_MAX_OUTPUT_PORT_TYPE
-dm_addr_sel[1] <= Selector3.DB_MAX_OUTPUT_PORT_TYPE
+dm_addr_sel[0] <= Selector6.DB_MAX_OUTPUT_PORT_TYPE
+dm_addr_sel[1] <= Selector5.DB_MAX_OUTPUT_PORT_TYPE
 dm_data_sel[0] <= dm_data_sel.DB_MAX_OUTPUT_PORT_TYPE
 dm_data_sel[1] <= dm_data_sel.DB_MAX_OUTPUT_PORT_TYPE
-pc_sel[0] <= pc_sel.DB_MAX_OUTPUT_PORT_TYPE
-pc_sel[1] <= pc_sel.DB_MAX_OUTPUT_PORT_TYPE
+pc_sel[0] <= Selector4.DB_MAX_OUTPUT_PORT_TYPE
+pc_sel[1] <= Selector3.DB_MAX_OUTPUT_PORT_TYPE
 pc_write <= Selector2.DB_MAX_OUTPUT_PORT_TYPE
 
 
