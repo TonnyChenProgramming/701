@@ -140,7 +140,7 @@ begin
                    rx           when pc_sel_from_rx,
                    x"0000"      when pc_sel_from_zero,
                    pc_plus_1    when others;
-
+    
     u_pc : entity work.program_counter
         port map (
             clk        => clk,
@@ -152,17 +152,18 @@ begin
             current_pc => current_pc
         );
 
-    --u_im_ip : entity work.instruction_memory_ip
-        --port map (
-            --address => current_pc(10 downto 0),
-            --clock   => clk,
-            --q       => instruction
-        --);
-    u_im_comb : entity work.instruction_memory_comb
-		port map (
-            address => current_pc,
-            q => instruction
-		);
+    u_im_ip : entity work.instruction_memory_ip
+        port map (
+            address => current_pc(10 downto 0),
+            clock   => clk,
+            q       => instruction
+        );
+
+    --u_im_comb : entity work.instruction_memory_comb
+		--port map (
+            --address => current_pc,
+            --q => instruction
+		--);
 
     -- DECODE AND WRITEBACK
     -- Contains RF only

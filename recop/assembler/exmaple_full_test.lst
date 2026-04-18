@@ -1,0 +1,55 @@
+ReCOP Assembly Listing  (v2 – [AM:2][OP:6] encoding)
+========================================================================
+
+Symbol Table:
+  PRESENT_TAKEN             0x0018  (24)
+  PRESENT_NOT_TAKEN         0x001A  (26)
+  JMP_IMM_TARGET            0x001D  (29)
+  JMP_REG_TARGET            0x0028  (40)
+  SZ_TAKEN                  0x002E  (46)
+
+  ADDR       HEX   AM  OPCODE     Rz   Rx   OPERAND    SOURCE
+--------------------------------------------------------------------------------
+0x0000  40100005  IMM  LDR       R1   R0          5    LDR   R1  #5              ; R1 = 0x0005
+0x0001  40200003  IMM  LDR       R2   R0          3    LDR   R2  #3              ; R2 = 0x0003
+0x0002  40300011  IMM  LDR       R3   R0         17    LDR   R3  #0x0011         ; R3 = 0x0011, used as memory pointer
+0x0003  40F00012  IMM  LDR       R15  R0         18    LDR   R15 #0x0012         ; R15 = 0x0012, used as another memory pointer
+0x0004  78410002  IMM  ADD       R4   R1          2    ADD   R4  R1  #2          ; R4 = 5 + 2 = 7
+0x0005  48510001  IMM  AND       R5   R1          1    AND   R5  R1  #1          ; R5 = 5 AND 1 = 1
+0x0006  4C620004  IMM  OR        R6   R2          4    OR    R6  R2  #4          ; R6 = 3 OR 4 = 7
+0x0007  43710002  IMM  SUBV      R7   R1          2    SUBV  R7  R1  #2          ; R7 = 5 - 2 = 3
+0x0008  40800005  IMM  LDR       R8   R0          5    LDR   R8  #5
+0x0009  40900005  IMM  LDR       R9   R0          5    LDR   R9  #5
+0x000A  40A00005  IMM  LDR       R10  R0          5    LDR   R10 #5
+0x000B  F8820000  REG  ADD       R8   R2          0    ADD   R8  R8  R2          ; R8  = 5 + 3 = 8
+0x000C  C8920000  REG  AND       R9   R2          0    AND   R9  R9  R2          ; R9  = 5 AND 3 = 1
+0x000D  CCA20000  REG  OR        R10  R2          0    OR    R10 R10 R2          ; R10 = 5 OR 3 = 7
+0x000E  82010010  DIR  STR       R0   R1         16    STR   R1  $0x0010         ; DM[0x0010] = 0x0005
+0x000F  C2230000  REG  STR       R2   R3          0    STR   R2  R3              ; DM[0x0011] = 0x0003
+0x0010  42F000AA  IMM  STR       R15  R0        170    STR   R15 #0x00AA         ; DM[0x0012] = 0x00AA
+0x0011  80B00010  DIR  LDR       R11  R0         16    LDR   R11 $0x0010         ; R11 = DM[0x0010] = 0x0005
+0x0012  C0C30000  REG  LDR       R12  R3          0    LDR   R12 R3              ; R12 = DM[0x0011] = 0x0003
+0x0013  40D00028  IMM  LDR       R13  R0         40    LDR   R13 #0x0028         ; preload jump target address for JMP register
+0x0014  E8010000  REG  DATACALL  R0   R1          0    DATACALL R1  R2           ; DPCR = R1 & R2, DPRR(1) = 0
+0x0015  69010015  IMM  ?101001   R0   R1         21    DATACALL R1  #0x0015      ; DPCR = R1 & 0x0015, DPRR(1) = 0
+0x0016  5C200018  IMM  PRESENT   R2   R0         24    PRESENT R2  #present_taken
+0x0017  34000000  INH  NOOP      R0   R0          0    NOOP                      ; should be skipped if PRESENT works
+0x0018  5C00001A  IMM  PRESENT   R0   R0         26    PRESENT R0  #present_not_taken
+0x0019  34000000  INH  NOOP      R0   R0          0    NOOP                      ; should execute because R0 = 0 so no jump
+0x001A  34000000  INH  NOOP      R0   R0          0    NOOP
+0x001B  5800001D  IMM  JMP       R0   R0         29    JMP   #jmp_imm_target
+0x001C  34000000  INH  NOOP      R0   R0          0    NOOP                      ; should be skipped
+0x001D  34000000  INH  NOOP      R0   R0          0    NOOP
+0x001E  D80D0000  REG  JMP       R0   R13         0    JMP   R13
+0x001F  34000000  INH  NOOP      R0   R0          0    NOOP                      ; should be skipped
+0x0028  34000000  INH  NOOP      R0   R0          0    NOOP
+0x0029  9D000013  DIR  STRPC     R0   R0         19    STRPC $0x0013             ; DM[0x0013] = current PC
+0x002A  40E00005  IMM  LDR       R14  R0          5    LDR   R14 #5              ; R14 = 5
+0x002B  44E00005  IMM  SUB       R14  R0          5    SUB   R14 #5              ; R14 = 0, expect Z = 1
+0x002C  5400002E  IMM  SZ        R0   R0         46    SZ    #sz_taken           ; should jump
+0x002D  34000000  INH  NOOP      R0   R0          0    NOOP                      ; should be skipped
+0x002E  10000000  INH  CLFZ      R0   R0          0    CLFZ                      ; Z = 0
+0x002F  B7E00000  DIR  LSIP      R14  R0          0    LSIP  R14                 ; R14 = SIP
+0x0030  BA020000  DIR  SSOP      R0   R2          0    SSOP  R2                  ; SOP = R2 = 0x0003
+0x0031  34000000  INH  NOOP      R0   R0          0    NOOP
+0x0032  34000000  INH  NOOP      R0   R0          0    NOOP

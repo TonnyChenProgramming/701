@@ -240,13 +240,13 @@ begin
             --------------------------------------------------------
             when S_FETCH =>
                 
-                pc_write <= '1';
+                
                 if reset = '1' then
                     pc_sel <= pc_sel_from_zero;
+                    pc_write <= '1'; -- used prefetch instead to save clock cycle
                 elsif init = '1' then
                     pc_sel <= pc_sel_from_zero;
-                else
-                    pc_sel <= pc_sel_plus_one;
+                    pc_write <= '1'; -- used prefetch instead to save clock cycle
                 end if;
 
                 alu_operation <= alu_idle;
@@ -261,6 +261,9 @@ begin
             -- cycle 3
             --------------------------------------------------------
             when S_EXECUTE =>
+                -- default prefetch commit for execute-stage instructions
+                pc_sel   <= pc_sel_plus_one;
+                pc_write <= '1';
                 case opcode(7 downto 6) is
 
                     when am_inherent =>
@@ -313,9 +316,10 @@ begin
                             when sz =>
                                 if z_flag = '1' then
                                     pc_sel   <= pc_sel_from_operand;
-                                    pc_write <= '1';
+                                else
+                                    pc_sel   <= pc_sel_plus_one;
                                 end if;
-
+                                pc_write <= '1';
                             when datacall2 =>
                                 dpcr_lsb_sel <= '1';
                                 dpcr_wr      <= '1';
@@ -376,6 +380,9 @@ begin
             -- cycle 3 for load
             --------------------------------------------------------
             when S_MEM_READ =>
+                -- prefetch commit for load instructions
+                pc_sel   <= pc_sel_plus_one;
+                pc_write <= '1';
                 case opcode(7 downto 6) is
                     when am_direct =>
                         if opcode(5 downto 0) = ldr then
@@ -395,6 +402,9 @@ begin
             -- cycle 3 for store
             --------------------------------------------------------
             when S_MEM_WRITE =>
+                -- prefetch commit for store instructions
+                pc_sel   <= pc_sel_plus_one;
+                pc_write <= '1';
                 dm_wr_en <= dm_write_enable;
 
                 case opcode(7 downto 6) is
