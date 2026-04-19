@@ -6,7 +6,11 @@ JedecChain;
 	P ActionCode(Ign)
 		Device PartName(SOCVHPS) MfrSpec(OpMask(0));
 	P ActionCode(Cfg)
+<<<<<<< Updated upstream
 		Device PartName(5CSEMA5F31) Path("D:/701_A1/recop/output_files/") File("Recop_Project.sof") MfrSpec(OpMask(1));
+=======
+		Device PartName(5CSEMA5F31) Path("D:/701-/701/recop/output_files/") File("Recop_Project.sof") MfrSpec(OpMask(1));
+>>>>>>> Stashed changes
 
 ChainEnd;
 

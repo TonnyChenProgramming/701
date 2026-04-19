@@ -1,5 +1,9 @@
 Assembler report for Recop_Project
+<<<<<<< Updated upstream
 Thu Apr 16 17:52:15 2026
+=======
+Sun Apr 19 21:37:55 2026
+>>>>>>> Stashed changes
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -10,7 +14,11 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
+<<<<<<< Updated upstream
   5. Assembler Device Options: D:/701_A1/recop/output_files/Recop_Project.sof
+=======
+  5. Assembler Device Options: D:/701-/701/recop/output_files/Recop_Project.sof
+>>>>>>> Stashed changes
   6. Assembler Messages
 
 
@@ -37,9 +45,15 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
+<<<<<<< Updated upstream
 ; Assembler Status      ; Successful - Thu Apr 16 17:52:15 2026 ;
 ; Revision Name         ; Recop_Project                         ;
 ; Top-level Entity Name ; decode                                ;
+=======
+; Assembler Status      ; Successful - Sun Apr 19 21:37:55 2026 ;
+; Revision Name         ; Recop_Project                         ;
+; Top-level Entity Name ; recop_top                             ;
+>>>>>>> Stashed changes
 ; Family                ; Cyclone V                             ;
 ; Device                ; 5CSEMA5F31C6                          ;
 +-----------------------+---------------------------------------+
@@ -52,6 +66,7 @@ refer to the applicable agreement for further details.
 +--------+---------+---------------+
 
 
+<<<<<<< Updated upstream
 +------------------------------------------------+
 ; Assembler Generated Files                      ;
 +------------------------------------------------+
@@ -69,6 +84,25 @@ refer to the applicable agreement for further details.
 ; JTAG usercode  ; 0x00AFB172                                              ;
 ; Checksum       ; 0x00AFB172                                              ;
 +----------------+---------------------------------------------------------+
+=======
++--------------------------------------------------+
+; Assembler Generated Files                        ;
++--------------------------------------------------+
+; File Name                                        ;
++--------------------------------------------------+
+; D:/701-/701/recop/output_files/Recop_Project.sof ;
++--------------------------------------------------+
+
+
++----------------------------------------------------------------------------+
+; Assembler Device Options: D:/701-/701/recop/output_files/Recop_Project.sof ;
++----------------+-----------------------------------------------------------+
+; Option         ; Setting                                                   ;
++----------------+-----------------------------------------------------------+
+; JTAG usercode  ; 0x00CCE367                                                ;
+; Checksum       ; 0x00CCE367                                                ;
++----------------+-----------------------------------------------------------+
+>>>>>>> Stashed changes
 
 
 +--------------------+
@@ -77,7 +111,11 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+<<<<<<< Updated upstream
     Info: Processing started: Thu Apr 16 17:51:59 2026
+=======
+    Info: Processing started: Sun Apr 19 21:37:45 2026
+>>>>>>> Stashed changes
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off Recop_Project -c Recop_Project
 Warning (125092): Tcl Script File ../Project1/Selected VHDL source design files/data_memory_ip.qip not found
     Info (125063): set_global_assignment -name QIP_FILE "../Project1/Selected VHDL source design files/data_memory_ip.qip"
@@ -86,9 +124,16 @@ Warning (125092): Tcl Script File ../Project1/Selected VHDL source design files/
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 3 warnings
+<<<<<<< Updated upstream
     Info: Peak virtual memory: 4851 megabytes
     Info: Processing ended: Thu Apr 16 17:52:15 2026
     Info: Elapsed time: 00:00:16
     Info: Total CPU time (on all processors): 00:00:07
+=======
+    Info: Peak virtual memory: 4859 megabytes
+    Info: Processing ended: Sun Apr 19 21:37:55 2026
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:05
+>>>>>>> Stashed changes
 
 

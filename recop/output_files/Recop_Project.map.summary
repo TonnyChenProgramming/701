@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 Analysis & Synthesis Status : Successful - Thu Apr 16 17:51:11 2026
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 Revision Name : Recop_Project
@@ -8,6 +9,18 @@ Total registers : 0
 Total pins : 99
 Total virtual pins : 0
 Total block memory bits : 0
+=======
+Analysis & Synthesis Status : Successful - Sun Apr 19 21:35:57 2026
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+Revision Name : Recop_Project
+Top-level Entity Name : recop_top
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 338
+Total pins : 117
+Total virtual pins : 0
+Total block memory bits : 24,576
+>>>>>>> Stashed changes
 Total DSP Blocks : 0
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0

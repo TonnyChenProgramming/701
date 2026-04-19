@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 Fitter Status : Successful - Thu Apr 16 17:51:54 2026
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 Revision Name : Recop_Project
@@ -11,6 +12,21 @@ Total pins : 99 / 457 ( 22 % )
 Total virtual pins : 0
 Total block memory bits : 0 / 4,065,280 ( 0 % )
 Total RAM Blocks : 0 / 397 ( 0 % )
+=======
+Fitter Status : Successful - Sun Apr 19 21:37:42 2026
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+Revision Name : Recop_Project
+Top-level Entity Name : recop_top
+Family : Cyclone V
+Device : 5CSEMA5F31C6
+Timing Models : Final
+Logic utilization (in ALMs) : 362 / 32,070 ( 1 % )
+Total registers : 348
+Total pins : 117 / 457 ( 26 % )
+Total virtual pins : 0
+Total block memory bits : 24,576 / 4,065,280 ( < 1 % )
+Total RAM Blocks : 3 / 397 ( < 1 % )
+>>>>>>> Stashed changes
 Total DSP Blocks : 0 / 87 ( 0 % )
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0

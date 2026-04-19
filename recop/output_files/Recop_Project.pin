@@ -82,14 +82,24 @@ GND                          : A2        : gnd    :                   :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : A3        :        :                   :         : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : A4        :        :                   :         : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : A5        :        :                   :         : 8A        :                
+<<<<<<< Updated upstream
 r7[1]                        : A6        : output : 2.5 V             :         : 8A        : N              
 VCCIO8A                      : A7        : power  :                   : 2.5V    : 8A        :                
 instruction[10]              : A8        : input  : 2.5 V             :         : 8A        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : A6        :        :                   :         : 8A        :                
+VCCIO8A                      : A7        : power  :                   : 2.5V    : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : A8        :        :                   :         : 8A        :                
+>>>>>>> Stashed changes
 RESERVED_INPUT_WITH_WEAK_PULLUP : A9        :        :                   :         : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : A10       :        :                   :         : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : A11       :        :                   :         : 8A        :                
 GND                          : A12       : gnd    :                   :         :           :                
+<<<<<<< Updated upstream
 r7[4]                        : A13       : output : 2.5 V             :         : 8A        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : A13       :        :                   :         : 8A        :                
+>>>>>>> Stashed changes
 RESERVED_INPUT_WITH_WEAK_PULLUP : A14       :        :                   :         : 7D        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : A15       :        :                   :         : 7D        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : A16       :        :                   :         : 7C        :                
@@ -117,6 +127,7 @@ VCCA_FPLL                    : AA8       : power  :                   : 2.5V    
 GND                          : AA9       : gnd    :                   :         :           :                
 VCCPD3A                      : AA10      : power  :                   : 2.5V    : 3A        :                
 GND                          : AA11      : gnd    :                   :         :           :                
+<<<<<<< Updated upstream
 rz[12]                       : AA12      : output : 2.5 V             :         : 3A        : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : AA13      :        :                   :         : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AA14      :        :                   :         : 3B        :                
@@ -136,6 +147,27 @@ VCCIO5B                      : AA27      : power  :                   : 2.5V    
 instruction[1]               : AA28      : input  : 2.5 V             :         : 5B        : N              
 VREFB5BN0                    : AA29      : power  :                   :         : 5B        :                
 ir_operand[1]                : AA30      : output : 2.5 V             :         : 5B        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA12      :        :                   :         : 3A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA13      :        :                   :         : 3B        :                
+KEY[0]                       : AA14      : input  : 2.5 V             :         : 3B        : Y              
+KEY[1]                       : AA15      : input  : 2.5 V             :         : 3B        : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA16      :        :                   :         : 4A        :                
+VCCIO4A                      : AA17      : power  :                   : 2.5V    : 4A        :                
+dpcr[25]                     : AA18      : output : 2.5 V             :         : 4A        : N              
+dpcr[15]                     : AA19      : output : 2.5 V             :         : 4A        : N              
+sop[6]                       : AA20      : output : 2.5 V             :         : 4A        : N              
+sop[0]                       : AA21      : output : 2.5 V             :         : 4A        : N              
+GND                          : AA22      : gnd    :                   :         :           :                
+VCCPGM                       : AA23      : power  :                   : 1.8V/2.5V/3.0V/3.3V :           :                
+HEX4[0]                      : AA24      : output : 2.5 V             :         : 5A        : Y              
+HEX5[6]                      : AA25      : output : 2.5 V             :         : 5A        : Y              
+HEX5[5]                      : AA26      : output : 2.5 V             :         : 5B        : Y              
+VCCIO5B                      : AA27      : power  :                   : 2.5V    : 5B        :                
+HEX5[1]                      : AA28      : output : 2.5 V             :         : 5B        : Y              
+VREFB5BN0                    : AA29      : power  :                   :         : 5B        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA30      :        :                   :         : 5B        :                
+>>>>>>> Stashed changes
 GND                          : AB1       : gnd    :                   :         :           :                
 GND                          : AB2       : gnd    :                   :         :           :                
 DNU                          : AB3       :        :                   :         :           :                
@@ -147,8 +179,13 @@ nCSO, DATA4                  : AB8       :        :                   :         
 TDO                          : AB9       : output :                   :         : 3A        :                
 VCCPGM                       : AB10      : power  :                   : 1.8V/2.5V/3.0V/3.3V :           :                
 VCC_AUX                      : AB11      : power  :                   : 2.5V    :           :                
+<<<<<<< Updated upstream
 r7[15]                       : AB12      : output : 2.5 V             :         : 3A        : N              
 instruction[19]              : AB13      : input  : 2.5 V             :         : 3B        : N              
+=======
+SW[0]                        : AB12      : input  : 2.5 V             :         : 3A        : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB13      :        :                   :         : 3B        :                
+>>>>>>> Stashed changes
 VCCIO3B                      : AB14      : power  :                   : 2.5V    : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AB15      :        :                   :         : 3B        :                
 VCC_AUX                      : AB16      : power  :                   : 2.5V    :           :                
@@ -156,6 +193,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : AB17      :        :                   :      
 VCCPD3B4A                    : AB18      : power  :                   : 2.5V    : 3B, 4A    :                
 GND                          : AB19      : gnd    :                   :         :           :                
 VCCPD3B4A                    : AB20      : power  :                   : 2.5V    : 3B, 4A    :                
+<<<<<<< Updated upstream
 RESERVED_INPUT_WITH_WEAK_PULLUP : AB21      :        :                   :         : 4A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AB22      :        :                   :         : 5A        :                
 instruction[14]              : AB23      : input  : 2.5 V             :         : 5A        : N              
@@ -166,6 +204,18 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : AB27      :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : AB28      :        :                   :         : 5B        :                
 GND                          : AB29      : gnd    :                   :         :           :                
 instruction[20]              : AB30      : input  : 2.5 V             :         : 5B        : N              
+=======
+sop[8]                       : AB21      : output : 2.5 V             :         : 4A        : N              
+HEX3[6]                      : AB22      : output : 2.5 V             :         : 5A        : Y              
+HEX2[0]                      : AB23      : output : 2.5 V             :         : 5A        : Y              
+VCCIO5A                      : AB24      : power  :                   : 2.5V    : 5A        :                
+HEX3[5]                      : AB25      : output : 2.5 V             :         : 5A        : Y              
+HEX5[4]                      : AB26      : output : 2.5 V             :         : 5A        : Y              
+HEX5[3]                      : AB27      : output : 2.5 V             :         : 5B        : Y              
+HEX3[4]                      : AB28      : output : 2.5 V             :         : 5B        : Y              
+GND                          : AB29      : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB30      :        :                   :         : 5B        :                
+>>>>>>> Stashed changes
 GND                          : AC1       : gnd    :                   :         :           :                
 GND                          : AC2       : gnd    :                   :         :           :                
 GND                          : AC3       : gnd    :                   :         :           :                
@@ -174,6 +224,7 @@ TCK                          : AC5       : input  :                   :         
 GND                          : AC6       : gnd    :                   :         :           :                
 AS_DATA3, DATA3              : AC7       :        :                   :         : 3A        :                
 GND                          : AC8       : gnd    :                   :         :           :                
+<<<<<<< Updated upstream
 instruction[2]               : AC9       : input  : 2.5 V             :         : 3A        : N              
 VCCPD3A                      : AC10      : power  :                   : 2.5V    : 3A        :                
 VCCIO3A                      : AC11      : power  :                   : 2.5V    : 3A        :                
@@ -196,6 +247,30 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : AC27      :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : AC28      :        :                   :         : 5B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AC29      :        :                   :         : 5B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AC30      :        :                   :         : 5B        :                
+=======
+SW[7]                        : AC9       : input  : 2.5 V             :         : 3A        : Y              
+VCCPD3A                      : AC10      : power  :                   : 2.5V    : 3A        :                
+VCCIO3A                      : AC11      : power  :                   : 2.5V    : 3A        :                
+SW[1]                        : AC12      : input  : 2.5 V             :         : 3A        : Y              
+VCCPD3B4A                    : AC13      : power  :                   : 2.5V    : 3B, 4A    :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AC14      :        :                   :         : 3B        :                
+VCCPD3B4A                    : AC15      : power  :                   : 2.5V    : 3B, 4A    :                
+GND                          : AC16      : gnd    :                   :         :           :                
+VCCPD3B4A                    : AC17      : power  :                   : 2.5V    : 3B, 4A    :                
+dpcr[13]                     : AC18      : output : 2.5 V             :         : 4A        : N              
+VCCPD3B4A                    : AC19      : power  :                   : 2.5V    : 3B, 4A    :                
+dpcr[24]                     : AC20      : output : 2.5 V             :         : 4A        : N              
+VCCIO4A                      : AC21      : power  :                   : 2.5V    : 4A        :                
+sop[4]                       : AC22      : output : 2.5 V             :         : 4A        : N              
+dpcr[21]                     : AC23      : output : 2.5 V             :         : 4A        : N              
+VREFB5AN0                    : AC24      : power  :                   :         : 5A        :                
+HEX3[3]                      : AC25      : output : 2.5 V             :         : 5A        : Y              
+GND                          : AC26      : gnd    :                   :         :           :                
+HEX3[1]                      : AC27      : output : 2.5 V             :         : 5A        : Y              
+HEX2[3]                      : AC28      : output : 2.5 V             :         : 5B        : Y              
+HEX2[5]                      : AC29      : output : 2.5 V             :         : 5B        : Y              
+HEX2[6]                      : AC30      : output : 2.5 V             :         : 5B        : Y              
+>>>>>>> Stashed changes
 GND                          : AD1       : gnd    :                   :         :           :                
 GND                          : AD2       : gnd    :                   :         :           :                
 DNU                          : AD3       :        :                   :         :           :                
@@ -204,16 +279,24 @@ GND                          : AD5       : gnd    :                   :         
 VREFB3AN0                    : AD6       : power  :                   :         : 3A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AD7       :        :                   :         : 3A        :                
 VCCIO3A                      : AD8       : power  :                   : 2.5V    : 3A        :                
+<<<<<<< Updated upstream
 instruction[17]              : AD9       : input  : 2.5 V             :         : 3A        : N              
 ir_operand[2]                : AD10      : output : 2.5 V             :         : 3A        : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : AD11      :        :                   :         : 3A        :                
 rz[11]                       : AD12      : output : 2.5 V             :         : 3A        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : AD9       :        :                   :         : 3A        :                
+SW[8]                        : AD10      : input  : 2.5 V             :         : 3A        : Y              
+SW[4]                        : AD11      : input  : 2.5 V             :         : 3A        : Y              
+SW[5]                        : AD12      : input  : 2.5 V             :         : 3A        : Y              
+>>>>>>> Stashed changes
 VCCIO3B                      : AD13      : power  :                   : 2.5V    : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AD14      :        :                   :         : 3B        :                
 DNU                          : AD15      :        :                   :         :           :                
 VCCPD3B4A                    : AD16      : power  :                   : 2.5V    : 3B, 4A    :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AD17      :        :                   :         : 4A        :                
 VCCIO4A                      : AD18      : power  :                   : 2.5V    : 4A        :                
+<<<<<<< Updated upstream
 RESERVED_INPUT_WITH_WEAK_PULLUP : AD19      :        :                   :         : 4A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AD20      :        :                   :         : 4A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AD21      :        :                   :         : 4A        :                
@@ -226,6 +309,20 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : AD27      :        :                   :      
 VCCIO5A                      : AD28      : power  :                   : 2.5V    : 5A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AD29      :        :                   :         : 5B        :                
 instruction[24]              : AD30      : input  : 2.5 V             :         : 5B        : N              
+=======
+dpcr[10]                     : AD19      : output : 2.5 V             :         : 4A        : N              
+sop[11]                      : AD20      : output : 2.5 V             :         : 4A        : N              
+sop[1]                       : AD21      : output : 2.5 V             :         : 4A        : N              
+VCC_AUX                      : AD22      : power  :                   : 2.5V    :           :                
+GND                          : AD23      : gnd    :                   :         :           :                
+sop[5]                       : AD24      : output : 2.5 V             :         : 4A        : N              
+HEX3[2]                      : AD25      : output : 2.5 V             :         : 5A        : Y              
+HEX3[0]                      : AD26      : output : 2.5 V             :         : 5A        : Y              
+HEX1[6]                      : AD27      : output : 2.5 V             :         : 5A        : Y              
+VCCIO5A                      : AD28      : power  :                   : 2.5V    : 5A        :                
+HEX2[2]                      : AD29      : output : 2.5 V             :         : 5B        : Y              
+HEX2[4]                      : AD30      : output : 2.5 V             :         : 5B        : Y              
+>>>>>>> Stashed changes
 GND                          : AE1       : gnd    :                   :         :           :                
 GND                          : AE2       : gnd    :                   :         :           :                
 GND                          : AE3       : gnd    :                   :         :           :                
@@ -236,12 +333,18 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : AE7       :        :                   :      
 AS_DATA2, DATA2              : AE8       :        :                   :         : 3A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AE9       :        :                   :         : 3A        :                
 GND                          : AE10      : gnd    :                   :         :           :                
+<<<<<<< Updated upstream
 RESERVED_INPUT_WITH_WEAK_PULLUP : AE11      :        :                   :         : 3A        :                
 instruction[21]              : AE12      : input  : 2.5 V             :         : 3A        : N              
+=======
+SW[6]                        : AE11      : input  : 2.5 V             :         : 3A        : Y              
+SW[9]                        : AE12      : input  : 2.5 V             :         : 3A        : Y              
+>>>>>>> Stashed changes
 RESERVED_INPUT_WITH_WEAK_PULLUP : AE13      :        :                   :         : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AE14      :        :                   :         : 3B        :                
 VCCIO3B                      : AE15      : power  :                   : 2.5V    : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AE16      :        :                   :         : 4A        :                
+<<<<<<< Updated upstream
 instruction[18]              : AE17      : input  : 2.5 V             :         : 4A        : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : AE18      :        :                   :         : 4A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AE19      :        :                   :         : 4A        :                
@@ -255,6 +358,21 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : AE26      :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : AE27      :        :                   :         : 5A        :                
 ir_operand[15]               : AE28      : output : 2.5 V             :         : 5A        : N              
 rx[6]                        : AE29      : output : 2.5 V             :         : 5B        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : AE17      :        :                   :         : 4A        :                
+dpcr[19]                     : AE18      : output : 2.5 V             :         : 4A        : N              
+sop[3]                       : AE19      : output : 2.5 V             :         : 4A        : N              
+GND                          : AE20      : gnd    :                   :         :           :                
+VCCPD3B4A                    : AE21      : power  :                   : 2.5V    : 3B, 4A    :                
+sop[13]                      : AE22      : output : 2.5 V             :         : 4A        : N              
+sop[10]                      : AE23      : output : 2.5 V             :         : 4A        : N              
+sop[7]                       : AE24      : output : 2.5 V             :         : 4A        : N              
+VCCIO4A                      : AE25      : power  :                   : 2.5V    : 4A        :                
+HEX0[0]                      : AE26      : output : 2.5 V             :         : 5A        : Y              
+HEX0[1]                      : AE27      : output : 2.5 V             :         : 5A        : Y              
+HEX0[2]                      : AE28      : output : 2.5 V             :         : 5A        : Y              
+HEX2[1]                      : AE29      : output : 2.5 V             :         : 5B        : Y              
+>>>>>>> Stashed changes
 VCCIO5B                      : AE30      : power  :                   : 2.5V    : 5B        :                
 GND                          : AF1       : gnd    :                   :         :           :                
 GND                          : AF2       : gnd    :                   :         :           :                
@@ -263,6 +381,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : AF4       :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : AF5       :        :                   :         : 3A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AF6       :        :                   :         : 3A        :                
 VCCIO3A                      : AF7       : power  :                   : 2.5V    : 3A        :                
+<<<<<<< Updated upstream
 rz[2]                        : AF8       : output : 2.5 V             :         : 3A        : N              
 rz[1]                        : AF9       : output : 2.5 V             :         : 3A        : N              
 rx[9]                        : AF10      : output : 2.5 V             :         : 3A        : N              
@@ -293,6 +412,38 @@ VCCIO3A                      : AG4       : power  :                   : 2.5V    
 RESERVED_INPUT_WITH_WEAK_PULLUP : AG5       :        :                   :         : 3A        :                
 instruction[25]              : AG6       : input  : 2.5 V             :         : 3A        : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : AG7       :        :                   :         : 3A        :                
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : AF8       :        :                   :         : 3A        :                
+SW[2]                        : AF9       : input  : 2.5 V             :         : 3A        : Y              
+SW[3]                        : AF10      : input  : 2.5 V             :         : 3A        : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AF11      :        :                   :         : 3B        :                
+GND                          : AF12      : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AF13      :        :                   :         : 3B        :                
+CLOCK_50                     : AF14      : input  : 2.5 V             :         : 3B        : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AF15      :        :                   :         : 3B        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AF16      :        :                   :         : 4A        :                
+GND                          : AF17      : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AF18      :        :                   :         : 4A        :                
+dpcr[14]                     : AF19      : output : 2.5 V             :         : 4A        : N              
+dpcr[7]                      : AF20      : output : 2.5 V             :         : 4A        : N              
+dpcr[2]                      : AF21      : output : 2.5 V             :         : 4A        : N              
+VCCIO4A                      : AF22      : power  :                   : 2.5V    : 4A        :                
+dpcr[27]                     : AF23      : output : 2.5 V             :         : 4A        : N              
+sop[12]                      : AF24      : output : 2.5 V             :         : 4A        : N              
+dpcr[31]                     : AF25      : output : 2.5 V             :         : 4A        : N              
+dpcr[23]                     : AF26      : output : 2.5 V             :         : 4A        : N              
+GND                          : AF27      : gnd    :                   :         :           :                
+HEX0[4]                      : AF28      : output : 2.5 V             :         : 5A        : Y              
+HEX1[4]                      : AF29      : output : 2.5 V             :         : 5A        : Y              
+HEX1[5]                      : AF30      : output : 2.5 V             :         : 5A        : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG1       :        :                   :         : 3A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG2       :        :                   :         : 3A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG3       :        :                   :         : 3A        :                
+VCCIO3A                      : AG4       : power  :                   : 2.5V    : 3A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG5       :        :                   :         : 3A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG6       :        :                   :         : 3A        :                
+dprr[0]                      : AG7       : output : 2.5 V             :         : 3A        : N              
+>>>>>>> Stashed changes
 RESERVED_INPUT_WITH_WEAK_PULLUP : AG8       :        :                   :         : 3A        :                
 GND                          : AG9       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AG10      :        :                   :         : 3B        :                
@@ -301,6 +452,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : AG12      :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : AG13      :        :                   :         : 3B        :                
 GND                          : AG14      : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AG15      :        :                   :         : 3B        :                
+<<<<<<< Updated upstream
 r7[2]                        : AG16      : output : 2.5 V             :         : 4A        : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : AG17      :        :                   :         : 4A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AG18      :        :                   :         : 4A        :                
@@ -320,19 +472,47 @@ GND                          : AH1       : gnd    :                   :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : AH2       :        :                   :         : 3A        :                
 ir_operand[0]                : AH3       : output : 2.5 V             :         : 3A        : N              
 instruction[28]              : AH4       : input  : 2.5 V             :         : 3A        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG16      :        :                   :         : 4A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG17      :        :                   :         : 4A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG18      :        :                   :         : 4A        :                
+VCCIO4A                      : AG19      : power  :                   : 2.5V    : 4A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG20      :        :                   :         : 4A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG21      :        :                   :         : 4A        :                
+dpcr[26]                     : AG22      : output : 2.5 V             :         : 4A        : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AG23      :        :                   :         : 4A        :                
+GND                          : AG24      : gnd    :                   :         :           :                
+dpcr[9]                      : AG25      : output : 2.5 V             :         : 4A        : N              
+dpcr[28]                     : AG26      : output : 2.5 V             :         : 4A        : N              
+HEX0[3]                      : AG27      : output : 2.5 V             :         : 5A        : Y              
+HEX0[5]                      : AG28      : output : 2.5 V             :         : 5A        : Y              
+VCCIO5A                      : AG29      : power  :                   : 2.5V    : 5A        :                
+HEX1[3]                      : AG30      : output : 2.5 V             :         : 5A        : Y              
+GND                          : AH1       : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH2       :        :                   :         : 3A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH3       :        :                   :         : 3A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH4       :        :                   :         : 3A        :                
+>>>>>>> Stashed changes
 RESERVED_INPUT_WITH_WEAK_PULLUP : AH5       :        :                   :         : 3A        :                
 GND                          : AH6       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AH7       :        :                   :         : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AH8       :        :                   :         : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AH9       :        :                   :         : 3B        :                
+<<<<<<< Updated upstream
 rx[15]                       : AH10      : output : 2.5 V             :         : 3B        : N              
 GND                          : AH11      : gnd    :                   :         :           :                
 instruction[9]               : AH12      : input  : 2.5 V             :         : 3B        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH10      :        :                   :         : 3B        :                
+GND                          : AH11      : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH12      :        :                   :         : 3B        :                
+>>>>>>> Stashed changes
 RESERVED_INPUT_WITH_WEAK_PULLUP : AH13      :        :                   :         : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AH14      :        :                   :         : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AH15      :        :                   :         : 3B        :                
 VCCIO4A                      : AH16      : power  :                   : 2.5V    : 4A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AH17      :        :                   :         : 4A        :                
+<<<<<<< Updated upstream
 r7[0]                        : AH18      : output : 2.5 V             :         : 4A        : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : AH19      :        :                   :         : 4A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AH20      :        :                   :         : 4A        :                
@@ -346,6 +526,21 @@ instruction[22]              : AH27      : input  : 2.5 V             :         
 rz[14]                       : AH28      : output : 2.5 V             :         : 5A        : N              
 ir_operand[4]                : AH29      : output : 2.5 V             :         : 5A        : N              
 ir_operand[6]                : AH30      : output : 2.5 V             :         : 5A        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH18      :        :                   :         : 4A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH19      :        :                   :         : 4A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH20      :        :                   :         : 4A        :                
+GND                          : AH21      : gnd    :                   :         :           :                
+dpcr[8]                      : AH22      : output : 2.5 V             :         : 4A        : N              
+dpcr[12]                     : AH23      : output : 2.5 V             :         : 4A        : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AH24      :        :                   :         : 4A        :                
+sop[2]                       : AH25      : output : 2.5 V             :         : 4A        : N              
+VCCIO4A                      : AH26      : power  :                   : 2.5V    : 4A        :                
+dpcr[30]                     : AH27      : output : 2.5 V             :         : 4A        : N              
+HEX0[6]                      : AH28      : output : 2.5 V             :         : 5A        : Y              
+HEX1[1]                      : AH29      : output : 2.5 V             :         : 5A        : Y              
+HEX1[2]                      : AH30      : output : 2.5 V             :         : 5A        : Y              
+>>>>>>> Stashed changes
 RESERVED_INPUT_WITH_WEAK_PULLUP : AJ1       :        :                   :         : 3A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AJ2       :        :                   :         : 3A        :                
 GND                          : AJ3       : gnd    :                   :         :           :                
@@ -357,6 +552,7 @@ VCCIO3B                      : AJ8       : power  :                   : 2.5V    
 RESERVED_INPUT_WITH_WEAK_PULLUP : AJ9       :        :                   :         : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AJ10      :        :                   :         : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AJ11      :        :                   :         : 3B        :                
+<<<<<<< Updated upstream
 ir_operand[9]                : AJ12      : output : 2.5 V             :         : 3B        : N              
 VCCIO3B                      : AJ13      : power  :                   : 2.5V    : 3B        :                
 instruction[27]              : AJ14      : input  : 2.5 V             :         : 3B        : N              
@@ -381,6 +577,32 @@ r7[9]                        : AK3       : output : 2.5 V             :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : AK4       :        :                   :         : 3B        :                
 GND                          : AK5       : gnd    :                   :         :           :                
 rx[7]                        : AK6       : output : 2.5 V             :         : 3B        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : AJ12      :        :                   :         : 3B        :                
+VCCIO3B                      : AJ13      : power  :                   : 2.5V    : 3B        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AJ14      :        :                   :         : 3B        :                
+VREFB3BN0                    : AJ15      : power  :                   :         : 3B        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AJ16      :        :                   :         : 4A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AJ17      :        :                   :         : 4A        :                
+GND                          : AJ18      : gnd    :                   :         :           :                
+sop[9]                       : AJ19      : output : 2.5 V             :         : 4A        : N              
+dpcr[0]                      : AJ20      : output : 2.5 V             :         : 4A        : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AJ21      :        :                   :         : 4A        :                
+dpcr[6]                      : AJ22      : output : 2.5 V             :         : 4A        : N              
+VCCIO4A                      : AJ23      : power  :                   : 2.5V    : 4A        :                
+sop[15]                      : AJ24      : output : 2.5 V             :         : 4A        : N              
+dpcr[5]                      : AJ25      : output : 2.5 V             :         : 4A        : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AJ26      :        :                   :         : 4A        :                
+dpcr[22]                     : AJ27      : output : 2.5 V             :         : 4A        : N              
+GND                          : AJ28      : gnd    :                   :         :           :                
+HEX1[0]                      : AJ29      : output : 2.5 V             :         : 5A        : Y              
+GND                          : AJ30      : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AK2       :        :                   :         : 3B        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AK3       :        :                   :         : 3B        :                
+dpcr[20]                     : AK4       : output : 2.5 V             :         : 3B        : N              
+GND                          : AK5       : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AK6       :        :                   :         : 3B        :                
+>>>>>>> Stashed changes
 RESERVED_INPUT_WITH_WEAK_PULLUP : AK7       :        :                   :         : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AK8       :        :                   :         : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AK9       :        :                   :         : 3B        :                
@@ -388,6 +610,7 @@ VCCIO3B                      : AK10      : power  :                   : 2.5V    
 RESERVED_INPUT_WITH_WEAK_PULLUP : AK11      :        :                   :         : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AK12      :        :                   :         : 3B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AK13      :        :                   :         : 3B        :                
+<<<<<<< Updated upstream
 rz[7]                        : AK14      : output : 2.5 V             :         : 3B        : N              
 GND                          : AK15      : gnd    :                   :         :           :                
 ir_operand[13]               : AK16      : output : 2.5 V             :         : 4A        : N              
@@ -406,6 +629,26 @@ rx[13]                       : AK28      : output : 2.5 V             :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : AK29      :        :                   :         : 4A        :                
 r7[6]                        : B1        : output : 2.5 V             :         : 8A        : N              
 instruction[7]               : B2        : input  : 2.5 V             :         : 8A        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : AK14      :        :                   :         : 3B        :                
+GND                          : AK15      : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AK16      :        :                   :         : 4A        :                
+VREFB4AN0                    : AK17      : power  :                   :         : 4A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AK18      :        :                   :         : 4A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AK19      :        :                   :         : 4A        :                
+VCCIO4A                      : AK20      : power  :                   : 2.5V    : 4A        :                
+dpcr[17]                     : AK21      : output : 2.5 V             :         : 4A        : N              
+dpcr[16]                     : AK22      : output : 2.5 V             :         : 4A        : N              
+dpcr[1]                      : AK23      : output : 2.5 V             :         : 4A        : N              
+dpcr[3]                      : AK24      : output : 2.5 V             :         : 4A        : N              
+GND                          : AK25      : gnd    :                   :         :           :                
+dprr[1]                      : AK26      : output : 2.5 V             :         : 4A        : N              
+dpcr[29]                     : AK27      : output : 2.5 V             :         : 4A        : N              
+dpcr[18]                     : AK28      : output : 2.5 V             :         : 4A        : N              
+sop[14]                      : AK29      : output : 2.5 V             :         : 4A        : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : B1        :        :                   :         : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : B2        :        :                   :         : 8A        :                
+>>>>>>> Stashed changes
 RESERVED_INPUT_WITH_WEAK_PULLUP : B3        :        :                   :         : 8A        :                
 VCCIO8A                      : B4        : power  :                   : 2.5V    : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : B5        :        :                   :         : 8A        :                
@@ -415,7 +658,11 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : B8        :        :                   :      
 GND                          : B9        : gnd    :                   :         :           :                
 VREFB8AN0                    : B10       : power  :                   :         : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : B11       :        :                   :         : 8A        :                
+<<<<<<< Updated upstream
 rx[10]                       : B12       : output : 2.5 V             :         : 8A        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : B12       :        :                   :         : 8A        :                
+>>>>>>> Stashed changes
 RESERVED_INPUT_WITH_WEAK_PULLUP : B13       :        :                   :         : 8A        :                
 GND                          : B14       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : B15       :        :                   :         : 7D        :                
@@ -437,8 +684,13 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : B30       :        :                   :      
 GND                          : C1        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : C2        :        :                   :         : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : C3        :        :                   :         : 8A        :                
+<<<<<<< Updated upstream
 r7[13]                       : C4        : output : 2.5 V             :         : 8A        : N              
 rx[4]                        : C5        : output : 2.5 V             :         : 8A        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : C4        :        :                   :         : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : C5        :        :                   :         : 8A        :                
+>>>>>>> Stashed changes
 GND                          : C6        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : C7        :        :                   :         : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : C8        :        :                   :         : 8A        :                
@@ -464,6 +716,7 @@ HPS_nRST                     : C27       :        :                   :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : C28       :        :                   :         : 6A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : C29       :        :                   :         : 6A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : C30       :        :                   :         : 6A        :                
+<<<<<<< Updated upstream
 r7[14]                       : D1        : output : 2.5 V             :         : 8A        : N              
 instruction[3]               : D2        : input  : 2.5 V             :         : 8A        : N              
 GND                          : D3        : gnd    :                   :         :           :                
@@ -474,6 +727,18 @@ ir_operand[11]               : D7        : output : 2.5 V             :         
 VCCIO8A                      : D8        : power  :                   : 2.5V    : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : D9        :        :                   :         : 8A        :                
 ir_operand[10]               : D10       : output : 2.5 V             :         : 8A        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : D1        :        :                   :         : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D2        :        :                   :         : 8A        :                
+GND                          : D3        : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D4        :        :                   :         : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D5        :        :                   :         : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D6        :        :                   :         : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D7        :        :                   :         : 8A        :                
+VCCIO8A                      : D8        : power  :                   : 2.5V    : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D9        :        :                   :         : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D10       :        :                   :         : 8A        :                
+>>>>>>> Stashed changes
 RESERVED_INPUT_WITH_WEAK_PULLUP : D11       :        :                   :         : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : D12       :        :                   :         : 8A        :                
 GND                          : D13       : gnd    :                   :         :           :                
@@ -499,14 +764,24 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : E2        :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : E3        :        :                   :         : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : E4        :        :                   :         : 8A        :                
 VCCIO8A                      : E5        : power  :                   : 2.5V    : 8A        :                
+<<<<<<< Updated upstream
 r7[10]                       : E6        : output : 2.5 V             :         : 8A        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : E6        :        :                   :         : 8A        :                
+>>>>>>> Stashed changes
 RESERVED_INPUT_WITH_WEAK_PULLUP : E7        :        :                   :         : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : E8        :        :                   :         : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : E9        :        :                   :         : 8A        :                
 GND                          : E10       : gnd    :                   :         :           :                
+<<<<<<< Updated upstream
 instruction[11]              : E11       : input  : 2.5 V             :         : 8A        : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : E12       :        :                   :         : 8A        :                
 rz[8]                        : E13       : output : 2.5 V             :         : 8A        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : E11       :        :                   :         : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : E12       :        :                   :         : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : E13       :        :                   :         : 8A        :                
+>>>>>>> Stashed changes
 RESERVED_INPUT_WITH_WEAK_PULLUP : E14       :        :                   :         : 7D        :                
 VCCIO7D_HPS                  : E15       : power  :                   : 2.5V    : 7D        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : E16       :        :                   :         : 7D        :                
@@ -531,13 +806,22 @@ nSTATUS                      : F4        :        :                   :         
 GND                          : F5        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : F6        :        :                   :         : 8A        :                
 GND                          : F7        : gnd    :                   :         :           :                
+<<<<<<< Updated upstream
 instruction[29]              : F8        : input  : 2.5 V             :         : 8A        : N              
 ir_operand[8]                : F9        : output : 2.5 V             :         : 8A        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : F8        :        :                   :         : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : F9        :        :                   :         : 8A        :                
+>>>>>>> Stashed changes
 RESERVED_INPUT_WITH_WEAK_PULLUP : F10       :        :                   :         : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : F11       :        :                   :         : 8A        :                
 VCCIO8A                      : F12       : power  :                   : 2.5V    : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : F13       :        :                   :         : 8A        :                
+<<<<<<< Updated upstream
 r7[8]                        : F14       : output : 2.5 V             :         : 8A        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : F14       :        :                   :         : 8A        :                
+>>>>>>> Stashed changes
 RESERVED_INPUT_WITH_WEAK_PULLUP : F15       :        :                   :         : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : F16       :        :                   :         : 7D        :                
 GND                          : F17       : gnd    :                   :         :           :                
@@ -560,8 +844,13 @@ GND                          : G3        : gnd    :                   :         
 GND                          : G4        : gnd    :                   :         :           :                
 nCE                          : G5        :        :                   :         : 9A        :                
 MSEL2                        : G6        :        :                   :         : 9A        :                
+<<<<<<< Updated upstream
 instruction[8]               : G7        : input  : 2.5 V             :         : 8A        : N              
 rx[11]                       : G8        : output : 2.5 V             :         : 8A        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : G7        :        :                   :         : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : G8        :        :                   :         : 8A        :                
+>>>>>>> Stashed changes
 VCCIO8A                      : G9        : power  :                   : 2.5V    : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : G10       :        :                   :         : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : G11       :        :                   :         : 8A        :                
@@ -598,7 +887,11 @@ GND                          : H11       : gnd    :                   :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : H12       :        :                   :         : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : H13       :        :                   :         : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : H14       :        :                   :         : 8A        :                
+<<<<<<< Updated upstream
 r7[11]                       : H15       : output : 2.5 V             :         : 8A        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : H15       :        :                   :         : 8A        :                
+>>>>>>> Stashed changes
 VCCIO7D_HPS                  : H16       : power  :                   : 2.5V    : 7D        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : H17       :        :                   :         : 7C        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : H18       :        :                   :         : 7B        :                
@@ -620,6 +913,7 @@ GND                          : J3        : gnd    :                   :         
 GND                          : J4        : gnd    :                   :         :           :                
 nCONFIG                      : J5        :        :                   :         : 9A        :                
 GND                          : J6        :        :                   :         : 9A        :                
+<<<<<<< Updated upstream
 ir_operand[7]                : J7        : output : 2.5 V             :         : 8A        : N              
 GND                          : J8        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : J9        :        :                   :         : 8A        :                
@@ -628,6 +922,16 @@ VCCPGM                       : J11       : power  :                   : 1.8V/2.5
 r7[7]                        : J12       : output : 2.5 V             :         : 8A        : N              
 VCCIO8A                      : J13       : power  :                   : 2.5V    : 8A        :                
 rz[0]                        : J14       : output : 2.5 V             :         : 8A        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : J7        :        :                   :         : 8A        :                
+GND                          : J8        : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : J9        :        :                   :         : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : J10       :        :                   :         : 8A        :                
+VCCPGM                       : J11       : power  :                   : 1.8V/2.5V/3.0V/3.3V :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : J12       :        :                   :         : 8A        :                
+VCCIO8A                      : J13       : power  :                   : 2.5V    : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : J14       :        :                   :         : 8A        :                
+>>>>>>> Stashed changes
 DNU                          : J15       :        :                   :         :           :                
 VCC_AUX                      : J16       : power  :                   : 2.5V    :           :                
 VCCPD7C_HPS                  : J17       : power  :                   : 2.5V    : 7C        :                
@@ -651,11 +955,19 @@ DNU                          : K4        :        :                   :         
 GND                          : K5        : gnd    :                   :         :           :                
 MSEL1                        : K6        :        :                   :         : 9A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : K7        :        :                   :         : 8A        :                
+<<<<<<< Updated upstream
 rx[2]                        : K8        : output : 2.5 V             :         : 8A        : N              
 VCCA_FPLL                    : K9        : power  :                   : 2.5V    :           :                
 GND                          : K10       : gnd    :                   :         :           :                
 VCCPD8A                      : K11       : power  :                   : 2.5V    : 8A        :                
 ir_operand[3]                : K12       : output : 2.5 V             :         : 8A        : N              
+=======
+RESERVED_INPUT_WITH_WEAK_PULLUP : K8        :        :                   :         : 8A        :                
+VCCA_FPLL                    : K9        : power  :                   : 2.5V    :           :                
+GND                          : K10       : gnd    :                   :         :           :                
+VCCPD8A                      : K11       : power  :                   : 2.5V    : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : K12       :        :                   :         : 8A        :                
+>>>>>>> Stashed changes
 VCCPD8A                      : K13       : power  :                   : 2.5V    : 8A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : K14       :        :                   :         : 8A        :                
 GND                          : K15       : gnd    :                   :         :           :                
@@ -899,16 +1211,28 @@ GND                          : V12       : gnd    :                   :         
 VCC                          : V13       : power  :                   : 1.1V    :           :                
 GND                          : V14       : gnd    :                   :         :           :                
 VCC                          : V15       : power  :                   : 1.1V    :           :                
+<<<<<<< Updated upstream
 instruction[31]              : V16       : input  : 2.5 V             :         : 4A        : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : V17       :        :                   :         : 4A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : V18       :        :                   :         : 4A        :                
+=======
+LEDR[0]                      : V16       : output : 2.5 V             :         : 4A        : Y              
+LEDR[2]                      : V17       : output : 2.5 V             :         : 4A        : Y              
+LEDR[3]                      : V18       : output : 2.5 V             :         : 4A        : Y              
+>>>>>>> Stashed changes
 GND                          : V19       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : V20       :        :                   :         : 6B        :                
 GND                          : V21       : gnd    :                   :         :           :                
 VCCPD5A                      : V22       : power  :                   : 2.5V    : 5A        :                
+<<<<<<< Updated upstream
 r7[5]                        : V23       : output : 2.5 V             :         : 5A        : N              
 VCCPD5A                      : V24       : power  :                   : 2.5V    : 5A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : V25       :        :                   :         : 5B        :                
+=======
+HEX4[5]                      : V23       : output : 2.5 V             :         : 5A        : Y              
+VCCPD5A                      : V24       : power  :                   : 2.5V    : 5A        :                
+HEX5[0]                      : V25       : output : 2.5 V             :         : 5B        : Y              
+>>>>>>> Stashed changes
 VCCIO6B_HPS                  : V26       : power  :                   : 2.5V    : 6B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : V27       :        :                   :         : 6B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : V28       :        :                   :         : 6B        :                
@@ -928,6 +1252,7 @@ GND                          : W11       : gnd    :                   :         
 VCC                          : W12       : power  :                   : 1.1V    :           :                
 GND                          : W13       : gnd    :                   :         :           :                
 VCC                          : W14       : power  :                   : 1.1V    :           :                
+<<<<<<< Updated upstream
 RESERVED_INPUT_WITH_WEAK_PULLUP : W15       :        :                   :         : 3B        :                
 rz[4]                        : W16       : output : 2.5 V             :         : 4A        : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : W17       :        :                   :         : 4A        :                
@@ -939,6 +1264,19 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : W22       :        :                   :      
 VCCIO5A                      : W23       : power  :                   : 2.5V    : 5A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : W24       :        :                   :         : 5A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : W25       :        :                   :         : 5B        :                
+=======
+KEY[2]                       : W15       : input  : 2.5 V             :         : 3B        : Y              
+LEDR[1]                      : W16       : output : 2.5 V             :         : 4A        : Y              
+LEDR[4]                      : W17       : output : 2.5 V             :         : 4A        : Y              
+GND                          : W18       : gnd    :                   :         :           :                
+LEDR[5]                      : W19       : output : 2.5 V             :         : 4A        : Y              
+LEDR[7]                      : W20       : output : 2.5 V             :         : 5A        : Y              
+LEDR[8]                      : W21       : output : 2.5 V             :         : 5A        : Y              
+HEX4[3]                      : W22       : output : 2.5 V             :         : 5A        : Y              
+VCCIO5A                      : W23       : power  :                   : 2.5V    : 5A        :                
+HEX4[4]                      : W24       : output : 2.5 V             :         : 5A        : Y              
+HEX4[6]                      : W25       : output : 2.5 V             :         : 5B        : Y              
+>>>>>>> Stashed changes
 RESERVED_INPUT_WITH_WEAK_PULLUP : W26       :        :                   :         : 6B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : W27       :        :                   :         : 6B        :                
 GND                          : W28       : gnd    :                   :         :           :                
@@ -959,6 +1297,7 @@ GND                          : Y12       : gnd    :                   :         
 VCC                          : Y13       : power  :                   : 1.1V    :           :                
 GND                          : Y14       : gnd    :                   :         :           :                
 GND                          : Y15       : gnd    :                   :         :           :                
+<<<<<<< Updated upstream
 RESERVED_INPUT_WITH_WEAK_PULLUP : Y16       :        :                   :         : 3B        :                
 rx[1]                        : Y17       : output : 2.5 V             :         : 4A        : N              
 rx[8]                        : Y18       : output : 2.5 V             :         : 4A        : N              
@@ -971,6 +1310,20 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : Y24       :        :                   :      
 GND                          : Y25       : gnd    :                   :         :           :                
 rx[0]                        : Y26       : output : 2.5 V             :         : 5B        : N              
 init                         : Y27       : input  : 2.5 V             :         : 5B        : N              
+=======
+KEY[3]                       : Y16       : input  : 2.5 V             :         : 3B        : Y              
+dpcr[4]                      : Y17       : output : 2.5 V             :         : 4A        : N              
+dpcr[11]                     : Y18       : output : 2.5 V             :         : 4A        : N              
+LEDR[6]                      : Y19       : output : 2.5 V             :         : 4A        : Y              
+GND                          : Y20       : gnd    :                   :         :           :                
+LEDR[9]                      : Y21       : output : 2.5 V             :         : 5A        : Y              
+VCCA_FPLL                    : Y22       : power  :                   : 2.5V    :           :                
+HEX4[1]                      : Y23       : output : 2.5 V             :         : 5A        : Y              
+HEX4[2]                      : Y24       : output : 2.5 V             :         : 5A        : Y              
+GND                          : Y25       : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : Y26       :        :                   :         : 5B        :                
+HEX5[2]                      : Y27       : output : 2.5 V             :         : 5B        : Y              
+>>>>>>> Stashed changes
 RESERVED_INPUT_WITH_WEAK_PULLUP : Y28       :        :                   :         : 6B        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : Y29       :        :                   :         : 6B        :                
 GND                          : Y30       : gnd    :                   :         :           :                

@@ -1,5 +1,9 @@
 Flow report for Recop_Project
+<<<<<<< Updated upstream
 Thu Apr 16 17:52:24 2026
+=======
+Sun Apr 19 21:38:10 2026
+>>>>>>> Stashed changes
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -40,6 +44,7 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Flow Summary                                                                      ;
 +---------------------------------+-------------------------------------------------+
+<<<<<<< Updated upstream
 ; Flow Status                     ; Successful - Thu Apr 16 17:52:15 2026           ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                   ; Recop_Project                                   ;
@@ -52,6 +57,20 @@ refer to the applicable agreement for further details.
 ; Total pins                      ; 99 / 457 ( 22 % )                               ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 0 / 4,065,280 ( 0 % )                           ;
+=======
+; Flow Status                     ; Successful - Sun Apr 19 21:37:55 2026           ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
+; Revision Name                   ; Recop_Project                                   ;
+; Top-level Entity Name           ; recop_top                                       ;
+; Family                          ; Cyclone V                                       ;
+; Device                          ; 5CSEMA5F31C6                                    ;
+; Timing Models                   ; Final                                           ;
+; Logic utilization (in ALMs)     ; 362 / 32,070 ( 1 % )                            ;
+; Total registers                 ; 348                                             ;
+; Total pins                      ; 117 / 457 ( 26 % )                              ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 24,576 / 4,065,280 ( < 1 % )                    ;
+>>>>>>> Stashed changes
 ; Total DSP Blocks                ; 0 / 87 ( 0 % )                                  ;
 ; Total HSSI RX PCSs              ; 0                                               ;
 ; Total HSSI PMA RX Deserializers ; 0                                               ;
@@ -67,12 +86,17 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
+<<<<<<< Updated upstream
 ; Start date & time ; 04/16/2026 17:50:46 ;
+=======
+; Start date & time ; 04/19/2026 21:35:33 ;
+>>>>>>> Stashed changes
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Recop_Project       ;
 +-------------------+---------------------+
 
 
+<<<<<<< Updated upstream
 +-------------------------------------------------------------------------------------------------------------------------+
 ; Flow Non-Default Global Settings                                                                                        ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
@@ -90,6 +114,27 @@ refer to the applicable agreement for further details.
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --          ; --         ;
 ; TOP_LEVEL_ENTITY                    ; decode                                 ; Recop_Project ; --          ; --         ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
+=======
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                             ;
++-------------------------------------+-------------------------------------------------------------+---------------+-------------+------------+
+; Assignment Name                     ; Value                                                       ; Default Value ; Entity Name ; Section Id ;
++-------------------------------------+-------------------------------------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID               ; 224948461339009.177659133306808                             ; --            ; --          ; --         ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                                          ; --            ; --          ; --         ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                                           ; --            ; --          ; --         ;
+; MISC_FILE                           ; Selected VHDL source design files/data_memory_ip.cmp        ; --            ; --          ; --         ;
+; MISC_FILE                           ; Selected VHDL source design files/instruction_memory_ip.cmp ; --            ; --          ; --         ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE         ; -- (Not supported for targeted family)                      ; --            ; --          ; --         ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family)                      ; --            ; recop_top   ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                      ; --            ; recop_top   ; Top        ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                      ; --            ; recop_top   ; Top        ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                         ; --            ; --          ; --         ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                       ; --            ; --          ; --         ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                ; --            ; --          ; --         ;
+; TOP_LEVEL_ENTITY                    ; recop_top                                                   ; Recop_Project ; --          ; --         ;
++-------------------------------------+-------------------------------------------------------------+---------------+-------------+------------+
+>>>>>>> Stashed changes
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -97,11 +142,19 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
+<<<<<<< Updated upstream
 ; Analysis & Synthesis ; 00:00:25     ; 1.0                     ; 4878 MB             ; 00:00:18                           ;
 ; Fitter               ; 00:00:42     ; 1.0                     ; 7860 MB             ; 00:02:27                           ;
 ; Assembler            ; 00:00:16     ; 1.0                     ; 4850 MB             ; 00:00:07                           ;
 ; Timing Analyzer      ; 00:00:07     ; 1.0                     ; 5275 MB             ; 00:00:03                           ;
 ; Total                ; 00:01:30     ; --                      ; --                  ; 00:02:55                           ;
+=======
+; Analysis & Synthesis ; 00:00:24     ; 1.0                     ; 4903 MB             ; 00:00:15                           ;
+; Fitter               ; 00:01:43     ; 1.0                     ; 7987 MB             ; 00:12:30                           ;
+; Assembler            ; 00:00:10     ; 1.0                     ; 4858 MB             ; 00:00:05                           ;
+; Timing Analyzer      ; 00:00:13     ; 1.3                     ; 5342 MB             ; 00:00:07                           ;
+; Total                ; 00:02:30     ; --                      ; --                  ; 00:12:57                           ;
+>>>>>>> Stashed changes
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -110,10 +163,17 @@ refer to the applicable agreement for further details.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
+<<<<<<< Updated upstream
 ; Analysis & Synthesis ; EN441226         ; Windows 10 ; 10.0       ; x86_64         ;
 ; Fitter               ; EN441226         ; Windows 10 ; 10.0       ; x86_64         ;
 ; Assembler            ; EN441226         ; Windows 10 ; 10.0       ; x86_64         ;
 ; Timing Analyzer      ; EN441226         ; Windows 10 ; 10.0       ; x86_64         ;
+=======
+; Analysis & Synthesis ; EN433572         ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; EN433572         ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; EN433572         ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; EN433572         ; Windows 10 ; 10.0       ; x86_64         ;
+>>>>>>> Stashed changes
 +----------------------+------------------+------------+------------+----------------+
 
 

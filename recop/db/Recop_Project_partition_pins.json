@@ -4,6 +4,7 @@
 			"name" : "Top",
 			"pins" : [
 				{
+<<<<<<< Updated upstream
 					"name" : "ir_operand[0]",
 					"strict" : false
 				},
@@ -13,6 +14,193 @@
 				},
 				{
 					"name" : "ir_operand[2]",
+=======
+					"name" : "LEDR[2]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[3]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[4]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[6]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[9]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX0[0]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX0[1]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX0[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX0[3]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX0[4]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX0[5]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX0[6]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1[0]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1[1]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1[3]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1[4]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1[5]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1[6]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX2[0]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX2[1]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX2[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX2[3]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX2[4]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX2[5]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX2[6]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX3[0]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX3[1]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX3[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX3[3]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX3[4]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX3[5]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX3[6]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX4[0]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX4[1]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX4[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX4[3]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX4[4]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX4[5]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX4[6]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX5[0]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX5[1]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX5[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX5[3]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX5[4]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX5[5]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX5[6]",
+>>>>>>> Stashed changes
 					"strict" : false
 				},
 				{
@@ -128,7 +316,143 @@
 					"strict" : false
 				},
 				{
+<<<<<<< Updated upstream
 					"name" : "instruction[15]",
+=======
+					"name" : "dpcr[27]",
+					"strict" : false
+				},
+				{
+					"name" : "dpcr[28]",
+					"strict" : false
+				},
+				{
+					"name" : "dpcr[29]",
+					"strict" : false
+				},
+				{
+					"name" : "dpcr[30]",
+					"strict" : false
+				},
+				{
+					"name" : "dpcr[31]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[0]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[1]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[2]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[3]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[4]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[5]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[6]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[7]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[8]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[9]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[10]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[11]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[12]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[13]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[14]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[15]",
+					"strict" : false
+				},
+				{
+					"name" : "CLOCK_50",
+					"strict" : false
+				},
+				{
+					"name" : "KEY[0]",
+					"strict" : false
+				},
+				{
+					"name" : "KEY[1]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[4]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[5]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[2]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[3]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[1]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[0]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[6]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[7]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[8]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[9]",
+>>>>>>> Stashed changes
 					"strict" : false
 				}
 			]
