@@ -60,7 +60,7 @@ begin
 
     u_dm : entity work.data_memory_ip
         port map (
-            address => dm_address_int(11 downto 0),
+            address => dm_address_int(8 downto 0),
             clock => clk, data => dm_data_int,
             wren => dm_wr_en, q => dm_out
         );

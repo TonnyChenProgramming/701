@@ -154,7 +154,7 @@ begin
 
     u_im_ip : entity work.instruction_memory_ip
         port map (
-            address => current_pc(10 downto 0),
+            address => current_pc(8 downto 0),
             clock   => clk,
             q       => instruction
         );
