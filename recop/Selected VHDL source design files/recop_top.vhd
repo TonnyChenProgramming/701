@@ -147,7 +147,7 @@ begin
             init       => init,
             reset      => reset,
 
-				pc_write   => pc_write,
+		    pc_write   => pc_write,
             next_pc    => next_pc,
             current_pc => current_pc
         );
@@ -168,8 +168,8 @@ begin
     -- DECODE AND WRITEBACK
     -- Contains RF only
     -- Reads Rz/Rx for execute; writes results back on next clock when ld_r='1'
-        sel_z <= to_integer(unsigned(instruction(23 downto 20)));
-        sel_x <= to_integer(unsigned(instruction(19 downto 16)));
+        sel_z <= to_integer(unsigned(instruction(23 downto 20))); -- 4 bits 2^4 = 16 register
+        sel_x <= to_integer(unsigned(instruction(19 downto 16))); --4 bits 2^4 = 16 register
         ir_operand <= instruction(15 downto 0);
         u_regfile : entity work.regfile
         port map (

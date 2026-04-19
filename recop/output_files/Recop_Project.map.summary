@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Sat Apr 18 20:35:08 2026
+Analysis & Synthesis Status : Successful - Sun Apr 19 17:37:55 2026
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : Recop_Project
 Top-level Entity Name : recop_top
 Family : Cyclone IV E
-Total logic elements : 978
-    Total combinational functions : 706
-    Dedicated logic registers : 343
-Total registers : 343
+Total logic elements : 982
+    Total combinational functions : 709
+    Dedicated logic registers : 344
+Total registers : 344
 Total pins : 72
 Total virtual pins : 0
 Total memory bits : 131,072

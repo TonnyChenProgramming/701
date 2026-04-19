@@ -16,6 +16,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "dprr[1]",
+					"strict" : false
+				},
+				{
 					"name" : "dpcr[0]",
 					"strict" : false
 				},

@@ -1,0 +1,46 @@
+ReCOP Assembly Listing  (v2 – [AM:2][OP:6] encoding)
+========================================================================
+
+Symbol Table:
+  TARGET_PRESENT            0x000F  (15)
+  TARGET_SZ                 0x0015  (21)
+  TARGET_JMP_REG            0x001A  (26)
+  TARGET_LSIP               0x001D  (29)
+  LOOP                      0x0021  (33)
+
+  ADDR       HEX   AM  OPCODE     Rz   Rx   OPERAND    SOURCE
+--------------------------------------------------------------------------------
+0x0000  40100005  IMM  LDR       R1   R0          5    LDR  R1  #5         ; R1 = 5
+0x0001  407000AB  IMM  LDR       R7   R0        171    LDR  R7  #0xAB      ; R7 = 0x00AB  (used by DATACALL register form)
+0x0002  402000CD  IMM  LDR       R2   R0        205    LDR  R2  #0xCD      ; R2 = 0x00CD
+0x0003  E8020000  REG  DATACALL  R0   R2          0    DATACALL R2         ; DPCR = R2 & R7 = 0x00CD_00AB
+0x0004  69025678  IMM  ?101001   R0   R2      22136    DATACALL R2 #0x5678 ; DPCR = R2 & 0x5678 = 0x00CD_5678
+0x0005  40400001  IMM  LDR       R4   R0          1    LDR  R4  #1         ; R4 = 1  (non-zero)
+0x0006  5C40000F  IMM  PRESENT   R4   R0         15    PRESENT R4  #target_present ; R4 != 0 -> NO jump, continue
+0x0007  40500000  IMM  LDR       R5   R0          0    LDR  R5  #0         ; R5 = 0
+0x0008  5C50000F  IMM  PRESENT   R5   R0         15    PRESENT R5  #target_present ; R5 == 0 -> JUMP to target_present
+0x0009  34000000  INH  NOOP      R0   R0          0    NOOP
+0x000A  34000000  INH  NOOP      R0   R0          0    NOOP
+0x000B  34000000  INH  NOOP      R0   R0          0    NOOP
+0x000C  34000000  INH  NOOP      R0   R0          0    NOOP
+0x000D  34000000  INH  NOOP      R0   R0          0    NOOP
+0x000E  34000000  INH  NOOP      R0   R0          0    NOOP
+0x000F  40600005  IMM  LDR       R6   R0          5    LDR  R6  #5         ; R6 = 5
+0x0010  44600005  IMM  SUB       R6   R0          5    SUB  R6  #5         ; 5 - 5 = 0  ->  Z = 1
+0x0011  54000015  IMM  SZ        R0   R0         21    SZ   #target_sz     ; Z=1 -> JUMP to target_sz
+0x0012  34000000  INH  NOOP      R0   R0          0    NOOP
+0x0013  34000000  INH  NOOP      R0   R0          0    NOOP
+0x0014  34000000  INH  NOOP      R0   R0          0    NOOP
+0x0015  40600003  IMM  LDR       R6   R0          3    LDR  R6  #3         ; R6 = 3
+0x0016  44600005  IMM  SUB       R6   R0          5    SUB  R6  #5         ; 3 - 5 = -2  ->  Z = 0
+0x0017  5400000F  IMM  SZ        R0   R0         15    SZ   #target_present ; Z=0 -> NO jump, continue
+0x0018  5800001A  IMM  JMP       R0   R0         26    JMP  #target_jmp_reg ; unconditional jump
+0x0019  34000000  INH  NOOP      R0   R0          0    NOOP
+0x001A  4080001D  IMM  LDR       R8   R0         29    LDR  R8  #target_lsip ; R8 = address of target_lsip
+0x001B  D8080000  REG  JMP       R0   R8          0    JMP  R8               ; PC = R8 -> jump to target_lsip
+0x001C  34000000  INH  NOOP      R0   R0          0    NOOP
+0x001D  409000BB  IMM  LDR       R9   R0        187    LDR  R9  #0xBB      ; R9 = 0x00BB
+0x001E  B7A00000  DIR  LSIP      R10  R0          0    LSIP R10            ; R10 = SIP  (= 0x1234 from testbench)
+0x001F  BA090000  DIR  SSOP      R0   R9          0    SSOP R9             ; SOP = R9  = 0x00BB
+0x0020  9D000050  DIR  STRPC     R0   R0         80    STRPC $0x50         ; DM[0x50] = PC (current program counter)
+0x0021  58000021  IMM  JMP       R0   R0         33    JMP  #loop          ; stay here forever

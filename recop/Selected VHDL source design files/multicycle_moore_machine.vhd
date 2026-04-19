@@ -221,9 +221,9 @@ begin
         result_wen    <= '0';
         result        <= '0';
 
-        --alu_operation <= alu_idle; --fsm related
-        --alu_op1_sel   <= alu_op1_from_rx;
-        --alu_op2_sel   <= alu_op2_from_rz;
+        alu_operation <= alu_idle; --fsm related
+        alu_op1_sel   <= alu_op1_from_rx;
+        alu_op2_sel   <= alu_op2_from_rz;
         clr_z_flag    <= '0';
 
         dm_wr_en      <= dm_read_enable;
@@ -323,6 +323,7 @@ begin
                             when datacall2 =>
                                 dpcr_lsb_sel <= '1';
                                 dpcr_wr      <= '1';
+                                irq_clr      <= '1'; --DPRR(1) <- '0'
 
                             when ldr =>
                                 null; -- immediate load writes literal in WB
@@ -367,6 +368,7 @@ begin
                             when datacall =>
                                 dpcr_lsb_sel <= '0';
                                 dpcr_wr      <= '1';
+                                irq_clr      <= '1'; --DPRR(1) <- '0'
 
                             when others =>
                                 null;

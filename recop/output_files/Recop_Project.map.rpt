@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Recop_Project
-Sat Apr 18 20:35:08 2026
+Sun Apr 19 17:37:55 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -16,9 +16,9 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis IP Cores Summary
  10. State Machine - |recop_top|multicycle_moore_machine:u_cu|state
- 11. User-Specified and Inferred Latches
- 12. Registers Removed During Synthesis
- 13. General Register Statistics
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
  14. Multiplexer Restructuring Statistics (Restructuring Performed)
  15. Source assignments for instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component|altsyncram_j4s3:auto_generated
  16. Source assignments for execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component|altsyncram_qso3:auto_generated
@@ -56,15 +56,15 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Apr 18 20:35:08 2026       ;
+; Analysis & Synthesis Status        ; Successful - Sun Apr 19 17:37:55 2026       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; Recop_Project                               ;
 ; Top-level Entity Name              ; recop_top                                   ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 978                                         ;
-;     Total combinational functions  ; 706                                         ;
-;     Dedicated logic registers      ; 343                                         ;
-; Total registers                    ; 343                                         ;
+; Total logic elements               ; 982                                         ;
+;     Total combinational functions  ; 709                                         ;
+;     Dedicated logic registers      ; 344                                         ;
+; Total registers                    ; 344                                         ;
 ; Total pins                         ; 72                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 131,072                                     ;
@@ -214,20 +214,20 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 978       ;
+; Estimated Total logic elements              ; 982       ;
 ;                                             ;           ;
-; Total combinational functions               ; 706       ;
+; Total combinational functions               ; 709       ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 487       ;
-;     -- 3 input functions                    ; 174       ;
-;     -- <=2 input functions                  ; 45        ;
+;     -- 4 input functions                    ; 507       ;
+;     -- 3 input functions                    ; 161       ;
+;     -- <=2 input functions                  ; 41        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 660       ;
+;     -- normal mode                          ; 663       ;
 ;     -- arithmetic mode                      ; 46        ;
 ;                                             ;           ;
-; Total registers                             ; 343       ;
-;     -- Dedicated logic registers            ; 343       ;
+; Total registers                             ; 344       ;
+;     -- Dedicated logic registers            ; 344       ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 72        ;
@@ -236,9 +236,9 @@ refer to the applicable agreement for further details.
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 391       ;
-; Total fan-out                               ; 4686      ;
-; Average fan-out                             ; 3.78      ;
+; Maximum fan-out                             ; 392       ;
+; Total fan-out                               ; 4723      ;
+; Average fan-out                             ; 3.79      ;
 +---------------------------------------------+-----------+
 
 
@@ -247,19 +247,19 @@ refer to the applicable agreement for further details.
 +----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
 ; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                             ; Entity Name              ; Library Name ;
 +----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
-; |recop_top                                   ; 706 (19)            ; 343 (0)                   ; 131072      ; 0            ; 0       ; 0         ; 72   ; 0            ; |recop_top                                                                                                      ; recop_top                ; work         ;
-;    |execute:u_execute|                       ; 176 (72)            ; 1 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |recop_top|execute:u_execute                                                                                    ; execute                  ; work         ;
-;       |alu:u_alu|                            ; 104 (104)           ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |recop_top|execute:u_execute|alu:u_alu                                                                          ; alu                      ; work         ;
+; |recop_top                                   ; 709 (20)            ; 344 (0)                   ; 131072      ; 0            ; 0       ; 0         ; 72   ; 0            ; |recop_top                                                                                                      ; recop_top                ; work         ;
+;    |execute:u_execute|                       ; 179 (72)            ; 1 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |recop_top|execute:u_execute                                                                                    ; execute                  ; work         ;
+;       |alu:u_alu|                            ; 107 (107)           ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |recop_top|execute:u_execute|alu:u_alu                                                                          ; alu                      ; work         ;
 ;       |data_memory_ip:u_dm|                  ; 0 (0)               ; 0 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |recop_top|execute:u_execute|data_memory_ip:u_dm                                                                ; data_memory_ip           ; work         ;
 ;          |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |recop_top|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component                                ; altsyncram               ; work         ;
 ;             |altsyncram_qso3:auto_generated| ; 0 (0)               ; 0 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |recop_top|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component|altsyncram_qso3:auto_generated ; altsyncram_qso3          ; work         ;
 ;    |instruction_memory_ip:u_im_ip|           ; 0 (0)               ; 0 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |recop_top|instruction_memory_ip:u_im_ip                                                                        ; instruction_memory_ip    ; work         ;
 ;       |altsyncram:altsyncram_component|      ; 0 (0)               ; 0 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |recop_top|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component                                        ; altsyncram               ; work         ;
 ;          |altsyncram_j4s3:auto_generated|    ; 0 (0)               ; 0 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |recop_top|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component|altsyncram_j4s3:auto_generated         ; altsyncram_j4s3          ; work         ;
-;    |multicycle_moore_machine:u_cu|           ; 76 (76)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |recop_top|multicycle_moore_machine:u_cu                                                                        ; multicycle_moore_machine ; work         ;
+;    |multicycle_moore_machine:u_cu|           ; 72 (72)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |recop_top|multicycle_moore_machine:u_cu                                                                        ; multicycle_moore_machine ; work         ;
 ;    |program_counter:u_pc|                    ; 16 (16)             ; 16 (16)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |recop_top|program_counter:u_pc                                                                                 ; program_counter          ; work         ;
-;    |regfile:u_regfile|                       ; 403 (403)           ; 256 (256)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |recop_top|regfile:u_regfile                                                                                    ; regfile                  ; work         ;
-;    |registers:u_registers|                   ; 16 (16)             ; 64 (64)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |recop_top|registers:u_registers                                                                                ; registers                ; work         ;
+;    |regfile:u_regfile|                       ; 406 (406)           ; 256 (256)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |recop_top|regfile:u_regfile                                                                                    ; regfile                  ; work         ;
+;    |registers:u_registers|                   ; 16 (16)             ; 65 (65)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |recop_top|registers:u_registers                                                                                ; registers                ; work         ;
 +----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -299,29 +299,13 @@ Encoding Type:  One-Hot
 +-------------------+-------------------+-------------------+------------------+-----------------+----------------+---------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                                                    ;
-+----------------------------------------------------+------------------------------------------+------------------------+
-; Latch Name                                         ; Latch Enable Signal                      ; Free of Timing Hazards ;
-+----------------------------------------------------+------------------------------------------+------------------------+
-; multicycle_moore_machine:u_cu|alu_operation[0]     ; multicycle_moore_machine:u_cu|Selector10 ; yes                    ;
-; multicycle_moore_machine:u_cu|alu_op1_sel[0]       ; multicycle_moore_machine:u_cu|Selector10 ; yes                    ;
-; multicycle_moore_machine:u_cu|alu_op2_sel          ; multicycle_moore_machine:u_cu|Selector10 ; yes                    ;
-; multicycle_moore_machine:u_cu|alu_operation[1]     ; multicycle_moore_machine:u_cu|Selector10 ; yes                    ;
-; multicycle_moore_machine:u_cu|alu_operation[2]     ; multicycle_moore_machine:u_cu|Selector10 ; yes                    ;
-; Number of user-specified and inferred latches = 5  ;                                          ;                        ;
-+----------------------------------------------------+------------------------------------------+------------------------+
-Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
-
-
 +-------------------------------------------------------------------------------------+
 ; Registers Removed During Synthesis                                                  ;
 +---------------------------------------+---------------------------------------------+
 ; Register name                         ; Reason for Removal                          ;
 +---------------------------------------+---------------------------------------------+
 ; registers:u_registers|dprr[0]         ; Stuck at GND due to stuck port clock_enable ;
-; registers:u_registers|dprr[1]         ; Stuck at VCC due to stuck port data_in      ;
-; Total Number of Removed Registers = 2 ;                                             ;
+; Total Number of Removed Registers = 1 ;                                             ;
 +---------------------------------------+---------------------------------------------+
 
 
@@ -330,14 +314,24 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 343   ;
+; Total registers                              ; 344   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 16    ;
-; Number of registers using Asynchronous Clear ; 343   ;
+; Number of registers using Asynchronous Clear ; 344   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 320   ;
+; Number of registers using Clock Enable       ; 321   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; registers:u_registers|dprr[1]          ; 1       ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -345,16 +339,16 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |recop_top|program_counter:u_pc|current_pc[9]            ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |recop_top|program_counter:u_pc|current_pc[2]            ;
 ; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |recop_top|multicycle_moore_machine:u_cu|rf_input_sel[0] ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |recop_top|execute:u_execute|alu:u_alu|Mux14             ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |recop_top|execute:u_execute|Mux24                       ;
-; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |recop_top|execute:u_execute|Mux8                        ;
-; 8:1                ; 16 bits   ; 80 LEs        ; 32 LEs               ; 48 LEs                 ; No         ; |recop_top|execute:u_execute|alu:u_alu|Mux29             ;
-; 16:1               ; 16 bits   ; 160 LEs       ; 160 LEs              ; 0 LEs                  ; No         ; |recop_top|regfile:u_regfile|Mux20                       ;
-; 16:1               ; 16 bits   ; 160 LEs       ; 160 LEs              ; 0 LEs                  ; No         ; |recop_top|regfile:u_regfile|Mux43                       ;
-; 9:1                ; 16 bits   ; 96 LEs        ; 64 LEs               ; 32 LEs                 ; No         ; |recop_top|regfile:u_regfile|Mux1                        ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; No         ; |recop_top|multicycle_moore_machine:u_cu|Mux46           ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |recop_top|execute:u_execute|Mux27                       ;
+; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |recop_top|execute:u_execute|Mux9                        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |recop_top|multicycle_moore_machine:u_cu|alu_op1_sel[0]  ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |recop_top|multicycle_moore_machine:u_cu|irq_clr         ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 32 LEs               ; 48 LEs                 ; No         ; |recop_top|execute:u_execute|alu:u_alu|Mux31             ;
+; 16:1               ; 16 bits   ; 160 LEs       ; 160 LEs              ; 0 LEs                  ; No         ; |recop_top|regfile:u_regfile|Mux28                       ;
+; 16:1               ; 16 bits   ; 160 LEs       ; 160 LEs              ; 0 LEs                  ; No         ; |recop_top|regfile:u_regfile|Mux40                       ;
+; 9:1                ; 16 bits   ; 96 LEs        ; 64 LEs               ; 32 LEs                 ; No         ; |recop_top|regfile:u_regfile|Mux0                        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
 
 
@@ -566,24 +560,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 72                          ;
-; cycloneiii_ff         ; 343                         ;
+; cycloneiii_ff         ; 344                         ;
 ;     CLR               ; 23                          ;
-;     ENA CLR           ; 304                         ;
+;     ENA CLR           ; 305                         ;
 ;     ENA CLR SLD       ; 16                          ;
-; cycloneiii_lcell_comb ; 710                         ;
+; cycloneiii_lcell_comb ; 713                         ;
 ;     arith             ; 46                          ;
-;         2 data inputs ; 16                          ;
-;         3 data inputs ; 30                          ;
-;     normal            ; 664                         ;
-;         0 data inputs ; 2                           ;
-;         1 data inputs ; 4                           ;
-;         2 data inputs ; 27                          ;
-;         3 data inputs ; 144                         ;
-;         4 data inputs ; 487                         ;
+;         2 data inputs ; 15                          ;
+;         3 data inputs ; 31                          ;
+;     normal            ; 667                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 5                           ;
+;         2 data inputs ; 24                          ;
+;         3 data inputs ; 130                         ;
+;         4 data inputs ; 507                         ;
 ; cycloneiii_ram_block  ; 48                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 12.50                       ;
-; Average LUT depth     ; 8.98                        ;
+; Average LUT depth     ; 8.82                        ;
 +-----------------------+-----------------------------+
 
 
@@ -592,7 +586,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:02     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -602,15 +596,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Apr 18 20:34:56 2026
+    Info: Processing started: Sun Apr 19 17:37:45 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Recop_Project -c Recop_Project
 Warning (125092): Tcl Script File Selected VHDL source design files/instructin_memory_ip.qip not found
     Info (125063): set_global_assignment -name QIP_FILE "Selected VHDL source design files/instructin_memory_ip.qip"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/instruction_memory_comb.vhd
-    Info (12022): Found design unit 1: instruction_memory_comb-beh File: C:/HDL/701/recop/Selected VHDL source design files/instruction_memory_comb.vhd Line: 14
-    Info (12023): Found entity 1: instruction_memory_comb File: C:/HDL/701/recop/Selected VHDL source design files/instruction_memory_comb.vhd Line: 7
+    Info (12022): Found design unit 1: instruction_memory_comb-beh File: C:/HDL/701/recop/Selected VHDL source design files/instruction_memory_comb.vhd Line: 17
+    Info (12023): Found entity 1: instruction_memory_comb File: C:/HDL/701/recop/Selected VHDL source design files/instruction_memory_comb.vhd Line: 10
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/multicycle_moore_machine.vhd
     Info (12022): Found design unit 1: multicycle_moore_machine-beh File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 56
     Info (12023): Found entity 1: multicycle_moore_machine File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 9
@@ -655,8 +649,8 @@ Info (12021): Found 2 design units, including 1 entities, in source file selecte
     Info (12022): Found design unit 1: Fetch-beh File: C:/HDL/701/recop/Selected VHDL source design files/fetch.vhd Line: 23
     Info (12023): Found entity 1: Fetch File: C:/HDL/701/recop/Selected VHDL source design files/fetch.vhd Line: 9
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/execute.vhd
-    Info (12022): Found design unit 1: execute-beh File: C:/HDL/701/recop/Selected VHDL source design files/execute.vhd Line: 38
-    Info (12023): Found entity 1: execute File: C:/HDL/701/recop/Selected VHDL source design files/execute.vhd Line: 9
+    Info (12022): Found design unit 1: execute-beh File: C:/HDL/701/recop/Selected VHDL source design files/execute.vhd Line: 31
+    Info (12023): Found entity 1: execute File: C:/HDL/701/recop/Selected VHDL source design files/execute.vhd Line: 8
 Info (12021): Found 2 design units, including 1 entities, in source file selected vhdl source design files/decode.vhd
     Info (12022): Found design unit 1: DecodeandWriteback-beh File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 61
     Info (12023): Found entity 1: DecodeandWriteback File: C:/HDL/701/recop/Selected VHDL source design files/decode.vhd Line: 8
@@ -682,15 +676,6 @@ Warning (10036): Verilog HDL or VHDL warning at recop_top.vhd(77): object "svop"
 Info (12128): Elaborating entity "multicycle_moore_machine" for hierarchy "multicycle_moore_machine:u_cu" File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 87
 Warning (10492): VHDL Process Statement warning at multicycle_moore_machine.vhd(244): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 244
 Warning (10492): VHDL Process Statement warning at multicycle_moore_machine.vhd(247): signal "init" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 247
-Warning (10631): VHDL Process Statement warning at multicycle_moore_machine.vhd(204): inferring latch(es) for signal or variable "alu_operation", which holds its previous value in one or more paths through the process File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
-Warning (10631): VHDL Process Statement warning at multicycle_moore_machine.vhd(204): inferring latch(es) for signal or variable "alu_op1_sel", which holds its previous value in one or more paths through the process File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
-Warning (10631): VHDL Process Statement warning at multicycle_moore_machine.vhd(204): inferring latch(es) for signal or variable "alu_op2_sel", which holds its previous value in one or more paths through the process File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
-Info (10041): Inferred latch for "alu_op2_sel" at multicycle_moore_machine.vhd(204) File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
-Info (10041): Inferred latch for "alu_op1_sel[0]" at multicycle_moore_machine.vhd(204) File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
-Info (10041): Inferred latch for "alu_op1_sel[1]" at multicycle_moore_machine.vhd(204) File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
-Info (10041): Inferred latch for "alu_operation[0]" at multicycle_moore_machine.vhd(204) File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
-Info (10041): Inferred latch for "alu_operation[1]" at multicycle_moore_machine.vhd(204) File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
-Info (10041): Inferred latch for "alu_operation[2]" at multicycle_moore_machine.vhd(204) File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
 Info (12128): Elaborating entity "program_counter" for hierarchy "program_counter:u_pc" File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 144
 Warning (10492): VHDL Process Statement warning at program_counter.vhd(27): signal "init" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/HDL/701/recop/Selected VHDL source design files/program_counter.vhd Line: 27
 Info (12128): Elaborating entity "instruction_memory_ip" for hierarchy "instruction_memory_ip:u_im_ip" File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 155
@@ -752,9 +737,9 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alts
 Info (12128): Elaborating entity "altsyncram_j4s3" for hierarchy "instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component|altsyncram_j4s3:auto_generated" File: c:/hdl/quartu18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
 Info (12128): Elaborating entity "regfile" for hierarchy "regfile:u_regfile" File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 174
 Info (12128): Elaborating entity "execute" for hierarchy "execute:u_execute" File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 200
-Info (12128): Elaborating entity "alu" for hierarchy "execute:u_execute|alu:u_alu" File: C:/HDL/701/recop/Selected VHDL source design files/execute.vhd Line: 51
+Info (12128): Elaborating entity "alu" for hierarchy "execute:u_execute|alu:u_alu" File: C:/HDL/701/recop/Selected VHDL source design files/execute.vhd Line: 39
 Warning (10492): VHDL Process Statement warning at ALU.vhd(88): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/HDL/701/recop/Selected VHDL source design files/ALU.vhd Line: 88
-Info (12128): Elaborating entity "data_memory_ip" for hierarchy "execute:u_execute|data_memory_ip:u_dm" File: C:/HDL/701/recop/Selected VHDL source design files/execute.vhd Line: 88
+Info (12128): Elaborating entity "data_memory_ip" for hierarchy "execute:u_execute|data_memory_ip:u_dm" File: C:/HDL/701/recop/Selected VHDL source design files/execute.vhd Line: 61
 Info (12128): Elaborating entity "altsyncram" for hierarchy "execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component" File: C:/HDL/701/recop/Selected VHDL source design files/data_memory_ip.vhd Line: 61
 Info (12130): Elaborated megafunction instantiation "execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component" File: C:/HDL/701/recop/Selected VHDL source design files/data_memory_ip.vhd Line: 61
 Info (12133): Instantiated megafunction "execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component" with the following parameter: File: C:/HDL/701/recop/Selected VHDL source design files/data_memory_ip.vhd Line: 61
@@ -812,31 +797,22 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alts
     Info (12023): Found entity 1: altsyncram_qso3 File: C:/HDL/701/recop/db/altsyncram_qso3.tdf Line: 27
 Info (12128): Elaborating entity "altsyncram_qso3" for hierarchy "execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component|altsyncram_qso3:auto_generated" File: c:/hdl/quartu18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
 Info (12128): Elaborating entity "registers" for hierarchy "registers:u_registers" File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 225
-Warning (13012): Latch multicycle_moore_machine:u_cu|alu_operation[0] has unsafe behavior File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicycle_moore_machine:u_cu|state.S_EXECUTE File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 67
-Warning (13012): Latch multicycle_moore_machine:u_cu|alu_op1_sel[0] has unsafe behavior File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component|altsyncram_j4s3:auto_generated|q_a[31] File: C:/HDL/701/recop/db/altsyncram_j4s3.tdf Line: 31
-Warning (13012): Latch multicycle_moore_machine:u_cu|alu_op2_sel has unsafe behavior File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 42
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component|altsyncram_j4s3:auto_generated|q_a[31] File: C:/HDL/701/recop/db/altsyncram_j4s3.tdf Line: 31
-Warning (13012): Latch multicycle_moore_machine:u_cu|alu_operation[1] has unsafe behavior File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicycle_moore_machine:u_cu|state.S_EXECUTE File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 67
-Warning (13012): Latch multicycle_moore_machine:u_cu|alu_operation[2] has unsafe behavior File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 204
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal multicycle_moore_machine:u_cu|state.S_EXECUTE File: C:/HDL/701/recop/Selected VHDL source design files/multicycle_moore_machine.vhd Line: 67
+Info (13000): Registers with preset signals will power-up high File: C:/HDL/701/recop/Selected VHDL source design files/registers.vhd Line: 152
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "dprr[0]" is stuck at GND File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 17
-    Warning (13410): Pin "dprr[1]" is stuck at VCC File: C:/HDL/701/recop/Selected VHDL source design files/recop_top.vhd Line: 17
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1130 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1134 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 19 input pins
     Info (21059): Implemented 53 output pins
-    Info (21061): Implemented 1010 logic cells
+    Info (21061): Implemented 1014 logic cells
     Info (21064): Implemented 48 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 26 warnings
-    Info: Peak virtual memory: 4828 megabytes
-    Info: Processing ended: Sat Apr 18 20:35:08 2026
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:20
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 12 warnings
+    Info: Peak virtual memory: 4824 megabytes
+    Info: Processing ended: Sun Apr 19 17:37:55 2026
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:17
 
 

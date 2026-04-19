@@ -58,7 +58,7 @@ begin
                        pc_in      when dm_data_from_pc,
                        x"0000"    when others;
 
-    u_dm : entity work.sim_dm
+    u_dm : entity work.data_memory_ip
         port map (
             address => dm_address_int(11 downto 0),
             clock => clk, data => dm_data_int,
