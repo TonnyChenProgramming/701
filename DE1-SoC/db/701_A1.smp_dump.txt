@@ -1,0 +1,9 @@
+
+State Machine - |recop_top|multicycle_moore_machine:u_cu|state
+Name state.S_WRITEBACK state.S_MEM_WRITE state.S_MEM_READ state.S_EXECUTE state.S_DECODE state.S_FETCH 
+state.S_FETCH 0 0 0 0 0 0 
+state.S_DECODE 0 0 0 0 1 1 
+state.S_EXECUTE 0 0 0 1 0 1 
+state.S_MEM_READ 0 0 1 0 0 1 
+state.S_MEM_WRITE 0 1 0 0 0 1 
+state.S_WRITEBACK 1 0 0 0 0 1 

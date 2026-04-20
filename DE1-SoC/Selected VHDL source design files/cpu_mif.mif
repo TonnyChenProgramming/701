@@ -1,0 +1,30 @@
+-- Instruction format: AM(2) | OP(6) | Rz(4) | Rx(4) | Operand(16)
+
+DEPTH = 512;
+WIDTH = 32;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+
+CONTENT BEGIN
+    000 : 40000000;  -- LDR R0 #0      ; accumulator = 0
+    001 : 4010000A;  -- LDR R1 #10     ; loop counter = 10
+    002 : 40200001;  -- LDR R2 #1      ; step = 1
+    003 : F8020000;  -- ADD R0 R0 R2   ; accumulate
+    004 : 43110001;  -- SUBV R1 R1 #1  ; R1 = R1 - 1
+    005 : 54000007;  -- SZ  #7        ; if Z=1 jump to EXIT (addr 7)
+    006 : 58000003;  -- JMP #LOOP_TOP  ; back to loop
+    007 : FB000000;  -- SSVOP R0       ; display R0 on 7-seg
+    008 : FA000000;  -- SSOP  R0       ; drive LEDs with R0
+    009 : 482000FF;  -- AND R2 R0 #0x00FF
+    00A : 4C22AA00;  -- OR  R2 R2 #0xAA00
+    00B : 5E201234;  -- MAX R2 #0x1234
+    00C : 42200000;  -- STR R2 #0      ; M[R2] = 0 (store immediate to M[Rz])
+    00D : 40300000;  -- LDR R3 #0      ; R3 = 0  (DM address)
+    00E : C2300000;  -- STR R3 R0      ; M[R3] <- R0
+    00F : 80400000;  -- LDR R4 $0      ; R4 = M[0]  (direct)
+    010 : 69000001;  -- DATACALL R0 #0x0001 ; send to ASP port 0
+    011 : 10000000;  -- CLFZ           ; clear Z flag
+    012 : 34000000;  -- NOOP
+    013 : 58000013;  -- JMP #HALT      ; infinite loop (halt)
+    [014..1FF] : 34000000;  -- NOOP padding
+END;

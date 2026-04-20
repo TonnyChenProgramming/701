@@ -1,0 +1,46 @@
+--fetch includes program counter, instruction memory
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+use work.recop_types.all;
+use work.various_constants.all;
+
+entity Fetch is
+    port(
+        clk : in bit_1;
+        init : in bit_1;
+        reset : in bit_1;
+
+        zero_flag : in bit_1;
+        pc_from_rx : in bit_16;
+        pc_from_operand : in bit_16;
+        
+        instruction : out bit_32
+    );
+end Fetch;
+
+architecture beh of Fetch is
+    -- fetch internal signals
+	 signal pc_write		: bit_1;
+    signal current_pc   : bit_16;
+    signal pc_plus_1    : bit_16;
+begin
+    pc_plus_1 <= std_logic_vector(unsigned(current_pc) + 1);
+	 pc_write <= '1';
+    u_pc : entity work.program_counter
+    port map (
+        clk => clk,
+        init => init, 
+        reset => reset,
+		  pc_write => pc_write,
+        next_pc => pc_plus_1,
+        current_pc => current_pc
+    );
+    u_im_ip : entity work.instruction_memory_ip
+    port map (
+        address => current_pc(10 downto 0),
+        clock => clk,
+        q => instruction
+    );
+end beh;
