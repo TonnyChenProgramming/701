@@ -62,7 +62,7 @@ BEGIN
 		clock_enable_input_a => "BYPASS",
 		clock_enable_output_a => "BYPASS",
 		init_file => "./Selected VHDL source design files/cpu_mif.mif",
-		intended_device_family => "Cyclone IV E",
+		intended_device_family => "Cyclone V",
 		lpm_hint => "ENABLE_RUNTIME_MOD=NO",
 		lpm_type => "altsyncram",
 		numwords_a => 512,

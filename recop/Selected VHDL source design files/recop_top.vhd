@@ -12,7 +12,7 @@ entity recop_top is
         reset : in bit_1;
         sip   : in bit_16;
 
-        current_state_output : out bit_3;
+        debug_state : out bit_3;
 
         dprr  : out bit_2;
         dpcr  : out bit_32;
@@ -96,7 +96,7 @@ begin
             z_flag       => z_flag,
 
             --outputs
-            state_bits  => current_state_output,
+            state_bits  => debug_state,
             ld_r         => ld_r,	-- multicycle fsm related
             rf_input_sel => rf_input_sel,
             dprr_wren    => dprr_wren,
