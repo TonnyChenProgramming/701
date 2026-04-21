@@ -22,7 +22,7 @@ VOHhhaP]mKmHL9;HL[_0QJ3
 Z12 OV;C;10.1d;51
 32
 !i10b 1
-Z13 !s108 1776744526.032000
+Z13 !s108 1776746214.021000
 Z14 !s90 -reportprogress|300|ALU.vhd|data_memory_ip.vhd|execute.vhd|instruction_memory_ip.vhd|multicycle_moore_machine.vhd|opcodes.vhd|program_counter.vhd|recop_top.vhd|recop_top_tb.vhd|recop_top_v1.vhd|recop_types.vhd|regfile.vhd|registers.vhd|various_constants.vhd|
 Z15 !s107 various_constants.vhd|registers.vhd|regfile.vhd|recop_types.vhd|recop_top_v1.vhd|recop_top_tb.vhd|recop_top.vhd|program_counter.vhd|opcodes.vhd|multicycle_moore_machine.vhd|instruction_memory_ip.vhd|execute.vhd|data_memory_ip.vhd|ALU.vhd|
 o-O0
@@ -134,7 +134,7 @@ R15
 o-O0
 R16
 Einstruction_memory_ip
-Z34 w1776743058
+Z34 w1776746199
 R21
 R7
 R8
@@ -160,8 +160,8 @@ R8
 Z37 DEx4 work 21 instruction_memory_ip 0 22 1U6SXkha3kzHISf4hj<je1
 l56
 L52
-Z38 V]IPLTMLLN<1]HS]nT[9X<0
-Z39 !s100 L^Y7FWXH1DzaFRN:53R>Z2
+VP9R>WTOgD>c8lmI`mD0HL3
+!s100 iEiA@j<PgJW=ObMfBacEV0
 R12
 32
 !i10b 1
@@ -179,8 +179,8 @@ R28
 R7
 R8
 R9
-Z40 8multicycle_moore_machine.vhd
-Z41 Fmulticycle_moore_machine.vhd
+Z38 8multicycle_moore_machine.vhd
+Z39 Fmulticycle_moore_machine.vhd
 l0
 L9
 V2:i_E:Vlk3EKdDeamTKBQ2
@@ -200,11 +200,11 @@ R4
 R28
 R7
 R8
-Z42 DEx4 work 24 multicycle_moore_machine 0 22 2:i_E:Vlk3EKdDeamTKBQ2
+Z40 DEx4 work 24 multicycle_moore_machine 0 22 2:i_E:Vlk3EKdDeamTKBQ2
 l69
 L56
-Z43 V0`6R]1`A]SQlQnBlbA`3i3
-Z44 !s100 ]M;Wd3bQ8jaR7:ZV7=F6j1
+Z41 V0`6R]1`A]SQlQnBlbA`3i3
+Z42 !s100 ]M;Wd3bQ8jaR7:ZV7=F6j1
 R12
 32
 !i10b 1
@@ -241,8 +241,8 @@ R28
 R7
 R8
 R9
-Z45 8program_counter.vhd
-Z46 Fprogram_counter.vhd
+Z43 8program_counter.vhd
+Z44 Fprogram_counter.vhd
 l0
 L8
 V?V@;enmBd5mi<i>f4eD_E0
@@ -261,11 +261,11 @@ R4
 R28
 R7
 R8
-Z47 DEx4 work 15 program_counter 0 22 ?V@;enmBd5mi<i>f4eD_E0
+Z45 DEx4 work 15 program_counter 0 22 ?V@;enmBd5mi<i>f4eD_E0
 l21
 L20
-Z48 Vj7i1nc3o>em1DHidGE1j11
-Z49 !s100 Tl57_OedZWJ>bDWJILFBO2
+Z46 Vj7i1nc3o>em1DHidGE1j11
+Z47 !s100 Tl57_OedZWJ>bDWJILFBO2
 R12
 32
 !i10b 1
@@ -275,15 +275,15 @@ R15
 o-O0
 R16
 Erecop_top
-Z50 w1776741768
+Z48 w1776741768
 R2
 R4
 R28
 R7
 R8
 R9
-Z51 8recop_top.vhd
-Z52 Frecop_top.vhd
+Z49 8recop_top.vhd
+Z50 Frecop_top.vhd
 l0
 L47
 VmIAeFZfAU@jnP3h;WR:D<3
@@ -299,24 +299,24 @@ R16
 Abeh
 R5
 R6
-Z53 DEx4 work 9 registers 0 22 L_<^P9bS5W<A8FZ4ECXTe2
+Z51 DEx4 work 9 registers 0 22 L_<^P9bS5W<A8FZ4ECXTe2
 R31
-Z54 DEx4 work 7 regfile 0 22 X_TjnGQIY8=gmFAMIm22^0
+Z52 DEx4 work 7 regfile 0 22 X_TjnGQIY8=gmFAMIm22^0
 R21
 R37
-R47
+R45
 R3
-R42
+R40
 R2
 R4
 R28
 R7
 R8
-Z55 DEx4 work 9 recop_top 0 22 mIAeFZfAU@jnP3h;WR:D<3
+Z53 DEx4 work 9 recop_top 0 22 mIAeFZfAU@jnP3h;WR:D<3
 l206
 L75
-Z56 V;z5_e_[WXLLJL64MkSE9C3
-Z57 !s100 >8eRK:OBa`1NAK[UVOYFi2
+Z54 V;z5_e_[WXLLJL64MkSE9C3
+Z55 !s100 >8eRK:OBa`1NAK[UVOYFi2
 R12
 32
 !i10b 1
@@ -326,12 +326,12 @@ R15
 o-O0
 R16
 Erecop_top_tb
-Z58 w1776744474
+Z56 w1776744474
 R7
 R8
 R9
-Z59 8recop_top_tb.vhd
-Z60 Frecop_top_tb.vhd
+Z57 8recop_top_tb.vhd
+Z58 Frecop_top_tb.vhd
 l0
 L4
 V5mL;Xb]DR@<MFWe^h;`:?0
@@ -348,14 +348,14 @@ Asim
 R2
 R4
 R28
-Z61 DEx4 work 12 recop_top_v1 0 22 60aGD_cNAGGdNJkY4;:FE1
+Z59 DEx4 work 12 recop_top_v1 0 22 60aGD_cNAGGdNJkY4;:FE1
 R7
 R8
-DEx4 work 12 recop_top_tb 0 22 5mL;Xb]DR@<MFWe^h;`:?0
+Z60 DEx4 work 12 recop_top_tb 0 22 5mL;Xb]DR@<MFWe^h;`:?0
 l14
 L7
-VZDIUmn8SF0kCC56D@>X?12
-!s100 hJS6WN`J`Ma1=S9bI@P;91
+Z61 VZDIUmn8SF0kCC56D@>X?12
+Z62 !s100 hJS6WN`J`Ma1=S9bI@P;91
 R12
 32
 !i10b 1
@@ -365,15 +365,15 @@ R15
 o-O0
 R16
 Erecop_top_v1
-Z62 w1776742389
+Z63 w1776742389
 R2
 R4
 R28
 R7
 R8
 R9
-Z63 8recop_top_v1.vhd
-Z64 Frecop_top_v1.vhd
+Z64 8recop_top_v1.vhd
+Z65 Frecop_top_v1.vhd
 l0
 L8
 V60aGD_cNAGGdNJkY4;:FE1
@@ -389,24 +389,24 @@ R16
 Abeh
 R5
 R6
-R53
+R51
 R31
-R54
+R52
 R21
 R37
-R47
+R45
 R3
-R42
+R40
 R2
 R4
 R28
 R7
 R8
-R61
+R59
 l80
 L23
-Z65 VPhNl4b;:Xjh6;;cXD3f;R3
-Z66 !s100 T@TEfY:ak31NgoDf9=OYK1
+Z66 VPhNl4b;:Xjh6;;cXD3f;R3
+Z67 !s100 T@TEfY:ak31NgoDf9=OYK1
 R12
 32
 !i10b 1
@@ -442,8 +442,8 @@ R28
 R7
 R8
 R9
-Z67 8regfile.vhd
-Z68 Fregfile.vhd
+Z68 8regfile.vhd
+Z69 Fregfile.vhd
 l0
 L11
 VX_TjnGQIY8=gmFAMIm22^0
@@ -462,11 +462,11 @@ R4
 R28
 R7
 R8
-R54
+R52
 l45
 L41
-Z69 VazTfz6mgQ7fRO8bHlH^7P1
-Z70 !s100 e;c54R`bBV2b0:4[SaW^b3
+Z70 VazTfz6mgQ7fRO8bHlH^7P1
+Z71 !s100 e;c54R`bBV2b0:4[SaW^b3
 R12
 32
 !i10b 1
@@ -484,8 +484,8 @@ R6
 R7
 R8
 R9
-Z71 8registers.vhd
-Z72 Fregisters.vhd
+Z72 8registers.vhd
+Z73 Fregisters.vhd
 l0
 L12
 VL_<^P9bS5W<A8FZ4ECXTe2
@@ -505,11 +505,11 @@ R5
 R6
 R7
 R8
-R53
+R51
 l50
 L48
-Z73 V]k8SdZT29F1VDG<RiV>KI2
-Z74 !s100 :c6>@^G]O2ULj[?=OF2DV2
+Z74 V]k8SdZT29F1VDG<RiV>KI2
+Z75 !s100 :c6>@^G]O2ULj[?=OF2DV2
 R12
 32
 !i10b 1
