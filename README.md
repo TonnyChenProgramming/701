@@ -91,47 +91,150 @@ This repository contains the VHDL implementation of the ReCOP (Reconfigurable Co
 
 ---
 
-## Assembler (`recop/assembler/`)
+## 4. Assembler (`recop/assembler/`)
 
-A Python assembler that converts ReCOP assembly source (`.asm`) into Quartus Memory Initialisation Files (`.mif`) for loading into program memory.
+`recop_asm.py` is a two-pass Python assembler that translates ReCOP assembly source files (`.asm`) into Altera Memory Initialisation Files (`.mif`) for loading into the Program Memory ROM at synthesis time. It also produces a human-readable listing file (`.lst`) for verification.
 
-**Instruction encoding** (matches `opcodes.vhd`):
+### 4.1 Instruction Encoding
+
+Every ReCOP instruction is a fixed-width 32-bit word with the following field layout, which matches `opcodes.vhd` and `control_signal_generator.vhd` in the hardware:
 
 ```
-[AM:2][OP:6][Rz:4][Rx:4][OPERAND:16]   (32-bit instruction word)
+ 31  30  29       24  23    20  19    16  15              0
+┌────┬────┬──────────┬─────────┬─────────┬────────────────┐
+│ AM      │  OPCODE  │   Rz    │   Rx    │    OPERAND     │
+│  2 bits │  6 bits  │  4 bits │  4 bits │    16 bits     │
+└─────────┴──────────┴─────────┴─────────┴────────────────┘
 ```
 
 | Field | Bits | Description |
 |-------|------|-------------|
-| AM | 31–30 | Addressing mode: 00=inherent, 01=immediate, 10=direct, 11=register |
-| OP | 29–24 | Opcode (6 bits) |
-| Rz | 23–20 | Destination / source register address |
-| Rx | 19–16 | Source register address |
-| OPERAND | 15–0 | 16-bit immediate or direct address |
+| AM | 31–30 | Addressing mode (see §4.2) |
+| OP | 29–24 | 6-bit opcode |
+| Rz | 23–20 | Destination or primary source register (R0–R15) |
+| Rx | 19–16 | Secondary source register (R0–R15) |
+| OPERAND | 15–0 | 16-bit immediate value or direct memory address |
 
-**Usage:**
+> **Note:** This is the v2 encoding where AM occupies the two most-significant bits. The earlier v1 encoding placed AM in the low bits of the upper byte. The v2 layout lets the control unit extract AM without masking the opcode field.
+
+### 4.2 Addressing Modes
+
+| AM Code | Name | Meaning |
+|---------|------|---------|
+| `00` | Inherent | No explicit operand — operation uses implicit values or flags |
+| `01` | Immediate | OPERAND field holds a literal 16-bit value (`#value`) |
+| `10` | Direct | OPERAND field holds a 16-bit memory address (`$addr`) |
+| `11` | Register | Operand comes from register Rx; OPERAND field is unused |
+
+### 4.3 Full Opcode Table
+
+| Mnemonic | OP (binary) | Default AM | Syntax | Operation |
+|----------|-------------|------------|--------|-----------|
+| `LDR` | 000000 | IMM/DIR/REG | `LDR Rz #imm` / `LDR Rz $addr` / `LDR Rz Rx` | Rz ← imm / DM[addr] / Rx |
+| `STR` | 000010 | DIR/REG/IMM | `STR Rx $addr` / `STR Rz Rx` / `STR Rz #imm` | DM[addr] ← Rx / Rz ← Rx / Rz ← imm |
+| `SUBV` | 000011 | IMM/REG | `SUBV Rz Rx #imm` / `SUBV Rz Rx` | Rz ← Rx − imm / Rz ← Rz − Rx |
+| `SUB` | 000100 | IMM | `SUB Rz #imm` | Rz ← Rz − imm; sets Z flag |
+| `AND` | 001000 | IMM/REG | `AND Rz Rx #imm` / `AND Rz Rx` | Rz ← Rx AND imm / Rz AND Rx |
+| `OR` | 001100 | IMM/REG | `OR Rz Rx #imm` / `OR Rz Rx` | Rz ← Rx OR imm / Rz OR Rx |
+| `CLFZ` | 010000 | INH | `CLFZ` | Clear Z flag |
+| `SZ` | 010100 | IMM | `SZ label` | Branch to label if Z = 1 |
+| `JMP` | 011000 | IMM/REG | `JMP label` / `JMP Rx` | PC ← label / PC ← Rx |
+| `PRESENT` | 011100 | IMM | `PRESENT Rz label` | Branch to label; Rz ← return address |
+| `STRPC` | 011101 | DIR | `STRPC $addr` | DM[addr] ← PC |
+| `MAX` | 011110 | IMM | `MAX Rz #imm` | Rz ← max(Rz, imm) |
+| `ADD` | 111000 | IMM/REG | `ADD Rz Rx #imm` / `ADD Rz Rx` | Rz ← Rx + imm / Rz + Rx |
+| `DATACALL` | 101000 | REG | `DATACALL Rx` | DPCR ← {R7, Rx}; assert IRQ |
+| `DATACALL` | 101001 | IMM | `DATACALL Rx #val` | DPCR ← {Rx, val}; assert IRQ |
+| `SRES` | 101010 | REG | `SRES Rz` | Rz ← DPRR result register |
+| `NOOP` | 110100 | INH | `NOOP` | No operation |
+| `LER` | 110110 | DIR | `LER Rz` | Rz ← ER (End-Ready register) |
+| `LSIP` | 110111 | DIR | `LSIP Rz` | Rz ← SIP (Serial Input Port) |
+| `SSOP` | 111010 | DIR | `SSOP Rx` | SOP ← Rx |
+| `SSVOP` | 111011 | DIR | `SSVOP Rx` | SVOP ← Rx |
+| `CER` | 111100 | INH | `CER` | Clear ER flag |
+| `CEOT` | 111110 | INH | `CEOT` | Clear EOT flag |
+| `SEOT` | 111111 | INH | `SEOT` | Set EOT flag |
+
+> R0 is hardwired to zero in the register file — writes to R0 are discarded.
+
+### 4.4 Source File Syntax
+
+```
+[label[:]]  MNEMONIC  [operands]  [; comment]
+```
+
+| Token | Format | Examples |
+|-------|--------|---------|
+| Register | `R0`–`R15` (case-insensitive) | `R0`, `r15`, `R7` |
+| Immediate | `#<value>` | `#10`, `#0xFF`, `#0b1010`, `#0o17` |
+| Direct address | `$<value>` | `$0`, `$0x1FF` |
+| Label reference | bare name or `#name` | `LOOP`, `#LOOP` |
+
+**Directives:**
+
+| Directive | Syntax | Effect |
+|-----------|--------|--------|
+| `.ORG` | `.ORG <addr>` | Set the current program counter to `addr` |
+| `.EQU` | `.EQU <NAME> <value>` | Define a named constant (substituted at pass 2) |
+| `.WORD` | `.WORD <value>` | Insert a raw 32-bit word at the current PC |
+| `ENDPROG` / `END` | — | Stop assembling; remaining lines ignored |
+
+### 4.5 Two-Pass Operation
+
+**Pass 1 — Symbol collection:**
+The assembler scans every line, tracking the program counter. Any token that is not a recognised mnemonic or directive is treated as a label and stored in the symbol table with its current PC value. `.ORG` updates the PC; `.EQU` populates the equates table; `.WORD` and instruction lines advance the PC by one.
+
+**Pass 2 — Code generation:**
+Each instruction line is encoded into a 32-bit word using the `pack()` function:
+
+```python
+word = (am & 0x03) << 30 | (op & 0x3F) << 24 | (rz & 0x0F) << 20
+     | (rx & 0x0F) << 16 | (operand & 0xFFFF)
+```
+
+Label references and `.EQU` names are resolved against the tables built in pass 1. Numeric literals accept decimal, `0x` hex, `0b` binary, and `0o` octal. Forward references are handled correctly because symbol addresses are all known before pass 2 begins.
+
+### 4.6 Output Files
+
+**MIF file** — Altera Memory Initialisation File loaded into the `altsyncram` ROM at synthesis:
+- `DEPTH = 512`, `WIDTH = 32`, `ADDRESS_RADIX = HEX`, `DATA_RADIX = HEX`
+- Every address from `0x000` to `0x1FF` is written; locations with no instruction are filled with `0x34000000` (NOOP encoding)
+
+**Listing file** — Human-readable decode of every assembled instruction:
+```
+ADDR    HEX       AM  OPCODE    Rz   Rx   OPERAND    SOURCE
+0x0000  47800005  IMM ADD       R7   R0         5    ADD R7 R0 #5
+0x0001  8C070000  DIR LDR       R0   R0         0    LSIP R0
+```
+
+### 4.7 Usage
 
 ```bash
 cd recop/assembler
+
+# Basic — outputs example2.mif and example2.lst
 python recop_asm.py example2.asm
-# Outputs: example2.mif  (rename to program.mif before synthesis)
+
+# Custom output paths
+python recop_asm.py my_program.asm -o program.mif -l program.lst
+
+# Non-default PM depth
+python recop_asm.py my_program.asm --depth 256
 ```
 
-The MIF uses HEX radix and initialises unused locations with `0x34000000` (NOOP).
+Copy the output `.mif` into the Quartus project directory (renaming it to match the filename referenced in `instruction_memory_ip.vhd`) before running synthesis.
 
-**Test programs:**
+### 4.8 Test Programs
 
 | File | Description |
 |------|-------------|
-| `recop_asm.py` | Assembler v2 — produces `.mif` and listing output |
-| `example2.asm` | Example program exercising all 31 ISA instructions |
-| `pm_test.mif` | Pre-assembled MIF for `example2.asm` |
-| `alu_basic_test.asm` | Basic ALU operations test |
-| `full_test.asm` | Comprehensive ISA coverage test |
-| `exmaple_full_test.asm` | Extended full-system test |
-| `test_program.asm` | General test program |
-| `*.lst` | Assembler listing files (human-readable instruction decode) |
-| `*.mif` | Compiled memory initialisation files |
+| `example2.asm` | Exercises all 24 implemented instructions at least once |
+| `alu_basic_test.asm` | Focused ALU test: ADD, SUB, SUBV, AND, OR, MAX |
+| `full_test.asm` | Comprehensive regression: arithmetic, branches, memory, I/O |
+| `exmaple_full_test.asm` | Extended system-level test including DATACALL and SIP/SOP |
+| `test_program.asm` | General-purpose test program |
+| `pm_test.mif` | Pre-assembled MIF for `example2.asm` (ready to use without re-assembling) |
+| `*.lst` | Assembler listing files for each `.asm` — inspect expected register/memory state |
 
 ---
 
