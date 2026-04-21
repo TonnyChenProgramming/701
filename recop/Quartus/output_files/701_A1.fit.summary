@@ -1,12 +1,12 @@
-Fitter Status : Successful - Tue Apr 21 19:54:19 2026
+Fitter Status : Successful - Tue Apr 21 21:21:43 2026
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : 701_A1
 Top-level Entity Name : recop_de1_soc_test
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 355 / 32,070 ( 1 % )
-Total registers : 322
+Logic utilization (in ALMs) : 394 / 32,070 ( 1 % )
+Total registers : 347
 Total pins : 67 / 457 ( 15 % )
 Total virtual pins : 0
 Total block memory bits : 24,576 / 4,065,280 ( < 1 % )

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for 701_A1
-Tue Apr 21 19:53:49 2026
+Tue Apr 21 21:21:12 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -18,21 +18,22 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
  10. State Machine - |recop_de1_soc_test|recop_top_v1:u_recop|multicycle_moore_machine:u_cu|state
  11. Registers Removed During Synthesis
  12. General Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Source assignments for recop_top_v1:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component|altsyncram_4824:auto_generated
- 15. Source assignments for recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component|altsyncram_s3v3:auto_generated
- 16. Parameter Settings for User Entity Instance: PLL:u_pll|PLL_0002:pll_inst|altera_pll:altera_pll_i
- 17. Parameter Settings for User Entity Instance: recop_top_v1:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component
- 18. Parameter Settings for User Entity Instance: recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component
- 19. altsyncram Parameter Settings by Entity Instance
- 20. Port Connectivity Checks: "recop_top_v1:u_recop|registers:u_registers"
- 21. Port Connectivity Checks: "recop_top_v1:u_recop|execute:u_execute|alu:u_alu"
- 22. Port Connectivity Checks: "recop_top_v1:u_recop|regfile:u_regfile"
- 23. Port Connectivity Checks: "recop_top_v1:u_recop"
- 24. Port Connectivity Checks: "PLL:u_pll"
- 25. Post-Synthesis Netlist Statistics for Top Partition
- 26. Elapsed Time Per Partition
- 27. Analysis & Synthesis Messages
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for recop_top_v1:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component|altsyncram_4824:auto_generated
+ 16. Source assignments for recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component|altsyncram_s3v3:auto_generated
+ 17. Parameter Settings for User Entity Instance: PLL:u_pll|PLL_0002:pll_inst|altera_pll:altera_pll_i
+ 18. Parameter Settings for User Entity Instance: recop_top_v1:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component
+ 19. Parameter Settings for User Entity Instance: recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component
+ 20. altsyncram Parameter Settings by Entity Instance
+ 21. Port Connectivity Checks: "recop_top_v1:u_recop|registers:u_registers"
+ 22. Port Connectivity Checks: "recop_top_v1:u_recop|execute:u_execute|alu:u_alu"
+ 23. Port Connectivity Checks: "recop_top_v1:u_recop|regfile:u_regfile"
+ 24. Port Connectivity Checks: "recop_top_v1:u_recop"
+ 25. Port Connectivity Checks: "PLL:u_pll"
+ 26. Post-Synthesis Netlist Statistics for Top Partition
+ 27. Elapsed Time Per Partition
+ 28. Analysis & Synthesis Messages
 
 
 
@@ -58,13 +59,13 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Apr 21 19:53:49 2026       ;
+; Analysis & Synthesis Status     ; Successful - Tue Apr 21 21:21:12 2026       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; 701_A1                                      ;
 ; Top-level Entity Name           ; recop_de1_soc_test                          ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 314                                         ;
+; Total registers                 ; 341                                         ;
 ; Total pins                      ; 67                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 24,576                                      ;
@@ -184,40 +185,39 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                        ;
-+------------------------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path               ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                            ; Library ;
-+------------------------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------+---------+
-; ../RecopVHDL/Main/PLL.vhd                      ; yes             ; User Wizard-Generated File             ; C:/HDL/701/recop/RecopVHDL/Main/PLL.vhd                                 ;         ;
-; ../RecopVHDL/Main/PLL/PLL_0002.v               ; yes             ; User Verilog HDL File                  ; C:/HDL/701/recop/RecopVHDL/Main/PLL/PLL_0002.v                          ; PLL     ;
-; ../RecopVHDL/Main/recop_de1_soc_test.vhd       ; yes             ; User VHDL File                         ; C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd                  ;         ;
-; ../RecopVHDL/Main/registers.vhd                ; yes             ; User VHDL File                         ; C:/HDL/701/recop/RecopVHDL/Main/registers.vhd                           ;         ;
-; ../RecopVHDL/Main/regfile.vhd                  ; yes             ; User VHDL File                         ; C:/HDL/701/recop/RecopVHDL/Main/regfile.vhd                             ;         ;
-; ../RecopVHDL/Main/recop_types.vhd              ; yes             ; User VHDL File                         ; C:/HDL/701/recop/RecopVHDL/Main/recop_types.vhd                         ;         ;
-; ../RecopVHDL/Main/ALU.vhd                      ; yes             ; User VHDL File                         ; C:/HDL/701/recop/RecopVHDL/Main/ALU.vhd                                 ;         ;
-; ../RecopVHDL/Main/various_constants.vhd        ; yes             ; User VHDL File                         ; C:/HDL/701/recop/RecopVHDL/Main/various_constants.vhd                   ;         ;
-; ../RecopVHDL/Main/recop_top_v1.vhd             ; yes             ; User VHDL File                         ; C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd                        ;         ;
-; ../RecopVHDL/Main/program_counter.vhd          ; yes             ; User VHDL File                         ; C:/HDL/701/recop/RecopVHDL/Main/program_counter.vhd                     ;         ;
-; ../RecopVHDL/Main/opcodes.vhd                  ; yes             ; User VHDL File                         ; C:/HDL/701/recop/RecopVHDL/Main/opcodes.vhd                             ;         ;
-; ../RecopVHDL/Main/multicycle_moore_machine.vhd ; yes             ; User VHDL File                         ; C:/HDL/701/recop/RecopVHDL/Main/multicycle_moore_machine.vhd            ;         ;
-; ../RecopVHDL/Main/instruction_memory_ip.vhd    ; yes             ; User Wizard-Generated File             ; C:/HDL/701/recop/RecopVHDL/Main/instruction_memory_ip.vhd               ;         ;
-; ../RecopVHDL/Main/execute.vhd                  ; yes             ; User VHDL File                         ; C:/HDL/701/recop/RecopVHDL/Main/execute.vhd                             ;         ;
-; ../RecopVHDL/Main/data_memory_ip.vhd           ; yes             ; User Wizard-Generated File             ; C:/HDL/701/recop/RecopVHDL/Main/data_memory_ip.vhd                      ;         ;
-; altera_pll.v                                   ; yes             ; Megafunction                           ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/altera_pll.v          ;         ;
-; altsyncram.tdf                                 ; yes             ; Megafunction                           ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
-; stratix_ram_block.inc                          ; yes             ; Megafunction                           ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
-; lpm_mux.inc                                    ; yes             ; Megafunction                           ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
-; lpm_decode.inc                                 ; yes             ; Megafunction                           ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
-; aglobal181.inc                                 ; yes             ; Megafunction                           ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/aglobal181.inc        ;         ;
-; a_rdenreg.inc                                  ; yes             ; Megafunction                           ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
-; altrom.inc                                     ; yes             ; Megafunction                           ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
-; altram.inc                                     ; yes             ; Megafunction                           ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/altram.inc            ;         ;
-; altdpram.inc                                   ; yes             ; Megafunction                           ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
-; db/altsyncram_4824.tdf                         ; yes             ; Auto-Generated Megafunction            ; C:/HDL/701/recop/Quartus/db/altsyncram_4824.tdf                         ;         ;
-; ../RecopVHDL/Main/cpu_mif.mif                  ; yes             ; Auto-Found Memory Initialization File  ; C:/HDL/701/recop/RecopVHDL/Main/cpu_mif.mif                             ;         ;
-; db/altsyncram_s3v3.tdf                         ; yes             ; Auto-Generated Megafunction            ; C:/HDL/701/recop/Quartus/db/altsyncram_s3v3.tdf                         ;         ;
-+------------------------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                              ;
++------------------------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path               ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                            ; Library ;
++------------------------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
+; ../RecopVHDL/Main/PLL.vhd                      ; yes             ; User Wizard-Generated File   ; C:/HDL/701/recop/RecopVHDL/Main/PLL.vhd                                 ;         ;
+; ../RecopVHDL/Main/PLL/PLL_0002.v               ; yes             ; User Verilog HDL File        ; C:/HDL/701/recop/RecopVHDL/Main/PLL/PLL_0002.v                          ; PLL     ;
+; ../RecopVHDL/Main/recop_de1_soc_test.vhd       ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd                  ;         ;
+; ../RecopVHDL/Main/registers.vhd                ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/registers.vhd                           ;         ;
+; ../RecopVHDL/Main/regfile.vhd                  ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/regfile.vhd                             ;         ;
+; ../RecopVHDL/Main/recop_types.vhd              ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/recop_types.vhd                         ;         ;
+; ../RecopVHDL/Main/ALU.vhd                      ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/ALU.vhd                                 ;         ;
+; ../RecopVHDL/Main/various_constants.vhd        ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/various_constants.vhd                   ;         ;
+; ../RecopVHDL/Main/recop_top_v1.vhd             ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd                        ;         ;
+; ../RecopVHDL/Main/program_counter.vhd          ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/program_counter.vhd                     ;         ;
+; ../RecopVHDL/Main/opcodes.vhd                  ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/opcodes.vhd                             ;         ;
+; ../RecopVHDL/Main/multicycle_moore_machine.vhd ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/multicycle_moore_machine.vhd            ;         ;
+; ../RecopVHDL/Main/instruction_memory_ip.vhd    ; yes             ; User Wizard-Generated File   ; C:/HDL/701/recop/RecopVHDL/Main/instruction_memory_ip.vhd               ;         ;
+; ../RecopVHDL/Main/execute.vhd                  ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/execute.vhd                             ;         ;
+; ../RecopVHDL/Main/data_memory_ip.vhd           ; yes             ; User Wizard-Generated File   ; C:/HDL/701/recop/RecopVHDL/Main/data_memory_ip.vhd                      ;         ;
+; altera_pll.v                                   ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/altera_pll.v          ;         ;
+; altsyncram.tdf                                 ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc                          ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                                    ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                                 ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal181.inc                                 ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/aglobal181.inc        ;         ;
+; a_rdenreg.inc                                  ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                                     ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                                     ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                                   ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_4824.tdf                         ; yes             ; Auto-Generated Megafunction  ; C:/HDL/701/recop/Quartus/db/altsyncram_4824.tdf                         ;         ;
+; db/altsyncram_s3v3.tdf                         ; yes             ; Auto-Generated Megafunction  ; C:/HDL/701/recop/Quartus/db/altsyncram_s3v3.tdf                         ;         ;
++------------------------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
 
 
 +------------------------------------------------------------------------------------------------------------------+
@@ -225,16 +225,16 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+--------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                              ;
 +---------------------------------------------+--------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 376                                                                ;
+; Estimate of Logic utilization (ALMs needed) ; 415                                                                ;
 ;                                             ;                                                                    ;
-; Combinational ALUT usage for logic          ; 463                                                                ;
-;     -- 7 input functions                    ; 11                                                                 ;
-;     -- 6 input functions                    ; 250                                                                ;
-;     -- 5 input functions                    ; 61                                                                 ;
-;     -- 4 input functions                    ; 51                                                                 ;
-;     -- <=3 input functions                  ; 90                                                                 ;
+; Combinational ALUT usage for logic          ; 521                                                                ;
+;     -- 7 input functions                    ; 10                                                                 ;
+;     -- 6 input functions                    ; 254                                                                ;
+;     -- 5 input functions                    ; 65                                                                 ;
+;     -- 4 input functions                    ; 90                                                                 ;
+;     -- <=3 input functions                  ; 102                                                                ;
 ;                                             ;                                                                    ;
-; Dedicated logic registers                   ; 314                                                                ;
+; Dedicated logic registers                   ; 341                                                                ;
 ;                                             ;                                                                    ;
 ; I/O pins                                    ; 67                                                                 ;
 ; Total MLAB memory bits                      ; 0                                                                  ;
@@ -246,9 +246,9 @@ refer to the applicable agreement for further details.
 ;     -- PLLs                                 ; 1                                                                  ;
 ;                                             ;                                                                    ;
 ; Maximum fan-out node                        ; PLL:u_pll|PLL_0002:pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
-; Maximum fan-out                             ; 368                                                                ;
-; Total fan-out                               ; 4166                                                               ;
-; Average fan-out                             ; 4.34                                                               ;
+; Maximum fan-out                             ; 396                                                                ;
+; Total fan-out                               ; 4551                                                               ;
+; Average fan-out                             ; 4.36                                                               ;
 +---------------------------------------------+--------------------------------------------------------------------+
 
 
@@ -257,12 +257,12 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
 ; Compilation Hierarchy Node                      ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                           ; Entity Name              ; Library Name ;
 +-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
-; |recop_de1_soc_test                             ; 463 (1)             ; 314 (0)                   ; 24576             ; 0          ; 67   ; 0            ; |recop_de1_soc_test                                                                                                                           ; recop_de1_soc_test       ; work         ;
+; |recop_de1_soc_test                             ; 521 (48)            ; 341 (3)                   ; 24576             ; 0          ; 67   ; 0            ; |recop_de1_soc_test                                                                                                                           ; recop_de1_soc_test       ; work         ;
 ;    |PLL:u_pll|                                  ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |recop_de1_soc_test|PLL:u_pll                                                                                                                 ; PLL                      ; work         ;
 ;       |PLL_0002:pll_inst|                       ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |recop_de1_soc_test|PLL:u_pll|PLL_0002:pll_inst                                                                                               ; PLL_0002                 ; PLL          ;
 ;          |altera_pll:altera_pll_i|              ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |recop_de1_soc_test|PLL:u_pll|PLL_0002:pll_inst|altera_pll:altera_pll_i                                                                       ; altera_pll               ; work         ;
-;    |recop_top_v1:u_recop|                       ; 462 (32)            ; 314 (0)                   ; 24576             ; 0          ; 0    ; 0            ; |recop_de1_soc_test|recop_top_v1:u_recop                                                                                                      ; recop_top_v1             ; work         ;
-;       |execute:u_execute|                       ; 144 (49)            ; 17 (0)                    ; 8192              ; 0          ; 0    ; 0            ; |recop_de1_soc_test|recop_top_v1:u_recop|execute:u_execute                                                                                    ; execute                  ; work         ;
+;    |recop_top_v1:u_recop|                       ; 473 (32)            ; 338 (0)                   ; 24576             ; 0          ; 0    ; 0            ; |recop_de1_soc_test|recop_top_v1:u_recop                                                                                                      ; recop_top_v1             ; work         ;
+;       |execute:u_execute|                       ; 142 (47)            ; 17 (0)                    ; 8192              ; 0          ; 0    ; 0            ; |recop_de1_soc_test|recop_top_v1:u_recop|execute:u_execute                                                                                    ; execute                  ; work         ;
 ;          |alu:u_alu|                            ; 95 (95)             ; 17 (17)                   ; 0                 ; 0          ; 0    ; 0            ; |recop_de1_soc_test|recop_top_v1:u_recop|execute:u_execute|alu:u_alu                                                                          ; alu                      ; work         ;
 ;          |data_memory_ip:u_dm|                  ; 0 (0)               ; 0 (0)                     ; 8192              ; 0          ; 0    ; 0            ; |recop_de1_soc_test|recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm                                                                ; data_memory_ip           ; work         ;
 ;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 8192              ; 0          ; 0    ; 0            ; |recop_de1_soc_test|recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component                                ; altsyncram               ; work         ;
@@ -270,10 +270,10 @@ refer to the applicable agreement for further details.
 ;       |instruction_memory_ip:u_im_ip|           ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; |recop_de1_soc_test|recop_top_v1:u_recop|instruction_memory_ip:u_im_ip                                                                        ; instruction_memory_ip    ; work         ;
 ;          |altsyncram:altsyncram_component|      ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; |recop_de1_soc_test|recop_top_v1:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component                                        ; altsyncram               ; work         ;
 ;             |altsyncram_4824:auto_generated|    ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; |recop_de1_soc_test|recop_top_v1:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component|altsyncram_4824:auto_generated         ; altsyncram_4824          ; work         ;
-;       |multicycle_moore_machine:u_cu|           ; 56 (56)             ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |recop_de1_soc_test|recop_top_v1:u_recop|multicycle_moore_machine:u_cu                                                                        ; multicycle_moore_machine ; work         ;
+;       |multicycle_moore_machine:u_cu|           ; 66 (66)             ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |recop_de1_soc_test|recop_top_v1:u_recop|multicycle_moore_machine:u_cu                                                                        ; multicycle_moore_machine ; work         ;
 ;       |program_counter:u_pc|                    ; 1 (1)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |recop_de1_soc_test|recop_top_v1:u_recop|program_counter:u_pc                                                                                 ; program_counter          ; work         ;
-;       |regfile:u_regfile|                       ; 229 (229)           ; 256 (256)                 ; 0                 ; 0          ; 0    ; 0            ; |recop_de1_soc_test|recop_top_v1:u_recop|regfile:u_regfile                                                                                    ; regfile                  ; work         ;
-;       |registers:u_registers|                   ; 0 (0)               ; 19 (19)                   ; 0                 ; 0          ; 0    ; 0            ; |recop_de1_soc_test|recop_top_v1:u_recop|registers:u_registers                                                                                ; registers                ; work         ;
+;       |regfile:u_regfile|                       ; 231 (231)           ; 256 (256)                 ; 0                 ; 0          ; 0    ; 0            ; |recop_de1_soc_test|recop_top_v1:u_recop|regfile:u_regfile                                                                                    ; regfile                  ; work         ;
+;       |registers:u_registers|                   ; 1 (1)               ; 43 (43)                   ; 0                 ; 0          ; 0    ; 0            ; |recop_de1_soc_test|recop_top_v1:u_recop|registers:u_registers                                                                                ; registers                ; work         ;
 +-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -312,14 +312,15 @@ Encoding Type:  One-Hot
 +-------------------+-------------------+-------------------+------------------+-----------------+----------------+---------------+
 
 
-+---------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                ;
-+----------------------------------------------------------+----------------------------------------+
-; Register name                                            ; Reason for Removal                     ;
-+----------------------------------------------------------+----------------------------------------+
-; recop_top_v1:u_recop|registers:u_registers|sip_r[10..15] ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 6                    ;                                        ;
-+----------------------------------------------------------+----------------------------------------+
++--------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                     ;
++----------------------------------------------------------+---------------------------------------------+
+; Register name                                            ; Reason for Removal                          ;
++----------------------------------------------------------+---------------------------------------------+
+; recop_top_v1:u_recop|registers:u_registers|sip_r[10..15] ; Stuck at GND due to stuck port data_in      ;
+; recop_top_v1:u_recop|registers:u_registers|dprr[0]       ; Stuck at GND due to stuck port clock_enable ;
+; Total Number of Removed Registers = 7                    ;                                             ;
++----------------------------------------------------------+---------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -327,33 +328,47 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 314   ;
+; Total registers                              ; 341   ;
 ; Number of registers using Synchronous Clear  ; 16    ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 298   ;
+; Number of registers using Synchronous Load   ; 16    ;
+; Number of registers using Asynchronous Clear ; 325   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 297   ;
+; Number of registers using Clock Enable       ; 320   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                        ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                              ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------+
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |recop_de1_soc_test|recop_top_v1:u_recop|program_counter:u_pc|current_pc[6]             ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|multicycle_moore_machine:u_cu|rf_input_sel[0]  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|multicycle_moore_machine:u_cu|alu_op2_sel      ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|execute:u_execute|Mux9                         ;
-; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|execute:u_execute|Mux5                         ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|multicycle_moore_machine:u_cu|alu_operation[2] ;
-; 8:1                ; 16 bits   ; 80 LEs        ; 32 LEs               ; 48 LEs                 ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|execute:u_execute|alu:u_alu|Mux28              ;
-; 16:1               ; 16 bits   ; 160 LEs       ; 160 LEs              ; 0 LEs                  ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|regfile:u_regfile|Mux28                        ;
-; 16:1               ; 16 bits   ; 160 LEs       ; 160 LEs              ; 0 LEs                  ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|regfile:u_regfile|Mux40                        ;
-; 9:1                ; 6 bits    ; 36 LEs        ; 30 LEs               ; 6 LEs                  ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|regfile:u_regfile|Mux5                         ;
-; 9:1                ; 10 bits   ; 60 LEs        ; 40 LEs               ; 20 LEs                 ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|regfile:u_regfile|Mux13                        ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------+
++--------------------------------------------------------------+
+; Inverted Register Statistics                                 ;
++----------------------------------------------------+---------+
+; Inverted Register                                  ; Fan out ;
++----------------------------------------------------+---------+
+; recop_top_v1:u_recop|registers:u_registers|dprr[1] ; 3       ;
+; key2_prev                                          ; 2       ;
+; Total number of inverted registers = 2             ;         ;
++----------------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------+
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |recop_de1_soc_test|recop_top_v1:u_recop|program_counter:u_pc|current_pc[9]            ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |recop_de1_soc_test|Mux3                                                               ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |recop_de1_soc_test|Mux7                                                               ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |recop_de1_soc_test|Mux14                                                              ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|multicycle_moore_machine:u_cu|rf_input_sel[2] ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|multicycle_moore_machine:u_cu|alu_op1_sel[0]  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|execute:u_execute|Mux21                       ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|execute:u_execute|Mux1                        ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|multicycle_moore_machine:u_cu|irq_clr         ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 32 LEs               ; 48 LEs                 ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|execute:u_execute|alu:u_alu|Mux22             ;
+; 16:1               ; 16 bits   ; 160 LEs       ; 160 LEs              ; 0 LEs                  ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|regfile:u_regfile|Mux29                       ;
+; 16:1               ; 16 bits   ; 160 LEs       ; 160 LEs              ; 0 LEs                  ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|regfile:u_regfile|Mux39                       ;
+; 9:1                ; 6 bits    ; 36 LEs        ; 30 LEs               ; 6 LEs                  ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|regfile:u_regfile|Mux1                        ;
+; 9:1                ; 10 bits   ; 60 LEs        ; 40 LEs               ; 20 LEs                 ; No         ; |recop_de1_soc_test|recop_top_v1:u_recop|regfile:u_regfile|Mux14                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------+
@@ -805,17 +820,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 +--------------+-------+----------+----------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "recop_top_v1:u_recop"                                                                               ;
-+----------------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port                 ; Type   ; Severity ; Details                                                                             ;
-+----------------------+--------+----------+-------------------------------------------------------------------------------------+
-; sip[15..10]          ; Input  ; Info     ; Stuck at GND                                                                        ;
-; current_state_output ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; dprr                 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; dpcr                 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; sop[15..9]           ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+----------------------+--------+----------+-------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "recop_top_v1:u_recop"                                                                       ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; sip[15..10]  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; dpcr[31..16] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +----------------------------------------+
@@ -832,32 +844,33 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 314                         ;
-;     CLR               ; 17                          ;
+; arriav_ff             ; 341                         ;
+;     CLR               ; 21                          ;
 ;     ENA               ; 16                          ;
-;     ENA CLR           ; 265                         ;
+;     ENA CLR           ; 272                         ;
 ;     ENA CLR SCLR      ; 16                          ;
-; arriav_lcell_comb     ; 464                         ;
+;     ENA CLR SLD       ; 16                          ;
+; arriav_lcell_comb     ; 530                         ;
 ;     arith             ; 33                          ;
 ;         1 data inputs ; 16                          ;
 ;         3 data inputs ; 1                           ;
 ;         5 data inputs ; 16                          ;
-;     extend            ; 11                          ;
-;         7 data inputs ; 11                          ;
-;     normal            ; 420                         ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 1                           ;
-;         2 data inputs ; 17                          ;
-;         3 data inputs ; 55                          ;
-;         4 data inputs ; 51                          ;
-;         5 data inputs ; 45                          ;
-;         6 data inputs ; 250                         ;
+;     extend            ; 10                          ;
+;         7 data inputs ; 10                          ;
+;     normal            ; 487                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 9                           ;
+;         2 data inputs ; 22                          ;
+;         3 data inputs ; 61                          ;
+;         4 data inputs ; 90                          ;
+;         5 data inputs ; 49                          ;
+;         6 data inputs ; 254                         ;
 ; boundary_port         ; 67                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 48                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 7.50                        ;
-; Average LUT depth     ; 5.80                        ;
+; Average LUT depth     ; 5.61                        ;
 +-----------------------+-----------------------------+
 
 
@@ -876,7 +889,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Tue Apr 21 19:53:39 2026
+    Info: Processing started: Tue Apr 21 21:21:03 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off 701_A1 -c 701_A1
 Warning (125092): Tcl Script File data_memory_ip.qip not found
     Info (125063): set_global_assignment -name QIP_FILE data_memory_ip.qip
@@ -930,10 +943,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file /hdl/70
     Info (12022): Found design unit 1: data_memory_ip-SYN File: C:/HDL/701/recop/RecopVHDL/Main/data_memory_ip.vhd Line: 54
     Info (12023): Found entity 1: data_memory_ip File: C:/HDL/701/recop/RecopVHDL/Main/data_memory_ip.vhd Line: 42
 Info (12127): Elaborating entity "recop_de1_soc_test" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at recop_de1_soc_test.vhd(31): object "current_state" assigned a value but never read File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 31
-Warning (10036): Verilog HDL or VHDL warning at recop_de1_soc_test.vhd(32): object "dprr_r" assigned a value but never read File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 32
-Warning (10036): Verilog HDL or VHDL warning at recop_de1_soc_test.vhd(33): object "dpcr_r" assigned a value but never read File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 33
-Info (12128): Elaborating entity "PLL" for hierarchy "PLL:u_pll" File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 41
+Info (12128): Elaborating entity "PLL" for hierarchy "PLL:u_pll" File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 69
 Info (12128): Elaborating entity "PLL_0002" for hierarchy "PLL:u_pll|PLL_0002:pll_inst" File: C:/HDL/701/recop/RecopVHDL/Main/PLL.vhd Line: 32
 Info (12128): Elaborating entity "altera_pll" for hierarchy "PLL:u_pll|PLL_0002:pll_inst|altera_pll:altera_pll_i" File: C:/HDL/701/recop/RecopVHDL/Main/PLL/PLL_0002.v Line: 85
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus
@@ -999,7 +1009,7 @@ Info (12133): Instantiated megafunction "PLL:u_pll|PLL_0002:pll_inst|altera_pll:
     Info (12134): Parameter "duty_cycle17" = "50"
     Info (12134): Parameter "pll_type" = "General"
     Info (12134): Parameter "pll_subtype" = "General"
-Info (12128): Elaborating entity "recop_top_v1" for hierarchy "recop_top_v1:u_recop" File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 66
+Info (12128): Elaborating entity "recop_top_v1" for hierarchy "recop_top_v1:u_recop" File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 87
 Warning (10036): Verilog HDL or VHDL warning at recop_top_v1.vhd(75): object "er" assigned a value but never read File: C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 75
 Warning (10036): Verilog HDL or VHDL warning at recop_top_v1.vhd(76): object "eot" assigned a value but never read File: C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 76
 Warning (10036): Verilog HDL or VHDL warning at recop_top_v1.vhd(77): object "svop" assigned a value but never read File: C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 77
@@ -1065,8 +1075,6 @@ Info (12133): Instantiated megafunction "recop_top_v1:u_recop|instruction_memory
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_4824.tdf
     Info (12023): Found entity 1: altsyncram_4824 File: C:/HDL/701/recop/Quartus/db/altsyncram_4824.tdf Line: 27
 Info (12128): Elaborating entity "altsyncram_4824" for hierarchy "recop_top_v1:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component|altsyncram_4824:auto_generated" File: c:/hdl/quartu18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
-Warning (113028): 508 out of 512 addresses are uninitialized. The Quartus Prime software will initialize them to "0". There are 1 warnings found, and 1 warnings are reported. File: C:/HDL/701/recop/RecopVHDL/Main/cpu_mif.mif Line: 1
-    Warning (113027): Addresses ranging from 4 to 511 are not initialized File: C:/HDL/701/recop/RecopVHDL/Main/cpu_mif.mif Line: 1
 Info (12128): Elaborating entity "regfile" for hierarchy "recop_top_v1:u_recop|regfile:u_regfile" File: C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 169
 Info (12128): Elaborating entity "execute" for hierarchy "recop_top_v1:u_recop|execute:u_execute" File: C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 195
 Info (12128): Elaborating entity "alu" for hierarchy "recop_top_v1:u_recop|execute:u_execute|alu:u_alu" File: C:/HDL/701/recop/RecopVHDL/Main/execute.vhd Line: 39
@@ -1130,34 +1138,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alts
 Info (12128): Elaborating entity "altsyncram_s3v3" for hierarchy "recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component|altsyncram_s3v3:auto_generated" File: c:/hdl/quartu18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
 Info (12128): Elaborating entity "registers" for hierarchy "recop_top_v1:u_recop|registers:u_registers" File: C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 220
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "HEX0[0]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 14
-    Warning (13410): Pin "HEX0[1]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 14
-    Warning (13410): Pin "HEX0[2]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 14
-    Warning (13410): Pin "HEX0[3]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 14
-    Warning (13410): Pin "HEX0[4]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 14
-    Warning (13410): Pin "HEX0[5]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 14
-    Warning (13410): Pin "HEX0[6]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 14
-    Warning (13410): Pin "HEX1[0]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 15
-    Warning (13410): Pin "HEX1[1]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 15
-    Warning (13410): Pin "HEX1[2]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 15
-    Warning (13410): Pin "HEX1[3]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 15
-    Warning (13410): Pin "HEX1[4]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 15
-    Warning (13410): Pin "HEX1[5]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 15
-    Warning (13410): Pin "HEX1[6]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 15
-    Warning (13410): Pin "HEX2[0]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 16
-    Warning (13410): Pin "HEX2[1]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 16
-    Warning (13410): Pin "HEX2[2]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 16
-    Warning (13410): Pin "HEX2[3]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 16
-    Warning (13410): Pin "HEX2[4]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 16
-    Warning (13410): Pin "HEX2[5]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 16
-    Warning (13410): Pin "HEX2[6]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 16
-    Warning (13410): Pin "HEX3[0]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 17
-    Warning (13410): Pin "HEX3[1]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 17
-    Warning (13410): Pin "HEX3[2]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 17
-    Warning (13410): Pin "HEX3[3]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 17
-    Warning (13410): Pin "HEX3[4]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 17
-    Warning (13410): Pin "HEX3[5]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 17
-    Warning (13410): Pin "HEX3[6]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 17
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 12
     Warning (13410): Pin "HEX4[0]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 18
     Warning (13410): Pin "HEX4[1]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 18
     Warning (13410): Pin "HEX4[2]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 18
@@ -1177,19 +1158,18 @@ Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning: RST port on the PLL is not properly connected on instance PLL:u_pll|PLL_0002:pll_inst|altera_pll:altera_pll_i|general[0].gpll. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: c:/hdl/quartu18.1/quartus/libraries/megafunctions/altera_pll.v Line: 748
     Info: Must be connected
-Warning (21074): Design contains 2 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "KEY[2]" File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 9
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[3]" File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 9
-Info (21057): Implemented 854 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 935 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 52 output pins
-    Info (21061): Implemented 738 logic cells
+    Info (21061): Implemented 819 logic cells
     Info (21064): Implemented 48 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 61 warnings
-    Info: Peak virtual memory: 4892 megabytes
-    Info: Processing ended: Tue Apr 21 19:53:49 2026
-    Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:18
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 28 warnings
+    Info: Peak virtual memory: 4894 megabytes
+    Info: Processing ended: Tue Apr 21 21:21:12 2026
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:17
 
 
