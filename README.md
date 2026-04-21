@@ -1,6 +1,6 @@
 # COMPSYS 701 Group Project — ReCOP Reconfigurable Coprocessor
 
-**University of Auckland · COMPSYS 701 · Group 8 Project A**
+**University of Auckland · COMPSYS 701 · Group 6 Project A**
 
 This repository contains the VHDL implementation of the ReCOP (Reconfigurable Coprocessor) GP-1 targeting the DE2-115 (Cyclone IV E) FPGA board. It includes the full multicycle datapath, control signal generator, ALU, register file, memory IPs, a Python assembler, simulation testbenches, a synthesisable IP wrapper, and supporting documentation.
 
