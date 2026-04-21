@@ -1,8 +1,8 @@
 # COMPSYS 701 Group Project — ReCOP Reconfigurable Coprocessor
 
-**University of Auckland · COMPSYS 701 · Group 6 Project A**
+**University of Auckland · COMPSYS 701 · Group 6 **
 
-This repository contains the VHDL implementation of the ReCOP (Reconfigurable Coprocessor) GP-1 targeting the DE2-115 (Cyclone IV E) FPGA board. It includes the full multicycle datapath, control signal generator, ALU, register file, memory IPs, a Python assembler, simulation testbenches, a synthesisable IP wrapper, and supporting documentation.
+This repository contains the VHDL implementation of the ReCOP (Reconfigurable Coprocessor) GP-1 targeting the DE1-SoC (Cyclone V) FPGA board. It includes the full multicycle datapath, control signal generator, ALU, register file, memory IPs, a Python assembler, simulation testbenches, a synthesisable IP wrapper, and supporting documentation.
 
 ---
 
@@ -11,7 +11,7 @@ This repository contains the VHDL implementation of the ReCOP (Reconfigurable Co
 ```
 701/
 ├── 701_documentation/          Design documents, diagrams, and project specs
-├── recop/                      Quartus project root (DE2-115)
+├── recop/                      Quartus project root (DE1-SoC)
 │   ├── Recop_Project.qpf       Quartus project file
 │   ├── Recop_Project.qsf       Quartus settings (pin assignments, device)
 │   ├── Recop_Project.out.sdc   Timing constraints
