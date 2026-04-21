@@ -1,5 +1,5 @@
 Flow report for 701_A1
-Tue Apr 21 15:51:25 2026
+Tue Apr 21 18:47:26 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,16 +40,16 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Tue Apr 21 15:51:19 2026       ;
+; Flow Status                     ; Successful - Tue Apr 21 18:47:20 2026       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; 701_A1                                      ;
-; Top-level Entity Name           ; recop_top                                   ;
+; Top-level Entity Name           ; recop_de1_soc_test                          ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 406 / 32,070 ( 1 % )                        ;
-; Total registers                 ; 446                                         ;
-; Total pins                      ; 119 / 457 ( 26 % )                          ;
+; Logic utilization (in ALMs)     ; 362 / 32,070 ( 1 % )                        ;
+; Total registers                 ; 381                                         ;
+; Total pins                      ; 67 / 457 ( 15 % )                           ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 24,576 / 4,065,280 ( < 1 % )                ;
 ; Total DSP Blocks                ; 0 / 87 ( 0 % )                              ;
@@ -67,29 +67,29 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/21/2026 15:50:25 ;
+; Start date & time ; 04/21/2026 18:46:27 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; 701_A1              ;
 +-------------------+---------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                        ;
-+-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
-+-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 88974379506065.177674342523536         ; --            ; --          ; --         ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
-; MISC_FILE                           ; ../RecopVHDL/Main/data_memory_ip.cmp   ; --            ; --          ; --         ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; recop_top   ; Top        ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; recop_top   ; Top        ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; recop_top   ; Top        ;
-; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                    ; --            ; --          ; --         ;
-; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --         ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --          ; --         ;
-; TOP_LEVEL_ENTITY                    ; recop_top                              ; 701_A1        ; --          ; --         ;
-+-------------------------------------+----------------------------------------+---------------+-------------+------------+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                               ;
++-------------------------------------+----------------------------------------+---------------+--------------------+------------+
+; Assignment Name                     ; Value                                  ; Default Value ; Entity Name        ; Section Id ;
++-------------------------------------+----------------------------------------+---------------+--------------------+------------+
+; COMPILER_SIGNATURE_ID               ; 88974379506065.177675398714408         ; --            ; --                 ; --         ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --                 ; --         ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --                 ; --         ;
+; MISC_FILE                           ; ../RecopVHDL/Main/data_memory_ip.cmp   ; --            ; --                 ; --         ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; recop_de1_soc_test ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; recop_de1_soc_test ; Top        ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; recop_de1_soc_test ; Top        ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                    ; --            ; --                 ; --         ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --                 ; --         ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --                 ; --         ;
+; TOP_LEVEL_ENTITY                    ; recop_de1_soc_test                     ; 701_A1        ; --                 ; --         ;
++-------------------------------------+----------------------------------------+---------------+--------------------+------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -97,11 +97,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:09     ; 1.0                     ; 4893 MB             ; 00:00:16                           ;
-; Fitter               ; 00:00:37     ; 1.1                     ; 6689 MB             ; 00:01:29                           ;
+; Analysis & Synthesis ; 00:00:09     ; 1.0                     ; 4891 MB             ; 00:00:17                           ;
+; Fitter               ; 00:00:38     ; 1.1                     ; 6691 MB             ; 00:01:29                           ;
 ; Assembler            ; 00:00:05     ; 1.0                     ; 4849 MB             ; 00:00:05                           ;
-; Timing Analyzer      ; 00:00:05     ; 1.4                     ; 5195 MB             ; 00:00:07                           ;
-; Total                ; 00:00:56     ; --                      ; --                  ; 00:01:57                           ;
+; Timing Analyzer      ; 00:00:05     ; 1.4                     ; 5185 MB             ; 00:00:06                           ;
+; Total                ; 00:00:57     ; --                      ; --                  ; 00:01:57                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

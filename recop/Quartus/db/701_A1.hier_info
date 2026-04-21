@@ -1,171 +1,141 @@
-|recop_top
-CLOCK_50 => ir[0].CLK
-CLOCK_50 => ir[1].CLK
-CLOCK_50 => ir[2].CLK
-CLOCK_50 => ir[3].CLK
-CLOCK_50 => ir[4].CLK
-CLOCK_50 => ir[5].CLK
-CLOCK_50 => ir[6].CLK
-CLOCK_50 => ir[7].CLK
-CLOCK_50 => ir[8].CLK
-CLOCK_50 => ir[9].CLK
-CLOCK_50 => ir[10].CLK
-CLOCK_50 => ir[11].CLK
-CLOCK_50 => ir[12].CLK
-CLOCK_50 => ir[13].CLK
-CLOCK_50 => ir[14].CLK
-CLOCK_50 => ir[15].CLK
-CLOCK_50 => ir[16].CLK
-CLOCK_50 => ir[17].CLK
-CLOCK_50 => ir[18].CLK
-CLOCK_50 => ir[19].CLK
-CLOCK_50 => ir[20].CLK
-CLOCK_50 => ir[21].CLK
-CLOCK_50 => ir[22].CLK
-CLOCK_50 => ir[23].CLK
-CLOCK_50 => ir[24].CLK
-CLOCK_50 => ir[25].CLK
-CLOCK_50 => ir[26].CLK
-CLOCK_50 => ir[27].CLK
-CLOCK_50 => ir[28].CLK
-CLOCK_50 => ir[29].CLK
-CLOCK_50 => ir[30].CLK
-CLOCK_50 => ir[31].CLK
-CLOCK_50 => noc_dpcr_valid~reg0.CLK
-CLOCK_50 => display_mode[0].CLK
-CLOCK_50 => display_mode[1].CLK
-CLOCK_50 => key2_prev.CLK
-CLOCK_50 => multicycle_moore_machine:u_cu.clk
-CLOCK_50 => program_counter:u_pc.clk
-CLOCK_50 => instruction_memory_ip:u_im_ip.clock
-CLOCK_50 => regfile:u_regfile.clk
-CLOCK_50 => execute:u_execute.clk
-CLOCK_50 => registers:u_registers.clk
-KEY[0] => p_ir.IN0
-KEY[0] => noc_dpcr_valid~reg0.ACLR
-KEY[0] => display_mode[0].ACLR
-KEY[0] => display_mode[1].ACLR
-KEY[0] => key2_prev.PRESET
-KEY[0] => multicycle_moore_machine:u_cu.reset
-KEY[0] => program_counter:u_pc.reset
-KEY[0] => execute:u_execute.reset
-KEY[0] => registers:u_registers.reset
-KEY[1] => p_ir.IN1
-KEY[1] => multicycle_moore_machine:u_cu.init
-KEY[1] => program_counter:u_pc.init
-KEY[1] => regfile:u_regfile.init
-KEY[1] => execute:u_execute.init
-KEY[2] => key2_prev.DATAIN
-KEY[2] => p_display_mode.IN1
+|recop_de1_soc_test
+CLOCK_50 => recop_top_v1:u_recop.clk
+KEY[0] => recop_top_v1:u_recop.reset
+KEY[1] => recop_top_v1:u_recop.init
+KEY[2] => ~NO_FANOUT~
 KEY[3] => ~NO_FANOUT~
-SW[0] => Mux15.IN0
-SW[0] => registers:u_registers.sip[0]
-SW[1] => Mux14.IN0
-SW[1] => registers:u_registers.sip[1]
-SW[2] => Mux13.IN0
-SW[2] => registers:u_registers.sip[2]
-SW[3] => Mux12.IN0
-SW[3] => registers:u_registers.sip[3]
-SW[4] => Mux11.IN0
-SW[4] => registers:u_registers.sip[4]
-SW[5] => Mux10.IN0
-SW[5] => registers:u_registers.sip[5]
-SW[6] => Mux9.IN0
-SW[6] => registers:u_registers.sip[6]
-SW[7] => Mux8.IN0
-SW[7] => registers:u_registers.sip[7]
-SW[8] => Mux7.IN0
-SW[8] => registers:u_registers.sip[8]
-SW[9] => Mux6.IN0
-SW[9] => registers:u_registers.sip[9]
-LEDR[0] <= multicycle_moore_machine:u_cu.state_bits[0]
-LEDR[1] <= multicycle_moore_machine:u_cu.state_bits[1]
-LEDR[2] <= multicycle_moore_machine:u_cu.state_bits[2]
-LEDR[3] <= display_mode[0].DB_MAX_OUTPUT_PORT_TYPE
-LEDR[4] <= display_mode[1].DB_MAX_OUTPUT_PORT_TYPE
-LEDR[5] <= registers:u_registers.dprr[0]
-LEDR[6] <= registers:u_registers.dprr[1]
-LEDR[7] <= registers:u_registers.er
-LEDR[8] <= registers:u_registers.eot
-LEDR[9] <= execute:u_execute.z_flag
-HEX0[0] <= Mux22.DB_MAX_OUTPUT_PORT_TYPE
-HEX0[1] <= Mux21.DB_MAX_OUTPUT_PORT_TYPE
-HEX0[2] <= Mux20.DB_MAX_OUTPUT_PORT_TYPE
-HEX0[3] <= Mux19.DB_MAX_OUTPUT_PORT_TYPE
-HEX0[4] <= Mux18.DB_MAX_OUTPUT_PORT_TYPE
-HEX0[5] <= Mux17.DB_MAX_OUTPUT_PORT_TYPE
-HEX0[6] <= Mux16.DB_MAX_OUTPUT_PORT_TYPE
-HEX1[0] <= Mux29.DB_MAX_OUTPUT_PORT_TYPE
-HEX1[1] <= Mux28.DB_MAX_OUTPUT_PORT_TYPE
-HEX1[2] <= Mux27.DB_MAX_OUTPUT_PORT_TYPE
-HEX1[3] <= Mux26.DB_MAX_OUTPUT_PORT_TYPE
-HEX1[4] <= Mux25.DB_MAX_OUTPUT_PORT_TYPE
-HEX1[5] <= Mux24.DB_MAX_OUTPUT_PORT_TYPE
-HEX1[6] <= Mux23.DB_MAX_OUTPUT_PORT_TYPE
-HEX2[0] <= Mux36.DB_MAX_OUTPUT_PORT_TYPE
-HEX2[1] <= Mux35.DB_MAX_OUTPUT_PORT_TYPE
-HEX2[2] <= Mux34.DB_MAX_OUTPUT_PORT_TYPE
-HEX2[3] <= Mux33.DB_MAX_OUTPUT_PORT_TYPE
-HEX2[4] <= Mux32.DB_MAX_OUTPUT_PORT_TYPE
-HEX2[5] <= Mux31.DB_MAX_OUTPUT_PORT_TYPE
-HEX2[6] <= Mux30.DB_MAX_OUTPUT_PORT_TYPE
-HEX3[0] <= Mux43.DB_MAX_OUTPUT_PORT_TYPE
-HEX3[1] <= Mux42.DB_MAX_OUTPUT_PORT_TYPE
-HEX3[2] <= Mux41.DB_MAX_OUTPUT_PORT_TYPE
-HEX3[3] <= Mux40.DB_MAX_OUTPUT_PORT_TYPE
-HEX3[4] <= Mux39.DB_MAX_OUTPUT_PORT_TYPE
-HEX3[5] <= Mux38.DB_MAX_OUTPUT_PORT_TYPE
-HEX3[6] <= Mux37.DB_MAX_OUTPUT_PORT_TYPE
-HEX4[0] <= Mux50.DB_MAX_OUTPUT_PORT_TYPE
-HEX4[1] <= Mux49.DB_MAX_OUTPUT_PORT_TYPE
-HEX4[2] <= Mux48.DB_MAX_OUTPUT_PORT_TYPE
-HEX4[3] <= Mux47.DB_MAX_OUTPUT_PORT_TYPE
-HEX4[4] <= Mux46.DB_MAX_OUTPUT_PORT_TYPE
-HEX4[5] <= Mux45.DB_MAX_OUTPUT_PORT_TYPE
-HEX4[6] <= Mux44.DB_MAX_OUTPUT_PORT_TYPE
-HEX5[0] <= Mux57.DB_MAX_OUTPUT_PORT_TYPE
-HEX5[1] <= Mux56.DB_MAX_OUTPUT_PORT_TYPE
-HEX5[2] <= Mux55.DB_MAX_OUTPUT_PORT_TYPE
-HEX5[3] <= Mux54.DB_MAX_OUTPUT_PORT_TYPE
-HEX5[4] <= Mux53.DB_MAX_OUTPUT_PORT_TYPE
-HEX5[5] <= Mux52.DB_MAX_OUTPUT_PORT_TYPE
-HEX5[6] <= Mux51.DB_MAX_OUTPUT_PORT_TYPE
-dpcr_out[0] <= registers:u_registers.dpcr[0]
-dpcr_out[1] <= registers:u_registers.dpcr[1]
-dpcr_out[2] <= registers:u_registers.dpcr[2]
-dpcr_out[3] <= registers:u_registers.dpcr[3]
-dpcr_out[4] <= registers:u_registers.dpcr[4]
-dpcr_out[5] <= registers:u_registers.dpcr[5]
-dpcr_out[6] <= registers:u_registers.dpcr[6]
-dpcr_out[7] <= registers:u_registers.dpcr[7]
-dpcr_out[8] <= registers:u_registers.dpcr[8]
-dpcr_out[9] <= registers:u_registers.dpcr[9]
-dpcr_out[10] <= registers:u_registers.dpcr[10]
-dpcr_out[11] <= registers:u_registers.dpcr[11]
-dpcr_out[12] <= registers:u_registers.dpcr[12]
-dpcr_out[13] <= registers:u_registers.dpcr[13]
-dpcr_out[14] <= registers:u_registers.dpcr[14]
-dpcr_out[15] <= registers:u_registers.dpcr[15]
-dpcr_out[16] <= registers:u_registers.dpcr[16]
-dpcr_out[17] <= registers:u_registers.dpcr[17]
-dpcr_out[18] <= registers:u_registers.dpcr[18]
-dpcr_out[19] <= registers:u_registers.dpcr[19]
-dpcr_out[20] <= registers:u_registers.dpcr[20]
-dpcr_out[21] <= registers:u_registers.dpcr[21]
-dpcr_out[22] <= registers:u_registers.dpcr[22]
-dpcr_out[23] <= registers:u_registers.dpcr[23]
-dpcr_out[24] <= registers:u_registers.dpcr[24]
-dpcr_out[25] <= registers:u_registers.dpcr[25]
-dpcr_out[26] <= registers:u_registers.dpcr[26]
-dpcr_out[27] <= registers:u_registers.dpcr[27]
-dpcr_out[28] <= registers:u_registers.dpcr[28]
-dpcr_out[29] <= registers:u_registers.dpcr[29]
-dpcr_out[30] <= registers:u_registers.dpcr[30]
-dpcr_out[31] <= registers:u_registers.dpcr[31]
-noc_dpcr_valid <= noc_dpcr_valid~reg0.DB_MAX_OUTPUT_PORT_TYPE
-noc_irq_in => registers:u_registers.result_wen
+SW[0] => recop_top_v1:u_recop.sip[0]
+SW[1] => recop_top_v1:u_recop.sip[1]
+SW[2] => recop_top_v1:u_recop.sip[2]
+SW[3] => recop_top_v1:u_recop.sip[3]
+SW[4] => recop_top_v1:u_recop.sip[4]
+SW[5] => recop_top_v1:u_recop.sip[5]
+SW[6] => recop_top_v1:u_recop.sip[6]
+SW[7] => recop_top_v1:u_recop.sip[7]
+SW[8] => recop_top_v1:u_recop.sip[8]
+SW[9] => recop_top_v1:u_recop.sip[9]
+LEDR[0] << recop_top_v1:u_recop.sop[0]
+LEDR[1] << recop_top_v1:u_recop.sop[1]
+LEDR[2] << recop_top_v1:u_recop.sop[2]
+LEDR[3] << recop_top_v1:u_recop.sop[3]
+LEDR[4] << recop_top_v1:u_recop.sop[4]
+LEDR[5] << recop_top_v1:u_recop.sop[5]
+LEDR[6] << recop_top_v1:u_recop.sop[6]
+LEDR[7] << recop_top_v1:u_recop.sop[7]
+LEDR[8] << recop_top_v1:u_recop.sop[8]
+LEDR[9] << recop_top_v1:u_recop.sop[9]
+HEX0[0] << HEX0[0].DB_MAX_OUTPUT_PORT_TYPE
+HEX0[1] << HEX0[1].DB_MAX_OUTPUT_PORT_TYPE
+HEX0[2] << HEX0[2].DB_MAX_OUTPUT_PORT_TYPE
+HEX0[3] << HEX0[3].DB_MAX_OUTPUT_PORT_TYPE
+HEX0[4] << HEX0[4].DB_MAX_OUTPUT_PORT_TYPE
+HEX0[5] << HEX0[5].DB_MAX_OUTPUT_PORT_TYPE
+HEX0[6] << HEX0[6].DB_MAX_OUTPUT_PORT_TYPE
+HEX1[0] << HEX1[0].DB_MAX_OUTPUT_PORT_TYPE
+HEX1[1] << HEX1[1].DB_MAX_OUTPUT_PORT_TYPE
+HEX1[2] << HEX1[2].DB_MAX_OUTPUT_PORT_TYPE
+HEX1[3] << HEX1[3].DB_MAX_OUTPUT_PORT_TYPE
+HEX1[4] << HEX1[4].DB_MAX_OUTPUT_PORT_TYPE
+HEX1[5] << HEX1[5].DB_MAX_OUTPUT_PORT_TYPE
+HEX1[6] << HEX1[6].DB_MAX_OUTPUT_PORT_TYPE
+HEX2[0] << HEX2[0].DB_MAX_OUTPUT_PORT_TYPE
+HEX2[1] << HEX2[1].DB_MAX_OUTPUT_PORT_TYPE
+HEX2[2] << HEX2[2].DB_MAX_OUTPUT_PORT_TYPE
+HEX2[3] << HEX2[3].DB_MAX_OUTPUT_PORT_TYPE
+HEX2[4] << HEX2[4].DB_MAX_OUTPUT_PORT_TYPE
+HEX2[5] << HEX2[5].DB_MAX_OUTPUT_PORT_TYPE
+HEX2[6] << HEX2[6].DB_MAX_OUTPUT_PORT_TYPE
+HEX3[0] << HEX3[0].DB_MAX_OUTPUT_PORT_TYPE
+HEX3[1] << HEX3[1].DB_MAX_OUTPUT_PORT_TYPE
+HEX3[2] << HEX3[2].DB_MAX_OUTPUT_PORT_TYPE
+HEX3[3] << HEX3[3].DB_MAX_OUTPUT_PORT_TYPE
+HEX3[4] << HEX3[4].DB_MAX_OUTPUT_PORT_TYPE
+HEX3[5] << HEX3[5].DB_MAX_OUTPUT_PORT_TYPE
+HEX3[6] << HEX3[6].DB_MAX_OUTPUT_PORT_TYPE
+HEX4[0] << HEX4[0].DB_MAX_OUTPUT_PORT_TYPE
+HEX4[1] << HEX4[1].DB_MAX_OUTPUT_PORT_TYPE
+HEX4[2] << HEX4[2].DB_MAX_OUTPUT_PORT_TYPE
+HEX4[3] << HEX4[3].DB_MAX_OUTPUT_PORT_TYPE
+HEX4[4] << HEX4[4].DB_MAX_OUTPUT_PORT_TYPE
+HEX4[5] << HEX4[5].DB_MAX_OUTPUT_PORT_TYPE
+HEX4[6] << HEX4[6].DB_MAX_OUTPUT_PORT_TYPE
+HEX5[0] << comb.DB_MAX_OUTPUT_PORT_TYPE
+HEX5[1] << HEX5[1].DB_MAX_OUTPUT_PORT_TYPE
+HEX5[2] << HEX5[2].DB_MAX_OUTPUT_PORT_TYPE
+HEX5[3] << HEX5[3].DB_MAX_OUTPUT_PORT_TYPE
+HEX5[4] << HEX5[4].DB_MAX_OUTPUT_PORT_TYPE
+HEX5[5] << HEX5[5].DB_MAX_OUTPUT_PORT_TYPE
+HEX5[6] << HEX5[6].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|recop_de1_soc_test|recop_top_v1:u_recop
+clk => multicycle_moore_machine:u_cu.clk
+clk => program_counter:u_pc.clk
+clk => instruction_memory_ip:u_im_ip.clock
+clk => regfile:u_regfile.clk
+clk => execute:u_execute.clk
+clk => registers:u_registers.clk
+init => multicycle_moore_machine:u_cu.init
+init => program_counter:u_pc.init
+init => regfile:u_regfile.init
+init => execute:u_execute.init
+reset => multicycle_moore_machine:u_cu.reset
+reset => program_counter:u_pc.reset
+reset => execute:u_execute.reset
+reset => registers:u_registers.reset
+sip[0] => registers:u_registers.sip[0]
+sip[1] => registers:u_registers.sip[1]
+sip[2] => registers:u_registers.sip[2]
+sip[3] => registers:u_registers.sip[3]
+sip[4] => registers:u_registers.sip[4]
+sip[5] => registers:u_registers.sip[5]
+sip[6] => registers:u_registers.sip[6]
+sip[7] => registers:u_registers.sip[7]
+sip[8] => registers:u_registers.sip[8]
+sip[9] => registers:u_registers.sip[9]
+sip[10] => registers:u_registers.sip[10]
+sip[11] => registers:u_registers.sip[11]
+sip[12] => registers:u_registers.sip[12]
+sip[13] => registers:u_registers.sip[13]
+sip[14] => registers:u_registers.sip[14]
+sip[15] => registers:u_registers.sip[15]
+current_state_output[0] <= multicycle_moore_machine:u_cu.state_bits[0]
+current_state_output[1] <= multicycle_moore_machine:u_cu.state_bits[1]
+current_state_output[2] <= multicycle_moore_machine:u_cu.state_bits[2]
 dprr[0] <= registers:u_registers.dprr[0]
 dprr[1] <= registers:u_registers.dprr[1]
+dpcr[0] <= registers:u_registers.dpcr[0]
+dpcr[1] <= registers:u_registers.dpcr[1]
+dpcr[2] <= registers:u_registers.dpcr[2]
+dpcr[3] <= registers:u_registers.dpcr[3]
+dpcr[4] <= registers:u_registers.dpcr[4]
+dpcr[5] <= registers:u_registers.dpcr[5]
+dpcr[6] <= registers:u_registers.dpcr[6]
+dpcr[7] <= registers:u_registers.dpcr[7]
+dpcr[8] <= registers:u_registers.dpcr[8]
+dpcr[9] <= registers:u_registers.dpcr[9]
+dpcr[10] <= registers:u_registers.dpcr[10]
+dpcr[11] <= registers:u_registers.dpcr[11]
+dpcr[12] <= registers:u_registers.dpcr[12]
+dpcr[13] <= registers:u_registers.dpcr[13]
+dpcr[14] <= registers:u_registers.dpcr[14]
+dpcr[15] <= registers:u_registers.dpcr[15]
+dpcr[16] <= registers:u_registers.dpcr[16]
+dpcr[17] <= registers:u_registers.dpcr[17]
+dpcr[18] <= registers:u_registers.dpcr[18]
+dpcr[19] <= registers:u_registers.dpcr[19]
+dpcr[20] <= registers:u_registers.dpcr[20]
+dpcr[21] <= registers:u_registers.dpcr[21]
+dpcr[22] <= registers:u_registers.dpcr[22]
+dpcr[23] <= registers:u_registers.dpcr[23]
+dpcr[24] <= registers:u_registers.dpcr[24]
+dpcr[25] <= registers:u_registers.dpcr[25]
+dpcr[26] <= registers:u_registers.dpcr[26]
+dpcr[27] <= registers:u_registers.dpcr[27]
+dpcr[28] <= registers:u_registers.dpcr[28]
+dpcr[29] <= registers:u_registers.dpcr[29]
+dpcr[30] <= registers:u_registers.dpcr[30]
+dpcr[31] <= registers:u_registers.dpcr[31]
 sop[0] <= registers:u_registers.sop[0]
 sop[1] <= registers:u_registers.sop[1]
 sop[2] <= registers:u_registers.sop[2]
@@ -184,7 +154,7 @@ sop[14] <= registers:u_registers.sop[14]
 sop[15] <= registers:u_registers.sop[15]
 
 
-|recop_top|multicycle_moore_machine:u_cu
+|recop_de1_soc_test|recop_top_v1:u_recop|multicycle_moore_machine:u_cu
 clk => state~1.DATAIN
 init => pc_sel.DATAA
 init => state.S_FETCH.IN0
@@ -480,7 +450,7 @@ pc_sel[1] <= Selector2.DB_MAX_OUTPUT_PORT_TYPE
 pc_write <= Selector4.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|recop_top|program_counter:u_pc
+|recop_de1_soc_test|recop_top_v1:u_recop|program_counter:u_pc
 clk => current_pc[0]~reg0.CLK
 clk => current_pc[1]~reg0.CLK
 clk => current_pc[2]~reg0.CLK
@@ -549,7 +519,7 @@ current_pc[14] <= current_pc[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 current_pc[15] <= current_pc[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|recop_top|instruction_memory_ip:u_im_ip
+|recop_de1_soc_test|recop_top_v1:u_recop|instruction_memory_ip:u_im_ip
 address[0] => altsyncram:altsyncram_component.address_a[0]
 address[1] => altsyncram:altsyncram_component.address_a[1]
 address[2] => altsyncram:altsyncram_component.address_a[2]
@@ -594,7 +564,7 @@ q[30] <= altsyncram:altsyncram_component.q_a[30]
 q[31] <= altsyncram:altsyncram_component.q_a[31]
 
 
-|recop_top|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component
+|recop_de1_soc_test|recop_top_v1:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component
 wren_a => ~NO_FANOUT~
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -632,19 +602,19 @@ data_a[29] => ~NO_FANOUT~
 data_a[30] => ~NO_FANOUT~
 data_a[31] => ~NO_FANOUT~
 data_b[0] => ~NO_FANOUT~
-address_a[0] => altsyncram_pq34:auto_generated.address_a[0]
-address_a[1] => altsyncram_pq34:auto_generated.address_a[1]
-address_a[2] => altsyncram_pq34:auto_generated.address_a[2]
-address_a[3] => altsyncram_pq34:auto_generated.address_a[3]
-address_a[4] => altsyncram_pq34:auto_generated.address_a[4]
-address_a[5] => altsyncram_pq34:auto_generated.address_a[5]
-address_a[6] => altsyncram_pq34:auto_generated.address_a[6]
-address_a[7] => altsyncram_pq34:auto_generated.address_a[7]
-address_a[8] => altsyncram_pq34:auto_generated.address_a[8]
+address_a[0] => altsyncram_4824:auto_generated.address_a[0]
+address_a[1] => altsyncram_4824:auto_generated.address_a[1]
+address_a[2] => altsyncram_4824:auto_generated.address_a[2]
+address_a[3] => altsyncram_4824:auto_generated.address_a[3]
+address_a[4] => altsyncram_4824:auto_generated.address_a[4]
+address_a[5] => altsyncram_4824:auto_generated.address_a[5]
+address_a[6] => altsyncram_4824:auto_generated.address_a[6]
+address_a[7] => altsyncram_4824:auto_generated.address_a[7]
+address_a[8] => altsyncram_4824:auto_generated.address_a[8]
 address_b[0] => ~NO_FANOUT~
 addressstall_a => ~NO_FANOUT~
 addressstall_b => ~NO_FANOUT~
-clock0 => altsyncram_pq34:auto_generated.clock0
+clock0 => altsyncram_4824:auto_generated.clock0
 clock1 => ~NO_FANOUT~
 clocken0 => ~NO_FANOUT~
 clocken1 => ~NO_FANOUT~
@@ -654,45 +624,45 @@ aclr0 => ~NO_FANOUT~
 aclr1 => ~NO_FANOUT~
 byteena_a[0] => ~NO_FANOUT~
 byteena_b[0] => ~NO_FANOUT~
-q_a[0] <= altsyncram_pq34:auto_generated.q_a[0]
-q_a[1] <= altsyncram_pq34:auto_generated.q_a[1]
-q_a[2] <= altsyncram_pq34:auto_generated.q_a[2]
-q_a[3] <= altsyncram_pq34:auto_generated.q_a[3]
-q_a[4] <= altsyncram_pq34:auto_generated.q_a[4]
-q_a[5] <= altsyncram_pq34:auto_generated.q_a[5]
-q_a[6] <= altsyncram_pq34:auto_generated.q_a[6]
-q_a[7] <= altsyncram_pq34:auto_generated.q_a[7]
-q_a[8] <= altsyncram_pq34:auto_generated.q_a[8]
-q_a[9] <= altsyncram_pq34:auto_generated.q_a[9]
-q_a[10] <= altsyncram_pq34:auto_generated.q_a[10]
-q_a[11] <= altsyncram_pq34:auto_generated.q_a[11]
-q_a[12] <= altsyncram_pq34:auto_generated.q_a[12]
-q_a[13] <= altsyncram_pq34:auto_generated.q_a[13]
-q_a[14] <= altsyncram_pq34:auto_generated.q_a[14]
-q_a[15] <= altsyncram_pq34:auto_generated.q_a[15]
-q_a[16] <= altsyncram_pq34:auto_generated.q_a[16]
-q_a[17] <= altsyncram_pq34:auto_generated.q_a[17]
-q_a[18] <= altsyncram_pq34:auto_generated.q_a[18]
-q_a[19] <= altsyncram_pq34:auto_generated.q_a[19]
-q_a[20] <= altsyncram_pq34:auto_generated.q_a[20]
-q_a[21] <= altsyncram_pq34:auto_generated.q_a[21]
-q_a[22] <= altsyncram_pq34:auto_generated.q_a[22]
-q_a[23] <= altsyncram_pq34:auto_generated.q_a[23]
-q_a[24] <= altsyncram_pq34:auto_generated.q_a[24]
-q_a[25] <= altsyncram_pq34:auto_generated.q_a[25]
-q_a[26] <= altsyncram_pq34:auto_generated.q_a[26]
-q_a[27] <= altsyncram_pq34:auto_generated.q_a[27]
-q_a[28] <= altsyncram_pq34:auto_generated.q_a[28]
-q_a[29] <= altsyncram_pq34:auto_generated.q_a[29]
-q_a[30] <= altsyncram_pq34:auto_generated.q_a[30]
-q_a[31] <= altsyncram_pq34:auto_generated.q_a[31]
+q_a[0] <= altsyncram_4824:auto_generated.q_a[0]
+q_a[1] <= altsyncram_4824:auto_generated.q_a[1]
+q_a[2] <= altsyncram_4824:auto_generated.q_a[2]
+q_a[3] <= altsyncram_4824:auto_generated.q_a[3]
+q_a[4] <= altsyncram_4824:auto_generated.q_a[4]
+q_a[5] <= altsyncram_4824:auto_generated.q_a[5]
+q_a[6] <= altsyncram_4824:auto_generated.q_a[6]
+q_a[7] <= altsyncram_4824:auto_generated.q_a[7]
+q_a[8] <= altsyncram_4824:auto_generated.q_a[8]
+q_a[9] <= altsyncram_4824:auto_generated.q_a[9]
+q_a[10] <= altsyncram_4824:auto_generated.q_a[10]
+q_a[11] <= altsyncram_4824:auto_generated.q_a[11]
+q_a[12] <= altsyncram_4824:auto_generated.q_a[12]
+q_a[13] <= altsyncram_4824:auto_generated.q_a[13]
+q_a[14] <= altsyncram_4824:auto_generated.q_a[14]
+q_a[15] <= altsyncram_4824:auto_generated.q_a[15]
+q_a[16] <= altsyncram_4824:auto_generated.q_a[16]
+q_a[17] <= altsyncram_4824:auto_generated.q_a[17]
+q_a[18] <= altsyncram_4824:auto_generated.q_a[18]
+q_a[19] <= altsyncram_4824:auto_generated.q_a[19]
+q_a[20] <= altsyncram_4824:auto_generated.q_a[20]
+q_a[21] <= altsyncram_4824:auto_generated.q_a[21]
+q_a[22] <= altsyncram_4824:auto_generated.q_a[22]
+q_a[23] <= altsyncram_4824:auto_generated.q_a[23]
+q_a[24] <= altsyncram_4824:auto_generated.q_a[24]
+q_a[25] <= altsyncram_4824:auto_generated.q_a[25]
+q_a[26] <= altsyncram_4824:auto_generated.q_a[26]
+q_a[27] <= altsyncram_4824:auto_generated.q_a[27]
+q_a[28] <= altsyncram_4824:auto_generated.q_a[28]
+q_a[29] <= altsyncram_4824:auto_generated.q_a[29]
+q_a[30] <= altsyncram_4824:auto_generated.q_a[30]
+q_a[31] <= altsyncram_4824:auto_generated.q_a[31]
 q_b[0] <= <GND>
 eccstatus[0] <= <GND>
 eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|recop_top|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component|altsyncram_pq34:auto_generated
+|recop_de1_soc_test|recop_top_v1:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component|altsyncram_4824:auto_generated
 address_a[0] => ram_block1a0.PORTAADDR
 address_a[0] => ram_block1a1.PORTAADDR
 address_a[0] => ram_block1a2.PORTAADDR
@@ -1047,7 +1017,7 @@ q_a[30] <= ram_block1a30.PORTADATAOUT
 q_a[31] <= ram_block1a31.PORTADATAOUT
 
 
-|recop_top|regfile:u_regfile
+|recop_de1_soc_test|recop_top_v1:u_recop|regfile:u_regfile
 clk => regs[0][0].CLK
 clk => regs[0][1].CLK
 clk => regs[0][2].CLK
@@ -2145,7 +2115,7 @@ dprr_wren => regs.OUTPUTSELECT
 dprr_wren => regs.OUTPUTSELECT
 
 
-|recop_top|execute:u_execute
+|recop_de1_soc_test|recop_top_v1:u_recop|execute:u_execute
 clk => alu:u_alu.clk
 clk => data_memory_ip:u_dm.clock
 init => ~NO_FANOUT~
@@ -2446,7 +2416,23 @@ dm_out[15] <= data_memory_ip:u_dm.q[15]
 z_flag <= alu:u_alu.z_flag
 
 
-|recop_top|execute:u_execute|alu:u_alu
+|recop_de1_soc_test|recop_top_v1:u_recop|execute:u_execute|alu:u_alu
+clk => alu_result[0]~reg0.CLK
+clk => alu_result[1]~reg0.CLK
+clk => alu_result[2]~reg0.CLK
+clk => alu_result[3]~reg0.CLK
+clk => alu_result[4]~reg0.CLK
+clk => alu_result[5]~reg0.CLK
+clk => alu_result[6]~reg0.CLK
+clk => alu_result[7]~reg0.CLK
+clk => alu_result[8]~reg0.CLK
+clk => alu_result[9]~reg0.CLK
+clk => alu_result[10]~reg0.CLK
+clk => alu_result[11]~reg0.CLK
+clk => alu_result[12]~reg0.CLK
+clk => alu_result[13]~reg0.CLK
+clk => alu_result[14]~reg0.CLK
+clk => alu_result[15]~reg0.CLK
 clk => z_flag~reg0.CLK
 z_flag <= z_flag~reg0.DB_MAX_OUTPUT_PORT_TYPE
 alu_operation[0] => Mux16.IN10
@@ -2547,22 +2533,22 @@ alu_op2_sel => operand_2[2].OUTPUTSELECT
 alu_op2_sel => operand_2[1].OUTPUTSELECT
 alu_op2_sel => operand_2[0].OUTPUTSELECT
 alu_carry => ~NO_FANOUT~
-alu_result[0] <= Mux31.DB_MAX_OUTPUT_PORT_TYPE
-alu_result[1] <= Mux30.DB_MAX_OUTPUT_PORT_TYPE
-alu_result[2] <= Mux29.DB_MAX_OUTPUT_PORT_TYPE
-alu_result[3] <= Mux28.DB_MAX_OUTPUT_PORT_TYPE
-alu_result[4] <= Mux27.DB_MAX_OUTPUT_PORT_TYPE
-alu_result[5] <= Mux26.DB_MAX_OUTPUT_PORT_TYPE
-alu_result[6] <= Mux25.DB_MAX_OUTPUT_PORT_TYPE
-alu_result[7] <= Mux24.DB_MAX_OUTPUT_PORT_TYPE
-alu_result[8] <= Mux23.DB_MAX_OUTPUT_PORT_TYPE
-alu_result[9] <= Mux22.DB_MAX_OUTPUT_PORT_TYPE
-alu_result[10] <= Mux21.DB_MAX_OUTPUT_PORT_TYPE
-alu_result[11] <= Mux20.DB_MAX_OUTPUT_PORT_TYPE
-alu_result[12] <= Mux19.DB_MAX_OUTPUT_PORT_TYPE
-alu_result[13] <= Mux18.DB_MAX_OUTPUT_PORT_TYPE
-alu_result[14] <= Mux17.DB_MAX_OUTPUT_PORT_TYPE
-alu_result[15] <= Mux16.DB_MAX_OUTPUT_PORT_TYPE
+alu_result[0] <= alu_result[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+alu_result[1] <= alu_result[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+alu_result[2] <= alu_result[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+alu_result[3] <= alu_result[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+alu_result[4] <= alu_result[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+alu_result[5] <= alu_result[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+alu_result[6] <= alu_result[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+alu_result[7] <= alu_result[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+alu_result[8] <= alu_result[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+alu_result[9] <= alu_result[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+alu_result[10] <= alu_result[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+alu_result[11] <= alu_result[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+alu_result[12] <= alu_result[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+alu_result[13] <= alu_result[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+alu_result[14] <= alu_result[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+alu_result[15] <= alu_result[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 rx[0] => Mux15.IN4
 rx[0] => operand_2[0].DATAB
 rx[1] => Mux14.IN4
@@ -2629,9 +2615,25 @@ ir_operand[14] => Mux1.IN5
 ir_operand[15] => Mux0.IN5
 clr_z_flag => z_flag.OUTPUTSELECT
 reset => z_flag~reg0.ACLR
+reset => alu_result[0]~reg0.ENA
+reset => alu_result[15]~reg0.ENA
+reset => alu_result[14]~reg0.ENA
+reset => alu_result[13]~reg0.ENA
+reset => alu_result[12]~reg0.ENA
+reset => alu_result[11]~reg0.ENA
+reset => alu_result[10]~reg0.ENA
+reset => alu_result[9]~reg0.ENA
+reset => alu_result[8]~reg0.ENA
+reset => alu_result[7]~reg0.ENA
+reset => alu_result[6]~reg0.ENA
+reset => alu_result[5]~reg0.ENA
+reset => alu_result[4]~reg0.ENA
+reset => alu_result[3]~reg0.ENA
+reset => alu_result[2]~reg0.ENA
+reset => alu_result[1]~reg0.ENA
 
 
-|recop_top|execute:u_execute|data_memory_ip:u_dm
+|recop_de1_soc_test|recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm
 address[0] => altsyncram:altsyncram_component.address_a[0]
 address[1] => altsyncram:altsyncram_component.address_a[1]
 address[2] => altsyncram:altsyncram_component.address_a[2]
@@ -2677,7 +2679,7 @@ q[14] <= altsyncram:altsyncram_component.q_a[14]
 q[15] <= altsyncram:altsyncram_component.q_a[15]
 
 
-|recop_top|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component
+|recop_de1_soc_test|recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component
 wren_a => altsyncram_s3v3:auto_generated.wren_a
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -2743,7 +2745,7 @@ eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|recop_top|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component|altsyncram_s3v3:auto_generated
+|recop_de1_soc_test|recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component|altsyncram_s3v3:auto_generated
 address_a[0] => ram_block1a0.PORTAADDR
 address_a[0] => ram_block1a1.PORTAADDR
 address_a[0] => ram_block1a2.PORTAADDR
@@ -2955,7 +2957,7 @@ wren_a => ram_block1a14.PORTAWE
 wren_a => ram_block1a15.PORTAWE
 
 
-|recop_top|registers:u_registers
+|recop_de1_soc_test|recop_top_v1:u_recop|registers:u_registers
 clk => dprr[1]~reg0.CLK
 clk => dprr[0]~reg0.CLK
 clk => sop[0]~reg0.CLK

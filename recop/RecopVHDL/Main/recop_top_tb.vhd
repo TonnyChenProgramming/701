@@ -10,6 +10,7 @@ architecture sim of recop_top_tb is
     signal reset : std_logic := '1';
     signal init  : std_logic := '0';
     signal sip   : std_logic_vector(15 downto 0) := x"0050";
+    signal sop   : std_logic_vector(15 downto 0);
 
 begin
 
@@ -19,7 +20,8 @@ begin
             clk   => clk,
             reset => reset,
             init  => init,
-            sip   => sip
+            sip   => sip,
+            sop   => sop
         );
 
     ------------------------------------------------

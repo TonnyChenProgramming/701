@@ -80,7 +80,7 @@ begin
 				result <= X"0000";
 		end case;
 	end process alu;
-	alu_result <= result;
+	--alu_result <= result;
 
 	-- zero flag
 	z1gen: process (clk)
@@ -88,6 +88,7 @@ begin
 		if reset = '1' then
 			z_flag <= '0';
 		elsif rising_edge(clk) then
+			alu_result <= result;
 			if clr_z_flag = '1' then
 				z_flag <= '0';
 			-- if alu is working (operation is valid)
