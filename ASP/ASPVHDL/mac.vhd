@@ -15,9 +15,12 @@ ENTITY mac is
         offset_h     :     in bit_16;
         --input control signal
         current_ave_data_ld :       in bit_1;
+        current_ave_data_clr :      in bit_1;
         multiplicand_temp_ld :      in bit_1;
+        multiplicand_temp_clr :     in bit_1;
         offset_h_ld         :       in bit_1;
         cor_pair_product_en :       in bit_1;
+        cor_pair_product_clr :      in bit_1;
         cor_temp_en:                in bit_1;
         cor_temp_clr        :       in bit_1;
 
@@ -47,7 +50,9 @@ begin
     process (clk)
     begin
         if rising_edge(clk) then
-            if (current_ave_data_ld = '1') then
+            if (current_ave_data_clr = '1') then
+                current_ave_data_ff <= (others => '0');
+            elsif (current_ave_data_ld = '1') then
                 current_ave_data_ff <= bit_17(resize(unsigned(average_data), 17) + resize(unsigned(offset_h_ff), 17));
             end if;
         end if;
@@ -57,7 +62,9 @@ begin
     process (clk)
     begin
         if rising_edge(clk) then
-            if (multiplicand_temp_ld = '1') then
+            if (multiplicand_temp_clr = '1') then
+                multiplicand_temp_ff <= (others => '0');
+            elsif (multiplicand_temp_ld = '1') then
                 multiplicand_temp_ff <= current_ave_data_ff;
             end if;
         end if;
@@ -67,7 +74,9 @@ begin
     process (clk)
     begin
         if rising_edge(clk) then
-            if (cor_pair_product_en = '1') then
+            if (cor_pair_product_clr = '1') then
+                cor_pair_product_ff <= (others => '0');
+            elsif (cor_pair_product_en = '1') then
                 cor_pair_product_ff <= bit_34(unsigned(current_ave_data_ff) * unsigned(multiplicand_temp_ff));
             end if;
         end if;
