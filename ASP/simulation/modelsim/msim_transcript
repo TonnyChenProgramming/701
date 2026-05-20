@@ -1,0 +1,444 @@
+# Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+# do ASP_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying C:/intelFPGA/18.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/TdmaMinTypes.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:18:13 on May 19,2026
+# vcom -reportprogress 300 -93 -work work C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/TdmaMinTypes.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package TdmaMinTypes
+# -- Compiling package body TdmaMinTypes
+# -- Loading package TdmaMinTypes
+# End time: 22:18:13 on May 19,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/asp_packet_pkg.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:18:13 on May 19,2026
+# vcom -reportprogress 300 -93 -work work C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/asp_packet_pkg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package asp_packet_pkg
+# -- Compiling package body asp_packet_pkg
+# -- Loading package asp_packet_pkg
+# ** Warning: C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/asp_packet_pkg.vhd(132): (vcom-1200) Function "packet_kind" return type index bounds do not match RETURN value index bounds.
+# ** Warning: C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/asp_packet_pkg.vhd(137): (vcom-1200) Function "packet_code" return type index bounds do not match RETURN value index bounds.
+# ** Warning: C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/asp_packet_pkg.vhd(142): (vcom-1200) Function "packet_dest" return type index bounds do not match RETURN value index bounds.
+# ** Warning: C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/asp_packet_pkg.vhd(147): (vcom-1200) Function "packet_tag" return type index bounds do not match RETURN value index bounds.
+# End time: 22:18:13 on May 19,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 4
+# vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/asp_types.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:18:13 on May 19,2026
+# vcom -reportprogress 300 -93 -work work C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/asp_types.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling package asp_types
+# End time: 22:18:13 on May 19,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/AverageFilteredData.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:18:13 on May 19,2026
+# vcom -reportprogress 300 -93 -work work C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/AverageFilteredData.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package altera_mf_components
+# -- Compiling entity AverageFilteredData
+# -- Compiling architecture SYN of averagefiltereddata
+# End time: 22:18:13 on May 19,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/CorAspDecoder.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:18:13 on May 19,2026
+# vcom -reportprogress 300 -93 -work work C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/CorAspDecoder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package asp_types
+# -- Loading package TdmaMinTypes
+# -- Loading package asp_packet_pkg
+# -- Compiling entity CorAspDecoder
+# -- Compiling architecture beh of CorAspDecoder
+# End time: 22:18:13 on May 19,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/asp_constants.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:18:13 on May 19,2026
+# vcom -reportprogress 300 -93 -work work C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/asp_constants.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package asp_types
+# -- Compiling package asp_constants
+# End time: 22:18:14 on May 19,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/CorAspEncoder.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:18:14 on May 19,2026
+# vcom -reportprogress 300 -93 -work work C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/CorAspEncoder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package asp_types
+# -- Loading package asp_constants
+# -- Loading package NUMERIC_STD
+# -- Loading package TdmaMinTypes
+# -- Loading package asp_packet_pkg
+# -- Compiling entity CorAspEncoder
+# -- Compiling architecture beh of CorAspEncoder
+# End time: 22:18:14 on May 19,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/multicycle_moore_machine.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:18:14 on May 19,2026
+# vcom -reportprogress 300 -93 -work work C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/multicycle_moore_machine.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package asp_types
+# -- Loading package asp_constants
+# -- Compiling entity multicycle_moore_machine
+# -- Compiling architecture beh of multicycle_moore_machine
+# End time: 22:18:14 on May 19,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/mac.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:18:14 on May 19,2026
+# vcom -reportprogress 300 -93 -work work C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/mac.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package asp_types
+# -- Loading package asp_constants
+# -- Compiling entity mac
+# -- Compiling architecture beh of mac
+# End time: 22:18:14 on May 19,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/address_generator.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:18:14 on May 19,2026
+# vcom -reportprogress 300 -93 -work work C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/address_generator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package asp_types
+# -- Loading package asp_constants
+# -- Compiling entity address_generator
+# -- Compiling architecture beh of address_generator
+# End time: 22:18:14 on May 19,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/Correlation_Calculator.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:18:14 on May 19,2026
+# vcom -reportprogress 300 -93 -work work C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/Correlation_Calculator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package asp_types
+# -- Compiling entity Correlation_Calculator
+# -- Compiling architecture beh of Correlation_Calculator
+# -- Loading package NUMERIC_STD
+# -- Loading package asp_constants
+# -- Loading entity multicycle_moore_machine
+# -- Loading entity address_generator
+# -- Loading entity mac
+# End time: 22:18:14 on May 19,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/Correlation_ASP.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:18:14 on May 19,2026
+# vcom -reportprogress 300 -93 -work work C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/Correlation_ASP.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package asp_types
+# -- Loading package NUMERIC_STD
+# -- Loading package TdmaMinTypes
+# -- Compiling entity Correlation_ASP
+# -- Compiling architecture rtl of Correlation_ASP
+# -- Loading package asp_packet_pkg
+# -- Loading entity CorAspDecoder
+# -- Loading package asp_constants
+# -- Loading entity CorAspEncoder
+# -- Loading package altera_mf_components
+# -- Loading entity AverageFilteredData
+# -- Loading entity Correlation_Calculator
+# End time: 22:18:14 on May 19,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/Correlation_ASP_tb.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 22:18:14 on May 19,2026
+# vcom -reportprogress 300 -93 -work work C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/Correlation_ASP_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package asp_types
+# -- Loading package TdmaMinTypes
+# -- Loading package asp_packet_pkg
+# -- Compiling entity Correlation_ASP_tb
+# -- Compiling architecture sim of Correlation_ASP_tb
+# -- Loading entity Correlation_ASP
+# End time: 22:18:14 on May 19,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs="+acc"  Correlation_ASP_tb
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L rtl_work -L work -voptargs=""+acc"" Correlation_ASP_tb 
+# Start time: 22:18:16 on May 19,2026
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.asp_types
+# Loading work.tdmamintypes(body)
+# Loading work.asp_packet_pkg(body)
+# Loading work.correlation_asp_tb(sim)
+# Loading work.asp_constants
+# Loading altera_mf.altera_mf_components
+# Loading work.correlation_asp(rtl)
+# Loading work.coraspdecoder(beh)
+# Loading work.coraspencoder(beh)
+# Loading work.averagefiltereddata(syn)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading altera_mf.altera_common_conversion(body)
+# Loading altera_mf.altera_device_families(body)
+# Loading altera_mf.altsyncram(translated)
+# Loading work.correlation_calculator(beh)
+# Loading work.multicycle_moore_machine(beh)
+# Loading work.address_generator(beh)
+# Loading work.mac(beh)
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# ** Note: ===== MULTI-ROUND OFFSET-SUM CORRELATION TESTBENCH START =====
+#    Time: 0 ps  Iteration: 0  Instance: /correlation_asp_tb
+# ** Note: ===== RESET =====
+#    Time: 50 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: ===== INIT =====
+#    Time: 230 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: ===== CMD_CLEAR BEFORE PRELOAD CONFIG =====
+#    Time: 350 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send CMD_CLEAR: soft reset / clear internal state
+#    Time: 350 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Warning: WARNING: Timeout waiting for send interface to become idle. Continuing simulation.
+#    Time: 7990 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: ===== PHASE 1: CONFIG PRELOAD MODE WINDOW=1 OFFSET=0 =====
+#    Time: 7990 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send CMD_CONFIG: window = 1
+#    Time: 7990 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Warning: WARNING: Timeout waiting for send interface to become idle. Continuing simulation.
+#    Time: 14430 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send CMD_CONFIG: offset_h = 0
+#    Time: 14430 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Warning: WARNING: Timeout waiting for send interface to become idle. Continuing simulation.
+#    Time: 20870 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: ===== PHASE 1: START PRELOAD MODE =====
+#    Time: 20870 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send CMD_START: enter correlation mode
+#    Time: 20870 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: ===== PHASE 1: PRELOAD RAM[0..39] WITH SMALL VALUES =====
+#    Time: 21170 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 1
+#    Time: 21170 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 2
+#    Time: 22070 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 3
+#    Time: 22970 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 4
+#    Time: 23870 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 5
+#    Time: 24770 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 6
+#    Time: 25670 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 7
+#    Time: 26570 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 8
+#    Time: 27470 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 9
+#    Time: 28370 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 10
+#    Time: 29270 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 11
+#    Time: 30170 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 12
+#    Time: 31070 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 13
+#    Time: 31970 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 14
+#    Time: 32870 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 15
+#    Time: 33770 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 16
+#    Time: 34670 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 17
+#    Time: 35570 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 18
+#    Time: 36470 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 19
+#    Time: 37370 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 20
+#    Time: 38270 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 21
+#    Time: 39170 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 22
+#    Time: 40070 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 23
+#    Time: 40970 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 24
+#    Time: 41870 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 25
+#    Time: 42770 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 26
+#    Time: 43670 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 27
+#    Time: 44570 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 28
+#    Time: 45470 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 29
+#    Time: 46370 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 30
+#    Time: 47270 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 31
+#    Time: 48170 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 32
+#    Time: 49070 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 33
+#    Time: 49970 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 34
+#    Time: 50870 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 35
+#    Time: 51770 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 36
+#    Time: 52670 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 37
+#    Time: 53570 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 38
+#    Time: 54470 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 39
+#    Time: 55370 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send DATA sample = 40
+#    Time: 56270 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: ===== PHASE 1: STOP PRELOAD MODE =====
+#    Time: 57230 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send CMD_STOP: return to direct passthrough mode
+#    Time: 57230 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Warning: WARNING: Timeout waiting for send interface to become idle. Continuing simulation.
+#    Time: 64070 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: ===== ROUND 1: CONFIG WINDOW=4 OFFSET=100 =====
+#    Time: 64070 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send CMD_CONFIG: window = 4
+#    Time: 64070 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Warning: WARNING: Timeout waiting for send interface to become idle. Continuing simulation.
+#    Time: 70710 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send CMD_CONFIG: offset_h = 100
+#    Time: 70710 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Warning: WARNING: Timeout waiting for send interface to become idle. Continuing simulation.
+#    Time: 77350 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: ===== ROUND 1: START =====
+#    Time: 77350 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send CMD_START: enter correlation mode
+#    Time: 77350 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: ===== ROUND 1: ASSERT WINDOW=4 OFFSET=100 =====
+#    Time: 77850 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send TIMED DATA sample = 41
+#    Time: 77850 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: TIMING START: DATA 41 sampled at cycle 3893
+#    Time: 77870 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Round 1 correlation after DATA 41 | LOW result packet | latency from timed DATA packet = 30 cycles
+#    Time: 78470 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Round 1 correlation after DATA 41 | HIGH result packet | latency from timed DATA packet = 31 cycles
+#    Time: 78490 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send CMD_STOP: return to direct passthrough mode
+#    Time: 79150 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Warning: WARNING: Timeout waiting for send interface to become idle. Continuing simulation.
+#    Time: 85990 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: ===== ROUND 2: CONFIG WINDOW=6 OFFSET=200 =====
+#    Time: 85990 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send CMD_CONFIG: window = 6
+#    Time: 85990 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Warning: WARNING: Timeout waiting for send interface to become idle. Continuing simulation.
+#    Time: 92630 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send CMD_CONFIG: offset_h = 200
+#    Time: 92630 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Warning: WARNING: Timeout waiting for send interface to become idle. Continuing simulation.
+#    Time: 99270 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: ===== ROUND 2: START =====
+#    Time: 99270 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send CMD_START: enter correlation mode
+#    Time: 99270 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: ===== ROUND 2: ASSERT WINDOW=6 OFFSET=200 =====
+#    Time: 99770 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send TIMED DATA sample = 42
+#    Time: 99770 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: TIMING START: DATA 42 sampled at cycle 4989
+#    Time: 99790 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Round 2 correlation after DATA 42 | LOW result packet | latency from timed DATA packet = 42 cycles
+#    Time: 100630 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Round 2 correlation after DATA 42 | HIGH result packet | latency from timed DATA packet = 43 cycles
+#    Time: 100650 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send CMD_STOP: return to direct passthrough mode
+#    Time: 101310 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Warning: WARNING: Timeout waiting for send interface to become idle. Continuing simulation.
+#    Time: 108150 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: ===== ROUND 3: CONFIG WINDOW=8 OFFSET=1000 =====
+#    Time: 108150 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send CMD_CONFIG: window = 8
+#    Time: 108150 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Warning: WARNING: Timeout waiting for send interface to become idle. Continuing simulation.
+#    Time: 114790 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send CMD_CONFIG: offset_h = 1000
+#    Time: 114790 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Warning: WARNING: Timeout waiting for send interface to become idle. Continuing simulation.
+#    Time: 121430 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: ===== ROUND 3: START =====
+#    Time: 121430 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send CMD_START: enter correlation mode
+#    Time: 121430 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: ===== ROUND 3: ASSERT WINDOW=8 OFFSET=1000 =====
+#    Time: 121930 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send TIMED DATA sample = 43
+#    Time: 121930 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: TIMING START: DATA 43 sampled at cycle 6097
+#    Time: 121950 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Round 3 correlation after DATA 43 | LOW result packet | latency from timed DATA packet = 54 cycles
+#    Time: 123030 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Round 3 correlation after DATA 43 | HIGH result packet | latency from timed DATA packet = 55 cycles
+#    Time: 123050 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Send CMD_STOP: return to direct passthrough mode
+#    Time: 123710 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Warning: WARNING: Timeout waiting for send interface to become idle. Continuing simulation.
+#    Time: 130550 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: ===== MULTI-ROUND OFFSET-SUM CORRELATION TEST FINISHED =====
+#    Time: 130550 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Note: Simulation finished successfully.
+#    Time: 130550 ns  Iteration: 1  Instance: /correlation_asp_tb
+# ** Failure: INTENTIONAL END OF TESTBENCH: Simulation finished successfully.
+#    Time: 130550 ns  Iteration: 1  Process: /correlation_asp_tb/stim_proc File: C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/Correlation_ASP_tb.vhd
+# Break in Process stim_proc at C:/intelFPGA_lite/18.1/701/701/ASP/ASPVHDL/Correlation_ASP_tb.vhd line 644
+# End time: 23:43:36 on May 19,2026, Elapsed time: 1:25:20
+# Errors: 0, Warnings: 13

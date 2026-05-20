@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Sun May 03 16:34:30 2026
+Analysis & Synthesis Status : Successful - Tue May 19 22:27:36 2026
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : ASP
-Top-level Entity Name : Correlation_Calculator
+Top-level Entity Name : Correlation_ASP
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 0
-Total pins : 75
+Total registers : 273
+Total pins : 83
 Total virtual pins : 0
-Total block memory bits : 0
-Total DSP Blocks : 0
+Total block memory bits : 8,192
+Total DSP Blocks : 1
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
 Total HSSI TX PCSs : 0

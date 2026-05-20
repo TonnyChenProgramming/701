@@ -1,0 +1,14 @@
+
+State Machine - |Correlation_ASP|Correlation_Calculator:u_correlation_calculator|multicycle_moore_machine:u_multicycle_moore_machine|state
+Name state.S_OUTPUT state.S_ACCUMULATE state.S_MULTIPLY state.S_LOAD4 state.S_LOAD3 state.S_LOAD2 state.S_LOAD1 state.S_LOAD_ORIGIN state.S_CAPTURE_NEW_ADDR state.S_CONFIG state.S_INIT 
+state.S_INIT 0 0 0 0 0 0 0 0 0 0 0 
+state.S_CONFIG 0 0 0 0 0 0 0 0 0 1 1 
+state.S_CAPTURE_NEW_ADDR 0 0 0 0 0 0 0 0 1 0 1 
+state.S_LOAD_ORIGIN 0 0 0 0 0 0 0 1 0 0 1 
+state.S_LOAD1 0 0 0 0 0 0 1 0 0 0 1 
+state.S_LOAD2 0 0 0 0 0 1 0 0 0 0 1 
+state.S_LOAD3 0 0 0 0 1 0 0 0 0 0 1 
+state.S_LOAD4 0 0 0 1 0 0 0 0 0 0 1 
+state.S_MULTIPLY 0 0 1 0 0 0 0 0 0 0 1 
+state.S_ACCUMULATE 0 1 0 0 0 0 0 0 0 0 1 
+state.S_OUTPUT 1 0 0 0 0 0 0 0 0 0 1 

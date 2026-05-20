@@ -1,0 +1,126 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+
+USE work.asp_types.all;
+
+ENTITY AverageFilteredData_ResetWrapper IS
+    PORT (
+        clock       : IN  bit_1;
+        reset       : IN  bit_1;
+        init        : IN  bit_1;
+
+        -- normal user memory interface
+        data        : IN  bit_16;
+        rdaddress   : IN  bit_9;
+        wraddress   : IN  bit_9;
+        wren        : IN  bit_1;
+
+        q           : OUT bit_16
+
+    );
+END AverageFilteredData_ResetWrapper;
+
+ARCHITECTURE rtl OF AverageFilteredData_ResetWrapper IS
+
+    --------------------------------------------------------------------
+    -- Internal RAM interface
+    --------------------------------------------------------------------
+    signal mem_data      : bit_16;
+    signal mem_rdaddress : bit_9;
+    signal mem_wraddress : bit_9;
+    signal mem_wren      : bit_1;
+    signal mem_q_raw     : bit_16;
+
+    --------------------------------------------------------------------
+    -- RAM zero-initialisation controller
+    --------------------------------------------------------------------
+    signal clearing      : bit_1 := '1';
+    signal clear_addr    : bit_9 := (others => '0');
+
+BEGIN
+
+    --------------------------------------------------------------------
+    -- Clear controller
+    --
+    -- After reset/init, write zero to every RAM address:
+    --   0, 1, 2, ..., 511
+    --------------------------------------------------------------------
+    process(clock, reset)
+    begin
+        if reset = '1' then
+            clearing   <= '1';
+            clear_addr <= (others => '0');
+
+        elsif rising_edge(clock) then
+
+            if init = '1' then
+                clearing   <= '1';
+                clear_addr <= (others => '0');
+
+            elsif clearing = '1' then
+
+                if unsigned(clear_addr) = to_unsigned(511, clear_addr'length) then
+                    clearing   <= '0';
+                    clear_addr <= (others => '0');
+                else
+                    clear_addr <= std_logic_vector(unsigned(clear_addr) + 1);
+                end if;
+
+            end if;
+        end if;
+    end process;
+
+    --------------------------------------------------------------------
+    -- Memory input mux
+    --
+    -- During clearing:
+    --   data      = 0
+    --   wraddress = clear_addr
+    --   rdaddress = 0
+    --   wren      = 1
+    --
+    -- During normal operation:
+    --   pass through user memory signals, but keep unused values safe.
+    --------------------------------------------------------------------
+    mem_data <=
+        (others => '0') when clearing = '1' else
+        data            when wren = '1' else
+        (others => '0');
+
+    mem_wraddress <=
+        clear_addr      when clearing = '1' else
+        wraddress       when wren = '1' else
+        (others => '0');
+
+    mem_rdaddress <=
+        (others => '0') when clearing = '1' else
+        rdaddress;
+
+    mem_wren <=
+        '1' when clearing = '1' else
+        wren;
+
+    --------------------------------------------------------------------
+    -- During clearing, force q to zero externally.
+    --
+    -- This avoids propagating unknown RAM output while RAM is being
+    -- initialised.
+    --------------------------------------------------------------------
+    q <= (others => '0') when clearing = '1' else mem_q_raw;
+
+
+    --------------------------------------------------------------------
+    -- Original RAM
+    --------------------------------------------------------------------
+    u_memory : entity work.AverageFilteredData
+        port map (
+            clock     => clock,
+            data      => mem_data,
+            rdaddress => mem_rdaddress,
+            wraddress => mem_wraddress,
+            wren      => mem_wren,
+            q         => mem_q_raw
+        );
+
+END rtl;
