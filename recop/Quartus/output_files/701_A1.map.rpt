@@ -1,5 +1,5 @@
 Analysis & Synthesis report for 701_A1
-Tue Apr 21 21:21:12 2026
+Thu May 21 10:54:49 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -59,7 +59,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Apr 21 21:21:12 2026       ;
+; Analysis & Synthesis Status     ; Successful - Thu May 21 10:54:49 2026       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; 701_A1                                      ;
 ; Top-level Entity Name           ; recop_de1_soc_test                          ;
@@ -171,53 +171,59 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 8           ;
-; Maximum allowed            ; 4           ;
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 4           ;
+; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   0.0%      ;
 ;     Processor 3            ;   0.0%      ;
 ;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
+;     Processors 9-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                              ;
-+------------------------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path               ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                            ; Library ;
-+------------------------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
-; ../RecopVHDL/Main/PLL.vhd                      ; yes             ; User Wizard-Generated File   ; C:/HDL/701/recop/RecopVHDL/Main/PLL.vhd                                 ;         ;
-; ../RecopVHDL/Main/PLL/PLL_0002.v               ; yes             ; User Verilog HDL File        ; C:/HDL/701/recop/RecopVHDL/Main/PLL/PLL_0002.v                          ; PLL     ;
-; ../RecopVHDL/Main/recop_de1_soc_test.vhd       ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd                  ;         ;
-; ../RecopVHDL/Main/registers.vhd                ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/registers.vhd                           ;         ;
-; ../RecopVHDL/Main/regfile.vhd                  ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/regfile.vhd                             ;         ;
-; ../RecopVHDL/Main/recop_types.vhd              ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/recop_types.vhd                         ;         ;
-; ../RecopVHDL/Main/ALU.vhd                      ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/ALU.vhd                                 ;         ;
-; ../RecopVHDL/Main/various_constants.vhd        ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/various_constants.vhd                   ;         ;
-; ../RecopVHDL/Main/recop_top_v1.vhd             ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd                        ;         ;
-; ../RecopVHDL/Main/program_counter.vhd          ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/program_counter.vhd                     ;         ;
-; ../RecopVHDL/Main/opcodes.vhd                  ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/opcodes.vhd                             ;         ;
-; ../RecopVHDL/Main/multicycle_moore_machine.vhd ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/multicycle_moore_machine.vhd            ;         ;
-; ../RecopVHDL/Main/instruction_memory_ip.vhd    ; yes             ; User Wizard-Generated File   ; C:/HDL/701/recop/RecopVHDL/Main/instruction_memory_ip.vhd               ;         ;
-; ../RecopVHDL/Main/execute.vhd                  ; yes             ; User VHDL File               ; C:/HDL/701/recop/RecopVHDL/Main/execute.vhd                             ;         ;
-; ../RecopVHDL/Main/data_memory_ip.vhd           ; yes             ; User Wizard-Generated File   ; C:/HDL/701/recop/RecopVHDL/Main/data_memory_ip.vhd                      ;         ;
-; altera_pll.v                                   ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/altera_pll.v          ;         ;
-; altsyncram.tdf                                 ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
-; stratix_ram_block.inc                          ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
-; lpm_mux.inc                                    ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
-; lpm_decode.inc                                 ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
-; aglobal181.inc                                 ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/aglobal181.inc        ;         ;
-; a_rdenreg.inc                                  ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
-; altrom.inc                                     ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
-; altram.inc                                     ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/altram.inc            ;         ;
-; altdpram.inc                                   ; yes             ; Megafunction                 ; c:/hdl/quartu18.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
-; db/altsyncram_4824.tdf                         ; yes             ; Auto-Generated Megafunction  ; C:/HDL/701/recop/Quartus/db/altsyncram_4824.tdf                         ;         ;
-; db/altsyncram_s3v3.tdf                         ; yes             ; Auto-Generated Megafunction  ; C:/HDL/701/recop/Quartus/db/altsyncram_s3v3.tdf                         ;         ;
-+------------------------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                 ;
++------------------------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path               ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                     ; Library ;
++------------------------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------------------+---------+
+; ../RecopVHDL/Main/PLL.vhd                      ; yes             ; User Wizard-Generated File             ; C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/PLL.vhd                      ;         ;
+; ../RecopVHDL/Main/PLL/PLL_0002.v               ; yes             ; User Verilog HDL File                  ; C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/PLL/PLL_0002.v               ; PLL     ;
+; ../RecopVHDL/Main/recop_de1_soc_test.vhd       ; yes             ; User VHDL File                         ; C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd       ;         ;
+; ../RecopVHDL/Main/registers.vhd                ; yes             ; User VHDL File                         ; C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/registers.vhd                ;         ;
+; ../RecopVHDL/Main/regfile.vhd                  ; yes             ; User VHDL File                         ; C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/regfile.vhd                  ;         ;
+; ../RecopVHDL/Main/recop_types.vhd              ; yes             ; User VHDL File                         ; C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_types.vhd              ;         ;
+; ../RecopVHDL/Main/ALU.vhd                      ; yes             ; User VHDL File                         ; C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/ALU.vhd                      ;         ;
+; ../RecopVHDL/Main/various_constants.vhd        ; yes             ; User VHDL File                         ; C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/various_constants.vhd        ;         ;
+; ../RecopVHDL/Main/recop_top_v1.vhd             ; yes             ; User VHDL File                         ; C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top_v1.vhd             ;         ;
+; ../RecopVHDL/Main/program_counter.vhd          ; yes             ; User VHDL File                         ; C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/program_counter.vhd          ;         ;
+; ../RecopVHDL/Main/opcodes.vhd                  ; yes             ; User VHDL File                         ; C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/opcodes.vhd                  ;         ;
+; ../RecopVHDL/Main/multicycle_moore_machine.vhd ; yes             ; User VHDL File                         ; C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/multicycle_moore_machine.vhd ;         ;
+; ../RecopVHDL/Main/instruction_memory_ip.vhd    ; yes             ; User Wizard-Generated File             ; C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/instruction_memory_ip.vhd    ;         ;
+; ../RecopVHDL/Main/execute.vhd                  ; yes             ; User VHDL File                         ; C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/execute.vhd                  ;         ;
+; ../RecopVHDL/Main/data_memory_ip.vhd           ; yes             ; User Wizard-Generated File             ; C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/data_memory_ip.vhd           ;         ;
+; altera_pll.v                                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altera_pll.v              ;         ;
+; altsyncram.tdf                                 ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf            ;         ;
+; stratix_ram_block.inc                          ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/stratix_ram_block.inc     ;         ;
+; lpm_mux.inc                                    ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_mux.inc               ;         ;
+; lpm_decode.inc                                 ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_decode.inc            ;         ;
+; aglobal181.inc                                 ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/aglobal181.inc            ;         ;
+; a_rdenreg.inc                                  ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/a_rdenreg.inc             ;         ;
+; altrom.inc                                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altrom.inc                ;         ;
+; altram.inc                                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altram.inc                ;         ;
+; altdpram.inc                                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altdpram.inc              ;         ;
+; db/altsyncram_4824.tdf                         ; yes             ; Auto-Generated Megafunction            ; C:/intelFPGA_lite/18.1/701/701/recop/Quartus/db/altsyncram_4824.tdf              ;         ;
+; ../RecopVHDL/Main/cpu_mif.mif                  ; yes             ; Auto-Found Memory Initialization File  ; C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/cpu_mif.mif                  ;         ;
+; db/altsyncram_s3v3.tdf                         ; yes             ; Auto-Generated Megafunction            ; C:/intelFPGA_lite/18.1/701/701/recop/Quartus/db/altsyncram_s3v3.tdf              ;         ;
++------------------------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------------------+---------+
 
 
 +------------------------------------------------------------------------------------------------------------------+
@@ -879,7 +885,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -889,66 +895,64 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Tue Apr 21 21:21:03 2026
+    Info: Processing started: Thu May 21 10:54:29 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off 701_A1 -c 701_A1
 Warning (125092): Tcl Script File data_memory_ip.qip not found
     Info (125063): set_global_assignment -name QIP_FILE data_memory_ip.qip
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Info (12021): Found 2 design units, including 1 entities, in source file /hdl/701/recop/recopvhdl/main/pll.vhd
-    Info (12022): Found design unit 1: PLL-rtl File: C:/HDL/701/recop/RecopVHDL/Main/PLL.vhd Line: 20
-    Info (12023): Found entity 1: PLL File: C:/HDL/701/recop/RecopVHDL/Main/PLL.vhd Line: 11
-Info (12021): Found 2 design units, including 1 entities, in source file /hdl/701/recop/recopvhdl/main/pll.vhd
-    Info (12022): Found design unit 1: PLL-rtl File: C:/HDL/701/recop/RecopVHDL/Main/PLL.vhd Line: 20
-    Info (12023): Found entity 1: PLL File: C:/HDL/701/recop/RecopVHDL/Main/PLL.vhd Line: 11
-Info (12021): Found 1 design units, including 1 entities, in source file /hdl/701/recop/recopvhdl/main/pll/pll_0002.v
-    Info (12023): Found entity 1: PLL_0002 File: C:/HDL/701/recop/RecopVHDL/Main/PLL/PLL_0002.v Line: 2
-Info (12021): Found 2 design units, including 1 entities, in source file /hdl/701/recop/recopvhdl/main/recop_de1_soc_test.vhd
-    Info (12022): Found design unit 1: recop_de1_soc_test-beh File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 23
-    Info (12023): Found entity 1: recop_de1_soc_test File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 6
-Info (12021): Found 2 design units, including 1 entities, in source file /hdl/701/recop/recopvhdl/main/registers.vhd
-    Info (12022): Found design unit 1: registers-beh File: C:/HDL/701/recop/RecopVHDL/Main/registers.vhd Line: 48
-    Info (12023): Found entity 1: registers File: C:/HDL/701/recop/RecopVHDL/Main/registers.vhd Line: 12
-Info (12021): Found 2 design units, including 1 entities, in source file /hdl/701/recop/recopvhdl/main/regfile.vhd
-    Info (12022): Found design unit 1: regfile-beh File: C:/HDL/701/recop/RecopVHDL/Main/regfile.vhd Line: 41
-    Info (12023): Found entity 1: regfile File: C:/HDL/701/recop/RecopVHDL/Main/regfile.vhd Line: 11
-Info (12021): Found 1 design units, including 0 entities, in source file /hdl/701/recop/recopvhdl/main/recop_types.vhd
-    Info (12022): Found design unit 1: recop_types File: C:/HDL/701/recop/RecopVHDL/Main/recop_types.vhd Line: 5
-Info (12021): Found 2 design units, including 1 entities, in source file /hdl/701/recop/recopvhdl/main/alu.vhd
-    Info (12022): Found design unit 1: alu-combined File: C:/HDL/701/recop/RecopVHDL/Main/ALU.vhd Line: 34
-    Info (12023): Found entity 1: alu File: C:/HDL/701/recop/RecopVHDL/Main/ALU.vhd Line: 13
-Info (12021): Found 1 design units, including 0 entities, in source file /hdl/701/recop/recopvhdl/main/various_constants.vhd
-    Info (12022): Found design unit 1: various_constants File: C:/HDL/701/recop/RecopVHDL/Main/various_constants.vhd Line: 5
-Info (12021): Found 2 design units, including 1 entities, in source file /hdl/701/recop/recopvhdl/main/recop_top_v1.vhd
-    Info (12022): Found design unit 1: recop_top_v1-beh File: C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 23
-    Info (12023): Found entity 1: recop_top_v1 File: C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 8
-Info (12021): Found 2 design units, including 1 entities, in source file /hdl/701/recop/recopvhdl/main/program_counter.vhd
-    Info (12022): Found design unit 1: program_counter-beh File: C:/HDL/701/recop/RecopVHDL/Main/program_counter.vhd Line: 20
-    Info (12023): Found entity 1: program_counter File: C:/HDL/701/recop/RecopVHDL/Main/program_counter.vhd Line: 8
-Info (12021): Found 1 design units, including 0 entities, in source file /hdl/701/recop/recopvhdl/main/opcodes.vhd
-    Info (12022): Found design unit 1: opcodes File: C:/HDL/701/recop/RecopVHDL/Main/opcodes.vhd Line: 7
-Info (12021): Found 2 design units, including 1 entities, in source file /hdl/701/recop/recopvhdl/main/multicycle_moore_machine.vhd
-    Info (12022): Found design unit 1: multicycle_moore_machine-beh File: C:/HDL/701/recop/RecopVHDL/Main/multicycle_moore_machine.vhd Line: 56
-    Info (12023): Found entity 1: multicycle_moore_machine File: C:/HDL/701/recop/RecopVHDL/Main/multicycle_moore_machine.vhd Line: 9
-Info (12021): Found 2 design units, including 1 entities, in source file /hdl/701/recop/recopvhdl/main/instruction_memory_ip.vhd
-    Info (12022): Found design unit 1: instruction_memory_ip-SYN File: C:/HDL/701/recop/RecopVHDL/Main/instruction_memory_ip.vhd Line: 52
-    Info (12023): Found entity 1: instruction_memory_ip File: C:/HDL/701/recop/RecopVHDL/Main/instruction_memory_ip.vhd Line: 42
-Info (12021): Found 2 design units, including 1 entities, in source file /hdl/701/recop/recopvhdl/main/execute.vhd
-    Info (12022): Found design unit 1: execute-beh File: C:/HDL/701/recop/RecopVHDL/Main/execute.vhd Line: 31
-    Info (12023): Found entity 1: execute File: C:/HDL/701/recop/RecopVHDL/Main/execute.vhd Line: 8
-Info (12021): Found 2 design units, including 1 entities, in source file /hdl/701/recop/recopvhdl/main/recop_top.vhd
-    Info (12022): Found design unit 1: recop_top-beh File: C:/HDL/701/recop/RecopVHDL/Main/recop_top.vhd Line: 75
-    Info (12023): Found entity 1: recop_top File: C:/HDL/701/recop/RecopVHDL/Main/recop_top.vhd Line: 47
-Info (12021): Found 2 design units, including 1 entities, in source file /hdl/701/recop/recopvhdl/main/data_memory_ip.vhd
-    Info (12022): Found design unit 1: data_memory_ip-SYN File: C:/HDL/701/recop/RecopVHDL/Main/data_memory_ip.vhd Line: 54
-    Info (12023): Found entity 1: data_memory_ip File: C:/HDL/701/recop/RecopVHDL/Main/data_memory_ip.vhd Line: 42
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file /intelfpga_lite/18.1/701/701/recop/recopvhdl/main/pll.vhd
+    Info (12022): Found design unit 1: PLL-rtl File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/PLL.vhd Line: 20
+    Info (12023): Found entity 1: PLL File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/PLL.vhd Line: 11
+Info (12021): Found 2 design units, including 1 entities, in source file /intelfpga_lite/18.1/701/701/recop/recopvhdl/main/pll.vhd
+    Info (12022): Found design unit 1: PLL-rtl File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/PLL.vhd Line: 20
+    Info (12023): Found entity 1: PLL File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/PLL.vhd Line: 11
+Info (12021): Found 1 design units, including 1 entities, in source file /intelfpga_lite/18.1/701/701/recop/recopvhdl/main/pll/pll_0002.v
+    Info (12023): Found entity 1: PLL_0002 File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/PLL/PLL_0002.v Line: 2
+Info (12021): Found 2 design units, including 1 entities, in source file /intelfpga_lite/18.1/701/701/recop/recopvhdl/main/recop_de1_soc_test.vhd
+    Info (12022): Found design unit 1: recop_de1_soc_test-beh File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 23
+    Info (12023): Found entity 1: recop_de1_soc_test File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file /intelfpga_lite/18.1/701/701/recop/recopvhdl/main/registers.vhd
+    Info (12022): Found design unit 1: registers-beh File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/registers.vhd Line: 48
+    Info (12023): Found entity 1: registers File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/registers.vhd Line: 12
+Info (12021): Found 2 design units, including 1 entities, in source file /intelfpga_lite/18.1/701/701/recop/recopvhdl/main/regfile.vhd
+    Info (12022): Found design unit 1: regfile-beh File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/regfile.vhd Line: 41
+    Info (12023): Found entity 1: regfile File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/regfile.vhd Line: 11
+Info (12021): Found 1 design units, including 0 entities, in source file /intelfpga_lite/18.1/701/701/recop/recopvhdl/main/recop_types.vhd
+    Info (12022): Found design unit 1: recop_types File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_types.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /intelfpga_lite/18.1/701/701/recop/recopvhdl/main/alu.vhd
+    Info (12022): Found design unit 1: alu-combined File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/ALU.vhd Line: 34
+    Info (12023): Found entity 1: alu File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/ALU.vhd Line: 13
+Info (12021): Found 1 design units, including 0 entities, in source file /intelfpga_lite/18.1/701/701/recop/recopvhdl/main/various_constants.vhd
+    Info (12022): Found design unit 1: various_constants File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/various_constants.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file /intelfpga_lite/18.1/701/701/recop/recopvhdl/main/recop_top_v1.vhd
+    Info (12022): Found design unit 1: recop_top_v1-beh File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 23
+    Info (12023): Found entity 1: recop_top_v1 File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file /intelfpga_lite/18.1/701/701/recop/recopvhdl/main/program_counter.vhd
+    Info (12022): Found design unit 1: program_counter-beh File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/program_counter.vhd Line: 20
+    Info (12023): Found entity 1: program_counter File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/program_counter.vhd Line: 8
+Info (12021): Found 1 design units, including 0 entities, in source file /intelfpga_lite/18.1/701/701/recop/recopvhdl/main/opcodes.vhd
+    Info (12022): Found design unit 1: opcodes File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/opcodes.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file /intelfpga_lite/18.1/701/701/recop/recopvhdl/main/multicycle_moore_machine.vhd
+    Info (12022): Found design unit 1: multicycle_moore_machine-beh File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/multicycle_moore_machine.vhd Line: 56
+    Info (12023): Found entity 1: multicycle_moore_machine File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/multicycle_moore_machine.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file /intelfpga_lite/18.1/701/701/recop/recopvhdl/main/instruction_memory_ip.vhd
+    Info (12022): Found design unit 1: instruction_memory_ip-SYN File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/instruction_memory_ip.vhd Line: 52
+    Info (12023): Found entity 1: instruction_memory_ip File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/instruction_memory_ip.vhd Line: 42
+Info (12021): Found 2 design units, including 1 entities, in source file /intelfpga_lite/18.1/701/701/recop/recopvhdl/main/execute.vhd
+    Info (12022): Found design unit 1: execute-beh File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/execute.vhd Line: 31
+    Info (12023): Found entity 1: execute File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/execute.vhd Line: 8
+Warning (12019): Can't analyze file -- file ../RecopVHDL/Main/recop_top.vhd is missing
+Info (12021): Found 2 design units, including 1 entities, in source file /intelfpga_lite/18.1/701/701/recop/recopvhdl/main/data_memory_ip.vhd
+    Info (12022): Found design unit 1: data_memory_ip-SYN File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/data_memory_ip.vhd Line: 54
+    Info (12023): Found entity 1: data_memory_ip File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/data_memory_ip.vhd Line: 42
 Info (12127): Elaborating entity "recop_de1_soc_test" for the top level hierarchy
-Info (12128): Elaborating entity "PLL" for hierarchy "PLL:u_pll" File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 69
-Info (12128): Elaborating entity "PLL_0002" for hierarchy "PLL:u_pll|PLL_0002:pll_inst" File: C:/HDL/701/recop/RecopVHDL/Main/PLL.vhd Line: 32
-Info (12128): Elaborating entity "altera_pll" for hierarchy "PLL:u_pll|PLL_0002:pll_inst|altera_pll:altera_pll_i" File: C:/HDL/701/recop/RecopVHDL/Main/PLL/PLL_0002.v Line: 85
+Info (12128): Elaborating entity "PLL" for hierarchy "PLL:u_pll" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 69
+Info (12128): Elaborating entity "PLL_0002" for hierarchy "PLL:u_pll|PLL_0002:pll_inst" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/PLL.vhd Line: 32
+Info (12128): Elaborating entity "altera_pll" for hierarchy "PLL:u_pll|PLL_0002:pll_inst|altera_pll:altera_pll_i" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/PLL/PLL_0002.v Line: 85
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus
-Info (12130): Elaborated megafunction instantiation "PLL:u_pll|PLL_0002:pll_inst|altera_pll:altera_pll_i" File: C:/HDL/701/recop/RecopVHDL/Main/PLL/PLL_0002.v Line: 85
-Info (12133): Instantiated megafunction "PLL:u_pll|PLL_0002:pll_inst|altera_pll:altera_pll_i" with the following parameter: File: C:/HDL/701/recop/RecopVHDL/Main/PLL/PLL_0002.v Line: 85
+Info (12130): Elaborated megafunction instantiation "PLL:u_pll|PLL_0002:pll_inst|altera_pll:altera_pll_i" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/PLL/PLL_0002.v Line: 85
+Info (12133): Instantiated megafunction "PLL:u_pll|PLL_0002:pll_inst|altera_pll:altera_pll_i" with the following parameter: File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/PLL/PLL_0002.v Line: 85
     Info (12134): Parameter "fractional_vco_multiplier" = "false"
     Info (12134): Parameter "reference_clock_frequency" = "50.0 MHz"
     Info (12134): Parameter "operation_mode" = "direct"
@@ -1009,19 +1013,19 @@ Info (12133): Instantiated megafunction "PLL:u_pll|PLL_0002:pll_inst|altera_pll:
     Info (12134): Parameter "duty_cycle17" = "50"
     Info (12134): Parameter "pll_type" = "General"
     Info (12134): Parameter "pll_subtype" = "General"
-Info (12128): Elaborating entity "recop_top_v1" for hierarchy "recop_top_v1:u_recop" File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 87
-Warning (10036): Verilog HDL or VHDL warning at recop_top_v1.vhd(75): object "er" assigned a value but never read File: C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 75
-Warning (10036): Verilog HDL or VHDL warning at recop_top_v1.vhd(76): object "eot" assigned a value but never read File: C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 76
-Warning (10036): Verilog HDL or VHDL warning at recop_top_v1.vhd(77): object "svop" assigned a value but never read File: C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 77
-Info (12128): Elaborating entity "multicycle_moore_machine" for hierarchy "recop_top_v1:u_recop|multicycle_moore_machine:u_cu" File: C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 87
-Warning (10492): VHDL Process Statement warning at multicycle_moore_machine.vhd(244): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/HDL/701/recop/RecopVHDL/Main/multicycle_moore_machine.vhd Line: 244
-Warning (10492): VHDL Process Statement warning at multicycle_moore_machine.vhd(247): signal "init" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/HDL/701/recop/RecopVHDL/Main/multicycle_moore_machine.vhd Line: 247
-Info (12128): Elaborating entity "program_counter" for hierarchy "recop_top_v1:u_recop|program_counter:u_pc" File: C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 144
-Warning (10492): VHDL Process Statement warning at program_counter.vhd(27): signal "init" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/HDL/701/recop/RecopVHDL/Main/program_counter.vhd Line: 27
-Info (12128): Elaborating entity "instruction_memory_ip" for hierarchy "recop_top_v1:u_recop|instruction_memory_ip:u_im_ip" File: C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 155
-Info (12128): Elaborating entity "altsyncram" for hierarchy "recop_top_v1:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component" File: C:/HDL/701/recop/RecopVHDL/Main/instruction_memory_ip.vhd Line: 59
-Info (12130): Elaborated megafunction instantiation "recop_top_v1:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component" File: C:/HDL/701/recop/RecopVHDL/Main/instruction_memory_ip.vhd Line: 59
-Info (12133): Instantiated megafunction "recop_top_v1:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component" with the following parameter: File: C:/HDL/701/recop/RecopVHDL/Main/instruction_memory_ip.vhd Line: 59
+Info (12128): Elaborating entity "recop_top_v1" for hierarchy "recop_top_v1:u_recop" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 87
+Warning (10036): Verilog HDL or VHDL warning at recop_top_v1.vhd(75): object "er" assigned a value but never read File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 75
+Warning (10036): Verilog HDL or VHDL warning at recop_top_v1.vhd(76): object "eot" assigned a value but never read File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 76
+Warning (10036): Verilog HDL or VHDL warning at recop_top_v1.vhd(77): object "svop" assigned a value but never read File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 77
+Info (12128): Elaborating entity "multicycle_moore_machine" for hierarchy "recop_top_v1:u_recop|multicycle_moore_machine:u_cu" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 87
+Warning (10492): VHDL Process Statement warning at multicycle_moore_machine.vhd(244): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/multicycle_moore_machine.vhd Line: 244
+Warning (10492): VHDL Process Statement warning at multicycle_moore_machine.vhd(247): signal "init" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/multicycle_moore_machine.vhd Line: 247
+Info (12128): Elaborating entity "program_counter" for hierarchy "recop_top_v1:u_recop|program_counter:u_pc" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 144
+Warning (10492): VHDL Process Statement warning at program_counter.vhd(27): signal "init" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/program_counter.vhd Line: 27
+Info (12128): Elaborating entity "instruction_memory_ip" for hierarchy "recop_top_v1:u_recop|instruction_memory_ip:u_im_ip" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 155
+Info (12128): Elaborating entity "altsyncram" for hierarchy "recop_top_v1:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/instruction_memory_ip.vhd Line: 59
+Info (12130): Elaborated megafunction instantiation "recop_top_v1:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/instruction_memory_ip.vhd Line: 59
+Info (12133): Instantiated megafunction "recop_top_v1:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component" with the following parameter: File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/instruction_memory_ip.vhd Line: 59
     Info (12134): Parameter "address_aclr_a" = "NONE"
     Info (12134): Parameter "address_aclr_b" = "NONE"
     Info (12134): Parameter "address_reg_b" = "CLOCK1"
@@ -1073,16 +1077,18 @@ Info (12133): Instantiated megafunction "recop_top_v1:u_recop|instruction_memory
     Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
     Info (12134): Parameter "lpm_type" = "altsyncram"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_4824.tdf
-    Info (12023): Found entity 1: altsyncram_4824 File: C:/HDL/701/recop/Quartus/db/altsyncram_4824.tdf Line: 27
-Info (12128): Elaborating entity "altsyncram_4824" for hierarchy "recop_top_v1:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component|altsyncram_4824:auto_generated" File: c:/hdl/quartu18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
-Info (12128): Elaborating entity "regfile" for hierarchy "recop_top_v1:u_recop|regfile:u_regfile" File: C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 169
-Info (12128): Elaborating entity "execute" for hierarchy "recop_top_v1:u_recop|execute:u_execute" File: C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 195
-Info (12128): Elaborating entity "alu" for hierarchy "recop_top_v1:u_recop|execute:u_execute|alu:u_alu" File: C:/HDL/701/recop/RecopVHDL/Main/execute.vhd Line: 39
-Warning (10492): VHDL Process Statement warning at ALU.vhd(88): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/HDL/701/recop/RecopVHDL/Main/ALU.vhd Line: 88
-Info (12128): Elaborating entity "data_memory_ip" for hierarchy "recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm" File: C:/HDL/701/recop/RecopVHDL/Main/execute.vhd Line: 61
-Info (12128): Elaborating entity "altsyncram" for hierarchy "recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component" File: C:/HDL/701/recop/RecopVHDL/Main/data_memory_ip.vhd Line: 61
-Info (12130): Elaborated megafunction instantiation "recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component" File: C:/HDL/701/recop/RecopVHDL/Main/data_memory_ip.vhd Line: 61
-Info (12133): Instantiated megafunction "recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component" with the following parameter: File: C:/HDL/701/recop/RecopVHDL/Main/data_memory_ip.vhd Line: 61
+    Info (12023): Found entity 1: altsyncram_4824 File: C:/intelFPGA_lite/18.1/701/701/recop/Quartus/db/altsyncram_4824.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_4824" for hierarchy "recop_top_v1:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component|altsyncram_4824:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Warning (113028): 508 out of 512 addresses are uninitialized. The Quartus Prime software will initialize them to "0". There are 1 warnings found, and 1 warnings are reported. File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/cpu_mif.mif Line: 1
+    Warning (113027): Addresses ranging from 4 to 511 are not initialized File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/cpu_mif.mif Line: 1
+Info (12128): Elaborating entity "regfile" for hierarchy "recop_top_v1:u_recop|regfile:u_regfile" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 169
+Info (12128): Elaborating entity "execute" for hierarchy "recop_top_v1:u_recop|execute:u_execute" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 195
+Info (12128): Elaborating entity "alu" for hierarchy "recop_top_v1:u_recop|execute:u_execute|alu:u_alu" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/execute.vhd Line: 39
+Warning (10492): VHDL Process Statement warning at ALU.vhd(88): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/ALU.vhd Line: 88
+Info (12128): Elaborating entity "data_memory_ip" for hierarchy "recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/execute.vhd Line: 61
+Info (12128): Elaborating entity "altsyncram" for hierarchy "recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/data_memory_ip.vhd Line: 61
+Info (12130): Elaborated megafunction instantiation "recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/data_memory_ip.vhd Line: 61
+Info (12133): Instantiated megafunction "recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component" with the following parameter: File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/data_memory_ip.vhd Line: 61
     Info (12134): Parameter "address_aclr_a" = "UNUSED"
     Info (12134): Parameter "address_aclr_b" = "NONE"
     Info (12134): Parameter "address_reg_b" = "CLOCK1"
@@ -1134,42 +1140,42 @@ Info (12133): Instantiated megafunction "recop_top_v1:u_recop|execute:u_execute|
     Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
     Info (12134): Parameter "lpm_type" = "altsyncram"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_s3v3.tdf
-    Info (12023): Found entity 1: altsyncram_s3v3 File: C:/HDL/701/recop/Quartus/db/altsyncram_s3v3.tdf Line: 27
-Info (12128): Elaborating entity "altsyncram_s3v3" for hierarchy "recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component|altsyncram_s3v3:auto_generated" File: c:/hdl/quartu18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
-Info (12128): Elaborating entity "registers" for hierarchy "recop_top_v1:u_recop|registers:u_registers" File: C:/HDL/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 220
+    Info (12023): Found entity 1: altsyncram_s3v3 File: C:/intelFPGA_lite/18.1/701/701/recop/Quartus/db/altsyncram_s3v3.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_s3v3" for hierarchy "recop_top_v1:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component|altsyncram_s3v3:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Info (12128): Elaborating entity "registers" for hierarchy "recop_top_v1:u_recop|registers:u_registers" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top_v1.vhd Line: 220
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 12
-    Warning (13410): Pin "HEX4[0]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 18
-    Warning (13410): Pin "HEX4[1]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 18
-    Warning (13410): Pin "HEX4[2]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 18
-    Warning (13410): Pin "HEX4[3]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 18
-    Warning (13410): Pin "HEX4[4]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 18
-    Warning (13410): Pin "HEX4[5]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 18
-    Warning (13410): Pin "HEX4[6]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 18
-    Warning (13410): Pin "HEX5[0]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 19
-    Warning (13410): Pin "HEX5[1]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 19
-    Warning (13410): Pin "HEX5[2]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 19
-    Warning (13410): Pin "HEX5[3]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 19
-    Warning (13410): Pin "HEX5[4]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 19
-    Warning (13410): Pin "HEX5[5]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 19
-    Warning (13410): Pin "HEX5[6]" is stuck at VCC File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 19
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 12
+    Warning (13410): Pin "HEX4[0]" is stuck at VCC File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 18
+    Warning (13410): Pin "HEX4[1]" is stuck at VCC File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 18
+    Warning (13410): Pin "HEX4[2]" is stuck at VCC File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 18
+    Warning (13410): Pin "HEX4[3]" is stuck at VCC File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 18
+    Warning (13410): Pin "HEX4[4]" is stuck at VCC File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 18
+    Warning (13410): Pin "HEX4[5]" is stuck at VCC File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 18
+    Warning (13410): Pin "HEX4[6]" is stuck at VCC File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 18
+    Warning (13410): Pin "HEX5[0]" is stuck at VCC File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 19
+    Warning (13410): Pin "HEX5[1]" is stuck at VCC File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 19
+    Warning (13410): Pin "HEX5[2]" is stuck at VCC File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 19
+    Warning (13410): Pin "HEX5[3]" is stuck at VCC File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 19
+    Warning (13410): Pin "HEX5[4]" is stuck at VCC File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 19
+    Warning (13410): Pin "HEX5[5]" is stuck at VCC File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 19
+    Warning (13410): Pin "HEX5[6]" is stuck at VCC File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 19
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Warning: RST port on the PLL is not properly connected on instance PLL:u_pll|PLL_0002:pll_inst|altera_pll:altera_pll_i|general[0].gpll. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: c:/hdl/quartu18.1/quartus/libraries/megafunctions/altera_pll.v Line: 748
+Warning: RST port on the PLL is not properly connected on instance PLL:u_pll|PLL_0002:pll_inst|altera_pll:altera_pll_i|general[0].gpll. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altera_pll.v Line: 748
     Info: Must be connected
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "KEY[3]" File: C:/HDL/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 9
+    Warning (15610): No output dependent on input pin "KEY[3]" File: C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_de1_soc_test.vhd Line: 9
 Info (21057): Implemented 935 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 52 output pins
     Info (21061): Implemented 819 logic cells
     Info (21064): Implemented 48 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 28 warnings
-    Info: Peak virtual memory: 4894 megabytes
-    Info: Processing ended: Tue Apr 21 21:21:12 2026
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:17
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 31 warnings
+    Info: Peak virtual memory: 4955 megabytes
+    Info: Processing ended: Thu May 21 10:54:49 2026
+    Info: Elapsed time: 00:00:20
+    Info: Total CPU time (on all processors): 00:00:29
 
 
