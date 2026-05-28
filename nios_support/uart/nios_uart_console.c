@@ -4,61 +4,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "nios_packet.h"
+#include "nios_command.h"
 
 #define NIOS_LINE_MAX 80
-
-typedef struct {
-    unsigned mode;
-    uint32_t window;
-    uint32_t last_tx_packet;
-    uint32_t last_rx_packet;
-    int has_last_tx;
-    int has_last_rx;
-} nios_console_state_t;
 
 static void nios_print_help(void)
 {
     printf("cmd: mode 1|2, window <n>, start, reset, status, help, exit\n");
-}
-
-static void nios_print_packet(uint32_t packet)
-{
-    printf("TX 0x%08lX\n", (unsigned long)packet);
-}
-
-static int nios_send_packet(nios_console_state_t *state, uint32_t packet)
-{
-    state->last_tx_packet = packet;
-    state->has_last_tx = 1;
-
-    /*
-     * Dry-run hook. Replace this print with Avalon-MM writes when the
-     * Nios-to-NoC adapter registers are connected.
-     */
-    nios_print_packet(packet);
-    return 0;
-}
-
-static void nios_print_status(const nios_console_state_t *state)
-{
-    printf("mode=%u window=%lu",
-           state->mode,
-           (unsigned long)state->window);
-
-    if (state->has_last_tx) {
-        printf(" tx=0x%08lX", (unsigned long)state->last_tx_packet);
-    } else {
-        printf(" tx=none");
-    }
-
-    if (state->has_last_rx) {
-        printf(" rx=0x%08lX", (unsigned long)state->last_rx_packet);
-    } else {
-        printf(" rx=none");
-    }
-
-    printf("\n");
 }
 
 static void nios_lowercase(char *text)
@@ -79,7 +31,7 @@ static int nios_parse_u16(const char *text, uint32_t *value_out)
     }
 
     value = strtoul(text, &end, 0);
-    if (end == text || *end != '\0' || value > NIOS_PAYLOAD_VALUE_MASK) {
+    if (end == text || *end != '\0' || value > 0xFFFFu) {
         return 0;
     }
 
@@ -88,52 +40,44 @@ static int nios_parse_u16(const char *text, uint32_t *value_out)
 }
 
 static int nios_handle_mode(
-    nios_console_state_t *state,
+    nios_command_state_t *state,
     const char *argument
 )
 {
-    uint32_t packet;
-    uint32_t mode_value;
+    unsigned mode;
 
     if (strcmp(argument, "1") == 0) {
-        state->mode = 1u;
-        mode_value = NIOS_MODE_CORRELATION;
+        mode = 1u;
     } else if (strcmp(argument, "2") == 0) {
-        state->mode = 2u;
-        mode_value = NIOS_MODE_PASS_THROUGH;
+        mode = 2u;
     } else {
         printf("ERR: mode 1|2\n");
         return 0;
     }
 
-    packet = nios_make_recop_config(NIOS_HOST_TAG_MODE, mode_value);
-    return nios_send_packet(state, packet);
+    return nios_command_set_mode(state, mode);
 }
 
 static int nios_handle_window(
-    nios_console_state_t *state,
+    nios_command_state_t *state,
     const char *argument
 )
 {
     uint32_t window;
-    uint32_t packet;
 
     if (!nios_parse_u16(argument, &window) || window == 0u) {
         printf("ERR: window 1..65535\n");
         return 0;
     }
 
-    state->window = window;
-    packet = nios_make_recop_config(NIOS_TAG_WINDOW, window);
-    return nios_send_packet(state, packet);
+    return nios_command_set_window(state, window);
 }
 
-static int nios_handle_line(nios_console_state_t *state, char *line)
+static int nios_handle_line(nios_command_state_t *state, char *line)
 {
     char command[16] = {0};
     char argument[32] = {0};
     int fields;
-    uint32_t packet;
 
     fields = sscanf(line, "%15s %31s", command, argument);
     if (fields <= 0) {
@@ -156,14 +100,11 @@ static int nios_handle_line(nios_console_state_t *state, char *line)
         }
         nios_handle_window(state, argument);
     } else if (strcmp(command, "start") == 0) {
-        packet = nios_make_recop_simple_cmd(NIOS_CMD_START);
-        nios_send_packet(state, packet);
+        nios_command_start(state);
     } else if (strcmp(command, "reset") == 0) {
-        packet = nios_make_recop_simple_cmd(NIOS_CMD_CLEAR);
-        state->has_last_rx = 0;
-        nios_send_packet(state, packet);
+        nios_command_reset(state);
     } else if (strcmp(command, "status") == 0) {
-        nios_print_status(state);
+        nios_command_print_status(state);
     } else if (strcmp(command, "help") == 0 || strcmp(command, "?") == 0) {
         nios_print_help();
     } else if (strcmp(command, "quit") == 0 || strcmp(command, "exit") == 0) {
@@ -177,12 +118,10 @@ static int nios_handle_line(nios_console_state_t *state, char *line)
 
 int main(void)
 {
-    nios_console_state_t state;
+    nios_command_state_t state;
     char line[NIOS_LINE_MAX];
 
-    memset(&state, 0, sizeof(state));
-    state.mode = 1u;
-    state.window = 64u;
+    nios_command_init(&state);
 
     printf("Nios command console\n");
     nios_print_help();

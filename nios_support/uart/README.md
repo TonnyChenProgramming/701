@@ -20,13 +20,14 @@ No Avalon/NoC hardware adapter is required for this step.
 
 | File | Purpose |
 | --- | --- |
+| `nios_command.h/.c` | Command helpers that build/send packets and track cached TX/RX state. |
 | `nios_packet.h` | Shared packet constants and helper functions for Nios C code. |
 | `nios_noc_adapter.h` | Avalon-MM register offsets and bit masks for the Nios-to-NoC adapter. |
 | `nios_uart_console.c` | UART/JTAG UART command parser skeleton. |
 
 ## Nios II Usage
 
-Create or open a Nios II application project and add these two files to the application source folder. The standard Nios II BSP routes `printf()` and `fgets()` through the configured console, normally JTAG UART.
+Create or open a Nios II application project and add these source/header files to the application source folder. The standard Nios II BSP routes `printf()` and `fgets()` through the configured console, normally JTAG UART.
 
 The first version intentionally prints packets instead of touching registers:
 
@@ -35,7 +36,7 @@ nios> mode 1
 TX 0x110F0000
 ```
 
-When the Avalon-NoC adapter exists, replace the body of `nios_send_packet()` in `nios_uart_console.c` with register writes using `nios_noc_adapter.h`.
+When the Avalon-NoC adapter exists, replace the body of `nios_command_send()` in `nios_command.c` with register writes using `nios_noc_adapter.h`.
 
 ## Packet Format
 
