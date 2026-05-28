@@ -1,0 +1,6 @@
+
+
+C:/HDL/701/recop/RecopVHDL/Main/PLL.vhd
+
+Apr 21 07PM:42:09>: Megafunction PLL Intel FPGA IP v18.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted

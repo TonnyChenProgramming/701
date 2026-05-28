@@ -1,0 +1,40 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+use work.recop_types.all;
+
+entity instruction_memory_comb is
+    port(
+        address ：in std_logic_vector(15 downto 0);
+        q       : out std_logic_vector(31 downto 0)
+    );
+end entity;
+
+architecture beh of instruction_memory_comb is
+
+    type rom_array_t is array (0 to 2047) of bit_32;
+
+    constant ROM : rom_array_t := (
+        0  => x"40100005", -- LDR  R1, #5
+        1  => x"40200003", -- LDR  R2, #3
+        2  => x"78310002", -- ADD  R3, R1, #2
+        3  => x"48410001", -- AND  R4, R1, #1
+        4  => x"4C520004", -- OR   R5, R2, #4
+        5  => x"43610002", -- SUBV R6, R1, #2
+        6  => x"44100005", -- SUB  R1, #5
+        7  => x"40700005", -- LDR  R7, #5
+        8  => x"40800005", -- LDR  R8, #5
+        9  => x"40900005", -- LDR  R9, #5
+        10 => x"F8720000", -- ADD  R7, R7, R2
+        11 => x"C8820000", -- AND  R8, R8, R2
+        12 => x"CC920000", -- OR   R9, R9, R2
+        13 => x"34000000", -- NOOP
+        others => x"34000000"
+    );
+
+begin
+
+    q <= ROM(to_integer(unsigned(address(10 downto 0))));
+
+end architecture;

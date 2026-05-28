@@ -1,0 +1,213 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+use IEEE.numeric_std.all;
+
+use work.recop_types.all;
+use work.various_constants.all;
+use work.opcodes.all;
+
+entity control_signal_generator is
+	port (
+        opcode : in bit_8;
+        rz     : in bit_16;
+        z_flag : in bit_1;
+
+        -- register file related
+        ld_r : out bit_1;
+        rf_input_sel : out bit_3;
+		dprr_wren : out bit_1;
+
+        -- port register related
+		dpcr_lsb_sel : out bit_1;
+		dpcr_wr : out bit_1;
+		er_wr : out bit_1;
+		er_clr : out bit_1;
+		eot_wr : out bit_1;
+		eot_clr : out bit_1;
+		svop_wr : out bit_1;
+        sop_wr : out bit_1;	
+		irq_wr:out bit_1;
+		irq_clr:out bit_1;
+		result_wen: out bit_1;
+		result :out bit_1;	
+
+        -- alu related
+        alu_operation : out bit_3;
+        alu_op1_sel	 : out bit_2;
+	    alu_op2_sel	 : out bit_1;
+        clr_z_flag : out bit_1;
+
+        -- data memory related
+        dm_wr_en : out bit_1;
+        dm_addr_sel : out bit_2;
+        dm_data_sel : out bit_2;
+
+        -- branch related
+        pc_sel : out bit_2
+
+
+		);
+end control_signal_generator;
+
+architecture beh of control_signal_generator is
+    begin
+    process(opcode,rz,z_flag)
+        begin
+
+        -- default zero for all output
+        ld_r          <= register_write_back_disabled; -- default: write back disabled
+        rf_input_sel  <= from_ir_operand; -- default: ir_operand
+        dprr_wren     <= '0'; -- default: write dprr disabled
+
+        dpcr_lsb_sel  <= '0';
+        dpcr_wr       <= '0';
+        er_wr         <= '0';
+        er_clr        <= '0';
+        eot_wr        <= '0';
+        eot_clr       <= '0';
+        svop_wr       <= '0';
+        sop_wr        <= '0';
+        irq_wr        <= '0';
+        irq_clr       <= '0';
+        result_wen    <= '0';
+        result        <= '0';
+
+        alu_operation <= alu_idle;
+        alu_op2_sel   <= alu_op2_from_rz; -- default: select op2 to rz
+        alu_op1_sel   <= alu_op1_from_rx; -- default: select op1 to rx
+        clr_z_flag    <= '0'; -- default: not clean the zero flag
+
+        dm_wr_en          <= dm_read_enable; --defaut: select read mode for data memory 
+        dm_addr_sel    <= dm_addr_from_rx; --default: select dm address to rx
+        dm_data_sel     <= dm_data_from_rx; --default: select dm data to rx
+
+        pc_sel <= pc_sel_plus_one; --default: set pc_sel to current pc plus one
+
+        case opcode(7 downto 6) is
+            when am_inherent =>
+                case opcode(5 downto 0) is
+                    when clfz =>
+                        clr_z_flag <= '1';
+                    when noop =>
+                        null;
+                    when others =>
+                        null;
+                end case;
+
+            when am_immediate =>
+                alu_op1_sel <= ALU_OP1_FROM_IMMEDIATE; -- select alu op1 to immediate 
+                case opcode(5 downto 0) is
+                    when andr =>
+                        alu_operation <= alu_and;
+                        ld_r <= register_write_back_enabled; --write back enabled
+                        rf_input_sel <= from_aluout; --select aluout
+
+                    when orr =>
+                        alu_operation <= alu_or;
+                        ld_r <= register_write_back_enabled;
+                        rf_input_sel <= from_aluout; 
+
+                    when addr =>
+                        alu_operation <= alu_add;
+                        ld_r <= register_write_back_enabled;
+                        rf_input_sel <= from_aluout; 
+
+                    when subr =>
+                        alu_operation <= alu_sub;
+
+                    when subvr =>
+                        alu_operation <= alu_sub;
+                        ld_r <= register_write_back_enabled;
+                        rf_input_sel <= from_aluout; 
+
+                    when ldr =>
+                        ld_r <= register_write_back_enabled; --write back enabled and select immediate by default
+
+                    when str =>
+                        dm_wr_en <= dm_write_enable;
+                        dm_data_sel <= dm_data_from_ir_operand;
+
+                    when jmp =>
+                        pc_sel <= pc_sel_from_operand;
+
+                    when datacall2 =>
+                        alu_op2_sel <= alu_op2_from_rx;
+                        alu_op1_sel <= alu_op1_from_immediate;
+                        alu_operation <= alu_and;
+                        irq_clr <= '1';   
+
+                    when sz =>
+                        pc_sel <= pc_sel_from_operand when z_flag = '1' else pc_sel_plus_one;
+                    when others =>
+                        null;
+                end case;
+            when am_direct =>
+                case opcode(5 downto 0) is
+                    when ldr =>
+                        dm_addr_sel <= dm_addr_from_ir_operand; -- connect dm address line to immediate
+                        ld_r <= register_write_back_enabled; --write back enabled
+                        rf_input_sel <= from_dm_out; -- select dm out
+                    when str =>
+                        dm_wr_en <= dm_write_enable;
+                        dm_addr_sel <= dm_addr_from_ir_operand;
+                        dm_data_sel <= dm_data_from_rx;
+
+                    when present =>
+                        pc_sel <= pc_sel_from_operand when rz = x"0000" else pc_sel_plus_one;
+
+                    when strpc =>
+                        dm_wr_en <= dm_write_enable;
+                        dm_addr_sel <= dm_addr_from_ir_operand;
+                        dm_data_sel <= dm_data_from_pc;
+                    when ssop =>
+                        sop_wr <= '1';
+                    when lsip =>
+                        ld_r <= register_write_back_enabled;
+                        rf_input_sel <= from_sip_hold;
+                    when others =>
+                        null;
+                end case;
+            when am_register =>
+                case opcode(5 downto 0) is
+                    when andr =>
+                        alu_operation <= alu_and;
+                        ld_r <= register_write_back_enabled;--write back enabled
+                        rf_input_sel <= from_aluout; --select aluout
+
+                    when orr =>
+                        alu_operation <= alu_or;
+                        ld_r <= register_write_back_enabled;
+                        rf_input_sel <= from_aluout; 
+
+                    when addr =>
+                        alu_operation <= alu_add;
+                        ld_r <= register_write_back_enabled;
+                        rf_input_sel <= from_aluout;
+
+                    when ldr =>
+                        ld_r <= register_write_back_enabled; --write back enabled and get dm[rx] by default
+                        rf_input_sel <= from_dm_out; -- select dm out
+
+                    when str =>
+                        dm_wr_en <= dm_write_enable;
+                        dm_addr_sel <= dm_addr_from_rz; 
+
+                    when jmp =>
+                        pc_sel <= pc_sel_from_rx;
+
+                    when datacall =>
+                        alu_op2_sel <= alu_op2_from_rz;
+                        alu_op1_sel <= alu_op1_from_rx;
+                        alu_operation <= alu_and;
+                        irq_clr <= '1';                    
+                    when others =>
+                        null;
+                end case;                
+            when others =>
+                        null;
+        end case;
+    end process;
+
+	
+end beh;

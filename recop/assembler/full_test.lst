@@ -1,0 +1,84 @@
+ReCOP Assembly Listing  (v2 – [AM:2][OP:6] encoding)
+========================================================================
+
+Symbol Table:
+  SKIP_SZ_FAIL              0x0015  (21)
+  SZ_TAKEN                  0x001A  (26)
+  PRESENT_TAKEN             0x001E  (30)
+  JUMP_TARGET_1             0x0030  (48)
+  JUMP_TARGET_2             0x0034  (52)
+  FINAL_PASS                0x0044  (68)
+  DONE                      0x0045  (69)
+
+  ADDR       HEX   AM  OPCODE     Rz   Rx   OPERAND    SOURCE
+--------------------------------------------------------------------------------
+0x0000  40100005  IMM  LDR       R1   R0          5    LDR   R1  #5          ; R1 = 5
+0x0001  40200003  IMM  LDR       R2   R0          3    LDR   R2  #3          ; R2 = 3
+0x0002  4030000A  IMM  LDR       R3   R0         10    LDR   R3  #10         ; R3 = 10
+0x0003  40400000  IMM  LDR       R4   R0          0    LDR   R4  #0          ; R4 = 0
+0x0004  4050000F  IMM  LDR       R5   R0         15    LDR   R5  #15         ; R5 = 15
+0x0005  40600001  IMM  LDR       R6   R0          1    LDR   R6  #1          ; R6 = 1
+0x0006  78710002  IMM  ADD       R7   R1          2    ADD   R7  R1  #2      ; R7 = 7
+0x0007  48850007  IMM  AND       R8   R5          7    AND   R8  R5  #7      ; R8 = 7
+0x0008  4C920004  IMM  OR        R9   R2          4    OR    R9  R2  #4      ; R9 = 7
+0x0009  43A30004  IMM  SUBV      R10  R3          4    SUBV  R10 R3  #4      ; R10 = 6
+0x000A  40C00005  IMM  LDR       R12  R0          5    LDR   R12 #5
+0x000B  40D00003  IMM  LDR       R13  R0          3    LDR   R13 #3
+0x000C  F8CD0000  REG  ADD       R12  R13         0    ADD   R12 R12 R13     ; R12 = 8
+0x000D  40E00005  IMM  LDR       R14  R0          5    LDR   R14 #5
+0x000E  C8ED0000  REG  AND       R14  R13         0    AND   R14 R14 R13     ; R14 = 1
+0x000F  40F00005  IMM  LDR       R15  R0          5    LDR   R15 #5
+0x0010  CCFD0000  REG  OR        R15  R13         0    OR    R15 R15 R13     ; R15 = 7
+0x0011  40400006  IMM  LDR       R4   R0          6    LDR   R4  #6
+0x0012  44400005  IMM  SUB       R4   R0          5    SUB   R4  #5          ; 6 - 5 != 0, expect Z = 0
+0x0013  54000015  IMM  SZ        R0   R0         21    SZ    skip_sz_fail    ; should NOT jump
+0x0014  40400063  IMM  LDR       R4   R0         99    LDR   R4  #99         ; executes only if SZ was correctly not taken
+0x0015  10000000  INH  CLFZ      R0   R0          0    CLFZ                  ; clear Z
+0x0016  40400005  IMM  LDR       R4   R0          5    LDR   R4  #5
+0x0017  44400005  IMM  SUB       R4   R0          5    SUB   R4  #5          ; 5 - 5 = 0, expect Z = 1
+0x0018  5400001A  IMM  SZ        R0   R0         26    SZ    sz_taken        ; should jump
+0x0019  40500063  IMM  LDR       R5   R0         99    LDR   R5  #99         ; should be skipped
+0x001A  40500037  IMM  LDR       R5   R0         55    LDR   R5  #55         ; marker that SZ branch worked
+0x001B  40600000  IMM  LDR       R6   R0          0    LDR   R6  #0
+0x001C  5C60001E  IMM  PRESENT   R6   R0         30    PRESENT R6 present_taken
+0x001D  4070007B  IMM  LDR       R7   R0        123    LDR   R7  #123        ; should be skipped
+0x001E  4070004D  IMM  LDR       R7   R0         77    LDR   R7  #77         ; marker that PRESENT worked
+0x001F  82010014  DIR  STR       R0   R1         20    STR   R1  $20         ; M[20] = 5
+0x0020  82020015  DIR  STR       R0   R2         21    STR   R2  $21         ; M[21] = 3
+0x0021  80800014  DIR  LDR       R8   R0         20    LDR   R8  $20         ; R8 = 5
+0x0022  80900015  DIR  LDR       R9   R0         21    LDR   R9  $21         ; R9 = 3
+0x0023  40A0001E  IMM  LDR       R10  R0         30    LDR   R10 #30
+0x0024  42A0002A  IMM  STR       R10  R0         42    STR   R10 #42         ; M[30] = 42
+0x0025  80B0001E  DIR  LDR       R11  R0         30    LDR   R11 $30         ; R11 = 42
+0x0026  40C0001F  IMM  LDR       R12  R0         31    LDR   R12 #31
+0x0027  40D00063  IMM  LDR       R13  R0         99    LDR   R13 #99
+0x0028  C2CD0000  REG  STR       R12  R13         0    STR   R12 R13         ; M[31] = 99
+0x0029  C0EC0000  REG  LDR       R14  R12         0    LDR   R14 R12         ; R14 = 99
+0x002A  40F00014  IMM  LDR       R15  R0         20    LDR   R15 #20
+0x002B  C01F0000  REG  LDR       R1   R15         0    LDR   R1  R15         ; R1 = M[20] = 5
+0x002C  9D000016  DIR  STRPC     R0   R0         22    STRPC $22             ; M[22] = current PC value
+0x002D  80200016  DIR  LDR       R2   R0         22    LDR   R2  $22         ; R2 = stored PC value
+0x002E  58000030  IMM  JMP       R0   R0         48    JMP   jump_target_1
+0x002F  403000DE  IMM  LDR       R3   R0        222    LDR   R3  #222        ; should be skipped
+0x0030  40300021  IMM  LDR       R3   R0         33    LDR   R3  #33         ; marker that immediate jump worked
+0x0031  40400034  IMM  LDR       R4   R0         52    LDR   R4  #jump_target_2
+0x0032  D8040000  REG  JMP       R0   R4          0    JMP   R4
+0x0033  405000DE  IMM  LDR       R5   R0        222    LDR   R5  #222        ; should be skipped
+0x0034  4050002C  IMM  LDR       R5   R0         44    LDR   R5  #44         ; marker that register jump worked
+0x0035  40600012  IMM  LDR       R6   R0         18    LDR   R6  #0x12
+0x0036  E8060000  REG  DATACALL  R0   R6          0    DATACALL R6
+0x0037  40700034  IMM  LDR       R7   R0         52    LDR   R7  #0x34
+0x0038  69070056  IMM  ?101001   R0   R7         86    DATACALL R7 #0x56
+0x0039  B7900000  DIR  LSIP      R9   R0          0    LSIP  R9              ; R9 = SIP input from testbench / top-level
+0x003A  BA010000  DIR  SSOP      R0   R1          0    SSOP  R1              ; SOP = R1 = 5
+0x003B  40A00008  IMM  LDR       R10  R0          8    LDR   R10 #8
+0x003C  40B00002  IMM  LDR       R11  R0          2    LDR   R11 #2
+0x003D  F8AB0000  REG  ADD       R10  R11         0    ADD   R10 R10 R11     ; 10
+0x003E  43CA0003  IMM  SUBV      R12  R10         3    SUBV  R12 R10 #3      ; 7
+0x003F  4CDC0008  IMM  OR        R13  R12         8    OR    R13 R12 #8      ; 15
+0x0040  48ED0006  IMM  AND       R14  R13         6    AND   R14 R13 #6      ; 6
+0x0041  44E00006  IMM  SUB       R14  R0          6    SUB   R14 #6          ; expect Z = 1
+0x0042  54000044  IMM  SZ        R0   R0         68    SZ    final_pass
+0x0043  40F0EEEE  IMM  LDR       R15  R0      61166    LDR   R15 #0xEEEE     ; should be skipped
+0x0044  40F000AA  IMM  LDR       R15  R0        170    LDR   R15 #0x00AA     ; final success marker
+0x0045  58000045  IMM  JMP       R0   R0         69    JMP   done

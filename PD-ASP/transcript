@@ -1,0 +1,30 @@
+# do run_pd_asp.do 
+# ------------------------------------------------------------------ 
+#  Compiling PD-ASP sources... 
+# ------------------------------------------------------------------ 
+# ------------------------------------------------------------------ 
+#  Starting simulation (vsim -voptargs=+acc, all signals accessible) 
+# ------------------------------------------------------------------ 
+# vsim -voptargs=\"+acc\" -t ps work.pd_asp_tb 
+# delete wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# configure wave not supported in batch mode
+# ------------------------------------------------------------------ 
+#  Running simulation for 25 us... 
+# ------------------------------------------------------------------ 
+# wave zoomfull not supported in batch mode
+#  
+# ================================================================== 
+#  Simulation complete. 
+#  
+#  To capture wave for report: 
+#    File > Export > Image, save as .png at 300 dpi 
+#  
+#  To zoom to one peak event for detail screenshot: 
+#    1. Find a 'peak_valid_r = 1' pulse in the wave window 
+#    2. Right-click that time, choose 'Zoom Range' 
+#    3. Or type:  wave zoom range 3000ns 4000ns 
+# ================================================================== 
+#  quit -f 

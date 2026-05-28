@@ -1,0 +1,166 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+USE work.asp_types.all;
+USE work.asp_constants.all;
+
+ENTITY multicycle_moore_machine is
+	port
+	(
+        --system control signal
+        clk : in bit_1;
+        reset : in bit_1;
+        init  : in bit_1;
+        --input control signal
+        config_en : in bit_1;
+        calculate : in bit_1;
+        counter_gr_corr_window : in bit_1;
+
+        --output control signal
+        ----address genertor related
+        new_ave_addr_en :       out bit_1;
+        new_ave_addr_clr :      out bit_1;
+        cor_window_ld :         out bit_1;
+        counter_en:             out bit_1;
+        counter_clr:            out bit_1;
+        ave_dm_addr_sel      :  out bit_2;
+        ----operation related
+        current_ave_data_ld :       out bit_1;
+        current_ave_data_clr :      out bit_1;
+        multiplicand_temp_ld :      out bit_1;
+        multiplicand_temp_clr :      out bit_1;
+        offset_h_ld         :       out bit_1;
+        cor_pair_product_en :       out bit_1;
+        cor_pair_product_clr :       out bit_1;
+        cor_temp_en:                out bit_1;
+        cor_temp_clr        :       out bit_1;
+
+        --system output signal
+        correlation_rdy:            out bit_1
+	);
+end multicycle_moore_machine;
+architecture beh of multicycle_moore_machine is  
+    type state_type is (
+        S_CONFIG,
+        S_INIT,
+        S_NEW_CORR,
+        S_LOAD1,
+        S_LOAD2,
+        S_MULTIPLY,
+        S_ACCUMULATE,
+        S_OUTPUT,
+        S_MAINTAIN
+    );
+
+    signal state, next_state : state_type;
+    
+begin
+
+    --initialisation and next state update
+    process(clk, reset, init)
+    begin
+        if reset = '1' then
+            state <= S_INIT;
+        elsif init = '1' then
+            state <= S_INIT;
+        elsif rising_edge(clk) then
+            state <= next_state;
+        end if;
+    end process;
+    
+    --next state logic
+    process(state,config_en,counter_gr_corr_window)
+    begin
+        next_state <= S_INIT;
+
+        case state is
+            when S_INIT =>
+                if config_en = '1' then
+                    next_state <= S_CONFIG;
+                elsif calculate = '1' then
+                    next_state <= S_NEW_CORR;
+                    new_ave_addr_en <= '1';
+                else
+                    next_state <= S_MAINTAIN;
+                end if;
+            when S_CONFIG =>
+                next_state <= S_INIT;
+            when S_MAINTAIN =>
+                next_state <= S_INIT;
+            when S_NEW_CORR =>
+                next_state <= S_LOAD1;
+            when S_LOAD1 =>
+                next_state <= S_LOAD2;
+            when S_LOAD2 =>
+                next_state <= S_MULTIPLY;
+            when S_MULTIPLY =>
+                next_state <= S_ACCUMULATE;
+            when S_ACCUMULATE =>
+                if  counter_gr_corr_window = '1' then
+                    next_state <= S_OUTPUT;
+                else
+                    next_state <= S_LOAD1;
+                end if;
+            when S_OUTPUT =>
+                next_state <= S_INIT;
+
+        end case;
+    end process;
+
+    --moore machine output logic
+    process(state)
+    begin
+        --output control signal
+        ----address genertor related
+        new_ave_addr_clr <= '0';
+        cor_window_ld <= '0';
+        counter_en <= '0';
+        counter_clr <= '0';
+        ave_dm_addr_sel <= "00";     
+        ----operation related
+        current_ave_data_ld <= '0';
+        current_ave_data_clr <= '0';
+        multiplicand_temp_ld <= '0';
+        multiplicand_temp_clr <= '0';
+        offset_h_ld <= '0'; 
+        cor_pair_product_en <= '0';
+        cor_pair_product_clr <= '0';
+        cor_temp_en <= '0';
+        cor_temp_clr <= '0';
+
+        --system output signal
+        correlation_rdy <= '0'; 
+
+        case state is
+            when S_INIT =>
+                correlation_rdy <= '0';
+                current_ave_data_clr <= '1';
+                multiplicand_temp_clr <= '1';
+                cor_pair_product_clr <= '1';
+                counter_clr <= '1';
+                cor_temp_clr <= '0';
+
+            when S_CONFIG =>
+                cor_window_ld <= '1';
+                offset_h_ld <= '1';
+                cor_temp_clr <= '0';
+
+            when S_MAINTAIN =>
+                multiplicand_temp_clr <= '1';
+                cor_temp_clr <= '0';
+            when S_NEW_CORR =>
+
+            when S_LOAD1 =>
+
+            when S_LOAD2 =>
+
+            when S_MULTIPLY =>
+
+            when S_ACCUMULATE =>
+
+            when S_OUTPUT =>
+
+
+        end case;
+    end process;
+end beh;
