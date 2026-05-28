@@ -21,6 +21,7 @@ No Avalon/NoC hardware adapter is required for this step.
 | File | Purpose |
 | --- | --- |
 | `nios_packet.h` | Shared packet constants and helper functions for Nios C code. |
+| `nios_noc_adapter.h` | Avalon-MM register offsets and bit masks for the Nios-to-NoC adapter. |
 | `nios_uart_console.c` | UART/JTAG UART command parser skeleton. |
 
 ## Nios II Usage
@@ -34,7 +35,7 @@ nios> mode 1
 TX 0x110F0000
 ```
 
-When the Avalon-NoC adapter exists, replace the body of `nios_send_packet()` in `nios_uart_console.c` with register writes matching the Avalon-NoC adapter register map document.
+When the Avalon-NoC adapter exists, replace the body of `nios_send_packet()` in `nios_uart_console.c` with register writes using `nios_noc_adapter.h`.
 
 ## Packet Format
 
