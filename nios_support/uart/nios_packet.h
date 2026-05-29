@@ -26,10 +26,6 @@
 #define NIOS_TAG_WINDOW       0x0u
 #define NIOS_TAG_OFFSET       0x1u
 
-#define NIOS_HOST_TAG_MODE    0xFu
-#define NIOS_MODE_CORRELATION 0x0u
-#define NIOS_MODE_PASS_THROUGH 0x1u
-
 #define NIOS_PAYLOAD_VALUE_MASK 0xFFFFu
 
 static inline uint32_t nios_make_packet(

@@ -55,12 +55,13 @@ The first implementation can print intended packet words before the hardware ada
 
 | Command | Meaning | Initial Nios Action |
 | --- | --- | --- |
-| `mode 1` | Select AVG/COR/PK pipeline | Build and send/print an ADC/source config packet for correlation mode. |
-| `mode 2` | Select direct pass-through | Build and send/print an ADC/source config packet for pass-through mode. |
-| `window <n>` | Set averaging/correlation window | Build and send/print AVG and COR config packets with window value `n`. |
+| `adc <dest> <ch> <div>` | Set ADC output destination, virtual channel, and sample divider. | Build and send/print ADC config packet. |
+| `avg <dest> <win>` | Set AVG output destination and window `1,2,4,8,16`. | Build and send/print AVG config packet. |
+| `corwin <n>` | Set correlation window `1..511`. | Build and send/print COR window config packet. |
 | `offset <n>` | Set correlation offset | Build and send/print a COR config packet with offset value `n`. |
+| `pk <dest> <sp> <th>` | Set PK output destination, min spacing, and threshold. | Build and send/print PK config packet. |
 | `rx <hex>` | Mock/decode one received packet | Dry-run display hook for PK/result packets before hardware RX exists. |
-| `status` | Show current system status | Print cached mode/window, adapter status, and latest received packet/result. |
+| `status` | Show current system status | Print cached ASP config, adapter status, and latest received packet/result. |
 
 ## Packet Format
 
@@ -94,18 +95,20 @@ These packet words follow the shared packet layout. The mode tag is a Member B p
 
 | UART Command | Packet Meaning | Example Word |
 | --- | --- | --- |
-| `mode 1` | `CMD_CONFIG` to ADC/source, host tag `MODE`, value `0` for correlation pipeline | `0x111F0000` |
-| `mode 2` | `CMD_CONFIG` to ADC/source, host tag `MODE`, value `1` for pass-through | `0x111F0001` |
-| `window 64` | `CMD_CONFIG` to AVG, `TAG_WINDOW`, value `64` | `0x11200040` |
-| `window 64` | `CMD_CONFIG` to COR, `TAG_WINDOW`, value `64` | `0x11300040` |
+| `adc avg 0 0` | `CMD_CONFIG` to ADC, output to AVG, channel `0`, divider `0` | `0x11120000` |
+| `avg cor 4` | `CMD_CONFIG` to AVG, output to COR, window `4` | `0x11230200` |
+| `corwin 64` | `CMD_CONFIG` to COR, `TAG_WINDOW`, value `64` | `0x11300040` |
 | `offset 100` | `CMD_CONFIG` to COR, `TAG_OFFSET`, value `100` | `0x11310064` |
+| `pk nios 200 0` | `CMD_CONFIG` to PK, output to Nios, spacing `200`, threshold `0` | `0x1145C800` |
 
 Suggested host-only config tags:
 
 | Tag | Meaning |
 | --- | --- |
-| `0xF` | Host mode select, value `0` = mode 1, value `1` = mode 2. |
-| `0x0` | Existing `TAG_WINDOW`, value = window size. |
+| `0x0` | Existing `TAG_WINDOW`, used by COR. |
+| `0x1` | Existing `TAG_OFFSET`, used by COR. |
+
+ADC, AVG, and PK currently use compact payload bitfields instead of tag/value payloads. See `ASP_NoC_Command_Interface.md` for the detailed layouts.
 
 ## Instruction Memory Upload Note
 
@@ -127,7 +130,7 @@ I am working on Member B on branch Eric_GP2. After Zoran's MVP feedback, Nios II
 
 ## Open Team Decisions
 
-1. Confirm the final mode-control payload tag. This document proposes host tag `0xF` for mode select.
-2. Confirm which ASP owns mode routing. Current Nios code sends mode config to ADC/source address `0x1`.
+1. Confirm ADC/AVG TDMA wrappers from `origin/solomon-tdma-only` are merged into the team baseline.
+2. Confirm whether ReCOP switch mode control changes ADC/AVG/COR routing or only START/STOP/CLEAR state.
 3. Confirm the Avalon adapter base address/name once Platform Designer integration exists.
 4. Confirm PK/result packet format for Nios display.

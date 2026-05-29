@@ -29,12 +29,13 @@ Expected examples:
 
 | Input Command | Expected Nios Output |
 | --- | --- |
-| `mode 1` | `TX 0x111F0000` |
-| `mode 2` | `TX 0x111F0001` |
-| `window 64` | `TX 0x11200040` and `TX 0x11300040` |
+| `adc avg 0 0` | `TX 0x11120000` |
+| `avg cor 4` | `TX 0x11230200` |
+| `corwin 64` | `TX 0x11300040` |
 | `offset 100` | `TX 0x11310064` |
+| `pk nios 200 0` | `TX 0x1145C800` |
 | `rx 0x41500140` | Decode/display a mock PK/result packet. |
-| `status` | Current cached mode/window, TX/RX status, latest RX packet if any. |
+| `status` | Current cached ASP config, TX/RX status, latest RX packet if any. |
 
 Evidence to capture:
 
@@ -49,7 +50,7 @@ Once the Avalon-NoC adapter exists, capture a register-level test.
 | Step | Action | Expected Result |
 | --- | --- | --- |
 | 1 | Read `TX_STATUS` after reset | `TX_READY = 1`, `TX_BUSY = 0`, `TX_ERROR = 0`. |
-| 2 | Write `TX_PACKET = 0x111F0000` | Packet register holds mode 1 config command for ADC/source. |
+| 2 | Write `TX_PACKET = 0x11120000` | Packet register holds ADC config command. |
 | 3 | Pulse `TX_CONTROL.TX_VALID` | Adapter accepts packet. |
 | 4 | Read `TX_STATUS` | `TX_LAST_ACCEPTED = 1` or `TX_READY = 1` after send. |
 | 5 | Inject/mock RX packet | `RX_STATUS.RX_VALID = 1`. |
@@ -67,17 +68,25 @@ Evidence to capture:
 When the NoC adapter and ASP command decoders are connected, run this simple integration test:
 
 ```text
-Nios command: mode 1
-Expected packet: 0x111F0000
-Expected ASP behavior: ADC/source records/selects correlation pipeline mode.
+Nios command: adc avg 0 0
+Expected packet: 0x11120000
+Expected ASP behavior: ADC outputs channel 0 to AVG with divider 0.
 
-Nios command: window 64
-Expected packets: 0x11200040 and 0x11300040
-Expected ASP behavior: AVG and COR store window value.
+Nios command: avg cor 4
+Expected packet: 0x11230200
+Expected ASP behavior: AVG outputs to COR and uses 4-sample window.
+
+Nios command: corwin 64
+Expected packet: 0x11300040
+Expected ASP behavior: COR stores window value.
 
 Nios command: offset 100
 Expected packet: 0x11310064
 Expected ASP behavior: COR stores offset value.
+
+Nios command: pk nios 200 0
+Expected packet: 0x1145C800
+Expected ASP behavior: PK sends peak events to Nios.
 ```
 
 Evidence to capture:

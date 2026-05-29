@@ -115,13 +115,13 @@ These examples use the shared constants from `asp_packet_pkg.vhd`:
 
 | Command | Word | Meaning |
 | --- | --- | --- |
-| `mode 1` | `0x111F0000` | `CMD_CONFIG` to ADC/source, host mode tag, correlation pipeline. |
-| `mode 2` | `0x111F0001` | `CMD_CONFIG` to ADC/source, host mode tag, pass-through path. |
-| `window 64` | `0x11200040` | `CMD_CONFIG` to AVG, `TAG_WINDOW = 0`, value `64`. |
-| `window 64` | `0x11300040` | `CMD_CONFIG` to COR, `TAG_WINDOW = 0`, value `64`. |
+| `adc avg 0 0` | `0x11120000` | `CMD_CONFIG` to ADC, output to AVG, channel 0, divider 0. |
+| `avg cor 4` | `0x11230200` | `CMD_CONFIG` to AVG, output to COR, window 4. |
+| `corwin 64` | `0x11300040` | `CMD_CONFIG` to COR, `TAG_WINDOW = 0`, value `64`. |
 | `offset 100` | `0x11310064` | `CMD_CONFIG` to COR, `TAG_OFFSET = 1`, value `100`. |
+| `pk nios 200 0` | `0x1145C800` | `CMD_CONFIG` to PK, output to Nios, spacing 200, threshold 0. |
 
-The host mode tag `0xF` is a proposal for Nios/source-mode control. The team should confirm it before adding a permanent constant to the shared packet package.
+ADC/AVG/PK use compact payload bitfields in their current decoders. COR uses the shared tag/value format.
 
 ## Integration Notes
 

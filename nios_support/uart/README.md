@@ -8,10 +8,11 @@ No Avalon/NoC hardware adapter is required for this step.
 
 | Command | Meaning | Expected Packet |
 | --- | --- | --- |
-| `mode 1` | Configure ADC/source for AVG/COR/PK pipeline | `0x111F0000` |
-| `mode 2` | Configure ADC/source for direct pass-through mode | `0x111F0001` |
-| `window <n>` | Configure AVG and COR window value | `0x11200000 \| n`, `0x11300000 \| n` |
-| `offset <n>` | Configure COR offset value | `0x11310000 \| n` |
+| `adc <dest> <ch> <div>` | Configure ADC output destination, channel, and sample divider. | Example: `0x11120000` |
+| `avg <dest> <win>` | Configure AVG output destination and window `1,2,4,8,16`. | Example: `0x11230200` |
+| `corwin <n>` | Configure COR window value `1..511`. | Example: `0x11300040` |
+| `offset <n>` | Configure COR offset value. | Example: `0x11310064` |
+| `pk <dest> <sp> <th>` | Configure PK output destination, min spacing, and threshold. | Example: `0x1145C800` |
 | `rx <hex>` | Mock/decode a received NoC packet for display testing | No TX packet |
 | `status` | Print cached Nios state | No TX packet |
 | `help` | Print command list | No TX packet |
@@ -32,8 +33,17 @@ Create or open a Nios II application project and add these source/header files t
 The first version intentionally prints packets instead of touching registers:
 
 ```text
-nios> mode 1
-TX 0x111F0000
+nios> adc avg 0 0
+TX 0x11120000
+
+nios> avg cor 4
+TX 0x11230200
+
+nios> corwin 64
+TX 0x11300040
+
+nios> pk nios 200 0
+TX 0x1145C800
 ```
 
 When the Avalon-NoC adapter exists, replace the body of `nios_command_send()` in `nios_command.c` with register writes using `nios_noc_adapter.h`.
@@ -49,4 +59,4 @@ When the Avalon-NoC adapter exists, replace the body of `nios_command_send()` in
 
 For the current Member B path, Nios sends configuration packets directly to ASP addresses. ReCOP keeps the board-driven reactive role for START/STOP/CLEAR.
 
-The mode tag `0xF` is a host-control proposal. Confirm it with the team before adding it permanently to `common/asp_packet_pkg.vhd`.
+Destination names accepted by the console are `recop`, `adc`, `avg`, `ave`, `cor`, `pk`, `nios`, `idle`, `null`, or numeric `0..7`.
