@@ -10,7 +10,7 @@
 
 static void nios_print_help(void)
 {
-    printf("cmd: mode 1|2, window <n>, start, reset, status, help, exit\n");
+    printf("cmd: mode 1|2, window <n>, offset <n>, rx <hex>, status, help, exit\n");
 }
 
 static void nios_lowercase(char *text)
@@ -32,6 +32,24 @@ static int nios_parse_u16(const char *text, uint32_t *value_out)
 
     value = strtoul(text, &end, 0);
     if (end == text || *end != '\0' || value > 0xFFFFu) {
+        return 0;
+    }
+
+    *value_out = (uint32_t)value;
+    return 1;
+}
+
+static int nios_parse_u32(const char *text, uint32_t *value_out)
+{
+    char *end = NULL;
+    unsigned long value;
+
+    if (text == NULL || *text == '\0') {
+        return 0;
+    }
+
+    value = strtoul(text, &end, 0);
+    if (end == text || *end != '\0' || value > 0xFFFFFFFFul) {
         return 0;
     }
 
@@ -73,6 +91,37 @@ static int nios_handle_window(
     return nios_command_set_window(state, window);
 }
 
+static int nios_handle_offset(
+    nios_command_state_t *state,
+    const char *argument
+)
+{
+    uint32_t offset;
+
+    if (!nios_parse_u16(argument, &offset)) {
+        printf("ERR: offset 0..65535\n");
+        return 0;
+    }
+
+    return nios_command_set_offset(state, offset);
+}
+
+static void nios_handle_rx(
+    nios_command_state_t *state,
+    const char *argument
+)
+{
+    uint32_t packet;
+
+    if (!nios_parse_u32(argument, &packet)) {
+        printf("ERR: rx <hex>\n");
+        return;
+    }
+
+    nios_command_record_rx(state, packet);
+    nios_command_print_rx(packet);
+}
+
 static int nios_handle_line(nios_command_state_t *state, char *line)
 {
     char command[16] = {0};
@@ -99,10 +148,18 @@ static int nios_handle_line(nios_command_state_t *state, char *line)
             return 1;
         }
         nios_handle_window(state, argument);
-    } else if (strcmp(command, "start") == 0) {
-        nios_command_start(state);
-    } else if (strcmp(command, "reset") == 0) {
-        nios_command_reset(state);
+    } else if (strcmp(command, "offset") == 0) {
+        if (fields < 2) {
+            printf("ERR: offset <n>\n");
+            return 1;
+        }
+        nios_handle_offset(state, argument);
+    } else if (strcmp(command, "rx") == 0) {
+        if (fields < 2) {
+            printf("ERR: rx <hex>\n");
+            return 1;
+        }
+        nios_handle_rx(state, argument);
     } else if (strcmp(command, "status") == 0) {
         nios_command_print_status(state);
     } else if (strcmp(command, "help") == 0 || strcmp(command, "?") == 0) {

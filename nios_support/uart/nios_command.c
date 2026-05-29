@@ -22,6 +22,7 @@ void nios_command_init(nios_command_state_t *state)
     memset(state, 0, sizeof(*state));
     state->mode = 1u;
     state->window = 64u;
+    state->offset = 0u;
 }
 
 int nios_command_set_mode(nios_command_state_t *state, unsigned mode)
@@ -37,38 +38,50 @@ int nios_command_set_mode(nios_command_state_t *state, unsigned mode)
         return -1;
     }
 
-    packet = nios_make_recop_config(NIOS_HOST_TAG_MODE, mode_value);
+    packet = nios_make_config(
+        NIOS_ADDR_ADC_ASP,
+        NIOS_HOST_TAG_MODE,
+        mode_value
+    );
     state->mode = mode;
     return nios_command_send(state, packet);
 }
 
 int nios_command_set_window(nios_command_state_t *state, uint32_t window)
 {
-    uint32_t packet;
+    int rc;
 
     if (window == 0u || window > NIOS_PAYLOAD_VALUE_MASK) {
         return -1;
     }
 
-    packet = nios_make_recop_config(NIOS_TAG_WINDOW, window);
     state->window = window;
-    return nios_command_send(state, packet);
-}
 
-int nios_command_start(nios_command_state_t *state)
-{
+    rc = nios_command_send(
+        state,
+        nios_make_config(NIOS_ADDR_AVE_ASP, NIOS_TAG_WINDOW, window)
+    );
+
+    if (rc != 0) {
+        return rc;
+    }
+
     return nios_command_send(
         state,
-        nios_make_recop_simple_cmd(NIOS_CMD_START)
+        nios_make_config(NIOS_ADDR_COR_ASP, NIOS_TAG_WINDOW, window)
     );
 }
 
-int nios_command_reset(nios_command_state_t *state)
+int nios_command_set_offset(nios_command_state_t *state, uint32_t offset)
 {
-    state->has_last_rx = 0;
+    if (offset > NIOS_PAYLOAD_VALUE_MASK) {
+        return -1;
+    }
+
+    state->offset = offset;
     return nios_command_send(
         state,
-        nios_make_recop_simple_cmd(NIOS_CMD_CLEAR)
+        nios_make_config(NIOS_ADDR_COR_ASP, NIOS_TAG_OFFSET, offset)
     );
 }
 
@@ -80,9 +93,10 @@ void nios_command_record_rx(nios_command_state_t *state, uint32_t packet)
 
 void nios_command_print_status(const nios_command_state_t *state)
 {
-    printf("mode=%u window=%lu",
+    printf("mode=%u window=%lu offset=%lu",
            state->mode,
-           (unsigned long)state->window);
+           (unsigned long)state->window,
+           (unsigned long)state->offset);
 
     if (state->has_last_tx) {
         printf(" tx=0x%08lX", (unsigned long)state->last_tx_packet);

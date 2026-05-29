@@ -2,7 +2,7 @@
 
 Owner: Member B
 
-This document defines the proposed memory-mapped register contract between Nios II and the GP2 NoC command/status path. It is intended to let Nios II write one 32-bit packet at a time into the TDMA-MIN/ReCOP command path and read returned 32-bit status/result packets.
+This document defines the proposed memory-mapped register contract between Nios II and the GP2 NoC command/status path. It is intended to let Nios II write one 32-bit packet at a time into the TDMA-MIN ASP configuration path and read returned 32-bit status/result packets.
 
 ## Packet Word
 
@@ -67,7 +67,7 @@ Base address is assigned later in Platform Designer. All registers are 32-bit, w
 | `0` | `RX_VALID` | `RX_PACKET` contains a packet not yet acknowledged. |
 | `1` | `RX_OVERFLOW` | A packet arrived before the previous one was acknowledged. |
 | `2` | `RX_ERROR` | RX protocol error. |
-| `3` | `RX_FROM_RECOP` | Last packet was from ReCOP/control path, if source tracking exists. |
+| `3` | `RX_SOURCE_FLAG` | Optional source/debug flag if the adapter tracks packet origin. |
 | `31:4` | Reserved | Read as zero where possible. |
 
 ## Adapter Control Bits
@@ -115,17 +115,17 @@ These examples use the shared constants from `asp_packet_pkg.vhd`:
 
 | Command | Word | Meaning |
 | --- | --- | --- |
-| `mode 1` | `0x110F0000` | `CMD_CONFIG` to ReCOP, host mode tag, correlation pipeline. |
-| `mode 2` | `0x110F0001` | `CMD_CONFIG` to ReCOP, host mode tag, pass-through path. |
-| `window 64` | `0x11000040` | `CMD_CONFIG` to ReCOP, `TAG_WINDOW = 0`, value `64`. |
-| `start` | `0x12000000` | `CMD_START` to ReCOP. |
-| `reset` | `0x14000000` | `CMD_CLEAR` to ReCOP. |
+| `mode 1` | `0x111F0000` | `CMD_CONFIG` to ADC/source, host mode tag, correlation pipeline. |
+| `mode 2` | `0x111F0001` | `CMD_CONFIG` to ADC/source, host mode tag, pass-through path. |
+| `window 64` | `0x11200040` | `CMD_CONFIG` to AVG, `TAG_WINDOW = 0`, value `64`. |
+| `window 64` | `0x11300040` | `CMD_CONFIG` to COR, `TAG_WINDOW = 0`, value `64`. |
+| `offset 100` | `0x11310064` | `CMD_CONFIG` to COR, `TAG_OFFSET = 1`, value `100`. |
 
-The host mode tag `0xF` is a proposal for Nios/ReCOP control. The team should confirm it before adding a permanent constant to the shared packet package.
+The host mode tag `0xF` is a proposal for Nios/source-mode control. The team should confirm it before adding a permanent constant to the shared packet package.
 
 ## Integration Notes
 
-1. The adapter should expose only packet-level control to Nios II. ReCOP and ASPs should keep algorithm-specific interpretation.
+1. The adapter should expose only packet-level control to Nios II. ASPs should keep algorithm-specific interpretation.
 2. The Nios software can begin in dry-run mode by printing packet words before the adapter exists.
 3. When Platform Designer assigns the base address, Nios code should define one project macro such as `GP2_NOC_ADAPTER_BASE`.
 4. If interrupts take too long to integrate, polling is acceptable for the first GP2 demo.

@@ -37,7 +37,7 @@
 #define NIOS_NOC_RX_VALID               (1u << 0)
 #define NIOS_NOC_RX_OVERFLOW            (1u << 1)
 #define NIOS_NOC_RX_ERROR               (1u << 2)
-#define NIOS_NOC_RX_FROM_RECOP          (1u << 3)
+#define NIOS_NOC_RX_SOURCE_FLAG         (1u << 3)
 
 #define NIOS_NOC_SOFT_RESET             (1u << 0)
 #define NIOS_NOC_LOOPBACK_EN            (1u << 1)

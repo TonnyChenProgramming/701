@@ -50,22 +50,26 @@ static inline uint32_t nios_make_tagged_payload(uint32_t tag, uint32_t value)
     return ((tag & 0xFu) << 16) | (value & NIOS_PAYLOAD_VALUE_MASK);
 }
 
-static inline uint32_t nios_make_recop_config(uint32_t tag, uint32_t value)
+static inline uint32_t nios_make_config(
+    uint32_t dest,
+    uint32_t tag,
+    uint32_t value
+)
 {
     return nios_make_packet(
         NIOS_PKT_KIND_CMD,
         NIOS_CMD_CONFIG,
-        NIOS_ADDR_RECOP,
+        dest,
         nios_make_tagged_payload(tag, value)
     );
 }
 
-static inline uint32_t nios_make_recop_simple_cmd(uint32_t code)
+static inline uint32_t nios_make_simple_cmd(uint32_t dest, uint32_t code)
 {
     return nios_make_packet(
         NIOS_PKT_KIND_CMD,
         code,
-        NIOS_ADDR_RECOP,
+        dest,
         0u
     );
 }
