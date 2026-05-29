@@ -29,11 +29,11 @@ Expected examples:
 
 | Input Command | Expected Nios Output |
 | --- | --- |
-| `mode 1` | `TX packet: 0x110F0000` |
-| `mode 2` | `TX packet: 0x110F0001` |
-| `window 64` | `TX packet: 0x11000040` |
-| `start` | `TX packet: 0x12000000` |
-| `reset` | `TX packet: 0x14000000` |
+| `mode 1` | `TX 0x111F0000` |
+| `mode 2` | `TX 0x111F0001` |
+| `window 64` | `TX 0x11200040` and `TX 0x11300040` |
+| `offset 100` | `TX 0x11310064` |
+| `rx 0x41500140` | Decode/display a mock PK/result packet. |
 | `status` | Current cached mode/window, TX/RX status, latest RX packet if any. |
 
 Evidence to capture:
@@ -49,7 +49,7 @@ Once the Avalon-NoC adapter exists, capture a register-level test.
 | Step | Action | Expected Result |
 | --- | --- | --- |
 | 1 | Read `TX_STATUS` after reset | `TX_READY = 1`, `TX_BUSY = 0`, `TX_ERROR = 0`. |
-| 2 | Write `TX_PACKET = 0x110F0000` | Packet register holds mode 1 command. |
+| 2 | Write `TX_PACKET = 0x111F0000` | Packet register holds mode 1 config command for ADC/source. |
 | 3 | Pulse `TX_CONTROL.TX_VALID` | Adapter accepts packet. |
 | 4 | Read `TX_STATUS` | `TX_LAST_ACCEPTED = 1` or `TX_READY = 1` after send. |
 | 5 | Inject/mock RX packet | `RX_STATUS.RX_VALID = 1`. |
@@ -62,29 +62,43 @@ Evidence to capture:
 2. SignalTap/ModelSim waveform for `TX_VALID`, `TX_READY`, `RX_VALID`, and `RX_ACK`.
 3. Any error/overflow flags staying clear during the test.
 
-## ReCOP Command Path Evidence
+## ASP Config Path Evidence
 
-When Member A has the ReCOP command decoder connected, run this simple integration test:
+When the NoC adapter and ASP command decoders are connected, run this simple integration test:
 
 ```text
 Nios command: mode 1
-Expected packet: 0x110F0000
-Expected ReCOP behavior: records/selects correlation pipeline mode.
+Expected packet: 0x111F0000
+Expected ASP behavior: ADC/source records/selects correlation pipeline mode.
 
 Nios command: window 64
-Expected packet: 0x11000040
-Expected ReCOP behavior: stores window value or forwards config to relevant ASP.
+Expected packets: 0x11200040 and 0x11300040
+Expected ASP behavior: AVG and COR store window value.
 
-Nios command: start
-Expected packet: 0x12000000
-Expected ReCOP behavior: starts ASP pipeline or stream control.
+Nios command: offset 100
+Expected packet: 0x11310064
+Expected ASP behavior: COR stores offset value.
 ```
 
 Evidence to capture:
 
 1. UART output from Nios.
-2. ReCOP-side waveform showing received packet fields.
-3. If available, a returned status packet to Nios.
+2. NoC waveform showing received packet fields at the target ASP.
+3. If available, a returned status/result packet to Nios.
+
+## ReCOP Board-Control Evidence
+
+ReCOP evidence is still important, but it is separate from the Nios UART config path. For MVP, ReCOP should show board-driven reactive control:
+
+```text
+switch/button -> ReCOP -> START/STOP/CLEAR/status packet -> ASPs
+```
+
+Evidence to capture:
+
+1. Switch/button event.
+2. ReCOP packet output over NoC.
+3. LED/status response.
 
 ## Status/Result Display Evidence
 
@@ -130,10 +144,10 @@ If these five points are not shown, do not describe instruction-memory upload as
 | --- | --- |
 | `Eric_GP2` branch contains Member B documentation. |  |
 | Nios UART command set agreed with team. |  |
-| Packet words agreed with Member A ReCOP decoder. |  |
+| Packet words agreed with ASP command decoders. |  |
 | Avalon-NoC register map agreed with Member C integration. |  |
 | Dry-run UART parser output captured. |  |
 | Adapter TX/RX handshake waveform captured. |  |
-| ReCOP receives at least one Nios command packet. |  |
+| ASP receives at least one Nios config packet. |  |
 | Nios receives at least one status/result packet. |  |
 | VGA or UART displays final status/result. |  |
