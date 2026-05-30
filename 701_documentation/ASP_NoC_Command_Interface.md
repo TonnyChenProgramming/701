@@ -56,6 +56,38 @@ For tagged config payloads:
 | `CMD_STOP = 0x3` | Stop stream/pipeline behavior. | ReCOP |
 | `CMD_CLEAR = 0x4` | Clear state/reset counters/FIFOs. | ReCOP |
 
+## MVP Status Return Rule
+
+For the first demo, status should return to the block that owns the command:
+
+| Original Command | Sender | Status Receiver | Purpose |
+| --- | --- | --- | --- |
+| `CMD_CONFIG` | Nios II | Nios II `0x5` | Confirm UART configuration reached the ASP. |
+| `CMD_START` | ReCOP | ReCOP `0x0` | Turn the ASP LED on after start is accepted. |
+| `CMD_STOP` | ReCOP | ReCOP `0x0` | Turn the ASP LED off after stop is accepted. |
+| `CMD_CLEAR` | ReCOP | ReCOP `0x0` | Turn the ASP LED off after clear is accepted. |
+| PK result event | PK ASP | Nios II `0x5` | Display peak/frequency result over UART/VGA. |
+
+Recommended `PKT_KIND_STATUS` payload:
+
+```text
+[19:16] source ASP address
+[15]    running flag
+[14]    done/accepted flag
+[13]    error flag
+[12:0]  detail/error/status bits
+```
+
+For status acknowledgements, reuse the completed command as the status `code`. For example, `code=CMD_CONFIG` means `CONFIG_DONE`, and `code=CMD_START` means `START_DONE`.
+
+Example status packets:
+
+| Packet | Meaning |
+| --- | --- |
+| `0x31544000` | PK `CONFIG_DONE` to Nios, source `PK`, done set. |
+| `0x3201C000` | ADC `START_DONE` to ReCOP, source `ADC`, running and done set. |
+| `0x33014000` | ADC `STOP_DONE` to ReCOP, source `ADC`, done set, running clear. |
+
 ## Shared Tags And Event Codes
 
 | Code/Tag | Value | Meaning | Used By |
@@ -99,10 +131,10 @@ These payload layouts are taken from the current ASP code. ADC/AVG TDMA-MIN wrap
 
 | Block | Accepts Config? | Required Commands | Payload Tags | Returns To Nios? | Open Questions |
 | --- | --- | --- | --- | --- | --- |
-| ADC ASP | Yes | `CMD_CONFIG`, `CMD_START/STOP/CLEAR` from ReCOP | bitfield payload, no tag | Maybe status | Confirm channel/divider UI names and whether waveform/LUT upload is stretch. |
-| AVG ASP | Yes | `CMD_CONFIG`, `CMD_START/STOP/CLEAR` | bitfield payload, no tag | Maybe status | Window is currently `1,2,4,8,16`; confirm this is enough for MVP. |
-| COR ASP | Yes | `CMD_CONFIG`, `CMD_START/STOP/CLEAR` | `TAG_WINDOW = 0x0`, `TAG_OFFSET = 0x1` | Maybe status/result-low/high if debugging | Confirm whether offset is signed or unsigned 16-bit. |
-| PK ASP | Yes | `CMD_CONFIG`, `CMD_START/STOP/CLEAR`, status requests | bitfield payload, no tag | Yes, event/status to Nios | Confirm result event payload is peak interval/count and enough for frequency display. |
+| ADC ASP | Yes | `CMD_CONFIG`, `CMD_START/STOP/CLEAR` from ReCOP | bitfield payload, no tag | `CONFIG_DONE` to Nios; control done to ReCOP | Confirm channel/divider UI names and whether waveform/LUT upload is stretch. |
+| AVG ASP | Yes | `CMD_CONFIG`, `CMD_START/STOP/CLEAR` | bitfield payload, no tag | `CONFIG_DONE` to Nios; control done to ReCOP | Window is currently `1,2,4,8,16`; confirm this is enough for MVP. |
+| COR ASP | Yes | `CMD_CONFIG`, `CMD_START/STOP/CLEAR` | `TAG_WINDOW = 0x0`, `TAG_OFFSET = 0x1` | `CONFIG_DONE` to Nios; control done to ReCOP | Confirm whether offset is signed or unsigned 16-bit. |
+| PK ASP | Yes | `CMD_CONFIG`, `CMD_START/STOP/CLEAR`, status requests | bitfield payload, no tag | `CONFIG_DONE` and result event to Nios; control done to ReCOP | Confirm result event payload is peak interval/count and enough for frequency display. |
 | ReCOP | Board control source | Sends `CMD_START/STOP/CLEAR/status` | Board mode/status fields if needed | Maybe status via NoC | Confirm exact switch/button mapping. |
 | Nios II | UART/display bridge | Sends ASP config, receives PK/result | Uses tags defined above | Receives PK/result/status | Confirm Avalon adapter base and RX packet format. |
 

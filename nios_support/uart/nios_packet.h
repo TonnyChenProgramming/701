@@ -36,6 +36,13 @@
 #define NIOS_PAYLOAD20_MASK   0xFFFFFu
 #define NIOS_PAYLOAD_VALUE_MASK 0xFFFFu
 
+#define NIOS_STATUS_SOURCE_SHIFT 16u
+#define NIOS_STATUS_SOURCE_MASK  0xFu
+#define NIOS_STATUS_RUNNING      (1u << 15)
+#define NIOS_STATUS_DONE         (1u << 14)
+#define NIOS_STATUS_ERROR        (1u << 13)
+#define NIOS_STATUS_DETAIL_MASK  0x1FFFu
+
 static inline uint32_t nios_make_packet(
     uint32_t kind,
     uint32_t code,
@@ -106,6 +113,32 @@ static inline uint32_t nios_packet_payload(uint32_t packet)
 static inline uint32_t nios_packet_value(uint32_t packet)
 {
     return packet & NIOS_PAYLOAD_VALUE_MASK;
+}
+
+static inline uint32_t nios_status_source(uint32_t packet)
+{
+    return (nios_packet_payload(packet) >> NIOS_STATUS_SOURCE_SHIFT)
+         & NIOS_STATUS_SOURCE_MASK;
+}
+
+static inline uint32_t nios_status_running(uint32_t packet)
+{
+    return (nios_packet_payload(packet) & NIOS_STATUS_RUNNING) != 0u;
+}
+
+static inline uint32_t nios_status_done(uint32_t packet)
+{
+    return (nios_packet_payload(packet) & NIOS_STATUS_DONE) != 0u;
+}
+
+static inline uint32_t nios_status_error(uint32_t packet)
+{
+    return (nios_packet_payload(packet) & NIOS_STATUS_ERROR) != 0u;
+}
+
+static inline uint32_t nios_status_detail(uint32_t packet)
+{
+    return nios_packet_payload(packet) & NIOS_STATUS_DETAIL_MASK;
 }
 
 #endif

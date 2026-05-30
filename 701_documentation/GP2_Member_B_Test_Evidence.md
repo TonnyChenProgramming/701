@@ -35,6 +35,7 @@ Expected examples:
 | `offset 100` | `TX 0x11310064` |
 | `pk nios 200 0` | `TX 0x1145C800` |
 | `rx 0x41500140` | `RX 0x41500140 EVENT code=0x1 dest=NIOS payload=0x00140 event=MAX_PEAK peak_count=320` |
+| `rx 0x31544000` | `RX 0x31544000 STATUS code=0x1 dest=NIOS payload=0x44000 status=CONFIG_DONE source=PK running=0 done=1 error=0 detail=0x0000` |
 | `status` | Current cached ASP config, TX/RX status, latest RX packet if any. |
 
 Evidence to capture:
@@ -118,6 +119,14 @@ ReCOP evidence is still important, but it is separate from the Nios UART config 
 ```text
 switch/button -> ReCOP -> START/STOP/CLEAR/status packet -> ASPs
 ```
+
+Expected LED behavior:
+
+| Status Packet | LED Meaning |
+| --- | --- |
+| `START_DONE` from ADC/AVG/COR/PK | Turn that ASP LED on. |
+| `STOP_DONE` from ADC/AVG/COR/PK | Turn that ASP LED off. |
+| `CLEAR_DONE` from ADC/AVG/COR/PK | Turn that ASP LED off. |
 
 Evidence to capture:
 

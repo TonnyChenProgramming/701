@@ -48,6 +48,9 @@ TX 0x1145C800
 
 nios> rx 0x41500140
 RX 0x41500140 EVENT code=0x1 dest=NIOS payload=0x00140 event=MAX_PEAK peak_count=320
+
+nios> rx 0x31544000
+RX 0x31544000 STATUS code=0x1 dest=NIOS payload=0x44000 status=CONFIG_DONE source=PK running=0 done=1 error=0 detail=0x0000
 ```
 
 When the Avalon-NoC adapter exists, define `NIOS_NOC_ADAPTER_BASE` to the generated Platform Designer base address and add `nios_noc_adapter.c` to the Nios application. The same console commands will then write `TX_PACKET`/`TX_CONTROL`, and `poll` will read `RX_PACKET` when `RX_VALID` is set.
@@ -62,5 +65,13 @@ When the Avalon-NoC adapter exists, define `NIOS_NOC_ADAPTER_BASE` to the genera
 ```
 
 For the current Member B path, Nios sends configuration packets directly to ASP addresses. ReCOP keeps the board-driven reactive role for START/STOP/CLEAR.
+
+For MVP status acknowledgements, the proposed rule is:
+
+```text
+CONFIG done        -> Nios, for UART/VGA confirmation
+START/STOP/CLEAR done -> ReCOP, for four ASP LEDs
+PK peak EVENT      -> Nios, for result display
+```
 
 Destination names accepted by the console are `recop`, `adc`, `avg`, `ave`, `cor`, `pk`, `nios`, `idle`, `null`, or numeric `0..7`.

@@ -22,6 +22,8 @@ PC UART command
 
 ReCOP remains useful, but its MVP role is the board-driven reactive controller: switches/buttons trigger START/STOP/CLEAR/status control packets to ASPs and LEDs show the result. Nios II is the UART/config/display processor.
 
+Status is split by command owner. Nios II receives `CONFIG_DONE` and PK result/event packets because it owns UART configuration and display. ReCOP receives `START_DONE`, `STOP_DONE`, and `CLEAR_DONE` because it owns switches/buttons and the four ASP LEDs.
+
 ## Responsibility Split
 
 | Member | Area | Main Responsibility |
@@ -63,6 +65,27 @@ The current implementation can run in dry-run mode before the hardware adapter i
 | `poll` | Read one returned packet from the hardware adapter | If `RX_VALID` is set, print decoded packet fields and acknowledge RX. |
 | `rx <hex>` | Mock/decode one received packet | Dry-run display hook for PK/result packets before hardware RX exists. |
 | `status` | Show current system status | Print cached ASP config, adapter status, and latest received packet/result. |
+
+## Status / LED Rule
+
+For MVP, status should not be broadcast everywhere. The target is:
+
+```text
+Nios CONFIG command -> ASP -> CONFIG_DONE status to Nios
+ReCOP START command -> ASP -> START_DONE status to ReCOP -> LED on
+ReCOP STOP command  -> ASP -> STOP_DONE status to ReCOP -> LED off
+ReCOP CLEAR command -> ASP -> CLEAR_DONE status to ReCOP -> LED off
+PK peak result      -> PK ASP -> EVENT packet to Nios
+```
+
+Suggested LED mapping:
+
+| LED | ASP |
+| --- | --- |
+| `LED0` | ADC |
+| `LED1` | AVG |
+| `LED2` | COR |
+| `LED3` | PK |
 
 ## Packet Format
 

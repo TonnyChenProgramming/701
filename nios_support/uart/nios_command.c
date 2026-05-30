@@ -382,6 +382,24 @@ static const char *nios_event_name(uint32_t code)
     }
 }
 
+static const char *nios_status_name(uint32_t code)
+{
+    switch (code) {
+        case NIOS_TAG_STATUS:
+            return "STATUS";
+        case NIOS_CMD_CONFIG:
+            return "CONFIG_DONE";
+        case NIOS_CMD_START:
+            return "START_DONE";
+        case NIOS_CMD_STOP:
+            return "STOP_DONE";
+        case NIOS_CMD_CLEAR:
+            return "CLEAR_DONE";
+        default:
+            return "STATUS?";
+    }
+}
+
 void nios_command_print_rx(uint32_t packet)
 {
     uint32_t kind = nios_packet_kind(packet);
@@ -408,7 +426,13 @@ void nios_command_print_rx(uint32_t packet)
                nios_event_name(code),
                (unsigned long)payload);
     } else if (kind == NIOS_PKT_KIND_STATUS) {
-        printf(" status_code=0x%lX", (unsigned long)code);
+        printf(" status=%s source=%s running=%lu done=%lu error=%lu detail=0x%04lX",
+               nios_status_name(code),
+               nios_dest_name(nios_status_source(packet)),
+               (unsigned long)nios_status_running(packet),
+               (unsigned long)nios_status_done(packet),
+               (unsigned long)nios_status_error(packet),
+               (unsigned long)nios_status_detail(packet));
     }
 
     printf("\n");
