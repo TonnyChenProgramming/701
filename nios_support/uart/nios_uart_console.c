@@ -11,7 +11,7 @@
 
 static void nios_print_help(void)
 {
-    printf("cmd: adc <dest> <ch> <div>, avg <dest> <win>, corwin <n>, offset <n>, pk <dest> <sp> <th>, rx <hex>, status, exit\n");
+    printf("cmd: adc <dest> <ch> <div>, avg <dest> <win>, corwin <n>, offset <n>, pk <dest> <sp> <th>, poll, rx <hex>, status, exit\n");
 }
 
 static void nios_lowercase(char *text)
@@ -268,6 +268,8 @@ static int nios_handle_line(nios_command_state_t *state, char *line)
             return 1;
         }
         nios_handle_rx(state, arg1);
+    } else if (strcmp(command, "poll") == 0) {
+        nios_command_poll_adapter(state);
     } else if (strcmp(command, "status") == 0) {
         nios_command_print_status(state);
     } else if (strcmp(command, "help") == 0 || strcmp(command, "?") == 0) {
@@ -284,9 +286,21 @@ static int nios_handle_line(nios_command_state_t *state, char *line)
 int main(void)
 {
     nios_command_state_t state;
+#ifdef NIOS_NOC_ADAPTER_BASE
+    nios_noc_adapter_t adapter;
+#endif
     char line[NIOS_LINE_MAX];
 
     nios_command_init(&state);
+
+#ifdef NIOS_NOC_ADAPTER_BASE
+    nios_noc_adapter_init(
+        &adapter,
+        (uintptr_t)NIOS_NOC_ADAPTER_BASE,
+        NIOS_NOC_DEFAULT_TIMEOUT
+    );
+    nios_command_attach_adapter(&state, &adapter);
+#endif
 
     printf("Nios command console\n");
     nios_print_help();

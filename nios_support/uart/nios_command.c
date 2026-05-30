@@ -6,13 +6,19 @@
 
 static int nios_command_send(nios_command_state_t *state, uint32_t packet)
 {
+    int rc;
+
+    if (state->adapter != NULL) {
+        rc = nios_noc_adapter_send(state->adapter, packet);
+        if (rc != 0) {
+            printf("ERR: noc tx %d\n", rc);
+            return rc;
+        }
+    }
+
     state->last_tx_packet = packet;
     state->has_last_tx = 1;
 
-    /*
-     * Dry-run hook. Replace this print with Avalon-MM writes when the
-     * Nios-to-NoC adapter registers are connected.
-     */
     printf("TX 0x%08lX\n", (unsigned long)packet);
     return 0;
 }
@@ -32,6 +38,19 @@ void nios_command_init(nios_command_state_t *state)
     state->pk_threshold = 0u;
 }
 
+void nios_command_attach_adapter(
+    nios_command_state_t *state,
+    nios_noc_adapter_t *adapter
+)
+{
+    state->adapter = adapter;
+}
+
+void nios_command_detach_adapter(nios_command_state_t *state)
+{
+    state->adapter = NULL;
+}
+
 int nios_command_config_adc(
     nios_command_state_t *state,
     uint32_t dest,
@@ -41,6 +60,7 @@ int nios_command_config_adc(
 {
     uint32_t payload;
     uint32_t packet;
+    int rc;
 
     if (dest > 0xFu || channel > 3u || divider > 15u) {
         return -1;
@@ -56,10 +76,15 @@ int nios_command_config_adc(
         payload
     );
 
+    rc = nios_command_send(state, packet);
+    if (rc != 0) {
+        return rc;
+    }
+
     state->adc_dest = dest;
     state->adc_channel = channel;
     state->adc_divider = divider;
-    return nios_command_send(state, packet);
+    return 0;
 }
 
 static int nios_window_to_shift(uint32_t window, uint32_t *shift_out)
@@ -94,6 +119,7 @@ int nios_command_config_avg(
     uint32_t shift;
     uint32_t payload;
     uint32_t packet;
+    int rc;
 
     if (dest > 0xFu || nios_window_to_shift(window, &shift) != 0) {
         return -1;
@@ -107,9 +133,14 @@ int nios_command_config_avg(
         payload
     );
 
+    rc = nios_command_send(state, packet);
+    if (rc != 0) {
+        return rc;
+    }
+
     state->avg_dest = dest;
     state->avg_window = window;
-    return nios_command_send(state, packet);
+    return 0;
 }
 
 int nios_command_config_cor_window(
@@ -117,15 +148,22 @@ int nios_command_config_cor_window(
     uint32_t window
 )
 {
+    int rc;
+
     if (window == 0u || window > 511u) {
         return -1;
     }
 
-    state->cor_window = window;
-    return nios_command_send(
+    rc = nios_command_send(
         state,
         nios_make_config(NIOS_ADDR_COR_ASP, NIOS_TAG_WINDOW, window)
     );
+    if (rc != 0) {
+        return rc;
+    }
+
+    state->cor_window = window;
+    return 0;
 }
 
 int nios_command_config_cor_offset(
@@ -133,15 +171,22 @@ int nios_command_config_cor_offset(
     uint32_t offset
 )
 {
+    int rc;
+
     if (offset > NIOS_PAYLOAD_VALUE_MASK) {
         return -1;
     }
 
-    state->cor_offset = offset;
-    return nios_command_send(
+    rc = nios_command_send(
         state,
         nios_make_config(NIOS_ADDR_COR_ASP, NIOS_TAG_OFFSET, offset)
     );
+    if (rc != 0) {
+        return rc;
+    }
+
+    state->cor_offset = offset;
+    return 0;
 }
 
 int nios_command_config_pk(
@@ -153,6 +198,7 @@ int nios_command_config_pk(
 {
     uint32_t payload;
     uint32_t packet;
+    int rc;
 
     if (dest > 0xFu || spacing > 255u || threshold > 15u) {
         return -1;
@@ -168,10 +214,15 @@ int nios_command_config_pk(
         payload
     );
 
+    rc = nios_command_send(state, packet);
+    if (rc != 0) {
+        return rc;
+    }
+
     state->pk_dest = dest;
     state->pk_spacing = spacing;
     state->pk_threshold = threshold;
-    return nios_command_send(state, packet);
+    return 0;
 }
 
 void nios_command_record_rx(nios_command_state_t *state, uint32_t packet)
@@ -180,9 +231,39 @@ void nios_command_record_rx(nios_command_state_t *state, uint32_t packet)
     state->has_last_rx = 1;
 }
 
+int nios_command_poll_adapter(nios_command_state_t *state)
+{
+    uint32_t packet;
+    int rc;
+
+    if (state->adapter == NULL) {
+        printf("ERR: no adapter\n");
+        return -1;
+    }
+
+    rc = nios_noc_adapter_try_recv(state->adapter, &packet);
+    if (rc < 0) {
+        printf("ERR: noc rx %d\n", rc);
+        return rc;
+    }
+
+    if (rc == 0) {
+        printf("RX none\n");
+        return 0;
+    }
+
+    nios_command_record_rx(state, packet);
+    nios_command_print_rx(packet);
+    return 1;
+}
+
 void nios_command_print_status(const nios_command_state_t *state)
 {
-    printf("adc=d%lu/c%lu/v%lu avg=d%lu/w%lu cor=w%lu/o%lu pk=d%lu/s%lu/t%lu",
+    uint32_t tx_status;
+    uint32_t rx_status;
+
+    printf("link=%s adc=d%lu/c%lu/v%lu avg=d%lu/w%lu cor=w%lu/o%lu pk=d%lu/s%lu/t%lu",
+           state->adapter == NULL ? "dry" : "hw",
            (unsigned long)state->adc_dest,
            (unsigned long)state->adc_channel,
            (unsigned long)state->adc_divider,
@@ -204,6 +285,14 @@ void nios_command_print_status(const nios_command_state_t *state)
         printf(" rx=0x%08lX", (unsigned long)state->last_rx_packet);
     } else {
         printf(" rx=none");
+    }
+
+    if (state->adapter != NULL) {
+        tx_status = nios_noc_adapter_tx_status(state->adapter);
+        rx_status = nios_noc_adapter_rx_status(state->adapter);
+        printf(" txs=0x%08lX rxs=0x%08lX",
+               (unsigned long)tx_status,
+               (unsigned long)rx_status);
     }
 
     printf("\n");

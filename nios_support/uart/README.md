@@ -1,8 +1,8 @@
 # Member B Nios UART Command Skeleton
 
-This folder contains the first Nios II support code for Member B. It is a dry-run command parser: it accepts UART/JTAG UART text commands, builds the 32-bit packet words agreed in `common/asp_packet_pkg.vhd`, and prints the packet that would be sent into the NoC.
+This folder contains the first Nios II support code for Member B. It accepts UART/JTAG UART text commands, builds the 32-bit packet words agreed in `common/asp_packet_pkg.vhd`, and either prints them in dry-run mode or writes them into the Avalon-NoC adapter.
 
-No Avalon/NoC hardware adapter is required for this step.
+No Avalon/NoC hardware adapter is required for dry-run mode.
 
 ## Commands
 
@@ -13,6 +13,7 @@ No Avalon/NoC hardware adapter is required for this step.
 | `corwin <n>` | Configure COR window value `1..511`. | Example: `0x11300040` |
 | `offset <n>` | Configure COR offset value. | Example: `0x11310064` |
 | `pk <dest> <sp> <th>` | Configure PK output destination, min spacing, and threshold. | Example: `0x1145C800` |
+| `poll` | Poll the hardware adapter for one received packet | No TX packet |
 | `rx <hex>` | Mock/decode a received NoC packet for display testing | No TX packet |
 | `status` | Print cached Nios state | No TX packet |
 | `help` | Print command list | No TX packet |
@@ -23,14 +24,14 @@ No Avalon/NoC hardware adapter is required for this step.
 | --- | --- |
 | `nios_command.h/.c` | Command helpers that build/send packets and track cached TX/RX state. |
 | `nios_packet.h` | Shared packet constants and helper functions for Nios C code. |
-| `nios_noc_adapter.h` | Avalon-MM register offsets and bit masks for the Nios-to-NoC adapter. |
+| `nios_noc_adapter.h/.c` | Avalon-MM register offsets, bit masks, and simple polling TX/RX helpers for the Nios-to-NoC adapter. |
 | `nios_uart_console.c` | UART/JTAG UART command parser skeleton. |
 
 ## Nios II Usage
 
 Create or open a Nios II application project and add these source/header files to the application source folder. The standard Nios II BSP routes `printf()` and `fgets()` through the configured console, normally JTAG UART.
 
-The first version intentionally prints packets instead of touching registers:
+Without `NIOS_NOC_ADAPTER_BASE`, the console prints packets without touching registers:
 
 ```text
 nios> adc avg 0 0
@@ -46,7 +47,7 @@ nios> pk nios 200 0
 TX 0x1145C800
 ```
 
-When the Avalon-NoC adapter exists, replace the body of `nios_command_send()` in `nios_command.c` with register writes using `nios_noc_adapter.h`.
+When the Avalon-NoC adapter exists, define `NIOS_NOC_ADAPTER_BASE` to the generated Platform Designer base address and add `nios_noc_adapter.c` to the Nios application. The same console commands will then write `TX_PACKET`/`TX_CONTROL`, and `poll` will read `RX_PACKET` when `RX_VALID` is set.
 
 ## Packet Format
 

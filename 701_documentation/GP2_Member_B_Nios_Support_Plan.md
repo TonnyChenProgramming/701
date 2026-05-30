@@ -49,7 +49,7 @@ The exact NoC route for mode 2 should be confirmed by Member C because it depend
 4. Dry-run command output showing the 32-bit packet words Nios would send.
 5. Evidence checklist for hardware/simulation testing.
 
-The first implementation can print intended packet words before the hardware adapter is finished. This lets the team agree on command format early.
+The current implementation can run in dry-run mode before the hardware adapter is finished. When Platform Designer provides the adapter base address, the same console can be built with `NIOS_NOC_ADAPTER_BASE` so the command helpers write the adapter registers.
 
 ## UART Command Set
 
@@ -60,6 +60,7 @@ The first implementation can print intended packet words before the hardware ada
 | `corwin <n>` | Set correlation window `1..511`. | Build and send/print COR window config packet. |
 | `offset <n>` | Set correlation offset | Build and send/print a COR config packet with offset value `n`. |
 | `pk <dest> <sp> <th>` | Set PK output destination, min spacing, and threshold. | Build and send/print PK config packet. |
+| `poll` | Read one returned packet from the hardware adapter | If `RX_VALID` is set, print decoded packet fields and acknowledge RX. |
 | `rx <hex>` | Mock/decode one received packet | Dry-run display hook for PK/result packets before hardware RX exists. |
 | `status` | Show current system status | Print cached ASP config, adapter status, and latest received packet/result. |
 
@@ -91,7 +92,7 @@ For Nios configuration commands, `dest` should be the target ASP address. ReCOP 
 
 ## Proposed Nios-to-ASP Command Packets
 
-These packet words follow the shared packet layout. The mode tag is a Member B proposal and should be confirmed before adding it to `asp_packet_pkg.vhd`.
+These packet words follow the shared packet layout and the current ASP decoder payload formats.
 
 | UART Command | Packet Meaning | Example Word |
 | --- | --- | --- |
@@ -101,7 +102,7 @@ These packet words follow the shared packet layout. The mode tag is a Member B p
 | `offset 100` | `CMD_CONFIG` to COR, `TAG_OFFSET`, value `100` | `0x11310064` |
 | `pk nios 200 0` | `CMD_CONFIG` to PK, output to Nios, spacing `200`, threshold `0` | `0x1145C800` |
 
-Suggested host-only config tags:
+Current tagged config fields:
 
 | Tag | Meaning |
 | --- | --- |

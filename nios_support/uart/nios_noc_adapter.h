@@ -42,9 +42,27 @@
 #define NIOS_NOC_SOFT_RESET             (1u << 0)
 #define NIOS_NOC_LOOPBACK_EN            (1u << 1)
 
+#define NIOS_NOC_DEFAULT_TIMEOUT        100000u
+
+typedef struct {
+    uintptr_t base;
+    uint32_t timeout;
+} nios_noc_adapter_t;
+
 static inline uintptr_t nios_noc_reg_addr(uintptr_t base, uint32_t offset)
 {
     return base + (uintptr_t)offset;
 }
+
+void nios_noc_adapter_init(
+    nios_noc_adapter_t *adapter,
+    uintptr_t base,
+    uint32_t timeout
+);
+uint32_t nios_noc_adapter_tx_status(const nios_noc_adapter_t *adapter);
+uint32_t nios_noc_adapter_rx_status(const nios_noc_adapter_t *adapter);
+int nios_noc_adapter_send(nios_noc_adapter_t *adapter, uint32_t packet);
+int nios_noc_adapter_try_recv(nios_noc_adapter_t *adapter, uint32_t *packet);
+void nios_noc_adapter_clear(nios_noc_adapter_t *adapter);
 
 #endif

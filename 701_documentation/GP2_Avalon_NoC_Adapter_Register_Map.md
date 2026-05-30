@@ -127,5 +127,5 @@ ADC/AVG/PK use compact payload bitfields in their current decoders. COR uses the
 
 1. The adapter should expose only packet-level control to Nios II. ASPs should keep algorithm-specific interpretation.
 2. The Nios software can begin in dry-run mode by printing packet words before the adapter exists.
-3. When Platform Designer assigns the base address, Nios code should define one project macro such as `GP2_NOC_ADAPTER_BASE`.
+3. When Platform Designer assigns the base address, Nios code should define one project macro such as `NIOS_NOC_ADAPTER_BASE`.
 4. If interrupts take too long to integrate, polling is acceptable for the first GP2 demo.

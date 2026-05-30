@@ -43,6 +43,22 @@ Evidence to capture:
 2. Short note confirming the packet words match `common/asp_packet_pkg.vhd`.
 3. Git commit hash or branch state used for the test.
 
+## Hardware Hook Evidence
+
+When the Avalon-NoC adapter exists, build the same console with `NIOS_NOC_ADAPTER_BASE` defined.
+
+| Input Command | Expected Hardware Action |
+| --- | --- |
+| `adc avg 0 0` | Poll `TX_READY`, write `TX_PACKET = 0x11120000`, pulse `TX_VALID`. |
+| `pk nios 200 0` | Poll `TX_READY`, write `TX_PACKET = 0x1145C800`, pulse `TX_VALID`. |
+| `poll` | If `RX_VALID = 1`, read `RX_PACKET`, print decoded fields, then pulse `RX_ACK`. |
+
+Evidence to capture:
+
+1. SignalTap or simulation waveform showing `TX_PACKET`, `TX_VALID`, and `TX_READY`.
+2. UART transcript showing the same packet word printed by Nios.
+3. One mocked or real PK result packet received through `poll`.
+
 ## Adapter Register Evidence
 
 Once the Avalon-NoC adapter exists, capture a register-level test.
@@ -115,16 +131,16 @@ For returned status/result packets, Nios should decode and print:
 
 ```text
 RX packet: 0x???????? kind=? code=? dest=? payload=0x?????
-mode=<mode> window=<window> latest_result=<value> adapter_status=<flags>
+link=<dry|hw> adc=d?/c?/v? avg=d?/w? cor=w?/o? pk=d?/s?/t? tx=<packet> rx=<packet>
 ```
 
 For VGA, the first display can be simple:
 
 ```text
-MODE: 1 CORRELATION
-WINDOW: 64
-STATUS: RUNNING
-RESULT: <latest result>
+ADC: dest AVG
+AVG: window 4
+COR: window 64 offset 100
+RESULT: <latest peak/frequency result>
 ```
 
 Evidence to capture:
