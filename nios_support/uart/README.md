@@ -14,7 +14,7 @@ No Avalon/NoC hardware adapter is required for dry-run mode.
 | `offset <n>` | Configure COR offset value. | Example: `0x11310064` |
 | `pk <dest> <sp> <th>` | Configure PK output destination, min spacing, and threshold. | Example: `0x1145C800` |
 | `poll` | Poll the hardware adapter for one received packet | No TX packet |
-| `rx <hex>` | Mock/decode a received NoC packet for display testing | No TX packet |
+| `rx <hex>` | Mock/decode a received NoC packet for display testing, including PK peak events | No TX packet |
 | `status` | Print cached Nios state | No TX packet |
 | `help` | Print command list | No TX packet |
 
@@ -45,6 +45,9 @@ TX 0x11300040
 
 nios> pk nios 200 0
 TX 0x1145C800
+
+nios> rx 0x41500140
+RX 0x41500140 EVENT code=0x1 dest=NIOS payload=0x00140 event=MAX_PEAK peak_count=320
 ```
 
 When the Avalon-NoC adapter exists, define `NIOS_NOC_ADAPTER_BASE` to the generated Platform Designer base address and add `nios_noc_adapter.c` to the Nios application. The same console commands will then write `TX_PACKET`/`TX_CONTROL`, and `poll` will read `RX_PACKET` when `RX_VALID` is set.

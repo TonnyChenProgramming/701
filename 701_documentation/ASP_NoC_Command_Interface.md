@@ -56,15 +56,19 @@ For tagged config payloads:
 | `CMD_STOP = 0x3` | Stop stream/pipeline behavior. | ReCOP |
 | `CMD_CLEAR = 0x4` | Clear state/reset counters/FIFOs. | ReCOP |
 
-## Proposed Config Tags
+## Shared Tags And Event Codes
 
-| Tag | Meaning | Target |
+| Code/Tag | Value | Meaning | Used By |
 | --- | --- | --- |
-| `0x0` | `TAG_WINDOW`, window length. | COR |
-| `0x1` | `TAG_OFFSET`, correlation offset. | COR |
-| `0xF` | Reserved/proposed host mode select. | Not used by current ADC/AVG cores |
+| `TAG_WINDOW` | `0x0` | COR config window. | COR config |
+| `TAG_OFFSET` | `0x1` | COR config offset. | COR config |
+| `TAG_DIRECT_DATA` | `0x0` | Direct/sample data packet. | DATA code |
+| `TAG_RESULT_LOW` | `0x1` | Low part of COR result. | DATA code |
+| `TAG_RESULT_HIGH` | `0x2` | High part of COR result. | DATA code |
+| `EVENT_MAX_PEAK` | `0x1` | Maximum peak event. | EVENT code |
+| `EVENT_MIN_PEAK` | `0x2` | Minimum peak event. | EVENT code |
 
-ADC and AVG currently use compact payload bitfields rather than the generic tag/value style. COR uses `TAG_WINDOW` and `TAG_OFFSET`.
+ADC, AVG, and PK currently use compact payload bitfields rather than the generic tag/value style. COR uses `TAG_WINDOW` and `TAG_OFFSET`.
 
 ## Current Nios Dry-Run Packets
 
@@ -77,7 +81,7 @@ These are the packets currently produced by `nios_support/uart`:
 | `corwin 64` | `0x11300040` | COR window config. |
 | `offset 100` | `0x11310064` | COR offset config. |
 | `pk nios 200 0` | `0x1145C800` | PK sends peak events to Nios, spacing 200, threshold 0. |
-| `rx <hex>` | No TX packet | Mock a received packet for Nios display testing. |
+| `rx 0x41500140` | No TX packet | Mock PK max-peak event to Nios, peak count `320`. |
 
 ## Actual ASP Command Payloads
 

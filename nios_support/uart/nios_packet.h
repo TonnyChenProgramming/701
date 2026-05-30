@@ -14,6 +14,9 @@
 #define NIOS_CMD_STOP         0x3u
 #define NIOS_CMD_CLEAR        0x4u
 
+#define NIOS_EVENT_MAX_PEAK   0x1u
+#define NIOS_EVENT_MIN_PEAK   0x2u
+
 #define NIOS_ADDR_RECOP       0x0u
 #define NIOS_ADDR_ADC_ASP     0x1u
 #define NIOS_ADDR_AVE_ASP     0x2u
@@ -25,7 +28,12 @@
 
 #define NIOS_TAG_WINDOW       0x0u
 #define NIOS_TAG_OFFSET       0x1u
+#define NIOS_TAG_DIRECT_DATA  0x0u
+#define NIOS_TAG_RESULT_LOW   0x1u
+#define NIOS_TAG_RESULT_HIGH  0x2u
+#define NIOS_TAG_STATUS       0x0u
 
+#define NIOS_PAYLOAD20_MASK   0xFFFFFu
 #define NIOS_PAYLOAD_VALUE_MASK 0xFFFFu
 
 static inline uint32_t nios_make_packet(
@@ -38,7 +46,7 @@ static inline uint32_t nios_make_packet(
     return ((kind & 0xFu) << 28)
          | ((code & 0xFu) << 24)
          | ((dest & 0xFu) << 20)
-         | (payload & 0xFFFFFu);
+         | (payload & NIOS_PAYLOAD20_MASK);
 }
 
 static inline uint32_t nios_make_tagged_payload(uint32_t tag, uint32_t value)
@@ -88,6 +96,11 @@ static inline uint32_t nios_packet_dest(uint32_t packet)
 static inline uint32_t nios_packet_tag(uint32_t packet)
 {
     return (packet >> 16) & 0xFu;
+}
+
+static inline uint32_t nios_packet_payload(uint32_t packet)
+{
+    return packet & NIOS_PAYLOAD20_MASK;
 }
 
 static inline uint32_t nios_packet_value(uint32_t packet)

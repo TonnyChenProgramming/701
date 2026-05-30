@@ -298,13 +298,118 @@ void nios_command_print_status(const nios_command_state_t *state)
     printf("\n");
 }
 
+static const char *nios_kind_name(uint32_t kind)
+{
+    switch (kind) {
+        case NIOS_PKT_KIND_CMD:
+            return "CMD";
+        case NIOS_PKT_KIND_DATA:
+            return "DATA";
+        case NIOS_PKT_KIND_STATUS:
+            return "STATUS";
+        case NIOS_PKT_KIND_EVENT:
+            return "EVENT";
+        default:
+            return "UNKNOWN";
+    }
+}
+
+static const char *nios_dest_name(uint32_t dest)
+{
+    switch (dest) {
+        case NIOS_ADDR_RECOP:
+            return "RECOP";
+        case NIOS_ADDR_ADC_ASP:
+            return "ADC";
+        case NIOS_ADDR_AVE_ASP:
+            return "AVG";
+        case NIOS_ADDR_COR_ASP:
+            return "COR";
+        case NIOS_ADDR_PK_ASP:
+            return "PK";
+        case NIOS_ADDR_NIOS_II:
+            return "NIOS";
+        case NIOS_ADDR_IDLE:
+            return "IDLE";
+        case NIOS_ADDR_NULL:
+            return "NULL";
+        default:
+            return "?";
+    }
+}
+
+static const char *nios_cmd_name(uint32_t code)
+{
+    switch (code) {
+        case NIOS_CMD_NOP:
+            return "NOP";
+        case NIOS_CMD_CONFIG:
+            return "CONFIG";
+        case NIOS_CMD_START:
+            return "START";
+        case NIOS_CMD_STOP:
+            return "STOP";
+        case NIOS_CMD_CLEAR:
+            return "CLEAR";
+        default:
+            return "CMD?";
+    }
+}
+
+static const char *nios_data_code_name(uint32_t code)
+{
+    switch (code) {
+        case NIOS_TAG_DIRECT_DATA:
+            return "DIRECT";
+        case NIOS_TAG_RESULT_LOW:
+            return "RESULT_LOW";
+        case NIOS_TAG_RESULT_HIGH:
+            return "RESULT_HIGH";
+        default:
+            return "DATA?";
+    }
+}
+
+static const char *nios_event_name(uint32_t code)
+{
+    switch (code) {
+        case NIOS_EVENT_MAX_PEAK:
+            return "MAX_PEAK";
+        case NIOS_EVENT_MIN_PEAK:
+            return "MIN_PEAK";
+        default:
+            return "EVENT?";
+    }
+}
+
 void nios_command_print_rx(uint32_t packet)
 {
-    printf("RX 0x%08lX k=%lu c=%lu d=%lu tag=%lu val=0x%04lX\n",
+    uint32_t kind = nios_packet_kind(packet);
+    uint32_t code = nios_packet_code(packet);
+    uint32_t dest = nios_packet_dest(packet);
+    uint32_t payload = nios_packet_payload(packet);
+
+    printf("RX 0x%08lX %s code=0x%lX dest=%s payload=0x%05lX",
            (unsigned long)packet,
-           (unsigned long)nios_packet_kind(packet),
-           (unsigned long)nios_packet_code(packet),
-           (unsigned long)nios_packet_dest(packet),
-           (unsigned long)nios_packet_tag(packet),
-           (unsigned long)nios_packet_value(packet));
+           nios_kind_name(kind),
+           (unsigned long)code,
+           nios_dest_name(dest),
+           (unsigned long)payload);
+
+    if (kind == NIOS_PKT_KIND_CMD) {
+        printf(" cmd=%s tag=0x%lX value=0x%04lX",
+               nios_cmd_name(code),
+               (unsigned long)nios_packet_tag(packet),
+               (unsigned long)nios_packet_value(packet));
+    } else if (kind == NIOS_PKT_KIND_DATA) {
+        printf(" data=%s", nios_data_code_name(code));
+    } else if (kind == NIOS_PKT_KIND_EVENT) {
+        printf(" event=%s peak_count=%lu",
+               nios_event_name(code),
+               (unsigned long)payload);
+    } else if (kind == NIOS_PKT_KIND_STATUS) {
+        printf(" status_code=0x%lX", (unsigned long)code);
+    }
+
+    printf("\n");
 }

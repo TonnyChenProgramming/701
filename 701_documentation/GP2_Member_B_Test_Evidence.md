@@ -34,7 +34,7 @@ Expected examples:
 | `corwin 64` | `TX 0x11300040` |
 | `offset 100` | `TX 0x11310064` |
 | `pk nios 200 0` | `TX 0x1145C800` |
-| `rx 0x41500140` | Decode/display a mock PK/result packet. |
+| `rx 0x41500140` | `RX 0x41500140 EVENT code=0x1 dest=NIOS payload=0x00140 event=MAX_PEAK peak_count=320` |
 | `status` | Current cached ASP config, TX/RX status, latest RX packet if any. |
 
 Evidence to capture:
@@ -130,7 +130,7 @@ Evidence to capture:
 For returned status/result packets, Nios should decode and print:
 
 ```text
-RX packet: 0x???????? kind=? code=? dest=? payload=0x?????
+RX 0x???????? <kind> code=0x? dest=<node> payload=0x?????
 link=<dry|hw> adc=d?/c?/v? avg=d?/w? cor=w?/o? pk=d?/s?/t? tx=<packet> rx=<packet>
 ```
 
