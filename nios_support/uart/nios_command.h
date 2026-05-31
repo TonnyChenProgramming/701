@@ -18,9 +18,16 @@ typedef struct {
     uint32_t pk_threshold;
     uint32_t last_tx_packet;
     uint32_t last_rx_packet;
+    uint32_t latest_peak_count;
+    uint32_t config_done_mask;
+    uint32_t last_status_source;
+    uint32_t last_status_code;
+    uint32_t last_status_detail;
     nios_noc_adapter_t *adapter;
     int has_last_tx;
     int has_last_rx;
+    int has_peak_count;
+    int has_last_status;
 } nios_command_state_t;
 
 void nios_command_init(nios_command_state_t *state);

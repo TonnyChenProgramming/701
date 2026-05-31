@@ -4,6 +4,9 @@
 #include "nios_command.h"
 #include "nios_packet.h"
 
+static const char *nios_dest_name(uint32_t dest);
+static const char *nios_status_name(uint32_t code);
+
 static int nios_command_send(nios_command_state_t *state, uint32_t packet)
 {
     int rc;
@@ -227,8 +230,35 @@ int nios_command_config_pk(
 
 void nios_command_record_rx(nios_command_state_t *state, uint32_t packet)
 {
+    uint32_t kind = nios_packet_kind(packet);
+    uint32_t code = nios_packet_code(packet);
+    uint32_t source;
+
     state->last_rx_packet = packet;
     state->has_last_rx = 1;
+
+    if (nios_packet_dest(packet) == NIOS_ADDR_NIOS_II
+        && kind == NIOS_PKT_KIND_EVENT
+        && (code == NIOS_EVENT_MAX_PEAK || code == NIOS_EVENT_MIN_PEAK)) {
+        state->latest_peak_count = nios_packet_payload(packet);
+        state->has_peak_count = 1;
+    }
+
+    if (nios_packet_dest(packet) == NIOS_ADDR_NIOS_II
+        && kind == NIOS_PKT_KIND_STATUS) {
+        source = nios_status_source(packet);
+        state->last_status_source = source;
+        state->last_status_code = code;
+        state->last_status_detail = nios_status_detail(packet);
+        state->has_last_status = 1;
+
+        if (code == NIOS_CMD_CONFIG
+            && nios_status_done(packet) != 0u
+            && nios_status_error(packet) == 0u
+            && source < 32u) {
+            state->config_done_mask |= (1u << source);
+        }
+    }
 }
 
 int nios_command_poll_adapter(nios_command_state_t *state)
@@ -285,6 +315,22 @@ void nios_command_print_status(const nios_command_state_t *state)
         printf(" rx=0x%08lX", (unsigned long)state->last_rx_packet);
     } else {
         printf(" rx=none");
+    }
+
+    printf(" cfg=0x%02lX", (unsigned long)state->config_done_mask);
+
+    if (state->has_peak_count) {
+        printf(" peak=%lu", (unsigned long)state->latest_peak_count);
+    } else {
+        printf(" peak=none");
+    }
+
+    if (state->has_last_status) {
+        printf(" ack=%s/%s",
+               nios_status_name(state->last_status_code),
+               nios_dest_name(state->last_status_source));
+    } else {
+        printf(" ack=none");
     }
 
     if (state->adapter != NULL) {

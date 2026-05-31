@@ -51,6 +51,9 @@ RX 0x41500140 EVENT code=0x1 dest=NIOS payload=0x00140 event=MAX_PEAK peak_count
 
 nios> rx 0x31544000
 RX 0x31544000 STATUS code=0x1 dest=NIOS payload=0x44000 status=CONFIG_DONE source=PK running=0 done=1 error=0 detail=0x0000
+
+nios> status
+link=dry adc=d2/c0/v0 avg=d3/w4 cor=w64/o0 pk=d5/s200/t0 tx=0x1145C800 rx=0x31544000 cfg=0x10 peak=320 ack=CONFIG_DONE/PK
 ```
 
 When the Avalon-NoC adapter exists, define `NIOS_NOC_ADAPTER_BASE` to the generated Platform Designer base address and add `nios_noc_adapter.c` to the Nios application. The same console commands will then write `TX_PACKET`/`TX_CONTROL`, and `poll` will read `RX_PACKET` when `RX_VALID` is set.
@@ -73,5 +76,7 @@ CONFIG done        -> Nios, for UART/VGA confirmation
 START/STOP/CLEAR done -> ReCOP, for four ASP LEDs
 PK peak EVENT      -> Nios, for result display
 ```
+
+The command state caches `latest_peak_count`, a `config_done_mask`, and the latest STATUS acknowledgement. These fields are the small shared snapshot a later VGA screen should render. The older C723 VGA code can be reused as a reference for character-buffer drawing, but its FreeRTOS graph task should not be copied into this MVP path.
 
 Destination names accepted by the console are `recop`, `adc`, `avg`, `ave`, `cor`, `pk`, `nios`, `idle`, `null`, or numeric `0..7`.

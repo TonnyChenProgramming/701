@@ -78,6 +78,8 @@ ReCOP CLEAR command -> ASP -> CLEAR_DONE status to ReCOP -> LED off
 PK peak result      -> PK ASP -> EVENT packet to Nios
 ```
 
+Nios caches the latest peak count, successful ASP config acknowledgements, and the most recent status response. UART can print this snapshot immediately. A later VGA layer should read the same snapshot instead of containing packet-decoding logic.
+
 Suggested LED mapping:
 
 | LED | ASP |
