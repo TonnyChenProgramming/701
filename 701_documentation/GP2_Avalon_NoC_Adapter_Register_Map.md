@@ -113,6 +113,8 @@ The first RTL implementation is in `nios_support/adapter/avalon_noc_adapter.vhd`
 
 `common/TdmaMinTypes.vhd` is the shared TDMA-MIN record declaration for integration builds. Compile it after `common/asp_packet_pkg.vhd`.
 
+For Platform Designer integration, use `nios_support/adapter/avalon_noc_adapter_pd_hw.tcl`. The component exposes the Avalon slave and optional IRQ normally, then exports flat `noc_send` and `noc_recv` conduit signals for TDMA-MIN integration.
+
 ## Example Command Packets
 
 These examples use the shared constants from `asp_packet_pkg.vhd`:

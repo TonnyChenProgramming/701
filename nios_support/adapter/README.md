@@ -8,6 +8,8 @@ This folder contains the minimal hardware bridge between Nios II Avalon-MM regis
 | --- | --- |
 | `avalon_noc_adapter.vhd` | One-entry Avalon-MM TX/RX bridge with TDMA-MIN `send` and `recv` ports. |
 | `avalon_noc_adapter_tb.vhd` | Focused simulation for reset, TX, RX acknowledge, and RX overflow behavior. |
+| `avalon_noc_adapter_pd.vhd` | Flat-port wrapper for Platform Designer conduit signals. |
+| `avalon_noc_adapter_pd_hw.tcl` | Platform Designer custom-component descriptor. |
 
 Compile with the shared packages first:
 
@@ -29,6 +31,29 @@ Nios II Avalon master
 ```
 
 The first version deliberately uses one TX holding register and one RX holding register. It is enough for the MVP configuration/status path and waveform evidence. FIFOs can be added later if traffic measurements show they are needed.
+
+## Platform Designer Component
+
+Add `nios_support/adapter` to the Platform Designer IP search path. The component appears as:
+
+```text
+COMPSYS 701 -> Avalon NoC Adapter
+```
+
+Connect:
+
+```text
+clock       -> system clock
+reset       -> system reset
+avs         -> Nios II data master
+irq         -> Nios II interrupt receiver, optional for MVP
+noc_send    -> TDMA-MIN input path
+noc_recv    <- TDMA-MIN output path for Nios address 0x5
+```
+
+Export `noc_send` and `noc_recv` from the Platform Designer system if TDMA-MIN is integrated in the Quartus top level. The wrapper exposes flat `addr[7:0]` and `data[31:0]` signals, while the adapter core keeps the shared `tdma_min_port` record internally.
+
+The descriptor includes `common/asp_packet_pkg.vhd` and `common/TdmaMinTypes.vhd`. Do not add duplicate copies of those packages to the same Quartus compilation library.
 
 ## Simulation Evidence
 

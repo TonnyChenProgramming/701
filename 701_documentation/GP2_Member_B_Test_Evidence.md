@@ -90,6 +90,8 @@ Evidence to capture:
 
 The focused RTL testbench is `nios_support/adapter/avalon_noc_adapter_tb.vhd`. It checks reset-ready state, Nios TX packet routing, RX hold-until-ack behavior, and RX overflow reporting.
 
+For the first board smoke test, add the packaged `Avalon NoC Adapter` component to Platform Designer, connect its `avs` slave to the Nios II data master, and export the `noc_send`/`noc_recv` conduits. Capture a screenshot of the Platform Designer connections before Quartus compilation.
+
 ## ASP Config Path Evidence
 
 When the NoC adapter and ASP command decoders are connected, run this simple integration test:
