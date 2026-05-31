@@ -88,6 +88,8 @@ Evidence to capture:
 2. SignalTap/ModelSim waveform for `TX_VALID`, `TX_READY`, `RX_VALID`, and `RX_ACK`.
 3. Any error/overflow flags staying clear during the test.
 
+The focused RTL testbench is `nios_support/adapter/avalon_noc_adapter_tb.vhd`. It checks reset-ready state, Nios TX packet routing, RX hold-until-ack behavior, and RX overflow reporting.
+
 ## ASP Config Path Evidence
 
 When the NoC adapter and ASP command decoders are connected, run this simple integration test:

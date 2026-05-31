@@ -109,6 +109,10 @@ Minimum expected behavior:
 3. Set overflow/error flags instead of silently losing state.
 4. Keep all unused bits stable and documented as reserved.
 
+The first RTL implementation is in `nios_support/adapter/avalon_noc_adapter.vhd`. Its Avalon slave exposes a 3-bit word address, so word addresses `0..7` map to the byte offsets `0x00..0x1C` listed above.
+
+`common/TdmaMinTypes.vhd` is the shared TDMA-MIN record declaration for integration builds. Compile it after `common/asp_packet_pkg.vhd`.
+
 ## Example Command Packets
 
 These examples use the shared constants from `asp_packet_pkg.vhd`:
