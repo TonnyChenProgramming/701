@@ -32,6 +32,11 @@ uint32_t nios_noc_adapter_rx_status(const nios_noc_adapter_t *adapter)
     return nios_noc_read32(adapter->base, NIOS_NOC_RX_STATUS_OFFSET);
 }
 
+uint32_t nios_noc_adapter_status(const nios_noc_adapter_t *adapter)
+{
+    return nios_noc_read32(adapter->base, NIOS_NOC_ADAPTER_STATUS_OFFSET);
+}
+
 int nios_noc_adapter_send(nios_noc_adapter_t *adapter, uint32_t packet)
 {
     uint32_t status;
@@ -72,5 +77,21 @@ int nios_noc_adapter_try_recv(nios_noc_adapter_t *adapter, uint32_t *packet)
 void nios_noc_adapter_clear(nios_noc_adapter_t *adapter)
 {
     nios_noc_write32(adapter->base, NIOS_NOC_TX_CONTROL_OFFSET, NIOS_NOC_TX_CLEAR);
-    nios_noc_write32(adapter->base, NIOS_NOC_RX_CONTROL_OFFSET, NIOS_NOC_RX_CLEAR);
+    nios_noc_write32(
+        adapter->base,
+        NIOS_NOC_RX_CONTROL_OFFSET,
+        NIOS_NOC_RX_ACK | NIOS_NOC_RX_CLEAR
+    );
+}
+
+void nios_noc_adapter_set_loopback(
+    nios_noc_adapter_t *adapter,
+    int enabled
+)
+{
+    nios_noc_write32(
+        adapter->base,
+        NIOS_NOC_ADAPTER_CONTROL_OFFSET,
+        enabled ? NIOS_NOC_LOOPBACK_EN : 0u
+    );
 }

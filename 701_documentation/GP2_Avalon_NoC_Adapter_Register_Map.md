@@ -78,6 +78,17 @@ Base address is assigned later in Platform Designer. All registers are 32-bit, w
 | `1` | `LOOPBACK_EN` | Optional simulation/debug loopback. |
 | `31:2` | Reserved | Write as zero. |
 
+## Adapter Status Bits
+
+| Bit | Name | Meaning |
+| --- | --- | --- |
+| `0` | `TX_PENDING` | Adapter is holding a packet for the TDMA-MIN send cycle. |
+| `1` | `RX_VALID` | Adapter is holding an unacknowledged received packet. |
+| `2` | `TX_ERROR` | A TX write arrived while a previous packet was pending. |
+| `3` | `RX_OVERFLOW` | A packet arrived before the previous RX packet was acknowledged. |
+| `4` | `LOOPBACK_EN` | Adapter-local loopback is enabled for smoke testing. |
+| `31:5` | Reserved | Read as zero. |
+
 ## Nios TX Sequence
 
 ```text
@@ -135,3 +146,4 @@ ADC/AVG/PK use compact payload bitfields in their current decoders. COR uses the
 2. The Nios software can begin in dry-run mode by printing packet words before the adapter exists.
 3. When Platform Designer assigns the base address, Nios code should define one project macro such as `NIOS_NOC_ADAPTER_BASE`.
 4. If interrupts take too long to integrate, polling is acceptable for the first GP2 demo.
+5. Before TDMA-MIN integration, run `hwloop 1`, send a command, then use `poll` to prove the Avalon-MM TX/RX path on the board.

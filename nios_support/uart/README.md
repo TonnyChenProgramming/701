@@ -14,6 +14,9 @@ No Avalon/NoC hardware adapter is required for dry-run mode.
 | `offset <n>` | Configure COR offset value. | Example: `0x11310064` |
 | `pk <dest> <sp> <th>` | Configure PK output destination, min spacing, and threshold. | Example: `0x1145C800` |
 | `poll` | Poll the hardware adapter for one received packet | No TX packet |
+| `hwstatus` | Print decoded Avalon-NoC adapter register flags. | No TX packet |
+| `hwclear` | Clear adapter TX/RX error and overflow flags. | No TX packet |
+| `hwloop <0|1>` | Enable or disable adapter-local loopback for board smoke testing. | No TX packet |
 | `rx <hex>` | Mock/decode a received NoC packet for display testing, including PK peak events | No TX packet |
 | `status` | Print cached Nios state | No TX packet |
 | `display` | Print the compact display snapshot and refresh VGA when enabled | No TX packet |
@@ -69,6 +72,30 @@ ACK: CONFIG_DONE from PK detail=0x0000
 ```
 
 When the Avalon-NoC adapter exists, define `NIOS_NOC_ADAPTER_BASE` to the generated Platform Designer base address and add `nios_noc_adapter.c` to the Nios application. The same console commands will then write `TX_PACKET`/`TX_CONTROL`, and `poll` will read `RX_PACKET` when `RX_VALID` is set.
+
+Before TDMA-MIN integration, use the adapter-local loopback mode for a board smoke test:
+
+```text
+nios> hwclear
+HW cleared
+
+nios> hwloop 1
+HW loopback=1
+
+nios> adc avg 0 0
+TX 0x11120000
+
+nios> poll
+RX 0x11120000 CMD code=0x1 dest=ADC payload=0x20000 cmd=CONFIG tag=0x2 value=0x0000
+
+nios> hwstatus
+HW tx=0x00000009 ready=1 busy=0 error=0 accepted=1 rx=0x00000000 valid=0 overflow=0 error=0 adapter=0x00000010 loopback=1
+
+nios> hwloop 0
+HW loopback=0
+```
+
+This proves the Nios Avalon-MM connection, register base address, TX write path, RX read path, and acknowledgement path before the external NoC conduits are connected.
 
 ## Packet Format
 

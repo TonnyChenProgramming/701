@@ -88,9 +88,28 @@ Evidence to capture:
 2. SignalTap/ModelSim waveform for `TX_VALID`, `TX_READY`, `RX_VALID`, and `RX_ACK`.
 3. Any error/overflow flags staying clear during the test.
 
-The focused RTL testbench is `nios_support/adapter/avalon_noc_adapter_tb.vhd`. It checks reset-ready state, Nios TX packet routing, RX hold-until-ack behavior, and RX overflow reporting.
+The focused RTL testbench is `nios_support/adapter/avalon_noc_adapter_tb.vhd`. It checks reset-ready state, Nios TX packet routing, RX hold-until-ack behavior, RX overflow reporting, and the adapter-local loopback path used for the first board smoke test.
 
 For the first board smoke test, add the packaged `Avalon NoC Adapter` component to Platform Designer, connect its `avs` slave to the Nios II data master, and export the `noc_send`/`noc_recv` conduits. Capture a screenshot of the Platform Designer connections before Quartus compilation.
+
+Before connecting TDMA-MIN, enable the adapter-local loopback and run:
+
+```text
+hwclear
+hwloop 1
+adc avg 0 0
+poll
+hwstatus
+hwloop 0
+```
+
+Expected evidence:
+
+1. TX prints `0x11120000`.
+2. `poll` reads the same packet back through the Avalon adapter.
+3. `hwstatus` shows `ready=1`, `error=0`, `overflow=0`, and `loopback=1`.
+
+This isolates the Platform Designer base-address and Avalon-MM wiring test from the later TDMA-MIN routing test.
 
 ## ASP Config Path Evidence
 

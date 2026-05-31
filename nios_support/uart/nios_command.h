@@ -63,6 +63,9 @@ int nios_command_config_pk(
 );
 void nios_command_record_rx(nios_command_state_t *state, uint32_t packet);
 int nios_command_poll_adapter(nios_command_state_t *state);
+int nios_command_print_adapter_status(const nios_command_state_t *state);
+int nios_command_clear_adapter(nios_command_state_t *state);
+int nios_command_set_loopback(nios_command_state_t *state, int enabled);
 void nios_command_print_status(const nios_command_state_t *state);
 void nios_command_print_rx(uint32_t packet);
 

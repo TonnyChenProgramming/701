@@ -64,5 +64,6 @@ The focused testbench checks:
 3. A NoC packet for `NIOS_II_ADDR` remains available until `RX_ACK`.
 4. A second unacknowledged RX packet sets the overflow flag.
 5. `RX_CLEAR` clears valid and overflow state.
+6. Adapter-local loopback returns a Nios TX packet through the RX register path.
 
 With ModelSim, compile the four files listed above and run `avalon_noc_adapter_tb` for `300 ns`. A completed run leaves `test_done = '1'`.

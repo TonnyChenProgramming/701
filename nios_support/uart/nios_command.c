@@ -287,6 +287,63 @@ int nios_command_poll_adapter(nios_command_state_t *state)
     return 1;
 }
 
+int nios_command_print_adapter_status(const nios_command_state_t *state)
+{
+    uint32_t tx_status;
+    uint32_t rx_status;
+    uint32_t adapter_status;
+
+    if (state->adapter == NULL) {
+        printf("ERR: no adapter\n");
+        return -1;
+    }
+
+    tx_status = nios_noc_adapter_tx_status(state->adapter);
+    rx_status = nios_noc_adapter_rx_status(state->adapter);
+    adapter_status = nios_noc_adapter_status(state->adapter);
+
+    printf("HW tx=0x%08lX ready=%lu busy=%lu error=%lu accepted=%lu",
+           (unsigned long)tx_status,
+           (unsigned long)((tx_status & NIOS_NOC_TX_READY) != 0u),
+           (unsigned long)((tx_status & NIOS_NOC_TX_BUSY) != 0u),
+           (unsigned long)((tx_status & NIOS_NOC_TX_ERROR) != 0u),
+           (unsigned long)((tx_status & NIOS_NOC_TX_LAST_ACCEPTED) != 0u));
+    printf(" rx=0x%08lX valid=%lu overflow=%lu error=%lu",
+           (unsigned long)rx_status,
+           (unsigned long)((rx_status & NIOS_NOC_RX_VALID) != 0u),
+           (unsigned long)((rx_status & NIOS_NOC_RX_OVERFLOW) != 0u),
+           (unsigned long)((rx_status & NIOS_NOC_RX_ERROR) != 0u));
+    printf(" adapter=0x%08lX loopback=%lu\n",
+           (unsigned long)adapter_status,
+           (unsigned long)((adapter_status & NIOS_NOC_STATUS_LOOPBACK_EN) != 0u));
+
+    return 0;
+}
+
+int nios_command_clear_adapter(nios_command_state_t *state)
+{
+    if (state->adapter == NULL) {
+        printf("ERR: no adapter\n");
+        return -1;
+    }
+
+    nios_noc_adapter_clear(state->adapter);
+    printf("HW cleared\n");
+    return 0;
+}
+
+int nios_command_set_loopback(nios_command_state_t *state, int enabled)
+{
+    if (state->adapter == NULL) {
+        printf("ERR: no adapter\n");
+        return -1;
+    }
+
+    nios_noc_adapter_set_loopback(state->adapter, enabled);
+    printf("HW loopback=%d\n", enabled != 0);
+    return 0;
+}
+
 void nios_command_print_status(const nios_command_state_t *state)
 {
     uint32_t tx_status;

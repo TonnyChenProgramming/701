@@ -26,6 +26,8 @@ architecture sim of avalon_noc_adapter_tb is
     constant REG_RX_PACKET  : std_logic_vector(2 downto 0) := "011";
     constant REG_RX_CONTROL : std_logic_vector(2 downto 0) := "100";
     constant REG_RX_STATUS  : std_logic_vector(2 downto 0) := "101";
+    constant REG_ADAPTER_STATUS  : std_logic_vector(2 downto 0) := "110";
+    constant REG_ADAPTER_CONTROL : std_logic_vector(2 downto 0) := "111";
 
     constant ADC_CONFIG_PACKET : packet_word_t := x"11120000";
     constant PK_EVENT_PACKET   : packet_word_t := x"41500140";
@@ -119,6 +121,19 @@ begin
         avalon_expect(REG_RX_STATUS, x"00000003", "Second unacknowledged RX should set overflow");
         avalon_write(REG_RX_CONTROL, x"00000003");
         avalon_expect(REG_RX_STATUS, x"00000000", "RX clear should clear valid and overflow");
+
+        avalon_write(REG_ADAPTER_CONTROL, x"00000002");
+        avalon_expect(REG_ADAPTER_STATUS, x"00000010", "Loopback bit should be visible");
+
+        avalon_write(REG_TX_PACKET, ADC_CONFIG_PACKET);
+        avalon_write(REG_TX_CONTROL, x"00000001");
+        avalon_expect(REG_RX_STATUS, x"00000001", "Loopback TX should set RX valid");
+        avalon_expect(REG_RX_PACKET, ADC_CONFIG_PACKET, "Loopback RX packet should match TX packet");
+        avalon_expect(REG_ADAPTER_STATUS, x"00000013", "Loopback should expose pending TX and valid RX");
+
+        avalon_write(REG_RX_CONTROL, x"00000003");
+        avalon_write(REG_ADAPTER_CONTROL, x"00000000");
+        avalon_expect(REG_ADAPTER_STATUS, x"00000000", "Loopback disable should restore idle state");
 
         test_done <= '1';
         report "avalon_noc_adapter_tb PASS" severity note;

@@ -42,6 +42,12 @@
 #define NIOS_NOC_SOFT_RESET             (1u << 0)
 #define NIOS_NOC_LOOPBACK_EN            (1u << 1)
 
+#define NIOS_NOC_STATUS_TX_PENDING       (1u << 0)
+#define NIOS_NOC_STATUS_RX_VALID         (1u << 1)
+#define NIOS_NOC_STATUS_TX_ERROR         (1u << 2)
+#define NIOS_NOC_STATUS_RX_OVERFLOW      (1u << 3)
+#define NIOS_NOC_STATUS_LOOPBACK_EN      (1u << 4)
+
 #define NIOS_NOC_DEFAULT_TIMEOUT        100000u
 
 typedef struct {
@@ -61,8 +67,13 @@ void nios_noc_adapter_init(
 );
 uint32_t nios_noc_adapter_tx_status(const nios_noc_adapter_t *adapter);
 uint32_t nios_noc_adapter_rx_status(const nios_noc_adapter_t *adapter);
+uint32_t nios_noc_adapter_status(const nios_noc_adapter_t *adapter);
 int nios_noc_adapter_send(nios_noc_adapter_t *adapter, uint32_t packet);
 int nios_noc_adapter_try_recv(nios_noc_adapter_t *adapter, uint32_t *packet);
 void nios_noc_adapter_clear(nios_noc_adapter_t *adapter);
+void nios_noc_adapter_set_loopback(
+    nios_noc_adapter_t *adapter,
+    int enabled
+);
 
 #endif

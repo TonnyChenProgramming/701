@@ -12,7 +12,7 @@
 
 static void nios_print_help(void)
 {
-    printf("cmd: adc <dest> <ch> <div>, avg <dest> <win>, corwin <n>, offset <n>, pk <dest> <sp> <th>, poll, rx <hex>, status, display, exit\n");
+    printf("cmd: adc <dest> <ch> <div>, avg <dest> <win>, corwin <n>, offset <n>, pk <dest> <sp> <th>, poll, hwstatus, hwclear, hwloop <0|1>, rx <hex>, status, display, exit\n");
 }
 
 static void nios_lowercase(char *text)
@@ -271,6 +271,16 @@ static int nios_handle_line(nios_command_state_t *state, char *line)
         nios_handle_rx(state, arg1);
     } else if (strcmp(command, "poll") == 0) {
         nios_command_poll_adapter(state);
+    } else if (strcmp(command, "hwstatus") == 0) {
+        nios_command_print_adapter_status(state);
+    } else if (strcmp(command, "hwclear") == 0) {
+        nios_command_clear_adapter(state);
+    } else if (strcmp(command, "hwloop") == 0) {
+        if (fields < 2 || (strcmp(arg1, "0") != 0 && strcmp(arg1, "1") != 0)) {
+            printf("ERR: hwloop <0|1>\n");
+            return 1;
+        }
+        nios_command_set_loopback(state, strcmp(arg1, "1") == 0);
     } else if (strcmp(command, "status") == 0) {
         nios_command_print_status(state);
     } else if (strcmp(command, "display") == 0) {
