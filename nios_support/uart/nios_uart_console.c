@@ -5,13 +5,14 @@
 #include <string.h>
 
 #include "nios_command.h"
+#include "nios_display.h"
 #include "nios_packet.h"
 
 #define NIOS_LINE_MAX 80
 
 static void nios_print_help(void)
 {
-    printf("cmd: adc <dest> <ch> <div>, avg <dest> <win>, corwin <n>, offset <n>, pk <dest> <sp> <th>, poll, rx <hex>, status, exit\n");
+    printf("cmd: adc <dest> <ch> <div>, avg <dest> <win>, corwin <n>, offset <n>, pk <dest> <sp> <th>, poll, rx <hex>, status, display, exit\n");
 }
 
 static void nios_lowercase(char *text)
@@ -272,6 +273,9 @@ static int nios_handle_line(nios_command_state_t *state, char *line)
         nios_command_poll_adapter(state);
     } else if (strcmp(command, "status") == 0) {
         nios_command_print_status(state);
+    } else if (strcmp(command, "display") == 0) {
+        nios_display_print_uart(state);
+        nios_display_write_vga(state);
     } else if (strcmp(command, "help") == 0 || strcmp(command, "?") == 0) {
         nios_print_help();
     } else if (strcmp(command, "quit") == 0 || strcmp(command, "exit") == 0) {

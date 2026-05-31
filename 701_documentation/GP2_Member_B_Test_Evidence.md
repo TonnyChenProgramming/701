@@ -50,6 +50,8 @@ After injecting the mock PK event and PK config acknowledgement above, `status` 
 cfg=0x10 peak=320 ack=CONFIG_DONE/PK
 ```
 
+The `display` command should show a compact UART snapshot with `PK : cfg=yes`, `RESULT: peak count=320`, and `ACK: CONFIG_DONE from PK`. If `NIOS_VGA_CHAR_BUFFER_BASE` is defined, capture the same text on the VGA character buffer.
+
 ## Hardware Hook Evidence
 
 When the Avalon-NoC adapter exists, build the same console with `NIOS_NOC_ADAPTER_BASE` defined.

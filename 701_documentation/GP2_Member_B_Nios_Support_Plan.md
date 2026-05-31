@@ -80,6 +80,8 @@ PK peak result      -> PK ASP -> EVENT packet to Nios
 
 Nios caches the latest peak count, successful ASP config acknowledgements, and the most recent status response. UART can print this snapshot immediately. A later VGA layer should read the same snapshot instead of containing packet-decoding logic.
 
+The lightweight `nios_display` module now formats this snapshot for UART and an optional Avalon character-buffer VGA. It deliberately avoids the larger C723 FreeRTOS graph task until the basic NoC result path works.
+
 Suggested LED mapping:
 
 | LED | ASP |
