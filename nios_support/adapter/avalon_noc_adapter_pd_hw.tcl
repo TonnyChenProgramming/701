@@ -8,7 +8,6 @@ set_module_property DESCRIPTION "Nios II Avalon-MM bridge to the TDMA-MIN NoC"
 set_module_property AUTHOR "COMPSYS 701 team"
 set_module_property INSTANTIATE_IN_SYSTEM_MODULE true
 set_module_property EDITABLE true
-set_module_property ANALYZE_HDL false
 set_module_property REPORT_TO_TALKBACK false
 
 add_fileset QUARTUS_SYNTH QUARTUS_SYNTH "" ""
@@ -62,9 +61,9 @@ set_interface_property irq associatedReset reset
 add_interface_port irq irq irq Output 1
 
 add_interface noc_send conduit end
-add_interface_port noc_send noc_send_addr export Output 8
-add_interface_port noc_send noc_send_data export Output 32
+add_interface_port noc_send noc_send_addr addr Output 8
+add_interface_port noc_send noc_send_data data Output 32
 
 add_interface noc_recv conduit end
-add_interface_port noc_recv noc_recv_addr export Input 8
-add_interface_port noc_recv noc_recv_data export Input 32
+add_interface_port noc_recv noc_recv_addr addr Input 8
+add_interface_port noc_recv noc_recv_data data Input 32
