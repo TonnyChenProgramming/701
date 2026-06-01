@@ -16,15 +16,7 @@ entity multicycle_moore_machine is
         rz       : in  bit_16;
         z_flag   : in  bit_1;
 
-        -- command related input
-        per_input_flag : in bit_1;
-        sop_status_flag : in bit_1;
-
-        -- command related output control signals
-        dpcr_cmd_lden : out bit_1;
-        sop_status_ld : out bit_1;
-        -- current_fsm state for debugging
-        state_bits : out bit_4;
+        state_bits : out bit_3;
         -- Register File
         ld_r         : out bit_1;
         rf_input_sel : out bit_3;
@@ -65,7 +57,9 @@ architecture beh of multicycle_moore_machine is
 
     type state_type is (
         S_EVENT_CHECK,
+        S_LOAD_NEW_PERIPHERALS,
         S_WRITE_COMMAND,
+        S_LOAD_NEW_STATUS,
         S_STATUS_OUPUT_UPDATE,
         S_FETCH,
         S_DECODE,
@@ -103,22 +97,20 @@ begin
     -- Maximum 4 cycles:
     --   FETCH -> DECODE -> EXECUTE/MEM_READ -> WRITEBACK -> FETCH
     ----------------------------------------------------------------
-    process(per_input_flag, state, opcode)
+    process(state, opcode)
     begin
         next_state <= S_EVENT_CHECK;
 
         case state is
             when S_EVENT_CHECK =>
-                if (per_input_flag = '1') then 
-                    next_state <= S_WRITE_COMMAND;
-                elsif (sop_status_flag = '1') then 
-                    next_state <= S_STATUS_OUPUT_UPDATE;
-                else 
-                    next_state <= S_FETCH;
-                end if;
+            when S_LOAD_NEW_PERIPHERALS =>
+                next_state <= S_WRITE_COMMAND;
 
             when S_WRITE_COMMAND =>
                 next_state <= S_EVENT_CHECK;
+
+            when S_LOAD_NEW_STATUS =>
+                next_state <= S_STATUS_OUPUT_UPDATE;
 
             when S_STATUS_OUPUT_UPDATE =>
                 next_state <= S_EVENT_CHECK;
@@ -204,7 +196,7 @@ begin
                             when andr | orr | addr =>
                                 next_state <= S_WRITEBACK;
                             when others =>
-                                next_state <= S_EVENT_CHECK;
+                                next_state <= S_EVENT_CHECK
                         end case;
 
                     when others =>
@@ -261,17 +253,8 @@ begin
         pc_sel        <= pc_sel_plus_one;
         pc_write      <= '0'; --fsm related
 
-        dpcr_cmd_lden <= '0';
-        sop_status_ld <= '0';
         case state is
-            when S_EVENT_CHECK =>
 
-            when S_WRITE_COMMAND =>
-                dpcr_cmd_lden <= '1';
-
-            when S_STATUS_OUPUT_UPDATE =>
-                sop_status_ld <= '1';
-            -- recop CPU 
             --------------------------------------------------------
             -- cycle 1
             --------------------------------------------------------
@@ -537,37 +520,27 @@ begin
     ----------------------------------------------------------------
     process(state)
     begin
-
         case state is
-            when S_EVENT_CHECK =>
-                state_bits <= "0000";
-
-            when S_WRITE_COMMAND =>
-                state_bits <= "0001";
-
-            when S_STATUS_OUPUT_UPDATE =>
-                state_bits <= "0010";
-
             when S_FETCH =>
-                state_bits <= "0011";
+                state_bits <= "000";
 
             when S_DECODE =>
-                state_bits <= "0100";
+                state_bits <= "001";
 
             when S_EXECUTE =>
-                state_bits <= "0101";
+                state_bits <= "010";
 
             when S_MEM_READ =>
-                state_bits <= "0110";
+                state_bits <= "011";
 
             when S_MEM_WRITE =>
-                state_bits <= "0111";
+                state_bits <= "100";
 
             when S_WRITEBACK =>
-                state_bits <= "1000";
+                state_bits <= "101";
 
             when others =>
-                state_bits <= "0000";
+                state_bits <= "000";
         end case;
     end process;
 

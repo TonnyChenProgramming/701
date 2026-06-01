@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 use work.recop_types.all;
 use work.various_constants.all;
 use work.TdmaMinTypes.all;
-use work.asp_packet_pkg.all;
+
 entity recop_top_tb is
 end;
 
@@ -22,10 +22,6 @@ architecture sim of recop_top_tb is
     signal dpcr  : tdma_min_port;
     signal dprr  : bit_2;
     signal current_state_output : bit_4;
-	 signal recv : tdma_min_port := (
-		 addr => (others => '0'),
-		 data => (others => '0')
-	 );
 
     constant CLK_PERIOD : time := 20 ns;
 begin
@@ -37,7 +33,7 @@ begin
 
         sip => sip,
         sop => sop,
-		recv => recv,
+
         dpcr => dpcr,
         dprr => dprr,
         
@@ -135,75 +131,7 @@ begin
         ----------------------------------------------------------------
         sip <= x"FFFF";
         wait for 10 * CLK_PERIOD;
-        
-        ----------------------------------------------------------------
-        -- Simulate correlation start response
-        -- recv.data(1 downto 0)
-        -- = direct_passthrough_en & reset_done_reg
-        --
-        -- "00" => operating     => SOP COR bit ON
-        -- others => not running => SOP COR bit OFF
-        ----------------------------------------------------------------
-        recv.addr <= COR_ASP_ADDR;
-        recv.data <= make_packet(
-            PKT_KIND_STATUS,
-            CMD_NOP,
-            COR_ASP_ADDR(3 downto 0),
-            "000000000000000000" & "00"
-        );
-        wait for 1 * CLK_PERIOD;
-        recv.addr <= (others => '0');
-        recv.data <= (others => '0');
-        wait for 10 * CLK_PERIOD;
-----------------------------------------
-        recv.addr <= COR_ASP_ADDR;
-        recv.data <= make_packet(
-            PKT_KIND_STATUS,
-            CMD_NOP,
-            COR_ASP_ADDR(3 downto 0),
-            "000000000000000000" & "01"
-        );
-        wait for 1 * CLK_PERIOD;
-        recv.addr <= (others => '0');
-        recv.data <= (others => '0');
-        wait for 10 * CLK_PERIOD;
-        ----------------------------------------
-        recv.addr <= COR_ASP_ADDR;
-        recv.data <= make_packet(
-            PKT_KIND_STATUS,
-            CMD_NOP,
-            COR_ASP_ADDR(3 downto 0),
-            "000000000000000000" & "10"
-        );
-        wait for 1 * CLK_PERIOD;
-        recv.addr <= (others => '0');
-        recv.data <= (others => '0');
-        wait for 10 * CLK_PERIOD;
-        ----------------------------------------
-        recv.addr <= COR_ASP_ADDR;
-        recv.data <= make_packet(
-            PKT_KIND_STATUS,
-            CMD_NOP,
-            COR_ASP_ADDR(3 downto 0),
-            "000000000000000000" & "11"
-        );
-        wait for 1 * CLK_PERIOD;
-        recv.addr <= (others => '0');
-        recv.data <= (others => '0');
-        wait for 10 * CLK_PERIOD;
-        ---------------------------------------
-        recv.addr <= ADC_ADDR;
-        recv.data <= make_packet(
-            PKT_KIND_STATUS,
-            CMD_NOP,
-            COR_ASP_ADDR(3 downto 0),
-            "000000000000000000" & "11"
-        );
-        wait for 1 * CLK_PERIOD;
-        recv.addr <= (others => '0');
-        recv.data <= (others => '0');
-        wait for 10 * CLK_PERIOD;
-        
+
         ----------------------------------------------------------------
         -- End simulation
         ----------------------------------------------------------------
