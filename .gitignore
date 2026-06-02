@@ -8,3 +8,6 @@
 # Platform Designer generated output; regenerate from the matching .qsys file
 nios_support/quartus/Nios_System_2A/
 nios_support/quartus/*.sopcinfo
+
+# Local Nios II Eclipse workspace and generated BSP
+/software/
