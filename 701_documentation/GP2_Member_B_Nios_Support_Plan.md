@@ -160,5 +160,23 @@ I am working on Member B on branch Eric_GP2. After Zoran's MVP feedback, Nios II
 
 1. Confirm ADC/AVG TDMA wrappers from `origin/solomon-tdma-only` are merged into the team baseline.
 2. Confirm whether ReCOP switch mode control changes ADC/AVG/COR routing or only START/STOP/CLEAR state.
-3. Confirm the Avalon adapter base address/name once Platform Designer integration exists.
+3. Connect the exported adapter `noc_send` and `noc_recv` conduits to TDMA-MIN in Member C's integration top level. The Platform Designer adapter is mapped at `0x08011000`.
 4. Confirm PK/result packet format for Nios display.
+
+## Current Member B Progress
+
+Completed:
+
+1. Nios UART/JTAG UART command parser and compact console output.
+2. Shared packet helpers and Avalon-NoC adapter register contract.
+3. ModelSim adapter testbench with TX/RX handshake and loopback coverage.
+4. Platform Designer adapter integration at `0x08011000`.
+5. Physical-board adapter-local loopback smoke test.
+6. Optional text-only VGA character-buffer build path at `0x08012000`.
+7. Quartus full compilation and FPGA programming with the VGA build path.
+
+Remaining:
+
+1. Member C connects `noc_send` and `noc_recv` to the TDMA-MIN top level.
+2. Run the real NoC test with `hwloop 0`.
+3. Capture a VGA monitor photo later when a cable is available.

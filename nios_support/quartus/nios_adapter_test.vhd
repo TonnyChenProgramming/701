@@ -11,6 +11,15 @@ entity nios_adapter_test is
         KEY       : in    std_logic_vector(1 downto 0);
         LEDR      : out   std_logic_vector(7 downto 0);
 
+        VGA_B       : out std_logic_vector(7 downto 0);
+        VGA_BLANK_N : out std_logic;
+        VGA_CLK     : out std_logic;
+        VGA_G       : out std_logic_vector(7 downto 0);
+        VGA_HS      : out std_logic;
+        VGA_R       : out std_logic_vector(7 downto 0);
+        VGA_SYNC_N  : out std_logic;
+        VGA_VS      : out std_logic;
+
         DRAM_DQ   : inout std_logic_vector(15 downto 0);
         DRAM_ADDR : out   std_logic_vector(12 downto 0);
         DRAM_BA   : out   std_logic_vector(1 downto 0);
@@ -52,6 +61,14 @@ begin
             noc_send_addr                         => noc_send_addr,
             noc_send_data                         => noc_send_data,
             noc_recv_addr                         => (others => '0'),
-            noc_recv_data                         => (others => '0')
+            noc_recv_data                         => (others => '0'),
+            video_vga_controller_0_external_interface_CLK   => VGA_CLK,
+            video_vga_controller_0_external_interface_HS    => VGA_HS,
+            video_vga_controller_0_external_interface_VS    => VGA_VS,
+            video_vga_controller_0_external_interface_BLANK => VGA_BLANK_N,
+            video_vga_controller_0_external_interface_SYNC  => VGA_SYNC_N,
+            video_vga_controller_0_external_interface_R     => VGA_R,
+            video_vga_controller_0_external_interface_G     => VGA_G,
+            video_vga_controller_0_external_interface_B     => VGA_B
         );
 end architecture rtl;

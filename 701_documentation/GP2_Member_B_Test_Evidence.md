@@ -111,6 +111,43 @@ Expected evidence:
 
 This isolates the Platform Designer base-address and Avalon-MM wiring test from the later TDMA-MIN routing test.
 
+### Completed Member B Board Smoke Test
+
+The standalone Member B board test has passed with the adapter-local loopback enabled:
+
+```text
+nios> adc avg 0 0
+TX 0x11120000
+
+nios> poll
+RX 0x11120000 CMD code=0x1 dest=ADC payload=0x20000 cmd=CONFIG tag=0x2 value=0x0000
+
+nios> hwstatus
+HW tx=0x00000009 ready=1 busy=0 error=0 accepted=1 rx=0x00000000 valid=0 overflow=0 error=0 adapter=0x00000010 loopback=1
+```
+
+This proves that Nios II can write an Avalon-MM packet into the adapter and read the same packet back through the adapter RX path. It does not yet prove TDMA-MIN routing.
+
+### Completed VGA Build Hook
+
+The optional text-only VGA path has been added to the Platform Designer system. The same cached Nios status snapshot used by UART is written to the Avalon character buffer when `NIOS_VGA_CHAR_BUFFER_BASE` is defined.
+
+Quartus full compilation completed successfully with `0 errors`, and the updated FPGA image was programmed successfully. The final monitor photo is pending because a VGA cable is not currently available.
+
+### TDMA-MIN Integration Handoff
+
+Member C can connect the exported adapter conduits at the Quartus or NoC integration top level:
+
+```text
+adapter noc_send_addr[7:0]  -> TDMA-MIN injection address
+adapter noc_send_data[31:0] -> TDMA-MIN injection data
+
+TDMA-MIN output address for Nios node 0x5 -> adapter noc_recv_addr[7:0]
+TDMA-MIN output packet                    -> adapter noc_recv_data[31:0]
+```
+
+After the real NoC path is connected, disable adapter-local loopback with `hwloop 0`, send `adc avg 0 0`, and use `poll` or `status` to observe returned ASP status/result packets.
+
 ## ASP Config Path Evidence
 
 When the NoC adapter and ASP command decoders are connected, run this simple integration test:
@@ -215,4 +252,5 @@ If these five points are not shown, do not describe instruction-memory upload as
 | Adapter TX/RX handshake waveform captured. |  |
 | ASP receives at least one Nios config packet. |  |
 | Nios receives at least one status/result packet. |  |
-| VGA or UART displays final status/result. |  |
+| UART displays final status/result. | Adapter-local loopback passed; real NoC result pending. |
+| VGA displays final status/result. | Build hook complete; monitor test pending VGA cable. |
