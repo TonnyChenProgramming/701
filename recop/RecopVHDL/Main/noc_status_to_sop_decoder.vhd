@@ -36,7 +36,7 @@ begin
             sop_reg <= (others => '0');
             sop_status_flag <= '0';
         elsif rising_edge(clk) then
-
+				sop_reg <= sop_reg;
             -- Only respond to STATUS packets
             if recv.data(31 downto 28) = PKT_KIND_STATUS then
                 sop_status_flag <= '1';
@@ -46,7 +46,7 @@ begin
                         -- AVG status payload:
                         -- recv.data(15) = enabled
                         -- enabled = '1' means AVE is operating
-                        sop_reg(SOP_AVE_BIT) <= recv.data(15);
+                        sop_reg(SOP_ADC_BIT) <= recv.data(15);
 
                     when AVE_ASP_ADDR =>
                         -- AVG status:
@@ -66,9 +66,11 @@ begin
                         end if;
 
                     when PK_ADDR =>
-                        -- Leave blank for now
-                        null;
-
+                        -- PK status control payload:
+                        -- recv.data(15) = enabled_r
+                        -- enabled = '1' means PK is operating
+                        sop_reg(SOP_PK_BIT) <= recv.data(15);
+                        
                     when others =>
                         null;
 
