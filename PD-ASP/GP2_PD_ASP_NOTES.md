@@ -58,6 +58,25 @@ pd_sample = correlation(35 downto 16)
 This preserves correlation magnitude ordering much better than using only the
 low 20 bits.
 
+## ReCOP Status Response
+
+After `CMD_CONFIG`, `CMD_START`, `CMD_STOP`, or `CMD_CLEAR`, the PD wrapper emits
+one `PKT_KIND_STATUS` packet to ReCOP. This matches the board-control feedback
+path used by the other ASPs.
+
+The response payload is:
+
+| Bit | Meaning |
+| --- | --- |
+| `15` | PD enabled/running state. ReCOP can use this for the PK LED. |
+| `14` | Configuration command applied. |
+| `13` | Clear command applied. |
+| `3..0` | Acknowledged command code. |
+
+Peak detector result events remain separate: `EVENT_MAX_PEAK` packets are still
+routed to the configured output destination, normally Nios II for UART/VGA
+display.
+
 ## TDMA-MIN Type Assumption
 
 The wrapper assumes the Lab 2 package defines:
