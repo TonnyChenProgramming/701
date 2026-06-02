@@ -21,9 +21,6 @@ end recop_and_peripherals_top;
 
 architecture beh of recop_and_peripherals_top is
 
-    signal pll_clk    : std_logic;
-    signal pll_locked : std_logic;
-
     signal init_s     : bit_1;
     signal reset_cpu  : bit_1;
 
@@ -36,17 +33,6 @@ architecture beh of recop_and_peripherals_top is
 begin
 
     ----------------------------------------------------------------
-    -- PLL: 50 MHz -> 25 MHz
-    ----------------------------------------------------------------
-    u_pll : entity work.PLL
-        port map(
-            refclk   => CLOCK_50,
-            rst      => '0',
-            outclk_0 => pll_clk,
-            locked   => pll_locked
-        );
-
-    ----------------------------------------------------------------
     -- Control signals
     -- DE1-SoC KEY is active-low:
     -- pressed     = 0
@@ -54,7 +40,8 @@ begin
     ----------------------------------------------------------------
     init_s <= not KEY(0);
 
-    reset_cpu <= (not pll_locked) or (not KEY(0));
+    -- No PLL now, so reset only depends on KEY(0)
+    reset_cpu <= not KEY(0);
 
     ----------------------------------------------------------------
     -- SIP mapping
@@ -66,9 +53,9 @@ begin
     ----------------------------------------------------------------
     -- CPU instance
     ----------------------------------------------------------------
-    u_recop : entity work.recop_top_v1
+    u_recop : entity work.recop_top
         port map(
-            clk                  => pll_clk,
+            clk                  => CLOCK_50,
             init                 => init_s,
             reset                => reset_cpu,
 

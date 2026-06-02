@@ -1,4 +1,114 @@
-|recop_top
+|recop_and_peripherals_top
+CLOCK_50 => recop_top:u_recop.clk
+recv.data[0] => recop_top:u_recop.recv.data[0]
+recv.data[1] => recop_top:u_recop.recv.data[1]
+recv.data[2] => recop_top:u_recop.recv.data[2]
+recv.data[3] => recop_top:u_recop.recv.data[3]
+recv.data[4] => recop_top:u_recop.recv.data[4]
+recv.data[5] => recop_top:u_recop.recv.data[5]
+recv.data[6] => recop_top:u_recop.recv.data[6]
+recv.data[7] => recop_top:u_recop.recv.data[7]
+recv.data[8] => recop_top:u_recop.recv.data[8]
+recv.data[9] => recop_top:u_recop.recv.data[9]
+recv.data[10] => recop_top:u_recop.recv.data[10]
+recv.data[11] => recop_top:u_recop.recv.data[11]
+recv.data[12] => recop_top:u_recop.recv.data[12]
+recv.data[13] => recop_top:u_recop.recv.data[13]
+recv.data[14] => recop_top:u_recop.recv.data[14]
+recv.data[15] => recop_top:u_recop.recv.data[15]
+recv.data[16] => recop_top:u_recop.recv.data[16]
+recv.data[17] => recop_top:u_recop.recv.data[17]
+recv.data[18] => recop_top:u_recop.recv.data[18]
+recv.data[19] => recop_top:u_recop.recv.data[19]
+recv.data[20] => recop_top:u_recop.recv.data[20]
+recv.data[21] => recop_top:u_recop.recv.data[21]
+recv.data[22] => recop_top:u_recop.recv.data[22]
+recv.data[23] => recop_top:u_recop.recv.data[23]
+recv.data[24] => recop_top:u_recop.recv.data[24]
+recv.data[25] => recop_top:u_recop.recv.data[25]
+recv.data[26] => recop_top:u_recop.recv.data[26]
+recv.data[27] => recop_top:u_recop.recv.data[27]
+recv.data[28] => recop_top:u_recop.recv.data[28]
+recv.data[29] => recop_top:u_recop.recv.data[29]
+recv.data[30] => recop_top:u_recop.recv.data[30]
+recv.data[31] => recop_top:u_recop.recv.data[31]
+recv.addr[0] => recop_top:u_recop.recv.addr[0]
+recv.addr[1] => recop_top:u_recop.recv.addr[1]
+recv.addr[2] => recop_top:u_recop.recv.addr[2]
+recv.addr[3] => recop_top:u_recop.recv.addr[3]
+recv.addr[4] => recop_top:u_recop.recv.addr[4]
+recv.addr[5] => recop_top:u_recop.recv.addr[5]
+recv.addr[6] => recop_top:u_recop.recv.addr[6]
+recv.addr[7] => recop_top:u_recop.recv.addr[7]
+send.data[0] << recop_top:u_recop.dpcr.data[0]
+send.data[1] << recop_top:u_recop.dpcr.data[1]
+send.data[2] << recop_top:u_recop.dpcr.data[2]
+send.data[3] << recop_top:u_recop.dpcr.data[3]
+send.data[4] << recop_top:u_recop.dpcr.data[4]
+send.data[5] << recop_top:u_recop.dpcr.data[5]
+send.data[6] << recop_top:u_recop.dpcr.data[6]
+send.data[7] << recop_top:u_recop.dpcr.data[7]
+send.data[8] << recop_top:u_recop.dpcr.data[8]
+send.data[9] << recop_top:u_recop.dpcr.data[9]
+send.data[10] << recop_top:u_recop.dpcr.data[10]
+send.data[11] << recop_top:u_recop.dpcr.data[11]
+send.data[12] << recop_top:u_recop.dpcr.data[12]
+send.data[13] << recop_top:u_recop.dpcr.data[13]
+send.data[14] << recop_top:u_recop.dpcr.data[14]
+send.data[15] << recop_top:u_recop.dpcr.data[15]
+send.data[16] << recop_top:u_recop.dpcr.data[16]
+send.data[17] << recop_top:u_recop.dpcr.data[17]
+send.data[18] << recop_top:u_recop.dpcr.data[18]
+send.data[19] << recop_top:u_recop.dpcr.data[19]
+send.data[20] << recop_top:u_recop.dpcr.data[20]
+send.data[21] << recop_top:u_recop.dpcr.data[21]
+send.data[22] << recop_top:u_recop.dpcr.data[22]
+send.data[23] << recop_top:u_recop.dpcr.data[23]
+send.data[24] << recop_top:u_recop.dpcr.data[24]
+send.data[25] << recop_top:u_recop.dpcr.data[25]
+send.data[26] << recop_top:u_recop.dpcr.data[26]
+send.data[27] << recop_top:u_recop.dpcr.data[27]
+send.data[28] << recop_top:u_recop.dpcr.data[28]
+send.data[29] << recop_top:u_recop.dpcr.data[29]
+send.data[30] << recop_top:u_recop.dpcr.data[30]
+send.data[31] << recop_top:u_recop.dpcr.data[31]
+send.addr[0] << recop_top:u_recop.dpcr.addr[0]
+send.addr[1] << recop_top:u_recop.dpcr.addr[1]
+send.addr[2] << recop_top:u_recop.dpcr.addr[2]
+send.addr[3] << recop_top:u_recop.dpcr.addr[3]
+send.addr[4] << recop_top:u_recop.dpcr.addr[4]
+send.addr[5] << recop_top:u_recop.dpcr.addr[5]
+send.addr[6] << recop_top:u_recop.dpcr.addr[6]
+send.addr[7] << recop_top:u_recop.dpcr.addr[7]
+KEY[0] => recop_top:u_recop.sip[0]
+KEY[0] => recop_top:u_recop.init
+KEY[0] => recop_top:u_recop.reset
+KEY[1] => recop_top:u_recop.sip[1]
+KEY[2] => recop_top:u_recop.sip[2]
+KEY[3] => recop_top:u_recop.sip[3]
+SW[0] => recop_top:u_recop.sip[4]
+SW[1] => recop_top:u_recop.sip[5]
+SW[2] => recop_top:u_recop.sip[6]
+SW[3] => recop_top:u_recop.sip[7]
+SW[4] => recop_top:u_recop.sip[8]
+SW[5] => recop_top:u_recop.sip[9]
+SW[6] => recop_top:u_recop.sip[10]
+SW[7] => recop_top:u_recop.sip[11]
+SW[8] => recop_top:u_recop.sip[12]
+SW[9] => recop_top:u_recop.sip[13]
+LEDR[0] << recop_top:u_recop.sop[0]
+LEDR[1] << recop_top:u_recop.sop[1]
+LEDR[2] << recop_top:u_recop.sop[2]
+LEDR[3] << recop_top:u_recop.sop[3]
+LEDR[4] << recop_top:u_recop.sop[4]
+LEDR[5] << recop_top:u_recop.sop[5]
+LEDR[6] << recop_top:u_recop.sop[6]
+LEDR[7] << recop_top:u_recop.sop[7]
+LEDR[8] << recop_top:u_recop.sop[8]
+LEDR[9] << recop_top:u_recop.sop[9]
+
+
+|recop_and_peripherals_top|recop_top:u_recop
 clk => multicycle_moore_machine:u_cu.clk
 clk => program_counter:u_pc.clk
 clk => instruction_memory_ip:u_im_ip.clock
@@ -71,71 +181,71 @@ recv.addr[4] => noc_status_to_sop_decoder:u_noc_status_to_sop_decoder.recv.addr[
 recv.addr[5] => noc_status_to_sop_decoder:u_noc_status_to_sop_decoder.recv.addr[5]
 recv.addr[6] => noc_status_to_sop_decoder:u_noc_status_to_sop_decoder.recv.addr[6]
 recv.addr[7] => noc_status_to_sop_decoder:u_noc_status_to_sop_decoder.recv.addr[7]
-dprr[0] << registers:u_registers.dprr[0]
-dprr[1] << registers:u_registers.dprr[1]
-dpcr.data[0] << registers:u_registers.dpcr.data[0]
-dpcr.data[1] << registers:u_registers.dpcr.data[1]
-dpcr.data[2] << registers:u_registers.dpcr.data[2]
-dpcr.data[3] << registers:u_registers.dpcr.data[3]
-dpcr.data[4] << registers:u_registers.dpcr.data[4]
-dpcr.data[5] << registers:u_registers.dpcr.data[5]
-dpcr.data[6] << registers:u_registers.dpcr.data[6]
-dpcr.data[7] << registers:u_registers.dpcr.data[7]
-dpcr.data[8] << registers:u_registers.dpcr.data[8]
-dpcr.data[9] << registers:u_registers.dpcr.data[9]
-dpcr.data[10] << registers:u_registers.dpcr.data[10]
-dpcr.data[11] << registers:u_registers.dpcr.data[11]
-dpcr.data[12] << registers:u_registers.dpcr.data[12]
-dpcr.data[13] << registers:u_registers.dpcr.data[13]
-dpcr.data[14] << registers:u_registers.dpcr.data[14]
-dpcr.data[15] << registers:u_registers.dpcr.data[15]
-dpcr.data[16] << registers:u_registers.dpcr.data[16]
-dpcr.data[17] << registers:u_registers.dpcr.data[17]
-dpcr.data[18] << registers:u_registers.dpcr.data[18]
-dpcr.data[19] << registers:u_registers.dpcr.data[19]
-dpcr.data[20] << registers:u_registers.dpcr.data[20]
-dpcr.data[21] << registers:u_registers.dpcr.data[21]
-dpcr.data[22] << registers:u_registers.dpcr.data[22]
-dpcr.data[23] << registers:u_registers.dpcr.data[23]
-dpcr.data[24] << registers:u_registers.dpcr.data[24]
-dpcr.data[25] << registers:u_registers.dpcr.data[25]
-dpcr.data[26] << registers:u_registers.dpcr.data[26]
-dpcr.data[27] << registers:u_registers.dpcr.data[27]
-dpcr.data[28] << registers:u_registers.dpcr.data[28]
-dpcr.data[29] << registers:u_registers.dpcr.data[29]
-dpcr.data[30] << registers:u_registers.dpcr.data[30]
-dpcr.data[31] << registers:u_registers.dpcr.data[31]
-dpcr.addr[0] << registers:u_registers.dpcr.addr[0]
-dpcr.addr[1] << registers:u_registers.dpcr.addr[1]
-dpcr.addr[2] << registers:u_registers.dpcr.addr[2]
-dpcr.addr[3] << registers:u_registers.dpcr.addr[3]
-dpcr.addr[4] << registers:u_registers.dpcr.addr[4]
-dpcr.addr[5] << registers:u_registers.dpcr.addr[5]
-dpcr.addr[6] << registers:u_registers.dpcr.addr[6]
-dpcr.addr[7] << registers:u_registers.dpcr.addr[7]
-sop[0] << registers:u_registers.sop[0]
-sop[1] << registers:u_registers.sop[1]
-sop[2] << registers:u_registers.sop[2]
-sop[3] << registers:u_registers.sop[3]
-sop[4] << registers:u_registers.sop[4]
-sop[5] << registers:u_registers.sop[5]
-sop[6] << registers:u_registers.sop[6]
-sop[7] << registers:u_registers.sop[7]
-sop[8] << registers:u_registers.sop[8]
-sop[9] << registers:u_registers.sop[9]
-sop[10] << registers:u_registers.sop[10]
-sop[11] << registers:u_registers.sop[11]
-sop[12] << registers:u_registers.sop[12]
-sop[13] << registers:u_registers.sop[13]
-sop[14] << registers:u_registers.sop[14]
-sop[15] << registers:u_registers.sop[15]
-current_state_output[0] << multicycle_moore_machine:u_cu.state_bits[0]
-current_state_output[1] << multicycle_moore_machine:u_cu.state_bits[1]
-current_state_output[2] << multicycle_moore_machine:u_cu.state_bits[2]
-current_state_output[3] << multicycle_moore_machine:u_cu.state_bits[3]
+dprr[0] <= registers:u_registers.dprr[0]
+dprr[1] <= registers:u_registers.dprr[1]
+dpcr.data[0] <= registers:u_registers.dpcr.data[0]
+dpcr.data[1] <= registers:u_registers.dpcr.data[1]
+dpcr.data[2] <= registers:u_registers.dpcr.data[2]
+dpcr.data[3] <= registers:u_registers.dpcr.data[3]
+dpcr.data[4] <= registers:u_registers.dpcr.data[4]
+dpcr.data[5] <= registers:u_registers.dpcr.data[5]
+dpcr.data[6] <= registers:u_registers.dpcr.data[6]
+dpcr.data[7] <= registers:u_registers.dpcr.data[7]
+dpcr.data[8] <= registers:u_registers.dpcr.data[8]
+dpcr.data[9] <= registers:u_registers.dpcr.data[9]
+dpcr.data[10] <= registers:u_registers.dpcr.data[10]
+dpcr.data[11] <= registers:u_registers.dpcr.data[11]
+dpcr.data[12] <= registers:u_registers.dpcr.data[12]
+dpcr.data[13] <= registers:u_registers.dpcr.data[13]
+dpcr.data[14] <= registers:u_registers.dpcr.data[14]
+dpcr.data[15] <= registers:u_registers.dpcr.data[15]
+dpcr.data[16] <= registers:u_registers.dpcr.data[16]
+dpcr.data[17] <= registers:u_registers.dpcr.data[17]
+dpcr.data[18] <= registers:u_registers.dpcr.data[18]
+dpcr.data[19] <= registers:u_registers.dpcr.data[19]
+dpcr.data[20] <= registers:u_registers.dpcr.data[20]
+dpcr.data[21] <= registers:u_registers.dpcr.data[21]
+dpcr.data[22] <= registers:u_registers.dpcr.data[22]
+dpcr.data[23] <= registers:u_registers.dpcr.data[23]
+dpcr.data[24] <= registers:u_registers.dpcr.data[24]
+dpcr.data[25] <= registers:u_registers.dpcr.data[25]
+dpcr.data[26] <= registers:u_registers.dpcr.data[26]
+dpcr.data[27] <= registers:u_registers.dpcr.data[27]
+dpcr.data[28] <= registers:u_registers.dpcr.data[28]
+dpcr.data[29] <= registers:u_registers.dpcr.data[29]
+dpcr.data[30] <= registers:u_registers.dpcr.data[30]
+dpcr.data[31] <= registers:u_registers.dpcr.data[31]
+dpcr.addr[0] <= registers:u_registers.dpcr.addr[0]
+dpcr.addr[1] <= registers:u_registers.dpcr.addr[1]
+dpcr.addr[2] <= registers:u_registers.dpcr.addr[2]
+dpcr.addr[3] <= registers:u_registers.dpcr.addr[3]
+dpcr.addr[4] <= registers:u_registers.dpcr.addr[4]
+dpcr.addr[5] <= registers:u_registers.dpcr.addr[5]
+dpcr.addr[6] <= registers:u_registers.dpcr.addr[6]
+dpcr.addr[7] <= registers:u_registers.dpcr.addr[7]
+sop[0] <= registers:u_registers.sop[0]
+sop[1] <= registers:u_registers.sop[1]
+sop[2] <= registers:u_registers.sop[2]
+sop[3] <= registers:u_registers.sop[3]
+sop[4] <= registers:u_registers.sop[4]
+sop[5] <= registers:u_registers.sop[5]
+sop[6] <= registers:u_registers.sop[6]
+sop[7] <= registers:u_registers.sop[7]
+sop[8] <= registers:u_registers.sop[8]
+sop[9] <= registers:u_registers.sop[9]
+sop[10] <= registers:u_registers.sop[10]
+sop[11] <= registers:u_registers.sop[11]
+sop[12] <= registers:u_registers.sop[12]
+sop[13] <= registers:u_registers.sop[13]
+sop[14] <= registers:u_registers.sop[14]
+sop[15] <= registers:u_registers.sop[15]
+current_state_output[0] <= multicycle_moore_machine:u_cu.state_bits[0]
+current_state_output[1] <= multicycle_moore_machine:u_cu.state_bits[1]
+current_state_output[2] <= multicycle_moore_machine:u_cu.state_bits[2]
+current_state_output[3] <= multicycle_moore_machine:u_cu.state_bits[3]
 
 
-|recop_top|multicycle_moore_machine:u_cu
+|recop_and_peripherals_top|recop_top:u_recop|multicycle_moore_machine:u_cu
 clk => state~1.DATAIN
 init => pc_sel.DATAA
 init => state.S_EVENT_CHECK.IN0
@@ -439,7 +549,7 @@ pc_sel[1] <= Selector2.DB_MAX_OUTPUT_PORT_TYPE
 pc_write <= Selector4.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|recop_top|program_counter:u_pc
+|recop_and_peripherals_top|recop_top:u_recop|program_counter:u_pc
 clk => current_pc[0]~reg0.CLK
 clk => current_pc[1]~reg0.CLK
 clk => current_pc[2]~reg0.CLK
@@ -508,7 +618,7 @@ current_pc[14] <= current_pc[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 current_pc[15] <= current_pc[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|recop_top|instruction_memory_ip:u_im_ip
+|recop_and_peripherals_top|recop_top:u_recop|instruction_memory_ip:u_im_ip
 address[0] => altsyncram:altsyncram_component.address_a[0]
 address[1] => altsyncram:altsyncram_component.address_a[1]
 address[2] => altsyncram:altsyncram_component.address_a[2]
@@ -553,7 +663,7 @@ q[30] <= altsyncram:altsyncram_component.q_a[30]
 q[31] <= altsyncram:altsyncram_component.q_a[31]
 
 
-|recop_top|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component
+|recop_and_peripherals_top|recop_top:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component
 wren_a => ~NO_FANOUT~
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -651,7 +761,7 @@ eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|recop_top|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component|altsyncram_4824:auto_generated
+|recop_and_peripherals_top|recop_top:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component|altsyncram_4824:auto_generated
 address_a[0] => ram_block1a0.PORTAADDR
 address_a[0] => ram_block1a1.PORTAADDR
 address_a[0] => ram_block1a2.PORTAADDR
@@ -1006,7 +1116,7 @@ q_a[30] <= ram_block1a30.PORTADATAOUT
 q_a[31] <= ram_block1a31.PORTADATAOUT
 
 
-|recop_top|regfile:u_regfile
+|recop_and_peripherals_top|recop_top:u_recop|regfile:u_regfile
 clk => regs[0][0].CLK
 clk => regs[0][1].CLK
 clk => regs[0][2].CLK
@@ -2104,7 +2214,7 @@ dprr_wren => regs.OUTPUTSELECT
 dprr_wren => regs.OUTPUTSELECT
 
 
-|recop_top|execute:u_execute
+|recop_and_peripherals_top|recop_top:u_recop|execute:u_execute
 clk => alu:u_alu.clk
 clk => data_memory_ip:u_dm.clock
 init => ~NO_FANOUT~
@@ -2405,7 +2515,7 @@ dm_out[15] <= data_memory_ip:u_dm.q[15]
 z_flag <= alu:u_alu.z_flag
 
 
-|recop_top|execute:u_execute|alu:u_alu
+|recop_and_peripherals_top|recop_top:u_recop|execute:u_execute|alu:u_alu
 clk => alu_result[0]~reg0.CLK
 clk => alu_result[1]~reg0.CLK
 clk => alu_result[2]~reg0.CLK
@@ -2622,7 +2732,7 @@ reset => alu_result[2]~reg0.ENA
 reset => alu_result[1]~reg0.ENA
 
 
-|recop_top|execute:u_execute|data_memory_ip:u_dm
+|recop_and_peripherals_top|recop_top:u_recop|execute:u_execute|data_memory_ip:u_dm
 address[0] => altsyncram:altsyncram_component.address_a[0]
 address[1] => altsyncram:altsyncram_component.address_a[1]
 address[2] => altsyncram:altsyncram_component.address_a[2]
@@ -2668,7 +2778,7 @@ q[14] <= altsyncram:altsyncram_component.q_a[14]
 q[15] <= altsyncram:altsyncram_component.q_a[15]
 
 
-|recop_top|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component
+|recop_and_peripherals_top|recop_top:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component
 wren_a => altsyncram_s3v3:auto_generated.wren_a
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -2734,7 +2844,7 @@ eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|recop_top|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component|altsyncram_s3v3:auto_generated
+|recop_and_peripherals_top|recop_top:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component|altsyncram_s3v3:auto_generated
 address_a[0] => ram_block1a0.PORTAADDR
 address_a[0] => ram_block1a1.PORTAADDR
 address_a[0] => ram_block1a2.PORTAADDR
@@ -2946,7 +3056,7 @@ wren_a => ram_block1a14.PORTAWE
 wren_a => ram_block1a15.PORTAWE
 
 
-|recop_top|registers:u_registers
+|recop_and_peripherals_top|recop_top:u_recop|registers:u_registers
 clk => dprr[1]~reg0.CLK
 clk => dprr[0]~reg0.CLK
 clk => sop_update_done~reg0.CLK
@@ -3568,7 +3678,7 @@ dpcr_cmd_lden => dpcr.OUTPUTSELECT
 dpcr_cmd_lden => dpcr.OUTPUTSELECT
 
 
-|recop_top|sip_to_noc_command_encoder:u_sip_to_noc_encoder
+|recop_and_peripherals_top|recop_top:u_recop|sip_to_noc_command_encoder:u_sip_to_noc_encoder
 sip_r[0] => ~NO_FANOUT~
 sip_r[1] => Mux0.IN7
 sip_r[1] => Mux1.IN7
@@ -3642,7 +3752,7 @@ recop_command.addr[6] <= <GND>
 recop_command.addr[7] <= <GND>
 
 
-|recop_top|noc_status_to_sop_decoder:u_noc_status_to_sop_decoder
+|recop_and_peripherals_top|recop_top:u_recop|noc_status_to_sop_decoder:u_noc_status_to_sop_decoder
 clk => sop_status_flag~reg0.CLK
 clk => sop_reg[0].CLK
 clk => sop_reg[1].CLK

@@ -36,7 +36,7 @@ begin
             sop_reg <= (others => '0');
             sop_status_flag <= '0';
         elsif rising_edge(clk) then
-
+				sop_reg <= sop_reg;
             -- Only respond to STATUS packets
             if recv.data(31 downto 28) = PKT_KIND_STATUS then
                 sop_status_flag <= '1';

@@ -1,5 +1,5 @@
 
-State Machine - |recop_top|multicycle_moore_machine:u_cu|state
+State Machine - |recop_and_peripherals_top|recop_top:u_recop|multicycle_moore_machine:u_cu|state
 Name state.S_WRITEBACK state.S_MEM_WRITE state.S_MEM_READ state.S_EXECUTE state.S_DECODE state.S_FETCH state.S_STATUS_OUPUT_UPDATE state.S_WRITE_COMMAND state.S_EVENT_CHECK 
 state.S_EVENT_CHECK 0 0 0 0 0 0 0 0 0 
 state.S_WRITE_COMMAND 0 0 0 0 0 0 0 1 1 

@@ -1,0 +1,33 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/TdmaMinTypes.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_types.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/instruction_memory_ip.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/data_memory_ip.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/asp_packet_pkg.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/various_constants.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/opcodes.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/sip_to_noc_command_encoder.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/registers.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/regfile.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/program_counter.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/noc_status_to_sop_decoder.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/multicycle_moore_machine.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/ALU.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/execute.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_and_peripherals_top.vhd}
+
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/Quartus/../RecopVHDL/Main/recop_and_peripherals_top_tb.vhd}
+
+vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  recop_and_peripherals_top_tb
+
+add wave *
+view structure
+view signals
+run -all
