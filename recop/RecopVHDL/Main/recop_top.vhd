@@ -4,25 +4,34 @@ use ieee.numeric_std.all;
 
 use work.recop_types.all;
 use work.various_constants.all;
+use work.TdmaMinTypes.all;
 
-entity recop_top_v1 is
+entity recop_top is
     port(
         clk   : in bit_1;
         init  : in bit_1;
         reset : in bit_1;
         sip   : in bit_16;
-
-        current_state_output : out bit_3;
-
+        recv  : in tdma_min_port;
         dprr  : out bit_2;
-        dpcr  : out bit_32;
-        sop   : out bit_16
+        dpcr  : out tdma_min_port;
+        sop   : out bit_16;
+        current_state_output : out bit_4
     );
-end recop_top_v1;
+end recop_top;
 
-architecture beh of recop_top_v1 is
-	
-
+architecture beh of recop_top is
+    signal recop_command : tdma_min_port;
+	-- peripheral input flag
+    signal per_input_flag : bit_1;
+    -- peripheral cmd signal
+    signal dpcr_cmd_lden : bit_1;
+    --status input flag
+    signal sop_status_flag : bit_1;
+    --status control 
+    signal sop_status_ld : bit_1;
+    signal sop_from_status : bit_16;
+    signal sop_update_done   : bit_1;
     -- Fetch
     signal current_pc   : bit_16;
     signal pc_write	    : bit_1;	-- multicycle fsm related
@@ -95,6 +104,12 @@ begin
             rz           => rz,
             z_flag       => z_flag,
 
+            -- command related input
+            per_input_flag => per_input_flag,
+            sop_status_flag => sop_status_flag,
+            -- command related output control signals
+            dpcr_cmd_lden => dpcr_cmd_lden,
+            sop_status_ld => sop_status_ld,
             --outputs
             state_bits  => current_state_output,
             ld_r         => ld_r,	-- multicycle fsm related
@@ -225,6 +240,8 @@ begin
             r7           => r7,
             rx           => rx,
             ir_operand   => ir_operand,
+            recop_command => recop_command,
+            dpcr_cmd_lden => dpcr_cmd_lden,
             dpcr_lsb_sel => dpcr_lsb_sel,
             dpcr_wr      => dpcr_wr,
             er           => er,
@@ -237,6 +254,10 @@ begin
             svop_wr      => svop_wr,
             sip_r        => sip_r,
             sip          => sip,
+            per_input_flag => per_input_flag,
+            sop_status_ld => sop_status_ld,
+            sop_from_status => sop_from_status,
+            sop_update_done => sop_update_done,
             sop          => sop,
             sop_wr       => sop_wr,
             dprr         => dprr,
@@ -245,5 +266,19 @@ begin
             result_wen   => result_wen,
             result       => result_sig
         );
-
+    u_sip_to_noc_encoder : entity work.sip_to_noc_command_encoder
+	port map(
+        sip_r => sip_r,
+        recop_command => recop_command
+    );
+	 
+    u_noc_status_to_sop_decoder : entity work.noc_status_to_sop_decoder
+    port map(
+        clk =>  clk,
+        reset => reset,
+        recv => recv,
+        sop_from_status => sop_from_status,
+        sop_status_flag => sop_status_flag,
+        sop_update_done => sop_update_done
+    );
 end beh;

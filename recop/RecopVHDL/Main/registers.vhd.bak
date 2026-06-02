@@ -42,7 +42,6 @@ entity registers is
 		sop_from_status : in bit_16;
 		sop : out bit_16;
 		sop_wr : in bit_1;
-		sop_update_done : out bit_1;
 		-- dprr, irq (dprr(1)) set and clear signals and result source and write enable signal
 		dprr :out bit_2;
 		irq_wr:in bit_1;
@@ -157,10 +156,9 @@ architecture beh of registers is
 		if reset = '1' then
 			sop <= X"0000";
 		elsif rising_edge(clk) then 
-			sop_update_done <= '0';
+			sop_updated <= '0';
 			if sop_status_ld = '1' then 
 				sop <= sop_from_status;
-				sop_update_done <= '1';
 			elsif sop_wr = '1' then
 				-- write Rx into SOP upon write signal 
 				sop <= rx;
