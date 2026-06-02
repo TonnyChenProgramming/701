@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSEMA5F31C6
-set_global_assignment -name TOP_LEVEL_ENTITY recop_de1_soc_test
+set_global_assignment -name TOP_LEVEL_ENTITY recop_top
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "12:04:29  APRIL 20, 2026"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
@@ -309,22 +309,28 @@ set_location_assignment PIN_D11 -to VGA_VS
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/PLL.vhd
-set_global_assignment -name QIP_FILE ../RecopVHDL/Main/PLL.qip
-set_global_assignment -name SOURCE_FILE ../RecopVHDL/Main/PLL.cmp
-set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/recop_de1_soc_test.vhd
+set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/various_constants.vhd
+set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/TdmaMinTypes.vhd
+set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/sip_to_noc_command_encoder.vhd
 set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/registers.vhd
 set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/regfile.vhd
 set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/recop_types.vhd
-set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/ALU.vhd
-set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/various_constants.vhd
-set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/recop_top_v1.vhd
+set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/recop_top_tb.vhd
+set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/recop_top.vhd
 set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/program_counter.vhd
+set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/PLL.vhd -library PLL
+set_global_assignment -name QIP_FILE ../RecopVHDL/Main/PLL.qip
+set_global_assignment -name SOURCE_FILE ../RecopVHDL/Main/PLL.cmp
 set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/opcodes.vhd
+set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/noc_status_to_sop_decoder.vhd
 set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/multicycle_moore_machine.vhd
 set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/instruction_memory_ip.vhd
+set_global_assignment -name QIP_FILE ../RecopVHDL/Main/instruction_memory_ip.qip
+set_global_assignment -name SOURCE_FILE ../RecopVHDL/Main/instruction_memory_ip.cmp
 set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/execute.vhd
-set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/recop_top.vhd
-set_global_assignment -name QIP_FILE data_memory_ip.qip
+set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/data_memory_ip.vhd
 set_global_assignment -name QIP_FILE ../RecopVHDL/Main/data_memory_ip.qip
+set_global_assignment -name SOURCE_FILE ../RecopVHDL/Main/data_memory_ip.cmp
+set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/asp_packet_pkg.vhd
+set_global_assignment -name VHDL_FILE ../RecopVHDL/Main/ALU.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

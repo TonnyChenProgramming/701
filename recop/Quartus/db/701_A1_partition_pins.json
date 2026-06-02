@@ -4,199 +4,363 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "LEDR[0]",
+					"name" : "dprr[1]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[1]",
+					"name" : "dpcr.data[0]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[2]",
+					"name" : "dpcr.data[1]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[3]",
+					"name" : "dpcr.data[2]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[4]",
+					"name" : "dpcr.data[3]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[5]",
+					"name" : "dpcr.data[4]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[6]",
+					"name" : "dpcr.data[5]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[8]",
+					"name" : "dpcr.data[6]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX0[0]",
+					"name" : "dpcr.data[7]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX0[1]",
+					"name" : "dpcr.data[8]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX0[2]",
+					"name" : "dpcr.data[9]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX0[3]",
+					"name" : "dpcr.data[10]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX0[4]",
+					"name" : "dpcr.data[11]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX0[5]",
+					"name" : "dpcr.data[12]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX0[6]",
+					"name" : "dpcr.data[13]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX1[0]",
+					"name" : "dpcr.data[14]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX1[1]",
+					"name" : "dpcr.data[15]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX1[2]",
+					"name" : "dpcr.data[16]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX1[3]",
+					"name" : "dpcr.data[17]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX1[4]",
+					"name" : "dpcr.data[18]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX1[5]",
+					"name" : "dpcr.data[19]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX1[6]",
+					"name" : "dpcr.data[20]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX2[0]",
+					"name" : "dpcr.data[21]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX2[1]",
+					"name" : "dpcr.data[22]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX2[2]",
+					"name" : "dpcr.data[23]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX2[3]",
+					"name" : "dpcr.data[24]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX2[4]",
+					"name" : "dpcr.data[25]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX2[5]",
+					"name" : "dpcr.data[26]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX2[6]",
+					"name" : "dpcr.data[27]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX3[0]",
+					"name" : "dpcr.data[28]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX3[1]",
+					"name" : "dpcr.data[29]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX3[2]",
+					"name" : "dpcr.data[30]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX3[3]",
+					"name" : "dpcr.data[31]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX3[4]",
+					"name" : "dpcr.addr[0]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX3[5]",
+					"name" : "dpcr.addr[1]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX3[6]",
+					"name" : "dpcr.addr[2]",
 					"strict" : false
 				},
 				{
-					"name" : "SW[0]",
+					"name" : "sop[0]",
 					"strict" : false
 				},
 				{
-					"name" : "SW[1]",
+					"name" : "sop[1]",
 					"strict" : false
 				},
 				{
-					"name" : "SW[2]",
+					"name" : "sop[2]",
 					"strict" : false
 				},
 				{
-					"name" : "SW[3]",
+					"name" : "sop[3]",
 					"strict" : false
 				},
 				{
-					"name" : "SW[4]",
+					"name" : "sop[4]",
 					"strict" : false
 				},
 				{
-					"name" : "SW[5]",
+					"name" : "sop[5]",
 					"strict" : false
 				},
 				{
-					"name" : "SW[6]",
+					"name" : "sop[6]",
 					"strict" : false
 				},
 				{
-					"name" : "SW[7]",
+					"name" : "sop[7]",
 					"strict" : false
 				},
 				{
-					"name" : "SW[8]",
+					"name" : "sop[8]",
 					"strict" : false
 				},
 				{
-					"name" : "SW[9]",
+					"name" : "sop[9]",
 					"strict" : false
 				},
 				{
-					"name" : "KEY[0]",
+					"name" : "sop[10]",
 					"strict" : false
 				},
 				{
-					"name" : "KEY[1]",
+					"name" : "sop[11]",
 					"strict" : false
 				},
 				{
-					"name" : "KEY[2]",
+					"name" : "sop[12]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[13]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[14]",
+					"strict" : false
+				},
+				{
+					"name" : "sop[15]",
+					"strict" : false
+				},
+				{
+					"name" : "current_state_output[0]",
+					"strict" : false
+				},
+				{
+					"name" : "current_state_output[1]",
+					"strict" : false
+				},
+				{
+					"name" : "current_state_output[2]",
+					"strict" : false
+				},
+				{
+					"name" : "current_state_output[3]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "init",
+					"strict" : false
+				},
+				{
+					"name" : "recv.data[15]",
+					"strict" : false
+				},
+				{
+					"name" : "recv.addr[1]",
+					"strict" : false
+				},
+				{
+					"name" : "recv.data[28]",
+					"strict" : false
+				},
+				{
+					"name" : "recv.data[29]",
+					"strict" : false
+				},
+				{
+					"name" : "recv.data[30]",
+					"strict" : false
+				},
+				{
+					"name" : "recv.data[31]",
+					"strict" : false
+				},
+				{
+					"name" : "recv.addr[3]",
+					"strict" : false
+				},
+				{
+					"name" : "recv.addr[4]",
+					"strict" : false
+				},
+				{
+					"name" : "recv.addr[5]",
+					"strict" : false
+				},
+				{
+					"name" : "recv.addr[6]",
+					"strict" : false
+				},
+				{
+					"name" : "recv.addr[7]",
+					"strict" : false
+				},
+				{
+					"name" : "recv.addr[0]",
+					"strict" : false
+				},
+				{
+					"name" : "recv.addr[2]",
+					"strict" : false
+				},
+				{
+					"name" : "recv.data[0]",
+					"strict" : false
+				},
+				{
+					"name" : "recv.data[1]",
+					"strict" : false
+				},
+				{
+					"name" : "sip[4]",
+					"strict" : false
+				},
+				{
+					"name" : "sip[5]",
+					"strict" : false
+				},
+				{
+					"name" : "sip[2]",
+					"strict" : false
+				},
+				{
+					"name" : "sip[1]",
+					"strict" : false
+				},
+				{
+					"name" : "sip[3]",
+					"strict" : false
+				},
+				{
+					"name" : "sip[0]",
+					"strict" : false
+				},
+				{
+					"name" : "sip[6]",
+					"strict" : false
+				},
+				{
+					"name" : "sip[7]",
+					"strict" : false
+				},
+				{
+					"name" : "sip[8]",
+					"strict" : false
+				},
+				{
+					"name" : "sip[9]",
+					"strict" : false
+				},
+				{
+					"name" : "sip[10]",
+					"strict" : false
+				},
+				{
+					"name" : "sip[11]",
+					"strict" : false
+				},
+				{
+					"name" : "sip[12]",
+					"strict" : false
+				},
+				{
+					"name" : "sip[13]",
+					"strict" : false
+				},
+				{
+					"name" : "sip[14]",
+					"strict" : false
+				},
+				{
+					"name" : "sip[15]",
 					"strict" : false
 				}
 			]
