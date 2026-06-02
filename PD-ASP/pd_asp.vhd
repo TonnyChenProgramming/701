@@ -62,6 +62,8 @@ architecture rtl of pd_asp is
     -- Output staging
     signal out_pending_r : std_logic     := '0';
     signal out_word_r    : packet_word_t := (others => '0');
+    signal status_pending_r : std_logic   := '0';
+    signal status_command_r : nibble_t    := CMD_NOP;
  
     -- Combinational packet classification (now from REGISTERED input)
     signal in_kind          : std_logic_vector(3 downto 0);
@@ -151,6 +153,8 @@ begin
                         enabled_r <= '1';
                     when CMD_STOP =>
                         enabled_r <= '0';
+                    when CMD_CLEAR =>
+                        enabled_r <= '0';
                     when others =>
                         null;
                 end case;
@@ -185,11 +189,14 @@ begin
         variable status_state_payload  : payload20_t;
         variable status_counts_payload : payload20_t;
         variable status_errors_payload : payload20_t;
+        variable status_control_payload : payload20_t;
     begin
         if rising_edge(clk) then
             if reset = '1' then
-                out_pending_r <= '0';
-                out_word_r    <= (others => '0');
+                out_pending_r    <= '0';
+                out_word_r       <= (others => '0');
+                status_pending_r <= '0';
+                status_command_r <= CMD_NOP;
             else
                 if out_pending_r = '1' and out_ready = '1' then
                     out_pending_r <= '0';
@@ -201,8 +208,26 @@ begin
                                           & std_logic_vector(core_live_counter(17 downto 0));
                     status_counts_payload := std_logic_vector(core_total_peaks);
                     status_errors_payload := std_logic_vector(core_missed_peaks);
- 
-                    if cmd_status_state = '1' then
+                    status_control_payload := (others => '0');
+                    status_control_payload(15) := enabled_r;
+                    status_control_payload(3 downto 0) := status_command_r;
+
+                    if status_command_r = CMD_CONFIG then
+                        status_control_payload(14) := '1';
+                    elsif status_command_r = CMD_CLEAR then
+                        status_control_payload(13) := '1';
+                    end if;
+
+                    if status_pending_r = '1' then
+                        -- Automatic command acknowledgement for the ReCOP LED
+                        -- controller. Bit 15 mirrors the enabled/running state.
+                        out_word_r    <= make_packet(PKT_KIND_STATUS,
+                                                     TAG_STATUS,
+                                                     RECOP_PORT,
+                                                     status_control_payload);
+                        out_pending_r <= '1';
+                        status_pending_r <= '0';
+                    elsif cmd_status_state = '1' then
                         out_word_r    <= make_packet(PKT_KIND_STATUS,
                                                      CMD_STATUS_REQ_STATE,
                                                      RECOP_PORT,
@@ -227,6 +252,16 @@ begin
                                                      std_logic_vector(core_peak_count));
                         out_pending_r <= '1';
                     end if;
+                end if;
+
+                if is_cmd_for_me = '1' then
+                    case in_code is
+                        when CMD_NOP | CMD_CONFIG | CMD_START | CMD_STOP | CMD_CLEAR =>
+                            status_command_r <= in_code;
+                            status_pending_r <= '1';
+                        when others =>
+                            null;
+                    end case;
                 end if;
             end if;
         end if;

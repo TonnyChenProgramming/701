@@ -47,6 +47,7 @@ architecture sim of pd_asp_tb is
     -- Verification counters
     signal observed_peaks : integer := 0;
     signal last_peak_count : integer := 0;
+    signal observed_control_status : integer := 0;
 
 
     -- Synthetic correlation generator
@@ -188,7 +189,21 @@ begin
                     make_packet(PKT_KIND_CMD, CMD_STATUS_REQ_ERRORS,
                                 PORT_PD, (others => '0')));
 
-        wait for 50 * CLK_PERIOD;
+        wait for 20 * CLK_PERIOD;
+
+        -- STOP and CLEAR should each produce an automatic STATUS response
+        -- with payload(15) low so ReCOP can turn off the PK LED.
+        send_packet(clk, in_valid, in_ready, in_word,
+                    make_packet(PKT_KIND_CMD, CMD_STOP,
+                                PORT_PD, (others => '0')));
+
+        wait for 10 * CLK_PERIOD;
+
+        send_packet(clk, in_valid, in_ready, in_word,
+                    make_packet(PKT_KIND_CMD, CMD_CLEAR,
+                                PORT_PD, (others => '0')));
+
+        wait for 20 * CLK_PERIOD;
 
         report "----- Test complete -----";
         report "Observed peak events: " & integer'image(observed_peaks);
@@ -218,6 +233,14 @@ begin
                 severity failure;
         end if;
 
+        if observed_control_status = 4 then
+            report "PASS: CONFIG/START/STOP/CLEAR automatic STATUS replies observed"
+                severity note;
+        else
+            report "FAIL: expected four automatic control STATUS replies"
+                severity failure;
+        end if;
+
         wait;
     end process;
 
@@ -241,6 +264,17 @@ begin
                     last_peak_count <= to_integer(unsigned(payload_v));
                     report "EVENT peak. dest=" & integer'image(to_integer(unsigned(dest_v)))
                          & " count=" & integer'image(to_integer(unsigned(payload_v)));
+
+                elsif kind_v = PKT_KIND_STATUS and code_v = TAG_STATUS then
+                    observed_control_status <= observed_control_status + 1;
+                    assert dest_v = PORT_RECOP
+                        report "FAIL: automatic STATUS reply not routed to ReCOP"
+                        severity failure;
+                    report "STATUS control reply. enabled="
+                         & std_logic'image(payload_v(15))
+                         & " config_done=" & std_logic'image(payload_v(14))
+                         & " clear_done=" & std_logic'image(payload_v(13))
+                         & " command=" & integer'image(to_integer(unsigned(payload_v(3 downto 0))));
 
                 elsif kind_v = PKT_KIND_STATUS then
                     report "STATUS reply. code="
