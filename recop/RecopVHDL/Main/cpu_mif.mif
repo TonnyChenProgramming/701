@@ -5,10 +5,10 @@ ADDRESS_RADIX=HEX;
 DATA_RADIX=HEX;
 
 CONTENT BEGIN
-    0000 : 1001;   -- LOAD
-    0001 : 2002;   -- ADD
-    0002 : 3003;   -- STORE
-    0003 : FFFF;   -- HALT
+    0000 : 1001;   -- empty
+    0001 : 2002;   -- empty
+    0002 : 3003;   -- empty
+    0003 : FFFF;   -- empty
 
     0004 : 0000;
     0005 : 0000;

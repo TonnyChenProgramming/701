@@ -26,9 +26,9 @@ VlOFh?^PRSM86=j47OOVFJ1
 !s100 >>ihDbefP]>;fJ<hhQUS81
 Z11 OV;C;10.5b;63
 31
-Z12 !s110 1780397077
+Z12 !s110 1780683969
 !i10b 1
-Z13 !s108 1780397077.000000
+Z13 !s108 1780683969.000000
 Z14 !s90 -reportprogress|300|-93|-work|work|C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/ALU.vhd|
 Z15 !s107 C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/ALU.vhd|
 !i113 1
@@ -72,9 +72,9 @@ VPcQ3L`Sm_cI2`8=eDj^7T3
 R11
 31
 b1
-Z23 !s110 1780397076
+Z23 !s110 1780683968
 !i10b 1
-Z24 !s108 1780397076.000000
+Z24 !s108 1780683968.000000
 Z25 !s90 -reportprogress|300|-93|-work|work|C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/asp_packet_pkg.vhd|
 Z26 !s107 C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/asp_packet_pkg.vhd|
 !i113 1
@@ -234,7 +234,7 @@ R42
 R16
 R17
 Emulticycle_moore_machine
-Z44 w1780293277
+Z44 w1780543138
 R3
 R2
 R4
@@ -268,8 +268,8 @@ R8
 Z49 DEx4 work 24 multicycle_moore_machine 0 22 6DSUzC1A?`iSzN?zNnC?Q2
 l80
 L64
-VoK=I9YKeL04P]SD2jb4iB2
-!s100 R@<:zWP3?D8>MGeeZMCgf2
+V8iCDe44J2`hk_UK:4M0;M1
+!s100 2U_X6i^K>fHG=CZ[:D34A2
 R11
 31
 R12
@@ -343,9 +343,9 @@ VdWImD9M4G?J;VZh6]602N0
 !s100 YH6S8C_M@a4iM?d77]?=_1
 R11
 31
-R12
+R23
 !i10b 1
-R13
+R24
 !s90 -reportprogress|300|-93|-work|work|C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/opcodes.vhd|
 !s107 C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/opcodes.vhd|
 !i113 1
@@ -396,106 +396,8 @@ R60
 !i113 1
 R16
 R17
-Erecop_and_peripherals_top
-Z62 w1780393610
-R51
-R2
-R4
-R19
-R7
-R8
-R0
-Z63 8C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_and_peripherals_top.vhd
-Z64 FC:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_and_peripherals_top.vhd
-l0
-L9
-V4?iFFCZJSh0Ia?<jhP0S51
-!s100 hMbn<:0fAXMjMz<f0VzRI2
-R11
-31
-R12
-!i10b 1
-R13
-Z65 !s90 -reportprogress|300|-93|-work|work|C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_and_peripherals_top.vhd|
-Z66 !s107 C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_and_peripherals_top.vhd|
-!i113 1
-R16
-R17
-Abeh
-Z67 DEx4 work 9 recop_top 0 22 LE2@WZ;A=6h7S`n<1kNIa3
-R51
-R2
-R4
-R19
-R7
-R8
-Z68 DEx4 work 25 recop_and_peripherals_top 0 22 4?iFFCZJSh0Ia?<jhP0S51
-l33
-L22
-VEfL:90zIF:1VKXOM>8IeU1
-!s100 V@KcY=cYgXjXHkTZ8d2K53
-R11
-31
-R12
-!i10b 1
-R13
-R65
-R66
-!i113 1
-R16
-R17
-Erecop_and_peripherals_top_tb
-Z69 w1780397058
-R27
-R51
-R2
-R4
-R19
-R7
-R8
-R0
-Z70 8C:/intelFPGA_lite/18.1/701/701/recop/Quartus/../RecopVHDL/Main/recop_and_peripherals_top_tb.vhd
-Z71 FC:/intelFPGA_lite/18.1/701/701/recop/Quartus/../RecopVHDL/Main/recop_and_peripherals_top_tb.vhd
-l0
-L10
-Vb^L=e[baA1k8^>X`H`MZ^1
-!s100 2@JnYY;2Inha9B[CESkD50
-R11
-31
-R12
-!i10b 1
-R13
-Z72 !s90 -reportprogress|300|-93|-work|work|C:/intelFPGA_lite/18.1/701/701/recop/Quartus/../RecopVHDL/Main/recop_and_peripherals_top_tb.vhd|
-Z73 !s107 C:/intelFPGA_lite/18.1/701/701/recop/Quartus/../RecopVHDL/Main/recop_and_peripherals_top_tb.vhd|
-!i113 1
-R16
-R17
-Asim
-R68
-R27
-R51
-R2
-R4
-R19
-R7
-R8
-DEx4 work 28 recop_and_peripherals_top_tb 0 22 b^L=e[baA1k8^>X`H`MZ^1
-l33
-L13
-VXi2cUG:WCDzYm:<=>79cG1
-!s100 ZldXIl6o^@3BH6TUP@SWH1
-R11
-31
-R12
-!i10b 1
-R13
-R72
-R73
-!i113 1
-R16
-R17
 Erecop_top
-Z74 w1780300782
+Z62 w1780300782
 R51
 R2
 R4
@@ -503,8 +405,8 @@ R19
 R7
 R8
 R0
-Z75 8C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top.vhd
-Z76 FC:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top.vhd
+Z63 8C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top.vhd
+Z64 FC:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top.vhd
 l0
 L9
 VLE2@WZ;A=6h7S`n<1kNIa3
@@ -514,20 +416,20 @@ R11
 R12
 !i10b 1
 R13
-Z77 !s90 -reportprogress|300|-93|-work|work|C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top.vhd|
-Z78 !s107 C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top.vhd|
+Z65 !s90 -reportprogress|300|-93|-work|work|C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top.vhd|
+Z66 !s107 C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top.vhd|
 !i113 1
 R16
 R17
 Abeh
 R56
-Z79 DEx4 work 26 sip_to_noc_command_encoder 0 22 LYkUTbWobE`_mRaJ7O:jd1
+Z67 DEx4 work 26 sip_to_noc_command_encoder 0 22 LYkUTbWobE`_mRaJ7O:jd1
 R27
 R5
 R6
-Z80 DEx4 work 9 registers 0 22 <f6S8GIQh>iE;K8N2bNGj2
+Z68 DEx4 work 9 registers 0 22 <f6S8GIQh>iE;K8N2bNGj2
 R38
-Z81 DEx4 work 7 regfile 0 22 K?hZgWnm`2VaIe[C3VEdh1
+Z69 DEx4 work 7 regfile 0 22 K?hZgWnm`2VaIe[C3VEdh1
 R28
 R43
 R61
@@ -539,7 +441,7 @@ R4
 R19
 R7
 R8
-R67
+Z70 DEx4 work 9 recop_top 0 22 LE2@WZ;A=6h7S`n<1kNIa3
 l89
 L23
 V:7ezSiE?@UWh?0K5lWNl41
@@ -549,8 +451,108 @@ R11
 R12
 !i10b 1
 R13
-R77
-R78
+R65
+R66
+!i113 1
+R16
+R17
+Erecop_top_soc_test_wrapper
+Z71 w1780681804
+R27
+R51
+R2
+R4
+R19
+R7
+R8
+R0
+Z72 8C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top_soc_test_wrapper.vhd
+Z73 FC:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top_soc_test_wrapper.vhd
+l0
+L10
+V9UYaMdPd^iRe3F;CdW9T?0
+!s100 @N_[i@Il8KE[K9R?geLAP3
+R11
+31
+R12
+!i10b 1
+R13
+Z74 !s90 -reportprogress|300|-93|-work|work|C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top_soc_test_wrapper.vhd|
+Z75 !s107 C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top_soc_test_wrapper.vhd|
+!i113 1
+R16
+R17
+Abeh
+R70
+R27
+R51
+R2
+R4
+R19
+R7
+R8
+Z76 DEx4 work 26 recop_top_soc_test_wrapper 0 22 9UYaMdPd^iRe3F;CdW9T?0
+l85
+L27
+VnfKa>XdaeKQPJgSeO2P3:0
+!s100 __e6kY<jk8j8Mb`S2V5gX0
+R11
+31
+R12
+!i10b 1
+R13
+R74
+R75
+!i113 1
+R16
+R17
+Erecop_top_soc_test_wrapper_tb
+Z77 w1780683944
+R27
+R51
+R2
+R4
+R19
+R7
+R8
+R0
+Z78 8C:/intelFPGA_lite/18.1/701/701/recop/Quartus/../RecopVHDL/Main/recop_top_soc_test_wrapper_tb.vhd
+Z79 FC:/intelFPGA_lite/18.1/701/701/recop/Quartus/../RecopVHDL/Main/recop_top_soc_test_wrapper_tb.vhd
+l0
+L10
+VBWM454l5nmW@nVQdAKFJd0
+!s100 dU=Y>JGHA<mN]Z[g^^mCa0
+R11
+31
+R12
+!i10b 1
+R13
+Z80 !s90 -reportprogress|300|-93|-work|work|C:/intelFPGA_lite/18.1/701/701/recop/Quartus/../RecopVHDL/Main/recop_top_soc_test_wrapper_tb.vhd|
+Z81 !s107 C:/intelFPGA_lite/18.1/701/701/recop/Quartus/../RecopVHDL/Main/recop_top_soc_test_wrapper_tb.vhd|
+!i113 1
+R16
+R17
+Asim
+R76
+R27
+R51
+R2
+R4
+R19
+R7
+R8
+DEx4 work 29 recop_top_soc_test_wrapper_tb 0 22 BWM454l5nmW@nVQdAKFJd0
+l101
+L13
+VRm;:dliWeEc19OXih=>UD0
+!s100 zgC99zJH@Jm<Yng[]KfZd3
+R11
+31
+R12
+!i10b 1
+R13
+R80
+R81
 !i113 1
 R16
 R17
@@ -605,7 +607,7 @@ R4
 R19
 R7
 R8
-R81
+R69
 l45
 L41
 V5E=`0D<3]YH4JeB`>Qj3P1
@@ -642,7 +644,7 @@ R11
 31
 R12
 !i10b 1
-R13
+R24
 Z89 !s90 -reportprogress|300|-93|-work|work|C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/registers.vhd|
 Z90 !s107 C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/registers.vhd|
 !i113 1
@@ -658,7 +660,7 @@ R5
 R6
 R7
 R8
-R80
+R68
 l61
 L59
 VNJEhaQO2NjF]a8aUdbKi20
@@ -667,7 +669,7 @@ R11
 31
 R12
 !i10b 1
-R13
+R24
 R89
 R90
 !i113 1
@@ -691,9 +693,9 @@ VLYkUTbWobE`_mRaJ7O:jd1
 !s100 QPP70i2SgNMY3TKmIfMB@2
 R11
 31
-R12
+R23
 !i10b 1
-R13
+R24
 Z94 !s90 -reportprogress|300|-93|-work|work|C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/sip_to_noc_command_encoder.vhd|
 Z95 !s107 C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/sip_to_noc_command_encoder.vhd|
 !i113 1
@@ -707,16 +709,16 @@ R4
 R19
 R7
 R8
-R79
+R67
 l18
 L17
 VDQI`W^I>80fj]eEZ_OLnU0
 !s100 59EOG7gM?g5c9ZD8Mkbb^3
 R11
 31
-R12
+R23
 !i10b 1
-R13
+R24
 R94
 R95
 !i113 1
@@ -778,9 +780,9 @@ VZ@gi0Ko=MCeRXYj^n:fTT0
 !s100 O:>OTIi_Ca_bSa=z9^oKY1
 R11
 31
-R12
+R23
 !i10b 1
-R13
+R24
 !s90 -reportprogress|300|-93|-work|work|C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/various_constants.vhd|
 !s107 C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/various_constants.vhd|
 !i113 1

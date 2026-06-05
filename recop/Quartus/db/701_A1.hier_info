@@ -1,114 +1,196 @@
-|recop_and_peripherals_top
+|recop_top_soc_test_wrapper
 CLOCK_50 => recop_top:u_recop.clk
-recv.data[0] => recop_top:u_recop.recv.data[0]
-recv.data[1] => recop_top:u_recop.recv.data[1]
-recv.data[2] => recop_top:u_recop.recv.data[2]
-recv.data[3] => recop_top:u_recop.recv.data[3]
-recv.data[4] => recop_top:u_recop.recv.data[4]
-recv.data[5] => recop_top:u_recop.recv.data[5]
-recv.data[6] => recop_top:u_recop.recv.data[6]
-recv.data[7] => recop_top:u_recop.recv.data[7]
-recv.data[8] => recop_top:u_recop.recv.data[8]
-recv.data[9] => recop_top:u_recop.recv.data[9]
-recv.data[10] => recop_top:u_recop.recv.data[10]
-recv.data[11] => recop_top:u_recop.recv.data[11]
-recv.data[12] => recop_top:u_recop.recv.data[12]
-recv.data[13] => recop_top:u_recop.recv.data[13]
-recv.data[14] => recop_top:u_recop.recv.data[14]
-recv.data[15] => recop_top:u_recop.recv.data[15]
-recv.data[16] => recop_top:u_recop.recv.data[16]
-recv.data[17] => recop_top:u_recop.recv.data[17]
-recv.data[18] => recop_top:u_recop.recv.data[18]
-recv.data[19] => recop_top:u_recop.recv.data[19]
-recv.data[20] => recop_top:u_recop.recv.data[20]
-recv.data[21] => recop_top:u_recop.recv.data[21]
-recv.data[22] => recop_top:u_recop.recv.data[22]
-recv.data[23] => recop_top:u_recop.recv.data[23]
-recv.data[24] => recop_top:u_recop.recv.data[24]
-recv.data[25] => recop_top:u_recop.recv.data[25]
-recv.data[26] => recop_top:u_recop.recv.data[26]
-recv.data[27] => recop_top:u_recop.recv.data[27]
-recv.data[28] => recop_top:u_recop.recv.data[28]
-recv.data[29] => recop_top:u_recop.recv.data[29]
-recv.data[30] => recop_top:u_recop.recv.data[30]
-recv.data[31] => recop_top:u_recop.recv.data[31]
-recv.addr[0] => recop_top:u_recop.recv.addr[0]
-recv.addr[1] => recop_top:u_recop.recv.addr[1]
-recv.addr[2] => recop_top:u_recop.recv.addr[2]
-recv.addr[3] => recop_top:u_recop.recv.addr[3]
-recv.addr[4] => recop_top:u_recop.recv.addr[4]
-recv.addr[5] => recop_top:u_recop.recv.addr[5]
-recv.addr[6] => recop_top:u_recop.recv.addr[6]
-recv.addr[7] => recop_top:u_recop.recv.addr[7]
-send.data[0] << recop_top:u_recop.dpcr.data[0]
-send.data[1] << recop_top:u_recop.dpcr.data[1]
-send.data[2] << recop_top:u_recop.dpcr.data[2]
-send.data[3] << recop_top:u_recop.dpcr.data[3]
-send.data[4] << recop_top:u_recop.dpcr.data[4]
-send.data[5] << recop_top:u_recop.dpcr.data[5]
-send.data[6] << recop_top:u_recop.dpcr.data[6]
-send.data[7] << recop_top:u_recop.dpcr.data[7]
-send.data[8] << recop_top:u_recop.dpcr.data[8]
-send.data[9] << recop_top:u_recop.dpcr.data[9]
-send.data[10] << recop_top:u_recop.dpcr.data[10]
-send.data[11] << recop_top:u_recop.dpcr.data[11]
-send.data[12] << recop_top:u_recop.dpcr.data[12]
-send.data[13] << recop_top:u_recop.dpcr.data[13]
-send.data[14] << recop_top:u_recop.dpcr.data[14]
-send.data[15] << recop_top:u_recop.dpcr.data[15]
-send.data[16] << recop_top:u_recop.dpcr.data[16]
-send.data[17] << recop_top:u_recop.dpcr.data[17]
-send.data[18] << recop_top:u_recop.dpcr.data[18]
-send.data[19] << recop_top:u_recop.dpcr.data[19]
-send.data[20] << recop_top:u_recop.dpcr.data[20]
-send.data[21] << recop_top:u_recop.dpcr.data[21]
-send.data[22] << recop_top:u_recop.dpcr.data[22]
-send.data[23] << recop_top:u_recop.dpcr.data[23]
-send.data[24] << recop_top:u_recop.dpcr.data[24]
-send.data[25] << recop_top:u_recop.dpcr.data[25]
-send.data[26] << recop_top:u_recop.dpcr.data[26]
-send.data[27] << recop_top:u_recop.dpcr.data[27]
-send.data[28] << recop_top:u_recop.dpcr.data[28]
-send.data[29] << recop_top:u_recop.dpcr.data[29]
-send.data[30] << recop_top:u_recop.dpcr.data[30]
-send.data[31] << recop_top:u_recop.dpcr.data[31]
-send.addr[0] << recop_top:u_recop.dpcr.addr[0]
-send.addr[1] << recop_top:u_recop.dpcr.addr[1]
-send.addr[2] << recop_top:u_recop.dpcr.addr[2]
-send.addr[3] << recop_top:u_recop.dpcr.addr[3]
-send.addr[4] << recop_top:u_recop.dpcr.addr[4]
-send.addr[5] << recop_top:u_recop.dpcr.addr[5]
-send.addr[6] << recop_top:u_recop.dpcr.addr[6]
-send.addr[7] << recop_top:u_recop.dpcr.addr[7]
+CLOCK_50 => asp_status_shadow[0].CLK
+CLOCK_50 => asp_status_shadow[2].CLK
+CLOCK_50 => asp_status_shadow[3].CLK
+CLOCK_50 => recv_cmd_prev[0].CLK
+CLOCK_50 => recv_cmd_prev[1].CLK
+CLOCK_50 => recv_cmd_prev[2].CLK
+CLOCK_50 => recv_s.data[0].CLK
+CLOCK_50 => recv_s.data[1].CLK
+CLOCK_50 => recv_s.data[2].CLK
+CLOCK_50 => recv_s.data[3].CLK
+CLOCK_50 => recv_s.data[4].CLK
+CLOCK_50 => recv_s.data[5].CLK
+CLOCK_50 => recv_s.data[6].CLK
+CLOCK_50 => recv_s.data[7].CLK
+CLOCK_50 => recv_s.data[8].CLK
+CLOCK_50 => recv_s.data[9].CLK
+CLOCK_50 => recv_s.data[10].CLK
+CLOCK_50 => recv_s.data[11].CLK
+CLOCK_50 => recv_s.data[12].CLK
+CLOCK_50 => recv_s.data[13].CLK
+CLOCK_50 => recv_s.data[14].CLK
+CLOCK_50 => recv_s.data[15].CLK
+CLOCK_50 => recv_s.data[16].CLK
+CLOCK_50 => recv_s.data[17].CLK
+CLOCK_50 => recv_s.data[18].CLK
+CLOCK_50 => recv_s.data[19].CLK
+CLOCK_50 => recv_s.data[20].CLK
+CLOCK_50 => recv_s.data[21].CLK
+CLOCK_50 => recv_s.data[22].CLK
+CLOCK_50 => recv_s.data[23].CLK
+CLOCK_50 => recv_s.data[24].CLK
+CLOCK_50 => recv_s.data[25].CLK
+CLOCK_50 => recv_s.data[26].CLK
+CLOCK_50 => recv_s.data[27].CLK
+CLOCK_50 => recv_s.data[28].CLK
+CLOCK_50 => recv_s.data[29].CLK
+CLOCK_50 => recv_s.data[30].CLK
+CLOCK_50 => recv_s.data[31].CLK
+CLOCK_50 => recv_s.addr[0].CLK
+CLOCK_50 => recv_s.addr[1].CLK
+CLOCK_50 => recv_s.addr[2].CLK
+CLOCK_50 => recv_s.addr[3].CLK
+CLOCK_50 => recv_s.addr[4].CLK
+CLOCK_50 => recv_s.addr[5].CLK
+CLOCK_50 => recv_s.addr[6].CLK
+CLOCK_50 => recv_s.addr[7].CLK
 KEY[0] => recop_top:u_recop.sip[0]
 KEY[0] => recop_top:u_recop.init
+KEY[0] => asp_status_shadow[0].ACLR
+KEY[0] => asp_status_shadow[2].ACLR
+KEY[0] => asp_status_shadow[3].ACLR
+KEY[0] => recv_cmd_prev[0].ACLR
+KEY[0] => recv_cmd_prev[1].ACLR
+KEY[0] => recv_cmd_prev[2].ACLR
+KEY[0] => recv_s.data[0].ACLR
+KEY[0] => recv_s.data[1].ACLR
+KEY[0] => recv_s.data[2].ACLR
+KEY[0] => recv_s.data[3].ACLR
+KEY[0] => recv_s.data[4].ACLR
+KEY[0] => recv_s.data[5].ACLR
+KEY[0] => recv_s.data[6].ACLR
+KEY[0] => recv_s.data[7].ACLR
+KEY[0] => recv_s.data[8].ACLR
+KEY[0] => recv_s.data[9].ACLR
+KEY[0] => recv_s.data[10].ACLR
+KEY[0] => recv_s.data[11].ACLR
+KEY[0] => recv_s.data[12].ACLR
+KEY[0] => recv_s.data[13].ACLR
+KEY[0] => recv_s.data[14].ACLR
+KEY[0] => recv_s.data[15].ACLR
+KEY[0] => recv_s.data[16].ACLR
+KEY[0] => recv_s.data[17].ACLR
+KEY[0] => recv_s.data[18].ACLR
+KEY[0] => recv_s.data[19].ACLR
+KEY[0] => recv_s.data[20].ACLR
+KEY[0] => recv_s.data[21].ACLR
+KEY[0] => recv_s.data[22].ACLR
+KEY[0] => recv_s.data[23].ACLR
+KEY[0] => recv_s.data[24].ACLR
+KEY[0] => recv_s.data[25].ACLR
+KEY[0] => recv_s.data[26].ACLR
+KEY[0] => recv_s.data[27].ACLR
+KEY[0] => recv_s.data[28].ACLR
+KEY[0] => recv_s.data[29].ACLR
+KEY[0] => recv_s.data[30].ACLR
+KEY[0] => recv_s.data[31].ACLR
+KEY[0] => recv_s.addr[0].PRESET
+KEY[0] => recv_s.addr[1].PRESET
+KEY[0] => recv_s.addr[2].PRESET
+KEY[0] => recv_s.addr[3].ACLR
+KEY[0] => recv_s.addr[4].ACLR
+KEY[0] => recv_s.addr[5].ACLR
+KEY[0] => recv_s.addr[6].ACLR
+KEY[0] => recv_s.addr[7].ACLR
 KEY[0] => recop_top:u_recop.reset
 KEY[1] => recop_top:u_recop.sip[1]
 KEY[2] => recop_top:u_recop.sip[2]
 KEY[3] => recop_top:u_recop.sip[3]
 SW[0] => recop_top:u_recop.sip[4]
+SW[0] => LEDR[4].DATAIN
 SW[1] => recop_top:u_recop.sip[5]
-SW[2] => recop_top:u_recop.sip[6]
-SW[3] => recop_top:u_recop.sip[7]
-SW[4] => recop_top:u_recop.sip[8]
-SW[5] => recop_top:u_recop.sip[9]
-SW[6] => recop_top:u_recop.sip[10]
-SW[7] => recop_top:u_recop.sip[11]
-SW[8] => recop_top:u_recop.sip[12]
-SW[9] => recop_top:u_recop.sip[13]
+SW[1] => LEDR[5].DATAIN
+SW[2] => ~NO_FANOUT~
+SW[3] => ~NO_FANOUT~
+SW[4] => ~NO_FANOUT~
+SW[5] => p_recv_gen.IN1
+SW[5] => recv_cmd_prev[0].DATAIN
+SW[6] => p_recv_gen.IN1
+SW[6] => recv_cmd_prev[1].DATAIN
+SW[7] => p_recv_gen.IN1
+SW[7] => recv_cmd_prev[2].DATAIN
+SW[8] => Mux0.IN5
+SW[8] => Mux1.IN5
+SW[8] => Mux2.IN2
+SW[8] => Mux3.IN2
+SW[8] => Mux4.IN2
+SW[8] => Mux5.IN2
+SW[8] => Mux6.IN2
+SW[8] => Mux7.IN2
+SW[8] => LEDR[6].DATAIN
+SW[8] => recv_s.DATAB
+SW[8] => recv_s.DATAB
+SW[8] => recv_s.DATAB
+SW[8] => Equal0.IN11
+SW[8] => Equal1.IN12
+SW[8] => Equal2.IN6
+SW[8] => Equal3.IN5
+SW[9] => Mux0.IN4
+SW[9] => Mux1.IN4
+SW[9] => Mux2.IN1
+SW[9] => Mux3.IN1
+SW[9] => Mux4.IN1
+SW[9] => Mux5.IN1
+SW[9] => Mux6.IN1
+SW[9] => Mux7.IN1
+SW[9] => LEDR[7].DATAIN
 LEDR[0] << recop_top:u_recop.sop[0]
 LEDR[1] << recop_top:u_recop.sop[1]
 LEDR[2] << recop_top:u_recop.sop[2]
 LEDR[3] << recop_top:u_recop.sop[3]
-LEDR[4] << recop_top:u_recop.sop[4]
-LEDR[5] << recop_top:u_recop.sop[5]
-LEDR[6] << recop_top:u_recop.sop[6]
-LEDR[7] << recop_top:u_recop.sop[7]
-LEDR[8] << recop_top:u_recop.sop[8]
-LEDR[9] << recop_top:u_recop.sop[9]
+LEDR[4] << SW[0].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[5] << SW[1].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[6] << SW[8].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[7] << SW[9].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[8] << recop_top:u_recop.dprr[0]
+LEDR[9] << recop_top:u_recop.dprr[1]
+HEX0[0] << Mux14.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[1] << Mux13.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[2] << Mux12.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[3] << Mux11.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[4] << Mux10.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[5] << Mux9.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[6] << Mux8.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[0] << Mux21.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[1] << Mux20.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[2] << Mux19.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[3] << Mux18.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[4] << Mux17.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[5] << Mux16.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[6] << Mux15.DB_MAX_OUTPUT_PORT_TYPE
+HEX2[0] << Mux28.DB_MAX_OUTPUT_PORT_TYPE
+HEX2[1] << Mux27.DB_MAX_OUTPUT_PORT_TYPE
+HEX2[2] << Mux26.DB_MAX_OUTPUT_PORT_TYPE
+HEX2[3] << Mux25.DB_MAX_OUTPUT_PORT_TYPE
+HEX2[4] << Mux24.DB_MAX_OUTPUT_PORT_TYPE
+HEX2[5] << Mux23.DB_MAX_OUTPUT_PORT_TYPE
+HEX2[6] << Mux22.DB_MAX_OUTPUT_PORT_TYPE
+HEX3[0] << Mux35.DB_MAX_OUTPUT_PORT_TYPE
+HEX3[1] << Mux34.DB_MAX_OUTPUT_PORT_TYPE
+HEX3[2] << Mux33.DB_MAX_OUTPUT_PORT_TYPE
+HEX3[3] << Mux32.DB_MAX_OUTPUT_PORT_TYPE
+HEX3[4] << Mux31.DB_MAX_OUTPUT_PORT_TYPE
+HEX3[5] << Mux30.DB_MAX_OUTPUT_PORT_TYPE
+HEX3[6] << Mux29.DB_MAX_OUTPUT_PORT_TYPE
+HEX4[0] << Mux42.DB_MAX_OUTPUT_PORT_TYPE
+HEX4[1] << Mux41.DB_MAX_OUTPUT_PORT_TYPE
+HEX4[2] << Mux40.DB_MAX_OUTPUT_PORT_TYPE
+HEX4[3] << Mux39.DB_MAX_OUTPUT_PORT_TYPE
+HEX4[4] << Mux38.DB_MAX_OUTPUT_PORT_TYPE
+HEX4[5] << Mux37.DB_MAX_OUTPUT_PORT_TYPE
+HEX4[6] << Mux36.DB_MAX_OUTPUT_PORT_TYPE
+HEX5[0] << <VCC>
+HEX5[1] << <VCC>
+HEX5[2] << <VCC>
+HEX5[3] << <VCC>
+HEX5[4] << <VCC>
+HEX5[5] << <VCC>
+HEX5[6] << <VCC>
 
 
-|recop_and_peripherals_top|recop_top:u_recop
+|recop_top_soc_test_wrapper|recop_top:u_recop
 clk => multicycle_moore_machine:u_cu.clk
 clk => program_counter:u_pc.clk
 clk => instruction_memory_ip:u_im_ip.clock
@@ -245,7 +327,7 @@ current_state_output[2] <= multicycle_moore_machine:u_cu.state_bits[2]
 current_state_output[3] <= multicycle_moore_machine:u_cu.state_bits[3]
 
 
-|recop_and_peripherals_top|recop_top:u_recop|multicycle_moore_machine:u_cu
+|recop_top_soc_test_wrapper|recop_top:u_recop|multicycle_moore_machine:u_cu
 clk => state~1.DATAIN
 init => pc_sel.DATAA
 init => state.S_EVENT_CHECK.IN0
@@ -504,11 +586,11 @@ rz[13] => Equal0.IN2
 rz[14] => Equal0.IN1
 rz[15] => Equal0.IN0
 z_flag => Mux18.IN69
-per_input_flag => next_state.OUTPUTSELECT
-per_input_flag => next_state.OUTPUTSELECT
-per_input_flag => next_state.S_WRITE_COMMAND.DATAB
-sop_status_flag => next_state.DATAA
-sop_status_flag => next_state.DATAA
+per_input_flag => next_state.DATAA
+per_input_flag => next_state.DATAA
+sop_status_flag => next_state.OUTPUTSELECT
+sop_status_flag => next_state.OUTPUTSELECT
+sop_status_flag => next_state.S_STATUS_OUPUT_UPDATE.DATAB
 dpcr_cmd_lden <= dpcr_cmd_lden.DB_MAX_OUTPUT_PORT_TYPE
 sop_status_ld <= sop_status_ld.DB_MAX_OUTPUT_PORT_TYPE
 state_bits[0] <= WideOr9.DB_MAX_OUTPUT_PORT_TYPE
@@ -549,7 +631,7 @@ pc_sel[1] <= Selector2.DB_MAX_OUTPUT_PORT_TYPE
 pc_write <= Selector4.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|recop_and_peripherals_top|recop_top:u_recop|program_counter:u_pc
+|recop_top_soc_test_wrapper|recop_top:u_recop|program_counter:u_pc
 clk => current_pc[0]~reg0.CLK
 clk => current_pc[1]~reg0.CLK
 clk => current_pc[2]~reg0.CLK
@@ -618,7 +700,7 @@ current_pc[14] <= current_pc[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 current_pc[15] <= current_pc[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|recop_and_peripherals_top|recop_top:u_recop|instruction_memory_ip:u_im_ip
+|recop_top_soc_test_wrapper|recop_top:u_recop|instruction_memory_ip:u_im_ip
 address[0] => altsyncram:altsyncram_component.address_a[0]
 address[1] => altsyncram:altsyncram_component.address_a[1]
 address[2] => altsyncram:altsyncram_component.address_a[2]
@@ -663,7 +745,7 @@ q[30] <= altsyncram:altsyncram_component.q_a[30]
 q[31] <= altsyncram:altsyncram_component.q_a[31]
 
 
-|recop_and_peripherals_top|recop_top:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component
+|recop_top_soc_test_wrapper|recop_top:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component
 wren_a => ~NO_FANOUT~
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -761,7 +843,7 @@ eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|recop_and_peripherals_top|recop_top:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component|altsyncram_4824:auto_generated
+|recop_top_soc_test_wrapper|recop_top:u_recop|instruction_memory_ip:u_im_ip|altsyncram:altsyncram_component|altsyncram_4824:auto_generated
 address_a[0] => ram_block1a0.PORTAADDR
 address_a[0] => ram_block1a1.PORTAADDR
 address_a[0] => ram_block1a2.PORTAADDR
@@ -1116,7 +1198,7 @@ q_a[30] <= ram_block1a30.PORTADATAOUT
 q_a[31] <= ram_block1a31.PORTADATAOUT
 
 
-|recop_and_peripherals_top|recop_top:u_recop|regfile:u_regfile
+|recop_top_soc_test_wrapper|recop_top:u_recop|regfile:u_regfile
 clk => regs[0][0].CLK
 clk => regs[0][1].CLK
 clk => regs[0][2].CLK
@@ -2214,7 +2296,7 @@ dprr_wren => regs.OUTPUTSELECT
 dprr_wren => regs.OUTPUTSELECT
 
 
-|recop_and_peripherals_top|recop_top:u_recop|execute:u_execute
+|recop_top_soc_test_wrapper|recop_top:u_recop|execute:u_execute
 clk => alu:u_alu.clk
 clk => data_memory_ip:u_dm.clock
 init => ~NO_FANOUT~
@@ -2515,7 +2597,7 @@ dm_out[15] <= data_memory_ip:u_dm.q[15]
 z_flag <= alu:u_alu.z_flag
 
 
-|recop_and_peripherals_top|recop_top:u_recop|execute:u_execute|alu:u_alu
+|recop_top_soc_test_wrapper|recop_top:u_recop|execute:u_execute|alu:u_alu
 clk => alu_result[0]~reg0.CLK
 clk => alu_result[1]~reg0.CLK
 clk => alu_result[2]~reg0.CLK
@@ -2732,7 +2814,7 @@ reset => alu_result[2]~reg0.ENA
 reset => alu_result[1]~reg0.ENA
 
 
-|recop_and_peripherals_top|recop_top:u_recop|execute:u_execute|data_memory_ip:u_dm
+|recop_top_soc_test_wrapper|recop_top:u_recop|execute:u_execute|data_memory_ip:u_dm
 address[0] => altsyncram:altsyncram_component.address_a[0]
 address[1] => altsyncram:altsyncram_component.address_a[1]
 address[2] => altsyncram:altsyncram_component.address_a[2]
@@ -2778,7 +2860,7 @@ q[14] <= altsyncram:altsyncram_component.q_a[14]
 q[15] <= altsyncram:altsyncram_component.q_a[15]
 
 
-|recop_and_peripherals_top|recop_top:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component
+|recop_top_soc_test_wrapper|recop_top:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component
 wren_a => altsyncram_s3v3:auto_generated.wren_a
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -2844,7 +2926,7 @@ eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|recop_and_peripherals_top|recop_top:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component|altsyncram_s3v3:auto_generated
+|recop_top_soc_test_wrapper|recop_top:u_recop|execute:u_execute|data_memory_ip:u_dm|altsyncram:altsyncram_component|altsyncram_s3v3:auto_generated
 address_a[0] => ram_block1a0.PORTAADDR
 address_a[0] => ram_block1a1.PORTAADDR
 address_a[0] => ram_block1a2.PORTAADDR
@@ -3056,7 +3138,7 @@ wren_a => ram_block1a14.PORTAWE
 wren_a => ram_block1a15.PORTAWE
 
 
-|recop_and_peripherals_top|recop_top:u_recop|registers:u_registers
+|recop_top_soc_test_wrapper|recop_top:u_recop|registers:u_registers
 clk => dprr[1]~reg0.CLK
 clk => dprr[0]~reg0.CLK
 clk => sop_update_done~reg0.CLK
@@ -3678,7 +3760,7 @@ dpcr_cmd_lden => dpcr.OUTPUTSELECT
 dpcr_cmd_lden => dpcr.OUTPUTSELECT
 
 
-|recop_and_peripherals_top|recop_top:u_recop|sip_to_noc_command_encoder:u_sip_to_noc_encoder
+|recop_top_soc_test_wrapper|recop_top:u_recop|sip_to_noc_command_encoder:u_sip_to_noc_encoder
 sip_r[0] => ~NO_FANOUT~
 sip_r[1] => Mux0.IN7
 sip_r[1] => Mux1.IN7
@@ -3752,7 +3834,7 @@ recop_command.addr[6] <= <GND>
 recop_command.addr[7] <= <GND>
 
 
-|recop_and_peripherals_top|recop_top:u_recop|noc_status_to_sop_decoder:u_noc_status_to_sop_decoder
+|recop_top_soc_test_wrapper|recop_top:u_recop|noc_status_to_sop_decoder:u_noc_status_to_sop_decoder
 clk => sop_status_flag~reg0.CLK
 clk => sop_reg[0].CLK
 clk => sop_reg[1].CLK

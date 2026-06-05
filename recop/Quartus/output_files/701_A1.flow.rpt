@@ -1,5 +1,5 @@
 Flow report for 701_A1
-Tue Jun 02 22:40:32 2026
+Sat Jun 06 06:23:55 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,16 +40,16 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Tue Jun 02 22:40:32 2026       ;
+; Flow Status                     ; Successful - Sat Jun 06 06:23:55 2026       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; 701_A1                                      ;
-; Top-level Entity Name           ; recop_and_peripherals_top                   ;
+; Top-level Entity Name           ; recop_top_soc_test_wrapper                  ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 374 / 32,070 ( 1 % )                        ;
-; Total registers                 ; 397                                         ;
-; Total pins                      ; 105 / 457 ( 23 % )                          ;
+; Logic utilization (in ALMs)     ; 387 / 32,070 ( 1 % )                        ;
+; Total registers                 ; 365                                         ;
+; Total pins                      ; 67 / 457 ( 15 % )                           ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 24,576 / 4,065,280 ( < 1 % )                ;
 ; Total DSP Blocks                ; 0 / 87 ( 0 % )                              ;
@@ -67,41 +67,45 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/02/2026 22:36:14 ;
+; Start date & time ; 06/06/2026 06:21:09 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; 701_A1              ;
 +-------------------+---------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                                                                     ;
-+--------------------------------------+----------------------------------------------------+---------------+---------------------------+------------------------------+
-; Assignment Name                      ; Value                                              ; Default Value ; Entity Name               ; Section Id                   ;
-+--------------------------------------+----------------------------------------------------+---------------+---------------------------+------------------------------+
-; COMPILER_SIGNATURE_ID                ; 222805334544209.178039657432224                    ; --            ; --                        ; --                           ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                                 ; --            ; --                        ; recop_and_peripherals_top_tb ;
-; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; recop_and_peripherals_top_tb                       ; --            ; --                        ; eda_simulation               ;
-; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                                        ; --            ; --                        ; eda_simulation               ;
-; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (Verilog)                          ; <None>        ; --                        ; --                           ;
-; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                                    ; --            ; --                        ; eda_simulation               ;
-; EDA_TEST_BENCH_FILE                  ; ../RecopVHDL/Main/recop_and_peripherals_top_tb.vhd ; --            ; --                        ; recop_and_peripherals_top_tb ;
-; EDA_TEST_BENCH_MODULE_NAME           ; recop_and_peripherals_top_tb                       ; --            ; --                        ; recop_and_peripherals_top_tb ;
-; EDA_TEST_BENCH_NAME                  ; recop_and_peripherals_top_tb                       ; --            ; --                        ; eda_simulation               ;
-; EDA_TIME_SCALE                       ; 1 ps                                               ; --            ; --                        ; eda_simulation               ;
-; MAX_CORE_JUNCTION_TEMP               ; 85                                                 ; --            ; --                        ; --                           ;
-; MIN_CORE_JUNCTION_TEMP               ; 0                                                  ; --            ; --                        ; --                           ;
-; MISC_FILE                            ; ../RecopVHDL/Main/PLL.cmp                          ; --            ; --                        ; --                           ;
-; MISC_FILE                            ; ../RecopVHDL/Main/instruction_memory_ip.cmp        ; --            ; --                        ; --                           ;
-; MISC_FILE                            ; ../RecopVHDL/Main/data_memory_ip.cmp               ; --            ; --                        ; --                           ;
-; PARTITION_COLOR                      ; -- (Not supported for targeted family)             ; --            ; recop_and_peripherals_top ; Top                          ;
-; PARTITION_FITTER_PRESERVATION_LEVEL  ; -- (Not supported for targeted family)             ; --            ; recop_and_peripherals_top ; Top                          ;
-; PARTITION_NETLIST_TYPE               ; -- (Not supported for targeted family)             ; --            ; recop_and_peripherals_top ; Top                          ;
-; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                                ; --            ; --                        ; --                           ;
-; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW              ; --            ; --                        ; --                           ;
-; PROJECT_OUTPUT_DIRECTORY             ; output_files                                       ; --            ; --                        ; --                           ;
-; SYNTHESIS_ONLY_QIP                   ; On                                                 ; --            ; --                        ; --                           ;
-; TOP_LEVEL_ENTITY                     ; recop_and_peripherals_top                          ; 701_A1        ; --                        ; --                           ;
-+--------------------------------------+----------------------------------------------------+---------------+---------------------------+------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                                        ;
++--------------------------------------+-----------------------------------------------------+---------------+----------------------------+-------------------------------+
+; Assignment Name                      ; Value                                               ; Default Value ; Entity Name                ; Section Id                    ;
++--------------------------------------+-----------------------------------------------------+---------------+----------------------------+-------------------------------+
+; COMPILER_SIGNATURE_ID                ; 222805334544209.178068366917976                     ; --            ; --                         ; --                            ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                                  ; --            ; --                         ; recop_and_peripherals_top_tb  ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                                  ; --            ; --                         ; recop_top_soc_test_wrapper_tb ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; recop_top_soc_test_wrapper_tb                       ; --            ; --                         ; eda_simulation                ;
+; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                                         ; --            ; --                         ; eda_simulation                ;
+; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (Verilog)                           ; <None>        ; --                         ; --                            ;
+; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                                     ; --            ; --                         ; eda_simulation                ;
+; EDA_TEST_BENCH_FILE                  ; ../RecopVHDL/Main/recop_and_peripherals_top_tb.vhd  ; --            ; --                         ; recop_and_peripherals_top_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../RecopVHDL/Main/recop_top_soc_test_wrapper_tb.vhd ; --            ; --                         ; recop_top_soc_test_wrapper_tb ;
+; EDA_TEST_BENCH_MODULE_NAME           ; recop_and_peripherals_top_tb                        ; --            ; --                         ; recop_and_peripherals_top_tb  ;
+; EDA_TEST_BENCH_MODULE_NAME           ; recop_top_soc_test_wrapper_tb                       ; --            ; --                         ; recop_top_soc_test_wrapper_tb ;
+; EDA_TEST_BENCH_NAME                  ; recop_and_peripherals_top_tb                        ; --            ; --                         ; eda_simulation                ;
+; EDA_TEST_BENCH_NAME                  ; recop_top_soc_test_wrapper_tb                       ; --            ; --                         ; eda_simulation                ;
+; EDA_TIME_SCALE                       ; 1 ps                                                ; --            ; --                         ; eda_simulation                ;
+; MAX_CORE_JUNCTION_TEMP               ; 85                                                  ; --            ; --                         ; --                            ;
+; MIN_CORE_JUNCTION_TEMP               ; 0                                                   ; --            ; --                         ; --                            ;
+; MISC_FILE                            ; ../RecopVHDL/Main/PLL.cmp                           ; --            ; --                         ; --                            ;
+; MISC_FILE                            ; ../RecopVHDL/Main/instruction_memory_ip.cmp         ; --            ; --                         ; --                            ;
+; MISC_FILE                            ; ../RecopVHDL/Main/data_memory_ip.cmp                ; --            ; --                         ; --                            ;
+; PARTITION_COLOR                      ; -- (Not supported for targeted family)              ; --            ; recop_top_soc_test_wrapper ; Top                           ;
+; PARTITION_FITTER_PRESERVATION_LEVEL  ; -- (Not supported for targeted family)              ; --            ; recop_top_soc_test_wrapper ; Top                           ;
+; PARTITION_NETLIST_TYPE               ; -- (Not supported for targeted family)              ; --            ; recop_top_soc_test_wrapper ; Top                           ;
+; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                                 ; --            ; --                         ; --                            ;
+; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW               ; --            ; --                         ; --                            ;
+; PROJECT_OUTPUT_DIRECTORY             ; output_files                                        ; --            ; --                         ; --                            ;
+; SYNTHESIS_ONLY_QIP                   ; On                                                  ; --            ; --                         ; --                            ;
+; TOP_LEVEL_ENTITY                     ; recop_top_soc_test_wrapper                          ; 701_A1        ; --                         ; --                            ;
++--------------------------------------+-----------------------------------------------------+---------------+----------------------------+-------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -109,12 +113,12 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:13     ; 1.0                     ; 4934 MB             ; 00:00:21                           ;
-; Fitter               ; 00:03:47     ; 1.0                     ; 7873 MB             ; 00:23:42                           ;
-; Assembler            ; 00:00:06     ; 1.0                     ; 4842 MB             ; 00:00:06                           ;
-; Timing Analyzer      ; 00:00:07     ; 2.1                     ; 5327 MB             ; 00:00:10                           ;
-; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4760 MB             ; 00:00:01                           ;
-; Total                ; 00:04:14     ; --                      ; --                  ; 00:24:20                           ;
+; Analysis & Synthesis ; 00:00:09     ; 1.0                     ; 4940 MB             ; 00:00:18                           ;
+; Fitter               ; 00:02:22     ; 1.0                     ; 7892 MB             ; 00:16:36                           ;
+; Assembler            ; 00:00:05     ; 1.0                     ; 4845 MB             ; 00:00:05                           ;
+; Timing Analyzer      ; 00:00:05     ; 2.2                     ; 5330 MB             ; 00:00:07                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4755 MB             ; 00:00:01                           ;
+; Total                ; 00:02:42     ; --                      ; --                  ; 00:17:07                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

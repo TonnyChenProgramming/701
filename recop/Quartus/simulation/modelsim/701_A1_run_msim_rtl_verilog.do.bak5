@@ -21,11 +21,11 @@ vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/multicy
 vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/ALU.vhd}
 vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/execute.vhd}
 vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top.vhd}
-vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_top_soc_test_wrapper.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/RecopVHDL/Main/recop_and_peripherals_top.vhd}
 
-vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/Quartus/../RecopVHDL/Main/recop_top_soc_test_wrapper_tb.vhd}
+vcom -93 -work work {C:/intelFPGA_lite/18.1/701/701/recop/Quartus/../RecopVHDL/Main/recop_and_peripherals_top_tb.vhd}
 
-vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  recop_top_soc_test_wrapper_tb
+vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  recop_and_peripherals_top_tb
 
 add wave *
 view structure
