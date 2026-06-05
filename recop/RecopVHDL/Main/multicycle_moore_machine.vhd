@@ -109,10 +109,10 @@ begin
 
         case state is
             when S_EVENT_CHECK =>
-                if (per_input_flag = '1') then 
-                    next_state <= S_WRITE_COMMAND;
-                elsif (sop_status_flag = '1') then 
+                if (sop_status_flag = '1') then
                     next_state <= S_STATUS_OUPUT_UPDATE;
+                elsif (per_input_flag = '1') then 
+                    next_state <= S_WRITE_COMMAND;
                 else 
                     next_state <= S_FETCH;
                 end if;
