@@ -60,28 +60,39 @@ int nios_noc_adapter_send(nios_noc_adapter_t *adapter, uint32_t packet)
 int nios_noc_adapter_try_recv(nios_noc_adapter_t *adapter, uint32_t *packet)
 {
     uint32_t status = nios_noc_adapter_rx_status(adapter);
+    uint32_t clear_mask;
 
-    if ((status & (NIOS_NOC_RX_ERROR | NIOS_NOC_RX_OVERFLOW)) != 0u) {
+    if ((status & NIOS_NOC_RX_ERROR) != 0u) {
         return -2;
     }
 
     if ((status & NIOS_NOC_RX_VALID) == 0u) {
+        if ((status & NIOS_NOC_RX_OVERFLOW) != 0u) {
+            nios_noc_write32(adapter->base, NIOS_NOC_RX_CONTROL_OFFSET, NIOS_NOC_RX_CLEAR);
+            return -2;
+        }
+
         return 0;
     }
 
     *packet = nios_noc_read32(adapter->base, NIOS_NOC_RX_PACKET_OFFSET);
-    nios_noc_write32(adapter->base, NIOS_NOC_RX_CONTROL_OFFSET, NIOS_NOC_RX_ACK);
-    return 1;
+    clear_mask = NIOS_NOC_RX_ACK;
+    if ((status & NIOS_NOC_RX_OVERFLOW) != 0u) {
+        clear_mask |= NIOS_NOC_RX_CLEAR;
+    }
+    nios_noc_write32(adapter->base, NIOS_NOC_RX_CONTROL_OFFSET, clear_mask);
+    return (status & NIOS_NOC_RX_OVERFLOW) != 0u ? 2 : 1;
 }
 
 void nios_noc_adapter_clear(nios_noc_adapter_t *adapter)
 {
-    nios_noc_write32(adapter->base, NIOS_NOC_TX_CONTROL_OFFSET, NIOS_NOC_TX_CLEAR);
-    nios_noc_write32(
-        adapter->base,
-        NIOS_NOC_RX_CONTROL_OFFSET,
-        NIOS_NOC_RX_ACK | NIOS_NOC_RX_CLEAR
-    );
+    uint32_t control = NIOS_NOC_SOFT_RESET;
+
+    if ((nios_noc_adapter_status(adapter) & NIOS_NOC_STATUS_LOOPBACK_EN) != 0u) {
+        control |= NIOS_NOC_LOOPBACK_EN;
+    }
+
+    nios_noc_write32(adapter->base, NIOS_NOC_ADAPTER_CONTROL_OFFSET, control);
 }
 
 void nios_noc_adapter_set_loopback(

@@ -53,6 +53,7 @@ architecture rtl of pd_asp is
     signal core_corr_valid    : std_logic;
     signal core_corr_ready    : std_logic;
     signal core_peak_count    : unsigned(19 downto 0);
+    signal core_peak_value    : unsigned(19 downto 0);
     signal core_peak_valid    : std_logic;
     signal core_fsm_state     : std_logic;
     signal core_live_counter  : unsigned(23 downto 0);
@@ -64,6 +65,8 @@ architecture rtl of pd_asp is
     signal out_word_r    : packet_word_t := (others => '0');
     signal status_pending_r : std_logic   := '0';
     signal status_command_r : nibble_t    := CMD_NOP;
+    signal peak_value_pending_r : std_logic := '0';
+    signal peak_value_r         : unsigned(19 downto 0) := (others => '0');
  
     -- Combinational packet classification (now from REGISTERED input)
     signal in_kind          : std_logic_vector(3 downto 0);
@@ -176,6 +179,7 @@ begin
             corr_valid       => core_corr_valid,
             corr_ready       => core_corr_ready,
             peak_count       => core_peak_count,
+            peak_value       => core_peak_value,
             peak_valid       => core_peak_valid,
             fsm_state        => core_fsm_state,
             live_counter     => core_live_counter,
@@ -197,6 +201,8 @@ begin
                 out_word_r       <= (others => '0');
                 status_pending_r <= '0';
                 status_command_r <= CMD_NOP;
+                peak_value_pending_r <= '0';
+                peak_value_r <= (others => '0');
             else
                 if out_pending_r = '1' and out_ready = '1' then
                     out_pending_r <= '0';
@@ -245,12 +251,21 @@ begin
                                                      RECOP_PORT,
                                                      status_errors_payload);
                         out_pending_r <= '1';
+                    elsif peak_value_pending_r = '1' then
+                        out_word_r    <= make_packet(PKT_KIND_EVENT,
+                                                     EVENT_PEAK_VALUE,
+                                                     cfg_output_dest,
+                                                     std_logic_vector(peak_value_r));
+                        out_pending_r <= '1';
+                        peak_value_pending_r <= '0';
                     elsif core_peak_valid = '1' then
                         out_word_r    <= make_packet(PKT_KIND_EVENT,
                                                      EVENT_MAX_PEAK,
                                                      cfg_output_dest,
                                                      std_logic_vector(core_peak_count));
                         out_pending_r <= '1';
+                        peak_value_r <= core_peak_value;
+                        peak_value_pending_r <= '1';
                     end if;
                 end if;
 

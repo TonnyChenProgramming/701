@@ -74,6 +74,7 @@ package asp_packet_pkg is
     --------------------------------------------------------------------
     constant EVENT_MAX_PEAK : nibble_t := "0001";
     constant EVENT_MIN_PEAK : nibble_t := "0010";
+    constant EVENT_PEAK_VALUE : nibble_t := "0011";
 
     --------------------------------------------------------------------
     -- COR-ASP config tags

@@ -91,7 +91,7 @@ begin
         end if;
     end process;
 
-    send.addr <= port4_to_addr8(packet_dest(status_word)) when status_pending_r = '1'
+    send.addr <= RECOP_ADDR when status_pending_r = '1'
                  else port4_to_addr8(packet_dest(out_word)) when out_valid = '1'
                  else NULL_ADDR;
 

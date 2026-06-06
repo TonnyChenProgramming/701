@@ -16,6 +16,7 @@
 
 #define NIOS_EVENT_MAX_PEAK   0x1u
 #define NIOS_EVENT_MIN_PEAK   0x2u
+#define NIOS_EVENT_PEAK_VALUE 0x3u
 
 #define NIOS_ADDR_RECOP       0x0u
 #define NIOS_ADDR_ADC_ASP     0x1u

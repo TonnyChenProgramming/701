@@ -11,6 +11,7 @@ ENTITY CorAspDecoder is
 	(
         -- system signal
 		clock : in bit_1;
+        reset : in bit_1;
 
         -- packet input from NoC
         recv : in tdma_min_port;
@@ -58,6 +59,13 @@ ARCHITECTURE beh OF CorAspDecoder IS
     signal config_pending_reg    : bit_1 := '0';
     signal calculate_pending_reg : bit_1 := '0';
 
+    signal dm_data_in_reg : bit_16 := (others => '0');
+    signal dm_wren_reg    : bit_1 := '0';
+    signal calculate_reg  : bit_1 := '0';
+
+    signal config_done_status_reg_i : bit_1 := '0';
+    signal reset_done_status_reg_i  : bit_1 := '0';
+
     signal status_pending_reg : bit_1 := '0';
     signal reset_request_reg  : bit_1 := '0';
 
@@ -71,12 +79,17 @@ BEGIN
 
     new_ave_data_addr <= next_write_addr_reg;
     dm_wr_addr <= next_write_addr_reg;
+    dm_data_in <= dm_data_in_reg;
+    dm_wren <= dm_wren_reg;
 
     config_en <= config_pending_reg;
+    calculate <= calculate_reg;
     direct_passthrough_en <= mode_reg;
 
     status_pending <= status_pending_reg;
     reset_request <= reset_request_reg;
+    config_done_status_reg <= config_done_status_reg_i;
+    reset_done_status_reg <= reset_done_status_reg_i;
 
     --------------------------------------------------------------------
     -- Packet decoder / mode controller
@@ -88,8 +101,22 @@ BEGIN
             ------------------------------------------------------------
             -- Default one-cycle pulse outputs
             ------------------------------------------------------------
-            dm_wren <= '0';
-            calculate <= '0';
+            dm_wren_reg <= '0';
+            calculate_reg <= '0';
+
+            if reset = '1' then
+                mode_reg <= MODE_PASS_THROUGH;
+                window_reg <= (others => '0');
+                offset_reg <= (others => '0');
+                next_write_addr_reg <= "111111111";
+                config_pending_reg <= '0';
+                calculate_pending_reg <= '0';
+                dm_data_in_reg <= (others => '0');
+                reset_request_reg <= '0';
+                config_done_status_reg_i <= '0';
+                reset_done_status_reg_i <= '0';
+                status_pending_reg <= '0';
+            else
 
             ------------------------------------------------------------
             -- Handshake 1: config handshake
@@ -98,7 +125,7 @@ BEGIN
             ------------------------------------------------------------
             if config_done = '1' then
                 config_pending_reg <= '0';
-                config_done_status_reg <= '1';
+                config_done_status_reg_i <= '1';
                 status_pending_reg <= '1';
 
             end if;
@@ -110,8 +137,8 @@ BEGIN
             ------------------------------------------------------------
             if status_transmit_done = '1' then
                 status_pending_reg <= '0';
-                reset_done_status_reg <= '0';
-                config_done_status_reg <= '0';
+                reset_done_status_reg_i <= '0';
+                config_done_status_reg_i <= '0';
             end if;
 
             ------------------------------------------------------------
@@ -121,7 +148,7 @@ BEGIN
             ------------------------------------------------------------
             if reset_done = '1' then
                 reset_request_reg <= '0';
-                reset_done_status_reg <= '1';
+                reset_done_status_reg_i <= '1';
                 status_pending_reg <= '1';
             end if;
 
@@ -129,7 +156,7 @@ BEGIN
             -- Delayed calculate pulse
             ------------------------------------------------------------
             if calculate_pending_reg = '1' then
-                calculate <= '1';
+                calculate_reg <= '1';
                 calculate_pending_reg <= '0';
             end if;
 
@@ -203,7 +230,7 @@ BEGIN
 
                             reset_request_reg <= '1';
 
-                            dm_data_in <= (others => '0');
+                            dm_data_in_reg <= (others => '0');
 
                         when others =>
                             null;
@@ -225,15 +252,15 @@ BEGIN
 
                     if mode_reg = MODE_CORRELATION then
 
-                        dm_data_in <= bit_16(packet_payload(recv.data)(15 downto 0));
-                        dm_wren <= '1';
+                        dm_data_in_reg <= bit_16(packet_payload(recv.data)(15 downto 0));
+                        dm_wren_reg <= '1';
 
                         next_write_addr_reg <= bit_9(unsigned(next_write_addr_reg) + 1);
 
                         calculate_pending_reg <= '1';
 
                     else
-                        dm_data_in <= bit_16(packet_payload(recv.data)(15 downto 0));
+                        dm_data_in_reg <= bit_16(packet_payload(recv.data)(15 downto 0));
                     end if;
 
                 --------------------------------------------------------
@@ -249,6 +276,7 @@ BEGIN
                     null;
 
             end case;
+            end if;
 
         end if;
     end process;

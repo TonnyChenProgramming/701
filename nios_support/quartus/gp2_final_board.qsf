@@ -1,0 +1,59 @@
+set_global_assignment -name TOP_LEVEL_ENTITY gp2_final_board_top
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Standard Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files_gp2_final
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+
+source DE1_SoC.qsf
+
+
+
+
+
+
+
+
+set_global_assignment -name MISC_FILE ../../recop/RecopVHDL/Main/cpu_mif.mif
+
+
+set_global_assignment -name DEVICE 5CSEMA5F31C6
+set_global_assignment -name FAMILY "Cyclone V"
+set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
+set_global_assignment -name QIP_FILE Nios_System_2A/synthesis/Nios_System_2A.qip
+set_global_assignment -name QIP_FILE "../../COR-ASP/ASP/ASPVHDL/AverageFilteredData.qip"
+set_global_assignment -name VHDL_FILE ../../common/asp_packet_pkg.vhd
+set_global_assignment -name VHDL_FILE ../../common/TdmaMinTypes.vhd
+set_global_assignment -name VHDL_FILE "../../COR-ASP/ASP/ASPVHDL/asp_types.vhd"
+set_global_assignment -name VHDL_FILE "../../COR-ASP/ASP/ASPVHDL/asp_constants.vhd"
+set_global_assignment -name VHDL_FILE ../../recop/RecopVHDL/Main/recop_types.vhd
+set_global_assignment -name VHDL_FILE ../../recop/RecopVHDL/Main/various_constants.vhd
+set_global_assignment -name VHDL_FILE ../../recop/RecopVHDL/Main/sip_to_noc_command_encoder.vhd
+set_global_assignment -name VHDL_FILE ../../recop/RecopVHDL/Main/noc_status_to_sop_decoder.vhd
+set_global_assignment -name VHDL_FILE ../../adc_asp/adc_asp_core.vhd
+set_global_assignment -name VHDL_FILE ../../adc_asp/adc_asp.vhd
+set_global_assignment -name VHDL_FILE ../../avg_asp/avg_asp_core.vhd
+set_global_assignment -name VHDL_FILE ../../avg_asp/avg_asp.vhd
+set_global_assignment -name VHDL_FILE "../../COR-ASP/ASP/ASPVHDL/address_generator.vhd"
+set_global_assignment -name VHDL_FILE "../../COR-ASP/ASP/ASPVHDL/mac.vhd"
+set_global_assignment -name VHDL_FILE "../../COR-ASP/ASP/ASPVHDL/multicycle_moore_machine.vhd"
+set_global_assignment -name VHDL_FILE "../../COR-ASP/ASP/ASPVHDL/Correlation_Calculator.vhd"
+set_global_assignment -name VHDL_FILE "../../COR-ASP/ASP/ASPVHDL/CorAspDecoder.vhd"
+set_global_assignment -name VHDL_FILE "../../COR-ASP/ASP/ASPVHDL/CorAspEncoder.vhd"
+set_global_assignment -name VHDL_FILE "../../COR-ASP/ASP/ASPVHDL/Correlation_ASP.vhd"
+set_global_assignment -name VHDL_FILE "../../PD-ASP/pd_core.vhd"
+set_global_assignment -name VHDL_FILE "../../PD-ASP/pd_asp.vhd"
+set_global_assignment -name VHDL_FILE "../../PD-ASP/PeakDetector_ASP.vhd"
+set_global_assignment -name VHDL_FILE ../../gp2_member_c/gp2_recop_control_io.vhd
+set_global_assignment -name VHDL_FILE ../../gp2_member_c/gp2_final_noc_asp_top.vhd
+set_global_assignment -name VHDL_FILE gp2_final_board_top.vhd
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name CDF_FILE output_files_gp2_final/Chain2.cdf
+set_global_assignment -name CDF_FILE output_files_gp2_final/Chain3.cdf
+set_global_assignment -name CDF_FILE output_files_gp2_final/Chain4.cdf
+set_global_assignment -name CDF_FILE output_files_gp2_final/Chain5.cdf
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

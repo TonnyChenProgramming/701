@@ -9,6 +9,7 @@ ENTITY CorAspEncoder is
 	port
 	(
         clock : in bit_1;
+        reset : in bit_1;
 
         send  : out tdma_min_port;
 
@@ -43,6 +44,14 @@ begin
             send.data <= (others => '0');
 
             status_transmit_done <= '0';
+
+            if reset = '1' then
+                send.addr <= NULL_ADDR;
+                send.data <= (others => '0');
+                status_transmit_done <= '0';
+                double_packet_flag <= '0';
+                correlation_reg <= (others => '0');
+            else
 
             ------------------------------------------------------------
             -- Priority 1: finish second correlation packet
@@ -112,6 +121,7 @@ begin
                 double_packet_flag <= '0';
                 send.addr <= NULL_ADDR;
                 send.data <= (others => '0');
+            end if;
             end if;
 
         end if;

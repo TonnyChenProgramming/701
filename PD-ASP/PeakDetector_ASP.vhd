@@ -43,6 +43,13 @@ architecture rtl of PeakDetector_ASP is
     signal pd_out_valid : std_logic;
     signal pd_out_ready : std_logic;
     signal pd_out_word  : packet_word_t;
+    signal pd_out_fire  : std_logic;
+
+    -- The final GP2 router gives the Peak source one slot per six-cycle TDMA
+    -- round. Pace output packets so paired MAX_PEAK/PEAK_VALUE events are not
+    -- dropped by the one-entry source mailbox.
+    constant SEND_GAP_CYCLES : natural := 6;
+    signal send_cooldown_r : natural range 0 to SEND_GAP_CYCLES := 0;
 
     signal cor_low_payload_r : payload20_t := (others => '0');
     signal cor_low_seen_r    : std_logic := '0';
@@ -80,9 +87,14 @@ architecture rtl of PeakDetector_ASP is
     begin
         pkt := pd_packet;
 
-        -- In GP2 the TDMA-MIN route address is send.addr. Keep this nibble
-        -- available as the source ASP id, matching Tonny's COR encoder style.
-        pkt(23 downto 20) := MY_PORT4;
+        -- STATUS packets are routed to ReCOP, so keep the packet nibble
+        -- available as the source ASP id for the ReCOP LED decoder.
+        -- EVENT packets keep their logical Nios destination so the Nios
+        -- console records peak_count correctly.
+        if packet_kind(pkt) = PKT_KIND_STATUS then
+            pkt(23 downto 20) := MY_PORT4;
+        end if;
+
         return pkt;
     end function;
 
@@ -169,8 +181,23 @@ begin
     end process;
 
     -- There is no explicit ready/ack signal on the simple Lab 2 send port.
-    -- Present each PD output packet to TDMA-MIN for one cycle.
-    pd_out_ready <= '1';
+    -- Emit one-cycle pulses, then pause long enough for the router source
+    -- mailbox to drain before accepting the next PD output packet.
+    pd_out_ready <= '1' when send_cooldown_r = 0 else '0';
+    pd_out_fire  <= pd_out_valid and pd_out_ready;
+
+    process(clock)
+    begin
+        if rising_edge(clock) then
+            if pd_reset = '1' then
+                send_cooldown_r <= 0;
+            elsif pd_out_fire = '1' then
+                send_cooldown_r <= SEND_GAP_CYCLES;
+            elsif send_cooldown_r > 0 then
+                send_cooldown_r <= send_cooldown_r - 1;
+            end if;
+        end if;
+    end process;
 
     u_pd_asp : entity work.pd_asp
         generic map (
@@ -188,9 +215,9 @@ begin
             out_word  => pd_out_word
         );
 
-    send.addr <= port4_to_addr8(packet_dest(pd_out_word)) when pd_out_valid = '1'
+    send.addr <= port4_to_addr8(packet_dest(pd_out_word)) when pd_out_fire = '1'
                  else NULL_ADDR;
-    send.data <= pd_packet_to_tdma_data(pd_out_word) when pd_out_valid = '1'
+    send.data <= pd_packet_to_tdma_data(pd_out_word) when pd_out_fire = '1'
                  else (others => '0');
 
 end architecture rtl;

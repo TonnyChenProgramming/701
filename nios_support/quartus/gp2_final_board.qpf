@@ -1,0 +1,10 @@
+# -------------------------------------------------------------------------- #
+# Quartus Prime project file for the GP2 final DE1-SoC integration build.
+# -------------------------------------------------------------------------- #
+
+QUARTUS_VERSION = "18.1"
+DATE = "00:00:00  June 05, 2026"
+
+# Revisions
+
+PROJECT_REVISION = "gp2_final_board"

@@ -15,6 +15,9 @@ entity Correlation_ASP is
 end entity;
 
 architecture rtl of Correlation_ASP is
+    signal asp_reset  : bit_1;
+    signal core_reset : bit_1;
+
 	-- config handshake from core
 	signal config_done : bit_1;
     signal config_done_status_reg : bit_1;
@@ -51,10 +54,13 @@ architecture rtl of Correlation_ASP is
     signal correlation : bit_36;
     signal correlation_rdy : bit_1;
 begin
+    asp_reset <= reset or init;
+    core_reset <= reset or reset_request;
 
 	u_decoder : entity work.CorAspDecoder
     port map(
         clock => clock,
+        reset => asp_reset,
 
         recv => recv,
 
@@ -83,6 +89,7 @@ begin
     u_encoder : entity work.CorAspEncoder
     port map (
         clock => clock,
+        reset => asp_reset,
 
         send => send,  
 
@@ -113,7 +120,7 @@ begin
     u_correlation_calculator : entity work.Correlation_Calculator
     port map(
         clock => clock,
-        reset => reset_request,
+        reset => core_reset,
         init => init,
 
         --reset done

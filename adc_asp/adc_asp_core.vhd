@@ -79,7 +79,7 @@ begin
     status_word <= make_packet(
         PKT_KIND_STATUS,
         TAG_STATUS,
-        RECOP_ADDR(3 downto 0),
+        ADC_ADDR(3 downto 0),
         "0000" & enabled & std_logic_vector(channel_sel) & std_logic_vector(sample_div) & std_logic_vector(phase) & "000"
     );
 

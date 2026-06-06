@@ -82,10 +82,19 @@ void nios_display_format(
              (unsigned long)state->pk_spacing,
              (unsigned long)state->pk_threshold);
 
-    if (state->has_peak_count) {
+    if (state->has_peak_count && state->has_peak_value) {
         snprintf(snapshot->lines[6], sizeof(snapshot->lines[6]),
-                 "RESULT: peak count=%lu",
+                 "RESULT: peak value=%lu spacing=%lu",
+                 (unsigned long)state->latest_peak_value,
                  (unsigned long)state->latest_peak_count);
+    } else if (state->has_peak_count) {
+        snprintf(snapshot->lines[6], sizeof(snapshot->lines[6]),
+                 "RESULT: peak spacing=%lu, waiting value",
+                 (unsigned long)state->latest_peak_count);
+    } else if (state->has_peak_value) {
+        snprintf(snapshot->lines[6], sizeof(snapshot->lines[6]),
+                 "RESULT: peak value=%lu",
+                 (unsigned long)state->latest_peak_value);
     } else {
         snprintf(snapshot->lines[6], sizeof(snapshot->lines[6]),
                  "RESULT: waiting for PK event");

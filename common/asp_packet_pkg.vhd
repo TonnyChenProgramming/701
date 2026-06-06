@@ -58,6 +58,7 @@ package asp_packet_pkg is
 
     constant EVENT_MAX_PEAK : nibble_t := "0001";
     constant EVENT_MIN_PEAK : nibble_t := "0010";
+    constant EVENT_PEAK_VALUE : nibble_t := "0011";
 
     constant TAG_WINDOW      : nibble_t := "0000";
     constant TAG_OFFSET      : nibble_t := "0001";
@@ -68,6 +69,8 @@ package asp_packet_pkg is
 
     constant MODE_PASS_THROUGH : std_logic := '1';
     constant MODE_CORRELATION  : std_logic := '0';
+
+    constant EMPTY_PAYLOAD : sample20_t := "00000000000000000000";
 
     function packet_kind(pkt : packet_word_t) return nibble_t;
     function packet_code(pkt : packet_word_t) return nibble_t;

@@ -14,6 +14,8 @@ No Avalon/NoC hardware adapter is required for dry-run mode.
 | `offset <n>` | Configure COR offset value. | Example: `0x11310064` |
 | `pk <dest> <sp> <th>` | Configure PK output destination, min spacing, and threshold. | Example: `0x1145C800` |
 | `poll` | Poll the hardware adapter for one received packet | No TX packet |
+| `capture <n>` | Drain and print up to `n` received packets from the hardware adapter FIFO. | No TX packet |
+| `demo <adc|avg|full|board> [n]` | Run a canned board demo. `board` arms the chain for SW/KEY3 starts. | No TX packet |
 | `hwstatus` | Print decoded Avalon-NoC adapter register flags. | No TX packet |
 | `hwclear` | Clear adapter TX/RX error and overflow flags. | No TX packet |
 | `hwloop <0|1>` | Enable or disable adapter-local loopback for board smoke testing. | No TX packet |
@@ -96,6 +98,61 @@ HW loopback=0
 ```
 
 This proves the Nios Avalon-MM connection, register base address, TX write path, RX read path, and acknowledgement path before the external NoC conduits are connected.
+
+After TDMA-MIN/ASP integration, keep loopback disabled for the real demo:
+
+```text
+nios> hwclear
+HW cleared
+
+nios> hwloop 0
+HW loopback=0
+
+nios> adc avg 0 0
+TX 0x11120000
+
+nios> avg cor 4
+TX 0x11230200
+
+nios> corwin 4
+TX 0x11300004
+
+nios> offset 100
+TX 0x11310064
+
+nios> pk nios 0 0
+TX 0x11450000
+```
+
+Then use the ReCOP board controls to START the ASPs and poll until a peak event
+arrives:
+
+```text
+nios> poll
+RX 0x41500001 EVENT code=0x1 dest=NIOS payload=0x00001 event=MAX_PEAK peak_count=1
+```
+
+For the provided `gp2_final_board_top.vhd` wrapper, `SW1..SW0` selects the ASP
+address (`00` ADC, `01` AVG, `10` COR, `11` PK) and `KEY3` sends START through
+the ReCOP control encoder.
+
+For a lecturer demo that keeps LEDR3..0 tied to the physical ReCOP controls,
+run:
+
+```text
+nios> demo board
+```
+
+Then use `SW1..SW0` plus `KEY3` in this order:
+
+```text
+01 AVG  -> LEDR2
+10 COR  -> LEDR1
+11 PK   -> LEDR0
+00 ADC  -> LEDR3
+```
+
+After the LEDs are on, run `capture 8` and `display`.
 
 ## Packet Format
 

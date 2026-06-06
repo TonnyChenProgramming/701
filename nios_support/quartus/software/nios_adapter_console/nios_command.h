@@ -19,6 +19,7 @@ typedef struct {
     uint32_t last_tx_packet;
     uint32_t last_rx_packet;
     uint32_t latest_peak_count;
+    uint32_t latest_peak_value;
     uint32_t config_done_mask;
     uint32_t last_status_source;
     uint32_t last_status_code;
@@ -27,6 +28,7 @@ typedef struct {
     int has_last_tx;
     int has_last_rx;
     int has_peak_count;
+    int has_peak_value;
     int has_last_status;
 } nios_command_state_t;
 
@@ -61,8 +63,14 @@ int nios_command_config_pk(
     uint32_t spacing,
     uint32_t threshold
 );
+int nios_command_control_asp(
+    nios_command_state_t *state,
+    uint32_t dest,
+    uint32_t command
+);
 void nios_command_record_rx(nios_command_state_t *state, uint32_t packet);
 int nios_command_poll_adapter(nios_command_state_t *state);
+int nios_command_capture_adapter(nios_command_state_t *state, uint32_t requested);
 int nios_command_print_adapter_status(const nios_command_state_t *state);
 int nios_command_clear_adapter(nios_command_state_t *state);
 int nios_command_set_loopback(nios_command_state_t *state, int enabled);

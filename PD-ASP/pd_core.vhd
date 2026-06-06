@@ -29,6 +29,7 @@ entity pd_core is
  
         -- Peak event output (consumed by NoC wrapper)
         peak_count       : out unsigned(19 downto 0);  -- samples since last peak
+        peak_value       : out unsigned(19 downto 0);  -- local maximum value
         peak_valid       : out std_logic;  -- one-cycle pulse on accepted peak
  
         -- Status outputs for the wrapper to expose via STATUS packets
@@ -50,6 +51,7 @@ architecture rtl of pd_core is
     signal last_corr_r    : unsigned(19 downto 0) := (others => '0');
     signal counter_r      : unsigned(23 downto 0) := (others => '0');
     signal peak_count_r   : unsigned(19 downto 0) := (others => '0');
+    signal peak_value_r   : unsigned(19 downto 0) := (others => '0');
     signal peak_valid_r   : std_logic := '0';
     signal first_seen_r   : std_logic := '0';  -- seen at least one sample
     signal first_peak_r   : std_logic := '0';  -- first peak suppressed
@@ -103,6 +105,7 @@ begin
                 last_corr_r    <= (others => '0');
                 counter_r      <= (others => '0');
                 peak_count_r   <= (others => '0');
+                peak_value_r   <= (others => '0');
                 peak_valid_r   <= '0';
                 first_seen_r   <= '0';
                 first_peak_r   <= '0';
@@ -131,6 +134,7 @@ begin
  
                                 elsif peak_accepted = '1' then
                                     peak_count_r  <= counter_r(19 downto 0);
+                                    peak_value_r  <= last_corr_r;
                                     peak_valid_r  <= '1';
                                     counter_r     <= (others => '0');
                                     total_peaks_r <= total_peaks_r + 1;
@@ -159,6 +163,7 @@ begin
  
     -- Output assignments
     peak_count   <= peak_count_r;
+    peak_value   <= peak_value_r;
     peak_valid   <= peak_valid_r;
     fsm_state    <= state_r;
     live_counter <= counter_r;

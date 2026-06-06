@@ -74,7 +74,7 @@ begin
     status_word <= make_packet(
         PKT_KIND_STATUS,
         TAG_STATUS,
-        RECOP_ADDR(3 downto 0),
+        AVE_ASP_ADDR(3 downto 0),
         "0000" & enabled & std_logic_vector(window_shift) & std_logic_vector(valid_count) & std_logic_vector(write_index) & "000"
     );
 
