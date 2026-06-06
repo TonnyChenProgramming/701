@@ -10,4 +10,4 @@
 nios_support/quartus/*.sopcinfo
 
 # Local Nios II Eclipse workspace and generated BSP
-/software/
+# /software/
