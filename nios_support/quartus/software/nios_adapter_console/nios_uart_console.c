@@ -213,6 +213,7 @@ static void nios_handle_rx(
 
     nios_command_record_rx(state, packet);
     nios_command_print_rx(packet);
+    nios_display_write_vga(state);
 }
 
 static int nios_handle_line(nios_command_state_t *state, char *line)
@@ -270,7 +271,9 @@ static int nios_handle_line(nios_command_state_t *state, char *line)
         }
         nios_handle_rx(state, arg1);
     } else if (strcmp(command, "poll") == 0) {
-        nios_command_poll_adapter(state);
+        if (nios_command_poll_adapter(state) > 0) {
+            nios_display_write_vga(state);
+        }
     } else if (strcmp(command, "hwstatus") == 0) {
         nios_command_print_adapter_status(state);
     } else if (strcmp(command, "hwclear") == 0) {

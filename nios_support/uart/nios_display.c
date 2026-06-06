@@ -56,26 +56,28 @@ void nios_display_format(
 )
 {
     snprintf(snapshot->lines[0], sizeof(snapshot->lines[0]),
-             "NIOS ASP STATUS");
+             "FREQUENCY DETECTOR STATUS");
     snprintf(snapshot->lines[1], sizeof(snapshot->lines[1]),
-             "LINK: %s", state->adapter == NULL ? "DRY RUN" : "AVALON-NOC");
+             "MODE: AVG -> COR -> PK");
     snprintf(snapshot->lines[2], sizeof(snapshot->lines[2]),
+             "LINK: %s", state->adapter == NULL ? "DRY RUN" : "AVALON-NOC");
+    snprintf(snapshot->lines[3], sizeof(snapshot->lines[3]),
              "ADC: cfg=%s dest=%s ch=%lu div=%lu",
              nios_display_yes_no((state->config_done_mask & NIOS_DISPLAY_CFG_ADC) != 0u),
              nios_display_dest_name(state->adc_dest),
              (unsigned long)state->adc_channel,
              (unsigned long)state->adc_divider);
-    snprintf(snapshot->lines[3], sizeof(snapshot->lines[3]),
+    snprintf(snapshot->lines[4], sizeof(snapshot->lines[4]),
              "AVG: cfg=%s dest=%s window=%lu",
              nios_display_yes_no((state->config_done_mask & NIOS_DISPLAY_CFG_AVG) != 0u),
              nios_display_dest_name(state->avg_dest),
              (unsigned long)state->avg_window);
-    snprintf(snapshot->lines[4], sizeof(snapshot->lines[4]),
+    snprintf(snapshot->lines[5], sizeof(snapshot->lines[5]),
              "COR: cfg=%s window=%lu offset=%lu",
              nios_display_yes_no((state->config_done_mask & NIOS_DISPLAY_CFG_COR) != 0u),
              (unsigned long)state->cor_window,
              (unsigned long)state->cor_offset);
-    snprintf(snapshot->lines[5], sizeof(snapshot->lines[5]),
+    snprintf(snapshot->lines[6], sizeof(snapshot->lines[6]),
              "PK : cfg=%s dest=%s spacing=%lu threshold=%lu",
              nios_display_yes_no((state->config_done_mask & NIOS_DISPLAY_CFG_PK) != 0u),
              nios_display_dest_name(state->pk_dest),
@@ -83,22 +85,22 @@ void nios_display_format(
              (unsigned long)state->pk_threshold);
 
     if (state->has_peak_count) {
-        snprintf(snapshot->lines[6], sizeof(snapshot->lines[6]),
+        snprintf(snapshot->lines[7], sizeof(snapshot->lines[7]),
                  "RESULT: peak count=%lu",
                  (unsigned long)state->latest_peak_count);
     } else {
-        snprintf(snapshot->lines[6], sizeof(snapshot->lines[6]),
+        snprintf(snapshot->lines[7], sizeof(snapshot->lines[7]),
                  "RESULT: waiting for PK event");
     }
 
     if (state->has_last_status) {
-        snprintf(snapshot->lines[7], sizeof(snapshot->lines[7]),
+        snprintf(snapshot->lines[8], sizeof(snapshot->lines[8]),
                  "ACK: %s from %s detail=0x%04lX",
                  nios_display_status_name(state->last_status_code),
                  nios_display_dest_name(state->last_status_source),
                  (unsigned long)state->last_status_detail);
     } else {
-        snprintf(snapshot->lines[7], sizeof(snapshot->lines[7]),
+        snprintf(snapshot->lines[8], sizeof(snapshot->lines[8]),
                  "ACK: waiting for ASP status");
     }
 }
