@@ -181,6 +181,14 @@ Board files are under `nios_support/quartus`:
 | `gp2_final_board.qpf` | Quartus project for the final GP2 board revision. |
 | `gp2_final_board.qsf` | File list and DE1-SoC assignments for the final GP2 board revision. |
 
+The current Nios app includes Eric's VGA character-buffer path. After the ELF is
+rebuilt and downloaded, the external monitor shows a compact title/header and a
+scrolling console log immediately below it. The log mirrors `TX`, `RX`,
+`CAPTURE`, demo, `display`, and error output from the JTAG UART console. It is
+drawn with a small top/left/bottom safety margin and wraps long packet lines so
+full ADC/AVG/Peak capture information remains visible on monitors that clip the
+outer VGA edges. Use `clear console` or `cls` to clear the monitor log.
+
 The old `nios_adapter_test` revision is still useful for Member B adapter-local
 loopback. Use `gp2_final_board` for the real GP2 demo.
 
@@ -413,5 +421,3 @@ LEDR4..7 = low Nios LED PIO bits
 LEDR8    = latched Peak EVENT reached Nios after the ASPs are started
 LEDR9    = latched ASP STATUS reached ReCOP
 ```
-
-

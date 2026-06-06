@@ -1,5 +1,7 @@
 #include <stdint.h>
+#include <stdarg.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "nios_display.h"
 
@@ -119,11 +121,37 @@ void nios_display_print_uart(const nios_command_state_t *state)
 
     nios_display_format(state, &snapshot);
     for (row = 0u; row < NIOS_DISPLAY_LINE_COUNT; row++) {
-        printf("%s\n", snapshot.lines[row]);
+        nios_console_printf("%s\n", snapshot.lines[row]);
     }
 }
 
 #ifdef NIOS_VGA_CHAR_BUFFER_BASE
+#define NIOS_VGA_TOP_MARGIN 2u
+#define NIOS_VGA_BOTTOM_MARGIN 2u
+#define NIOS_VGA_LEFT_MARGIN 2u
+#define NIOS_VGA_RIGHT_MARGIN 2u
+#define NIOS_VGA_STATUS_TITLE_ROW NIOS_VGA_TOP_MARGIN
+#define NIOS_VGA_LOG_DIVIDER_ROW (NIOS_VGA_STATUS_TITLE_ROW + 2u)
+#define NIOS_VGA_LOG_START_ROW (NIOS_VGA_LOG_DIVIDER_ROW + 1u)
+#define NIOS_VGA_LOG_INPUT_LEN 512u
+
+#if NIOS_VGA_CHAR_ROWS > (NIOS_VGA_LOG_START_ROW + NIOS_VGA_BOTTOM_MARGIN)
+#define NIOS_VGA_LOG_ROWS (NIOS_VGA_CHAR_ROWS - NIOS_VGA_LOG_START_ROW - NIOS_VGA_BOTTOM_MARGIN)
+#else
+#define NIOS_VGA_LOG_ROWS 1u
+#endif
+
+#if NIOS_VGA_CHAR_COLS > (NIOS_VGA_LEFT_MARGIN + NIOS_VGA_RIGHT_MARGIN)
+#define NIOS_VGA_VISIBLE_COLS (NIOS_VGA_CHAR_COLS - NIOS_VGA_LEFT_MARGIN - NIOS_VGA_RIGHT_MARGIN)
+#else
+#define NIOS_VGA_VISIBLE_COLS NIOS_VGA_CHAR_COLS
+#endif
+
+static char nios_vga_log[NIOS_VGA_LOG_ROWS][NIOS_VGA_VISIBLE_COLS + 1u];
+static char nios_vga_partial[NIOS_VGA_LOG_INPUT_LEN + 1u];
+static unsigned int nios_vga_partial_len;
+static int nios_vga_ready;
+
 static void nios_display_write_line(unsigned int row, const char *text)
 {
     volatile uint8_t *buffer = (volatile uint8_t *)(uintptr_t)NIOS_VGA_CHAR_BUFFER_BASE;
@@ -134,7 +162,15 @@ static void nios_display_write_line(unsigned int row, const char *text)
         return;
     }
 
+    if (text == NULL) {
+        text = "";
+    }
+
     for (col = 0u; col < NIOS_VGA_CHAR_COLS; col++) {
+        buffer[(row * NIOS_VGA_CHAR_ROW_STRIDE) + col] = (uint8_t)' ';
+    }
+
+    for (col = 0u; col < NIOS_VGA_VISIBLE_COLS; col++) {
         char ch = ended ? ' ' : text[col];
 
         if (ch == '\0') {
@@ -142,25 +178,243 @@ static void nios_display_write_line(unsigned int row, const char *text)
             ended = 1;
         }
 
-        buffer[(row * NIOS_VGA_CHAR_ROW_STRIDE) + col] =
+        buffer[(row * NIOS_VGA_CHAR_ROW_STRIDE) + NIOS_VGA_LEFT_MARGIN + col] =
             (uint8_t)ch;
     }
 }
+
+static void nios_display_copy_line(char *destination, const char *source)
+{
+    unsigned int col;
+
+    if (source == NULL) {
+        source = "";
+    }
+
+    for (col = 0u; col < NIOS_VGA_VISIBLE_COLS && source[col] != '\0'; col++) {
+        destination[col] = source[col];
+    }
+
+    destination[col] = '\0';
+}
+
+static void nios_display_redraw_log(void)
+{
+    unsigned int row;
+
+    for (row = 0u; row < NIOS_VGA_LOG_ROWS; row++) {
+        nios_display_write_line(NIOS_VGA_LOG_START_ROW + row, nios_vga_log[row]);
+    }
+}
+
+static void nios_display_draw_header(void)
+{
+    unsigned int row;
+
+    for (row = NIOS_VGA_TOP_MARGIN; row < NIOS_VGA_LOG_START_ROW; row++) {
+        nios_display_write_line(row, "");
+    }
+
+    nios_display_write_line(NIOS_VGA_STATUS_TITLE_ROW, "Nios II console / VGA mirror");
+    nios_display_write_line(NIOS_VGA_LOG_DIVIDER_ROW, "---- console output ----");
+}
+
+static void nios_display_append_log_row(const char *text)
+{
+    unsigned int row;
+
+    for (row = 0u; row + 1u < NIOS_VGA_LOG_ROWS; row++) {
+        nios_display_copy_line(nios_vga_log[row], nios_vga_log[row + 1u]);
+    }
+
+    nios_display_copy_line(nios_vga_log[NIOS_VGA_LOG_ROWS - 1u], text);
+}
+
+static void nios_display_append_wrapped_line(const char *text)
+{
+    char line[NIOS_VGA_VISIBLE_COLS + 1u];
+    unsigned int pos = 0u;
+
+    if (text == NULL) {
+        text = "";
+    }
+
+    if (text[0] == '\0') {
+        nios_display_append_log_row("");
+        return;
+    }
+
+    while (text[pos] != '\0') {
+        unsigned int len = 0u;
+        unsigned int copy_len;
+        unsigned int last_space = 0u;
+        int saw_space = 0;
+
+        while (len < NIOS_VGA_VISIBLE_COLS && text[pos + len] != '\0') {
+            if (text[pos + len] == ' ') {
+                last_space = len;
+                saw_space = 1;
+            }
+            len++;
+        }
+
+        copy_len = len;
+        if (text[pos + len] != '\0' && saw_space && last_space > 0u) {
+            copy_len = last_space;
+        }
+
+        if (copy_len == 0u) {
+            copy_len = len;
+        }
+
+        for (len = 0u; len < copy_len; len++) {
+            line[len] = text[pos + len];
+        }
+        line[copy_len] = '\0';
+        nios_display_append_log_row(line);
+
+        pos += copy_len;
+        while (text[pos] == ' ') {
+            pos++;
+        }
+    }
+}
+
+static void nios_display_flush_partial(void)
+{
+    nios_vga_partial[nios_vga_partial_len] = '\0';
+    nios_display_log_line(nios_vga_partial);
+    nios_vga_partial_len = 0u;
+    nios_vga_partial[0] = '\0';
+}
 #endif
+
+void nios_display_init_vga(void)
+{
+#ifdef NIOS_VGA_CHAR_BUFFER_BASE
+    unsigned int row;
+
+    nios_vga_ready = 1;
+    nios_vga_partial_len = 0u;
+    nios_vga_partial[0] = '\0';
+
+    for (row = 0u; row < NIOS_VGA_LOG_ROWS; row++) {
+        nios_vga_log[row][0] = '\0';
+    }
+
+    for (row = 0u; row < NIOS_VGA_CHAR_ROWS; row++) {
+        nios_display_write_line(row, "");
+    }
+
+    nios_display_draw_header();
+    nios_display_redraw_log();
+#endif
+}
+
+void nios_display_clear_console(void)
+{
+#ifdef NIOS_VGA_CHAR_BUFFER_BASE
+    unsigned int row;
+
+    if (!nios_vga_ready) {
+        nios_display_init_vga();
+    }
+
+    nios_vga_partial_len = 0u;
+    nios_vga_partial[0] = '\0';
+
+    for (row = 0u; row < NIOS_VGA_LOG_ROWS; row++) {
+        nios_vga_log[row][0] = '\0';
+    }
+
+    nios_display_draw_header();
+    nios_display_redraw_log();
+#endif
+}
+
+void nios_display_log_line(const char *text)
+{
+#ifdef NIOS_VGA_CHAR_BUFFER_BASE
+    if (!nios_vga_ready) {
+        nios_display_init_vga();
+    }
+
+    nios_display_append_wrapped_line(text);
+    nios_display_redraw_log();
+#else
+    (void)text;
+#endif
+}
+
+void nios_display_log_text(const char *text)
+{
+#ifdef NIOS_VGA_CHAR_BUFFER_BASE
+    char ch;
+
+    if (text == NULL) {
+        return;
+    }
+
+    if (!nios_vga_ready) {
+        nios_display_init_vga();
+    }
+
+    while ((ch = *text++) != '\0') {
+        if (ch == '\r') {
+            continue;
+        }
+
+        if (ch == '\n') {
+            nios_display_flush_partial();
+            continue;
+        }
+
+        if (nios_vga_partial_len >= NIOS_VGA_LOG_INPUT_LEN) {
+            nios_display_flush_partial();
+        }
+
+        nios_vga_partial[nios_vga_partial_len++] = ch;
+        nios_vga_partial[nios_vga_partial_len] = '\0';
+    }
+#else
+    (void)text;
+#endif
+}
 
 int nios_display_write_vga(const nios_command_state_t *state)
 {
 #ifdef NIOS_VGA_CHAR_BUFFER_BASE
-    nios_display_snapshot_t snapshot;
-    unsigned int row;
+    (void)state;
 
-    nios_display_format(state, &snapshot);
-    for (row = 0u; row < NIOS_DISPLAY_LINE_COUNT; row++) {
-        nios_display_write_line(row + 2u, snapshot.lines[row]);
+    if (!nios_vga_ready) {
+        nios_display_init_vga();
     }
+
+    nios_display_draw_header();
+    nios_display_redraw_log();
     return 0;
 #else
     (void)state;
     return -1;
 #endif
+}
+
+int nios_console_printf(const char *format, ...)
+{
+    char text[512];
+    va_list args;
+    int written;
+
+    va_start(args, format);
+    written = vprintf(format, args);
+    va_end(args);
+
+    va_start(args, format);
+    if (vsnprintf(text, sizeof(text), format, args) >= 0) {
+        text[sizeof(text) - 1u] = '\0';
+        nios_display_log_text(text);
+    }
+    va_end(args);
+
+    return written;
 }

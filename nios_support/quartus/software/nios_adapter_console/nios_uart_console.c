@@ -8,11 +8,37 @@
 #include "nios_display.h"
 #include "nios_packet.h"
 
+#define printf nios_console_printf
+
 #define NIOS_LINE_MAX 80
+
+static void nios_log_command_to_vga(const char *line)
+{
+    char display_line[NIOS_LINE_MAX + 8];
+    unsigned int in = 0u;
+    unsigned int out = 0u;
+
+    display_line[out++] = 'n';
+    display_line[out++] = 'i';
+    display_line[out++] = 'o';
+    display_line[out++] = 's';
+    display_line[out++] = '>';
+    display_line[out++] = ' ';
+
+    while (line[in] != '\0'
+           && line[in] != '\r'
+           && line[in] != '\n'
+           && out + 1u < sizeof(display_line)) {
+        display_line[out++] = line[in++];
+    }
+
+    display_line[out] = '\0';
+    nios_display_log_line(display_line);
+}
 
 static void nios_print_help(void)
 {
-    printf("cmd: adc <dest> <ch> <div>, avg <dest> <win>, corwin <n>, offset <n>, pk <dest> <sp> <th>, start|stop|clear <asp>, poll, capture <n>, demo <adc|avg|full|board> [n], hwstatus, hwclear, hwloop <0|1>, rx <hex>, status, display, exit\n");
+    printf("cmd: adc <dest> <ch> <div>, avg <dest> <win>, corwin <n>, offset <n>, pk <dest> <sp> <th>, start|stop|clear <asp>, clear console, poll, capture <n>, demo <adc|avg|full|board> [n], hwstatus, hwclear, hwloop <0|1>, rx <hex>, status, display, cls, exit\n");
 }
 
 static void nios_lowercase(char *text)
@@ -486,10 +512,17 @@ static int nios_handle_line(nios_command_state_t *state, char *line)
         nios_handle_control(state, arg1, NIOS_CMD_STOP);
     } else if (strcmp(command, "clear") == 0) {
         if (fields < 2) {
-            printf("ERR: clear <adc|avg|cor|pk>\n");
+            printf("ERR: clear <adc|avg|cor|pk|console>\n");
             return 1;
         }
-        nios_handle_control(state, arg1, NIOS_CMD_CLEAR);
+        if (strcmp(arg1, "console") == 0
+            || strcmp(arg1, "vga") == 0
+            || strcmp(arg1, "screen") == 0) {
+            nios_display_clear_console();
+            printf("Console output cleared\n");
+        } else {
+            nios_handle_control(state, arg1, NIOS_CMD_CLEAR);
+        }
     } else if (strcmp(command, "poll") == 0) {
         nios_command_poll_adapter(state);
     } else if (strcmp(command, "capture") == 0) {
@@ -527,6 +560,9 @@ static int nios_handle_line(nios_command_state_t *state, char *line)
     } else if (strcmp(command, "display") == 0) {
         nios_display_print_uart(state);
         nios_display_write_vga(state);
+    } else if (strcmp(command, "cls") == 0) {
+        nios_display_clear_console();
+        printf("Console output cleared\n");
     } else if (strcmp(command, "help") == 0 || strcmp(command, "?") == 0) {
         nios_print_help();
     } else if (strcmp(command, "quit") == 0 || strcmp(command, "exit") == 0) {
@@ -557,16 +593,19 @@ int main(void)
     nios_command_attach_adapter(&state, &adapter);
 #endif
 
+    nios_display_init_vga();
     printf("Nios command console\n");
     nios_print_help();
 
     while (1) {
-        printf("\nnios> ");
+        fputs("\nnios> ", stdout);
         fflush(stdout);
 
         if (fgets(line, sizeof(line), stdin) == NULL) {
             break;
         }
+
+        nios_log_command_to_vga(line);
 
         if (!nios_handle_line(&state, line)) {
             break;

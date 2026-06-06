@@ -34,5 +34,10 @@ void nios_display_format(
 );
 void nios_display_print_uart(const nios_command_state_t *state);
 int nios_display_write_vga(const nios_command_state_t *state);
+void nios_display_init_vga(void);
+void nios_display_clear_console(void);
+void nios_display_log_line(const char *text);
+void nios_display_log_text(const char *text);
+int nios_console_printf(const char *format, ...);
 
 #endif

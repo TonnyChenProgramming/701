@@ -2,7 +2,12 @@
 #include <string.h>
 
 #include "nios_command.h"
+#include "nios_display.h"
 #include "nios_packet.h"
+
+#define printf nios_console_printf
+
+#define NIOS_CAPTURE_EMPTY_LIMIT 5000000u
 
 static const char *nios_dest_name(uint32_t dest);
 static const char *nios_status_name(uint32_t code);
@@ -15,6 +20,7 @@ static int nios_command_send(nios_command_state_t *state, uint32_t packet)
         rc = nios_noc_adapter_send(state->adapter, packet);
         if (rc != 0) {
             printf("ERR: noc tx %d\n", rc);
+            fflush(stdout);
             return rc;
         }
     }
@@ -23,6 +29,7 @@ static int nios_command_send(nios_command_state_t *state, uint32_t packet)
     state->has_last_tx = 1;
 
     printf("TX 0x%08lX\n", (unsigned long)packet);
+    fflush(stdout);
     return 0;
 }
 
@@ -228,6 +235,25 @@ int nios_command_config_pk(
     return 0;
 }
 
+int nios_command_control_asp(
+    nios_command_state_t *state,
+    uint32_t dest,
+    uint32_t command
+)
+{
+    uint32_t packet;
+
+    if (dest > 0xFu
+        || (command != NIOS_CMD_START
+            && command != NIOS_CMD_STOP
+            && command != NIOS_CMD_CLEAR)) {
+        return -1;
+    }
+
+    packet = nios_make_simple_cmd(dest, command);
+    return nios_command_send(state, packet);
+}
+
 void nios_command_record_rx(nios_command_state_t *state, uint32_t packet)
 {
     uint32_t kind = nios_packet_kind(packet);
@@ -242,6 +268,13 @@ void nios_command_record_rx(nios_command_state_t *state, uint32_t packet)
         && (code == NIOS_EVENT_MAX_PEAK || code == NIOS_EVENT_MIN_PEAK)) {
         state->latest_peak_count = nios_packet_payload(packet);
         state->has_peak_count = 1;
+    }
+
+    if (nios_packet_dest(packet) == NIOS_ADDR_NIOS_II
+        && kind == NIOS_PKT_KIND_EVENT
+        && code == NIOS_EVENT_PEAK_VALUE) {
+        state->latest_peak_value = nios_packet_payload(packet);
+        state->has_peak_value = 1;
     }
 
     if (nios_packet_dest(packet) == NIOS_ADDR_NIOS_II
@@ -268,23 +301,100 @@ int nios_command_poll_adapter(nios_command_state_t *state)
 
     if (state->adapter == NULL) {
         printf("ERR: no adapter\n");
+        fflush(stdout);
         return -1;
     }
 
     rc = nios_noc_adapter_try_recv(state->adapter, &packet);
     if (rc < 0) {
         printf("ERR: noc rx %d\n", rc);
+        fflush(stdout);
         return rc;
     }
 
     if (rc == 0) {
         printf("RX none\n");
+        fflush(stdout);
         return 0;
     }
 
     nios_command_record_rx(state, packet);
     nios_command_print_rx(packet);
+    if (rc > 1) {
+        printf("WARN: RX overflow was set; packet shown above was kept, later packet(s) were dropped\n");
+    }
+    fflush(stdout);
     return 1;
+}
+
+int nios_command_capture_adapter(nios_command_state_t *state, uint32_t requested)
+{
+    uint32_t packet;
+    uint32_t received = 0u;
+    uint32_t empty_guard = 0u;
+    uint32_t progress_guard = 0u;
+    uint32_t overflow_seen = 0u;
+    int rc;
+
+    if (state->adapter == NULL) {
+        printf("ERR: no adapter\n");
+        fflush(stdout);
+        return -1;
+    }
+
+    if (requested == 0u) {
+        printf("ERR: capture <count>\n");
+        return -1;
+    }
+
+    printf("CAPTURE requested=%lu\n", (unsigned long)requested);
+    fflush(stdout);
+
+    while (received < requested && empty_guard < NIOS_CAPTURE_EMPTY_LIMIT) {
+        rc = nios_noc_adapter_try_recv(state->adapter, &packet);
+        if (rc < 0) {
+            printf("ERR: noc rx %d\n", rc);
+            fflush(stdout);
+            return rc;
+        }
+
+        if (rc == 0) {
+            empty_guard++;
+            progress_guard++;
+            if (progress_guard >= 1000000u) {
+                printf("CAPTURE waiting...\n");
+                fflush(stdout);
+                progress_guard = 0u;
+            }
+            continue;
+        }
+
+        empty_guard = 0u;
+        progress_guard = 0u;
+        received++;
+        if (rc > 1) {
+            overflow_seen = 1u;
+        }
+
+        printf("%03lu: ", (unsigned long)received);
+        nios_command_record_rx(state, packet);
+        nios_command_print_rx(packet);
+        fflush(stdout);
+    }
+
+    printf("CAPTURE got=%lu requested=%lu",
+           (unsigned long)received,
+           (unsigned long)requested);
+    if (overflow_seen != 0u) {
+        printf(" overflow_seen=1");
+    }
+    if (received < requested) {
+        printf(" stopped=empty");
+    }
+    printf("\n");
+    fflush(stdout);
+
+    return received == requested ? 0 : 1;
 }
 
 int nios_command_print_adapter_status(const nios_command_state_t *state)
@@ -316,6 +426,7 @@ int nios_command_print_adapter_status(const nios_command_state_t *state)
     printf(" adapter=0x%08lX loopback=%lu\n",
            (unsigned long)adapter_status,
            (unsigned long)((adapter_status & NIOS_NOC_STATUS_LOOPBACK_EN) != 0u));
+    fflush(stdout);
 
     return 0;
 }
@@ -324,11 +435,13 @@ int nios_command_clear_adapter(nios_command_state_t *state)
 {
     if (state->adapter == NULL) {
         printf("ERR: no adapter\n");
+        fflush(stdout);
         return -1;
     }
 
     nios_noc_adapter_clear(state->adapter);
     printf("HW cleared\n");
+    fflush(stdout);
     return 0;
 }
 
@@ -336,11 +449,13 @@ int nios_command_set_loopback(nios_command_state_t *state, int enabled)
 {
     if (state->adapter == NULL) {
         printf("ERR: no adapter\n");
+        fflush(stdout);
         return -1;
     }
 
     nios_noc_adapter_set_loopback(state->adapter, enabled);
     printf("HW loopback=%d\n", enabled != 0);
+    fflush(stdout);
     return 0;
 }
 
@@ -377,9 +492,13 @@ void nios_command_print_status(const nios_command_state_t *state)
     printf(" cfg=0x%02lX", (unsigned long)state->config_done_mask);
 
     if (state->has_peak_count) {
-        printf(" peak=%lu", (unsigned long)state->latest_peak_count);
+        printf(" peak_spacing=%lu", (unsigned long)state->latest_peak_count);
     } else {
-        printf(" peak=none");
+        printf(" peak_spacing=none");
+    }
+
+    if (state->has_peak_value) {
+        printf(" peak_value=%lu", (unsigned long)state->latest_peak_value);
     }
 
     if (state->has_last_status) {
@@ -399,6 +518,7 @@ void nios_command_print_status(const nios_command_state_t *state)
     }
 
     printf("\n");
+    fflush(stdout);
 }
 
 static const char *nios_kind_name(uint32_t kind)
@@ -480,6 +600,8 @@ static const char *nios_event_name(uint32_t code)
             return "MAX_PEAK";
         case NIOS_EVENT_MIN_PEAK:
             return "MIN_PEAK";
+        case NIOS_EVENT_PEAK_VALUE:
+            return "PEAK_VALUE";
         default:
             return "EVENT?";
     }
@@ -509,6 +631,7 @@ void nios_command_print_rx(uint32_t packet)
     uint32_t code = nios_packet_code(packet);
     uint32_t dest = nios_packet_dest(packet);
     uint32_t payload = nios_packet_payload(packet);
+    int32_t sample16 = (int32_t)(int16_t)nios_packet_value(packet);
 
     printf("RX 0x%08lX %s code=0x%lX dest=%s payload=0x%05lX",
            (unsigned long)packet,
@@ -523,11 +646,16 @@ void nios_command_print_rx(uint32_t packet)
                (unsigned long)nios_packet_tag(packet),
                (unsigned long)nios_packet_value(packet));
     } else if (kind == NIOS_PKT_KIND_DATA) {
-        printf(" data=%s", nios_data_code_name(code));
+        printf(" data=%s sample=%ld",
+               nios_data_code_name(code),
+               (long)sample16);
     } else if (kind == NIOS_PKT_KIND_EVENT) {
-        printf(" event=%s peak_count=%lu",
-               nios_event_name(code),
-               (unsigned long)payload);
+        printf(" event=%s", nios_event_name(code));
+        if (code == NIOS_EVENT_PEAK_VALUE) {
+            printf(" peak_value=%lu", (unsigned long)payload);
+        } else {
+            printf(" peak_spacing=%lu", (unsigned long)payload);
+        }
     } else if (kind == NIOS_PKT_KIND_STATUS) {
         printf(" status=%s source=%s running=%lu done=%lu error=%lu detail=0x%04lX",
                nios_status_name(code),

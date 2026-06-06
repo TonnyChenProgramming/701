@@ -2,7 +2,10 @@
 #include <string.h>
 
 #include "nios_command.h"
+#include "nios_display.h"
 #include "nios_packet.h"
+
+#define printf nios_console_printf
 
 #define NIOS_CAPTURE_EMPTY_LIMIT 5000000u
 

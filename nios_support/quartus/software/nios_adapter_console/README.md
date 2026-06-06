@@ -21,7 +21,8 @@ No Avalon/NoC hardware adapter is required for dry-run mode.
 | `hwloop <0|1>` | Enable or disable adapter-local loopback for board smoke testing. | No TX packet |
 | `rx <hex>` | Mock/decode a received NoC packet for display testing, including PK peak events | No TX packet |
 | `status` | Print cached Nios state | No TX packet |
-| `display` | Print the compact display snapshot and refresh VGA when enabled | No TX packet |
+| `display` | Print the compact display snapshot to UART/VGA console output | No TX packet |
+| `clear console` / `cls` | Clear the VGA console output area | No TX packet |
 | `help` | Print command list | No TX packet |
 
 ## Files
@@ -29,7 +30,7 @@ No Avalon/NoC hardware adapter is required for dry-run mode.
 | File | Purpose |
 | --- | --- |
 | `nios_command.h/.c` | Command helpers that build/send packets and track cached TX/RX state. |
-| `nios_display.h/.c` | Lightweight UART/VGA status snapshot formatter. |
+| `nios_display.h/.c` | Lightweight UART/VGA status snapshot formatter and VGA console mirror. |
 | `nios_packet.h` | Shared packet constants and helper functions for Nios C code. |
 | `nios_noc_adapter.h/.c` | Avalon-MM register offsets, bit masks, and simple polling TX/RX helpers for the Nios-to-NoC adapter. |
 | `nios_uart_console.c` | UART/JTAG UART command parser skeleton. |
@@ -37,6 +38,8 @@ No Avalon/NoC hardware adapter is required for dry-run mode.
 ## Nios II Usage
 
 Create or open a Nios II application project and add these source/header files to the application source folder. The standard Nios II BSP routes `printf()` and `fgets()` through the configured console, normally JTAG UART.
+
+For the DE1-SoC `Nios_System_2A` board app, the Makefile already defines `NIOS_NOC_ADAPTER_BASE=0x08011000u` and `NIOS_VGA_CHAR_BUFFER_BASE=0x08012000u`. On startup the software clears the VGA character buffer, draws a compact title/header, and mirrors console output immediately below it. The VGA writer adds a small top/left/bottom margin and wraps long packet lines so monitor overscan does not hide the first row, first columns, or the right side of `RX` capture lines. Use `clear console` or `cls` to clear the VGA output area. Rebuild and download the ELF after changing this software; the SOF only needs to be rebuilt/reprogrammed when the Qsys/VHDL hardware changes.
 
 Without `NIOS_NOC_ADAPTER_BASE`, the console prints packets without touching registers:
 
@@ -173,6 +176,6 @@ START/STOP/CLEAR done -> ReCOP, for four ASP LEDs
 PK peak EVENT      -> Nios, for result display
 ```
 
-The command state caches `latest_peak_count`, a `config_done_mask`, and the latest STATUS acknowledgement. `nios_display.c` renders those fields for UART and can also write a simple 80-column Avalon character buffer. Define `NIOS_VGA_CHAR_BUFFER_BASE` to enable VGA writes. The older C723 VGA code is a useful reference, but its FreeRTOS graph task is intentionally not copied into this MVP path.
+The command state caches `latest_peak_count`, `latest_peak_value`, a `config_done_mask`, and the latest STATUS acknowledgement. `nios_display.c` renders those fields for UART and mirrors the JTAG UART output to the VGA console log. Define `NIOS_VGA_CHAR_BUFFER_BASE` to enable VGA writes. The older C723 VGA code is a useful reference, but its FreeRTOS graph task is intentionally not copied into this MVP path.
 
 Destination names accepted by the console are `recop`, `adc`, `avg`, `ave`, `cor`, `pk`, `nios`, `idle`, `null`, or numeric `0..7`.
