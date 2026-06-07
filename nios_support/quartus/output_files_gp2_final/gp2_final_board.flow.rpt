@@ -1,0 +1,139 @@
+Flow report for gp2_final_board
+Sun Jun 07 13:52:50 2026
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Flow Summary                                                                  ;
++---------------------------------+---------------------------------------------+
+; Flow Status                     ; Successful - Sun Jun 07 13:52:32 2026       ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                   ; gp2_final_board                             ;
+; Top-level Entity Name           ; gp2_final_board_top                         ;
+; Family                          ; Cyclone V                                   ;
+; Device                          ; 5CSEMA5F31C6                                ;
+; Timing Models                   ; Final                                       ;
+; Logic utilization (in ALMs)     ; 3,586 / 32,070 ( 11 % )                     ;
+; Total registers                 ; 4911                                        ;
+; Total pins                      ; 93 / 457 ( 20 % )                           ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 277,248 / 4,065,280 ( 7 % )                 ;
+; Total DSP Blocks                ; 4 / 87 ( 5 % )                              ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 2 / 6 ( 33 % )                              ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                               ;
++---------------------------------+---------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 06/07/2026 13:47:17 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; gp2_final_board     ;
++-------------------+---------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                            ;
++-------------------------------------+------------------------------------------------------------------+-----------------+---------------------+------------+
+; Assignment Name                     ; Value                                                            ; Default Value   ; Entity Name         ; Section Id ;
++-------------------------------------+------------------------------------------------------------------+-----------------+---------------------+------------+
+; COMPILER_SIGNATURE_ID               ; 222805334544209.178079683739200                                  ; --              ; --                  ; --         ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                                               ; --              ; --                  ; --         ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                                                ; --              ; --                  ; --         ;
+; MISC_FILE                           ; ../../recop/RecopVHDL/Main/cpu_mif.mif                           ; --              ; --                  ; --         ;
+; MISC_FILE                           ; ../../recop/RecopVHDL/Main/instruction_memory_ip.cmp             ; --              ; --                  ; --         ;
+; MISC_FILE                           ; ../../recop/RecopVHDL/Main/data_memory_ip.cmp                    ; --              ; --                  ; --         ;
+; MISC_FILE                           ; Nios_System_2A/synthesis/../Nios_System_2A.cmp                   ; --              ; --                  ; --         ;
+; MISC_FILE                           ; Nios_System_2A/synthesis/../../Nios_System_2A.qsys               ; --              ; --                  ; --         ;
+; MISC_FILE                           ; ../../COR-ASP/ASP/ASPVHDL/AverageFilteredData.cmp                ; --              ; --                  ; --         ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family)                           ; --              ; gp2_final_board_top ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                           ; --              ; gp2_final_board_top ; Top        ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                           ; --              ; gp2_final_board_top ; Top        ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                              ; --              ; --                  ; --         ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                            ; --              ; --                  ; --         ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files_gp2_final                                           ; --              ; --                  ; --         ;
+; SLD_FILE                            ; Nios_System_2A/synthesis/Nios_System_2A.regmap                   ; --              ; --                  ; --         ;
+; SLD_FILE                            ; Nios_System_2A/synthesis/Nios_System_2A.debuginfo                ; --              ; --                  ; --         ;
+; SLD_INFO                            ; QSYS_NAME Nios_System_2A HAS_SOPCINFO 1 GENERATION_ID 1780676636 ; --              ; Nios_System_2A      ; --         ;
+; SOPCINFO_FILE                       ; Nios_System_2A/synthesis/../../Nios_System_2A.sopcinfo           ; --              ; --                  ; --         ;
+; SYNTHESIS_ONLY_QIP                  ; On                                                               ; --              ; --                  ; --         ;
+; TOP_LEVEL_ENTITY                    ; gp2_final_board_top                                              ; gp2_final_board ; --                  ; --         ;
++-------------------------------------+------------------------------------------------------------------+-----------------+---------------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:00:47     ; 3.7                     ; 5178 MB             ; 00:01:51                           ;
+; Fitter               ; 00:04:10     ; 1.2                     ; 8136 MB             ; 00:27:37                           ;
+; Assembler            ; 00:00:09     ; 1.0                     ; 4924 MB             ; 00:00:09                           ;
+; Timing Analyzer      ; 00:00:16     ; 3.3                     ; 5581 MB             ; 00:00:43                           ;
+; Total                ; 00:05:22     ; --                      ; --                  ; 00:30:20                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                    ;
++----------------------+------------------+------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++----------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis ; TonnyLenovo      ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; TonnyLenovo      ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; TonnyLenovo      ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; TonnyLenovo      ; Windows 10 ; 10.0       ; x86_64         ;
++----------------------+------------------+------------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off gp2_final_board -c gp2_final_board
+quartus_fit --read_settings_files=off --write_settings_files=off gp2_final_board -c gp2_final_board
+quartus_asm --read_settings_files=off --write_settings_files=off gp2_final_board -c gp2_final_board
+quartus_sta gp2_final_board -c gp2_final_board
+
+
+

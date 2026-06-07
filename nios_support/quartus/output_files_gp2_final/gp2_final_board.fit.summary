@@ -1,0 +1,20 @@
+Fitter Status : Successful - Sun Jun 07 13:52:18 2026
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : gp2_final_board
+Top-level Entity Name : gp2_final_board_top
+Family : Cyclone V
+Device : 5CSEMA5F31C6
+Timing Models : Final
+Logic utilization (in ALMs) : 3,586 / 32,070 ( 11 % )
+Total registers : 4911
+Total pins : 93 / 457 ( 20 % )
+Total virtual pins : 0
+Total block memory bits : 277,248 / 4,065,280 ( 7 % )
+Total RAM Blocks : 52 / 397 ( 13 % )
+Total DSP Blocks : 4 / 87 ( 5 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 2 / 6 ( 33 % )
+Total DLLs : 0 / 4 ( 0 % )

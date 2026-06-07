@@ -1,0 +1,9 @@
+14:15:13 **** Incremental Build of configuration Nios II for project nios_adapter_console ****
+make all 
+Info: Building ../nios_adapter_console_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../nios_adapter_console_bsp/
+[BSP build complete]
+[nios_adapter_console build complete]
+
+14:15:13 Build Finished (took 545ms)
+

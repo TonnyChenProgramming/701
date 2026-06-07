@@ -1,0 +1,6 @@
+13:19:24 **** Clean-only build of configuration Nios II for project nios_adpater_console_bsp ****
+make clean 
+[BSP clean complete]
+
+13:19:24 Build Finished (took 207ms)
+

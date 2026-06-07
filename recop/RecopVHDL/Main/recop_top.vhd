@@ -93,7 +93,7 @@ begin
     --   FETCH -> DECODE -> EXECUTE/MEM_WRITE -> FETCH
     -- Maximum 4 cycles:
     --   FETCH -> DECODE -> EXECUTE/MEM_READ -> WRITEBACK -> FETCH
-    u_cu : entity work.multicycle_moore_machine
+    u_cu : entity work.multicycle_moore_machine_recop
         port map(
             --inputs
             clk        => clk,
