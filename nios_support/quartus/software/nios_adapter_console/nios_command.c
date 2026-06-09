@@ -25,6 +25,12 @@ static int nios_command_send(nios_command_state_t *state, uint32_t packet)
         }
     }
 
+    if (nios_packet_kind(packet) == NIOS_PKT_KIND_CMD
+        && nios_packet_code(packet) == NIOS_CMD_CONFIG
+        && nios_packet_dest(packet) < 32u) {
+        state->config_done_mask |= (1u << nios_packet_dest(packet));
+    }
+
     state->last_tx_packet = packet;
     state->has_last_tx = 1;
 
@@ -254,6 +260,30 @@ int nios_command_control_asp(
     return nios_command_send(state, packet);
 }
 
+void nios_command_note_demo(
+    nios_command_state_t *state,
+    const char *name,
+    uint32_t requested,
+    int board_armed
+)
+{
+    if (name == NULL) {
+        name = "";
+    }
+
+    strncpy(state->last_demo_name, name, sizeof(state->last_demo_name) - 1u);
+    state->last_demo_name[sizeof(state->last_demo_name) - 1u] = '\0';
+    state->last_demo_count = requested;
+    state->last_capture_requested = 0u;
+    state->last_capture_received = 0u;
+    state->last_capture_overflow = 0u;
+    state->peak_event_packets = 0u;
+    state->has_peak_count = 0;
+    state->has_peak_value = 0;
+    state->has_last_status = 0;
+    state->board_demo_armed = board_armed != 0;
+}
+
 void nios_command_record_rx(nios_command_state_t *state, uint32_t packet)
 {
     uint32_t kind = nios_packet_kind(packet);
@@ -262,6 +292,11 @@ void nios_command_record_rx(nios_command_state_t *state, uint32_t packet)
 
     state->last_rx_packet = packet;
     state->has_last_rx = 1;
+
+    if (nios_packet_dest(packet) == NIOS_ADDR_NIOS_II
+        && kind == NIOS_PKT_KIND_EVENT) {
+        state->peak_event_packets++;
+    }
 
     if (nios_packet_dest(packet) == NIOS_ADDR_NIOS_II
         && kind == NIOS_PKT_KIND_EVENT
@@ -321,6 +356,7 @@ int nios_command_poll_adapter(nios_command_state_t *state)
     nios_command_record_rx(state, packet);
     nios_command_print_rx(packet);
     if (rc > 1) {
+        state->last_capture_overflow = 1u;
         printf("WARN: RX overflow was set; packet shown above was kept, later packet(s) were dropped\n");
     }
     fflush(stdout);
@@ -394,6 +430,13 @@ int nios_command_capture_adapter(nios_command_state_t *state, uint32_t requested
     printf("\n");
     fflush(stdout);
 
+    state->last_capture_requested = requested;
+    state->last_capture_received = received;
+    state->last_capture_overflow = overflow_seen;
+    if (received != 0u) {
+        state->board_demo_armed = 0;
+    }
+
     return received == requested ? 0 : 1;
 }
 
@@ -440,6 +483,7 @@ int nios_command_clear_adapter(nios_command_state_t *state)
     }
 
     nios_noc_adapter_clear(state->adapter);
+    state->last_capture_overflow = 0u;
     printf("HW cleared\n");
     fflush(stdout);
     return 0;

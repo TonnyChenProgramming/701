@@ -5,9 +5,9 @@
 
 #include "nios_display.h"
 
-static const char *nios_display_yes_no(int value)
+static const char *nios_display_cfg_mark(uint32_t mask, uint32_t bit)
 {
-    return value ? "yes" : "no";
+    return (mask & bit) != 0u ? "OK" : "--";
 }
 
 static const char *nios_display_dest_name(uint32_t dest)
@@ -52,65 +52,204 @@ static const char *nios_display_status_name(uint32_t code)
     }
 }
 
+static const char *nios_display_path_name(const nios_command_state_t *state)
+{
+    if ((state->config_done_mask & NIOS_DISPLAY_CFG_ADC) != 0u
+        && state->adc_dest == NIOS_ADDR_NIOS_II) {
+        return "ADC -> NIOS";
+    }
+
+    if ((state->config_done_mask & (NIOS_DISPLAY_CFG_ADC | NIOS_DISPLAY_CFG_AVG))
+        == (NIOS_DISPLAY_CFG_ADC | NIOS_DISPLAY_CFG_AVG)
+        && state->adc_dest == NIOS_ADDR_AVE_ASP
+        && state->avg_dest == NIOS_ADDR_NIOS_II) {
+        return "ADC -> AVG -> NIOS";
+    }
+
+    if ((state->config_done_mask
+         & (NIOS_DISPLAY_CFG_ADC
+            | NIOS_DISPLAY_CFG_AVG
+            | NIOS_DISPLAY_CFG_COR
+            | NIOS_DISPLAY_CFG_PK))
+        == (NIOS_DISPLAY_CFG_ADC
+            | NIOS_DISPLAY_CFG_AVG
+            | NIOS_DISPLAY_CFG_COR
+            | NIOS_DISPLAY_CFG_PK)
+        && state->adc_dest == NIOS_ADDR_AVE_ASP
+        && state->avg_dest == NIOS_ADDR_COR_ASP
+        && state->pk_dest == NIOS_ADDR_NIOS_II) {
+        return "ADC -> AVG -> COR -> PK -> NIOS";
+    }
+
+    return "waiting for configuration";
+}
+
+static const char *nios_display_mode_name(const nios_command_state_t *state)
+{
+    if (strcmp(state->last_demo_name, "board") == 0) {
+        return "BOARD CONTROL";
+    }
+
+    if (strcmp(state->last_demo_name, "adc") == 0) {
+        return "ADC DIRECT";
+    }
+
+    if (strcmp(state->last_demo_name, "avg") == 0) {
+        return "AVG DIRECT";
+    }
+
+    if (strcmp(state->last_demo_name, "full") == 0) {
+        return "FULL PIPELINE";
+    }
+
+    return "READY";
+}
+
+static const char *nios_display_control_name(const nios_command_state_t *state)
+{
+    if (state->board_demo_armed) {
+        return "SWITCH/KEY";
+    }
+
+    if (state->last_demo_name[0] != '\0') {
+        return "UART";
+    }
+
+    return "UART / BOARD";
+}
+
 void nios_display_format(
     const nios_command_state_t *state,
     nios_display_snapshot_t *snapshot
 )
 {
+    unsigned int row;
+
+    for (row = 0u; row < NIOS_DISPLAY_LINE_COUNT; row++) {
+        snapshot->lines[row][0] = '\0';
+    }
+
     snprintf(snapshot->lines[0], sizeof(snapshot->lines[0]),
-             "NIOS ASP STATUS");
-    snprintf(snapshot->lines[1], sizeof(snapshot->lines[1]),
-             "LINK: %s", state->adapter == NULL ? "DRY RUN" : "AVALON-NOC");
+             "FREQUENCY DETECTOR DASHBOARD");
     snprintf(snapshot->lines[2], sizeof(snapshot->lines[2]),
-             "ADC: cfg=%s dest=%s ch=%lu div=%lu",
-             nios_display_yes_no((state->config_done_mask & NIOS_DISPLAY_CFG_ADC) != 0u),
-             nios_display_dest_name(state->adc_dest),
-             (unsigned long)state->adc_channel,
-             (unsigned long)state->adc_divider);
+             "Mode    : %s        Control: %s",
+             nios_display_mode_name(state),
+             nios_display_control_name(state));
     snprintf(snapshot->lines[3], sizeof(snapshot->lines[3]),
-             "AVG: cfg=%s dest=%s window=%lu",
-             nios_display_yes_no((state->config_done_mask & NIOS_DISPLAY_CFG_AVG) != 0u),
-             nios_display_dest_name(state->avg_dest),
-             (unsigned long)state->avg_window);
+             "Path    : %s", nios_display_path_name(state));
     snprintf(snapshot->lines[4], sizeof(snapshot->lines[4]),
-             "COR: cfg=%s window=%lu offset=%lu",
-             nios_display_yes_no((state->config_done_mask & NIOS_DISPLAY_CFG_COR) != 0u),
+             "Link    : %s",
+             state->adapter == NULL ? "DRY RUN" : "AVALON-NOC");
+
+    snprintf(snapshot->lines[6], sizeof(snapshot->lines[6]),
+             "Pipeline:");
+    snprintf(snapshot->lines[7], sizeof(snapshot->lines[7]),
+             "ADC[%s] -> AVG[%s] -> COR[%s] -> PK[%s] -> NIOS[%s]",
+             nios_display_cfg_mark(state->config_done_mask, NIOS_DISPLAY_CFG_ADC),
+             nios_display_cfg_mark(state->config_done_mask, NIOS_DISPLAY_CFG_AVG),
+             nios_display_cfg_mark(state->config_done_mask, NIOS_DISPLAY_CFG_COR),
+             nios_display_cfg_mark(state->config_done_mask, NIOS_DISPLAY_CFG_PK),
+             state->has_last_rx ? "RX" : "--");
+
+    snprintf(snapshot->lines[9], sizeof(snapshot->lines[9]),
+             "Config:");
+    snprintf(snapshot->lines[10], sizeof(snapshot->lines[10]),
+             "div=%lu | avg=%lu | cor_win=%lu | off=%lu | pk_sp=%lu | th=%lu",
+             (unsigned long)state->adc_divider,
+             (unsigned long)state->avg_window,
              (unsigned long)state->cor_window,
-             (unsigned long)state->cor_offset);
-    snprintf(snapshot->lines[5], sizeof(snapshot->lines[5]),
-             "PK : cfg=%s dest=%s spacing=%lu threshold=%lu",
-             nios_display_yes_no((state->config_done_mask & NIOS_DISPLAY_CFG_PK) != 0u),
-             nios_display_dest_name(state->pk_dest),
+             (unsigned long)state->cor_offset,
              (unsigned long)state->pk_spacing,
              (unsigned long)state->pk_threshold);
 
-    if (state->has_peak_count && state->has_peak_value) {
-        snprintf(snapshot->lines[6], sizeof(snapshot->lines[6]),
-                 "RESULT: peak value=%lu spacing=%lu",
-                 (unsigned long)state->latest_peak_value,
-                 (unsigned long)state->latest_peak_count);
-    } else if (state->has_peak_count) {
-        snprintf(snapshot->lines[6], sizeof(snapshot->lines[6]),
-                 "RESULT: peak spacing=%lu, waiting value",
-                 (unsigned long)state->latest_peak_count);
-    } else if (state->has_peak_value) {
-        snprintf(snapshot->lines[6], sizeof(snapshot->lines[6]),
-                 "RESULT: peak value=%lu",
+    snprintf(snapshot->lines[12], sizeof(snapshot->lines[12]),
+             "Latest Result:");
+
+    if (state->has_peak_value) {
+        snprintf(snapshot->lines[13], sizeof(snapshot->lines[13]),
+                 "Peak value   : %lu",
                  (unsigned long)state->latest_peak_value);
     } else {
-        snprintf(snapshot->lines[6], sizeof(snapshot->lines[6]),
-                 "RESULT: waiting for PK event");
+        snprintf(snapshot->lines[13], sizeof(snapshot->lines[13]),
+                 "Peak value   : waiting");
     }
 
+    if (state->has_peak_count) {
+        snprintf(snapshot->lines[14], sizeof(snapshot->lines[14]),
+                 "Peak spacing : %lu samples",
+                 (unsigned long)state->latest_peak_count);
+    } else {
+        snprintf(snapshot->lines[14], sizeof(snapshot->lines[14]),
+                 "Peak spacing : waiting");
+    }
+
+    snprintf(snapshot->lines[15], sizeof(snapshot->lines[15]),
+             "PK events    : %lu",
+             (unsigned long)state->peak_event_packets);
+
+    if (state->last_capture_requested != 0u) {
+        snprintf(snapshot->lines[16], sizeof(snapshot->lines[16]),
+                 "RX packets   : %lu / %lu",
+                 (unsigned long)state->last_capture_received,
+                 (unsigned long)state->last_capture_requested);
+    } else {
+        snprintf(snapshot->lines[16], sizeof(snapshot->lines[16]),
+                 "RX packets   : waiting for capture");
+    }
+
+    snprintf(snapshot->lines[17], sizeof(snapshot->lines[17]),
+             "RX overflow  : %s",
+             state->last_capture_overflow ? "seen" : "clear");
+
     if (state->has_last_status) {
-        snprintf(snapshot->lines[7], sizeof(snapshot->lines[7]),
-                 "ACK: %s from %s detail=0x%04lX",
+        snprintf(snapshot->lines[19], sizeof(snapshot->lines[19]),
+                 "Status       : %s from %s, detail=0x%04lX",
                  nios_display_status_name(state->last_status_code),
                  nios_display_dest_name(state->last_status_source),
                  (unsigned long)state->last_status_detail);
+    } else if (state->has_peak_count || state->has_peak_value) {
+        snprintf(snapshot->lines[19], sizeof(snapshot->lines[19]),
+                 "Status       : receiving PK events from NoC");
+    } else if (state->board_demo_armed) {
+        snprintf(snapshot->lines[19], sizeof(snapshot->lines[19]),
+                 "Status       : board armed; use SW1..0 + KEY3");
     } else {
-        snprintf(snapshot->lines[7], sizeof(snapshot->lines[7]),
-                 "ACK: waiting for ASP status");
+        snprintf(snapshot->lines[19], sizeof(snapshot->lines[19]),
+                 "Status       : waiting for ASP response");
+    }
+
+    if (state->last_demo_name[0] == '\0') {
+        snprintf(snapshot->lines[21], sizeof(snapshot->lines[21]),
+                 "Demo         : run demo full 8 or demo board 8");
+    } else if (state->last_capture_requested != 0u) {
+        snprintf(snapshot->lines[21], sizeof(snapshot->lines[21]),
+                 "Demo         : %s %lu | capture %lu/%lu",
+                 state->last_demo_name,
+                 (unsigned long)state->last_demo_count,
+                 (unsigned long)state->last_capture_received,
+                 (unsigned long)state->last_capture_requested);
+    } else if (state->board_demo_armed) {
+        snprintf(snapshot->lines[21], sizeof(snapshot->lines[21]),
+                 "Demo         : board %lu | then capture %lu",
+                 (unsigned long)state->last_demo_count,
+                 (unsigned long)state->last_demo_count);
+    } else {
+        snprintf(snapshot->lines[21], sizeof(snapshot->lines[21]),
+                 "Demo         : %s %lu",
+                 state->last_demo_name,
+                 (unsigned long)state->last_demo_count);
+    }
+
+    if (state->board_demo_armed) {
+        snprintf(snapshot->lines[22], sizeof(snapshot->lines[22]),
+                 "Board input  : SW1..0 select ASP, KEY3 start");
+        snprintf(snapshot->lines[23], sizeof(snapshot->lines[23]),
+                 "               KEY2 stop, KEY1 clear");
+    } else {
+        snprintf(snapshot->lines[22], sizeof(snapshot->lines[22]),
+                 "UART command : demo full <n>, demo board <n>, display");
+        snprintf(snapshot->lines[23], sizeof(snapshot->lines[23]),
+                 "Board demo   : SW select ASP, KEY3 starts selected ASP");
     }
 }
 
@@ -126,20 +265,11 @@ void nios_display_print_uart(const nios_command_state_t *state)
 }
 
 #ifdef NIOS_VGA_CHAR_BUFFER_BASE
-#define NIOS_VGA_TOP_MARGIN 2u
-#define NIOS_VGA_BOTTOM_MARGIN 2u
-#define NIOS_VGA_LEFT_MARGIN 2u
+#define NIOS_VGA_TOP_MARGIN 4u
+#define NIOS_VGA_LEFT_MARGIN 6u
 #define NIOS_VGA_RIGHT_MARGIN 2u
-#define NIOS_VGA_STATUS_TITLE_ROW NIOS_VGA_TOP_MARGIN
-#define NIOS_VGA_LOG_DIVIDER_ROW (NIOS_VGA_STATUS_TITLE_ROW + 2u)
-#define NIOS_VGA_LOG_START_ROW (NIOS_VGA_LOG_DIVIDER_ROW + 1u)
-#define NIOS_VGA_LOG_INPUT_LEN 512u
-
-#if NIOS_VGA_CHAR_ROWS > (NIOS_VGA_LOG_START_ROW + NIOS_VGA_BOTTOM_MARGIN)
-#define NIOS_VGA_LOG_ROWS (NIOS_VGA_CHAR_ROWS - NIOS_VGA_LOG_START_ROW - NIOS_VGA_BOTTOM_MARGIN)
-#else
-#define NIOS_VGA_LOG_ROWS 1u
-#endif
+#define NIOS_VGA_STATUS_START_ROW NIOS_VGA_TOP_MARGIN
+#define NIOS_VGA_ROW_SPACING 2u
 
 #if NIOS_VGA_CHAR_COLS > (NIOS_VGA_LEFT_MARGIN + NIOS_VGA_RIGHT_MARGIN)
 #define NIOS_VGA_VISIBLE_COLS (NIOS_VGA_CHAR_COLS - NIOS_VGA_LEFT_MARGIN - NIOS_VGA_RIGHT_MARGIN)
@@ -147,10 +277,12 @@ void nios_display_print_uart(const nios_command_state_t *state)
 #define NIOS_VGA_VISIBLE_COLS NIOS_VGA_CHAR_COLS
 #endif
 
-static char nios_vga_log[NIOS_VGA_LOG_ROWS][NIOS_VGA_VISIBLE_COLS + 1u];
-static char nios_vga_partial[NIOS_VGA_LOG_INPUT_LEN + 1u];
-static unsigned int nios_vga_partial_len;
 static int nios_vga_ready;
+
+static unsigned int nios_display_dashboard_row(unsigned int row)
+{
+    return NIOS_VGA_STATUS_START_ROW + (row * NIOS_VGA_ROW_SPACING);
+}
 
 static void nios_display_write_line(unsigned int row, const char *text)
 {
@@ -183,109 +315,47 @@ static void nios_display_write_line(unsigned int row, const char *text)
     }
 }
 
-static void nios_display_copy_line(char *destination, const char *source)
+static void nios_display_draw_dashboard(const nios_command_state_t *state)
 {
-    unsigned int col;
-
-    if (source == NULL) {
-        source = "";
-    }
-
-    for (col = 0u; col < NIOS_VGA_VISIBLE_COLS && source[col] != '\0'; col++) {
-        destination[col] = source[col];
-    }
-
-    destination[col] = '\0';
-}
-
-static void nios_display_redraw_log(void)
-{
+    nios_display_snapshot_t snapshot;
     unsigned int row;
 
-    for (row = 0u; row < NIOS_VGA_LOG_ROWS; row++) {
-        nios_display_write_line(NIOS_VGA_LOG_START_ROW + row, nios_vga_log[row]);
-    }
-}
-
-static void nios_display_draw_header(void)
-{
-    unsigned int row;
-
-    for (row = NIOS_VGA_TOP_MARGIN; row < NIOS_VGA_LOG_START_ROW; row++) {
+    for (row = 0u; row < NIOS_VGA_CHAR_ROWS; row++) {
         nios_display_write_line(row, "");
     }
 
-    nios_display_write_line(NIOS_VGA_STATUS_TITLE_ROW, "Nios II console / VGA mirror");
-    nios_display_write_line(NIOS_VGA_LOG_DIVIDER_ROW, "---- console output ----");
-}
-
-static void nios_display_append_log_row(const char *text)
-{
-    unsigned int row;
-
-    for (row = 0u; row + 1u < NIOS_VGA_LOG_ROWS; row++) {
-        nios_display_copy_line(nios_vga_log[row], nios_vga_log[row + 1u]);
+    if (state != NULL) {
+        nios_display_format(state, &snapshot);
+        for (row = 0u; row < NIOS_DISPLAY_LINE_COUNT; row++) {
+            nios_display_write_line(nios_display_dashboard_row(row),
+                                    snapshot.lines[row]);
+        }
+    } else {
+        nios_display_write_line(nios_display_dashboard_row(0u),
+                                "FREQUENCY DETECTOR DASHBOARD");
+        nios_display_write_line(nios_display_dashboard_row(2u),
+                                "Mode    : READY        Control: UART / BOARD");
+        nios_display_write_line(nios_display_dashboard_row(3u),
+                                "Path    : waiting for configuration");
+        nios_display_write_line(nios_display_dashboard_row(4u),
+                                "Link    : waiting for Nios II");
+        nios_display_write_line(nios_display_dashboard_row(6u),
+                                "Pipeline:");
+        nios_display_write_line(nios_display_dashboard_row(7u),
+                                "ADC[--] -> AVG[--] -> COR[--] -> PK[--] -> NIOS[--]");
+        nios_display_write_line(nios_display_dashboard_row(12u),
+                                "Latest Result:");
+        nios_display_write_line(nios_display_dashboard_row(13u),
+                                "Peak value   : waiting");
+        nios_display_write_line(nios_display_dashboard_row(14u),
+                                "Peak spacing : waiting");
+        nios_display_write_line(nios_display_dashboard_row(19u),
+                                "Status       : waiting for command");
+        nios_display_write_line(nios_display_dashboard_row(21u),
+                                "Demo         : run demo full 8 or demo board 8");
+        nios_display_write_line(nios_display_dashboard_row(22u),
+                                "UART command : demo full <n>, demo board <n>, display");
     }
-
-    nios_display_copy_line(nios_vga_log[NIOS_VGA_LOG_ROWS - 1u], text);
-}
-
-static void nios_display_append_wrapped_line(const char *text)
-{
-    char line[NIOS_VGA_VISIBLE_COLS + 1u];
-    unsigned int pos = 0u;
-
-    if (text == NULL) {
-        text = "";
-    }
-
-    if (text[0] == '\0') {
-        nios_display_append_log_row("");
-        return;
-    }
-
-    while (text[pos] != '\0') {
-        unsigned int len = 0u;
-        unsigned int copy_len;
-        unsigned int last_space = 0u;
-        int saw_space = 0;
-
-        while (len < NIOS_VGA_VISIBLE_COLS && text[pos + len] != '\0') {
-            if (text[pos + len] == ' ') {
-                last_space = len;
-                saw_space = 1;
-            }
-            len++;
-        }
-
-        copy_len = len;
-        if (text[pos + len] != '\0' && saw_space && last_space > 0u) {
-            copy_len = last_space;
-        }
-
-        if (copy_len == 0u) {
-            copy_len = len;
-        }
-
-        for (len = 0u; len < copy_len; len++) {
-            line[len] = text[pos + len];
-        }
-        line[copy_len] = '\0';
-        nios_display_append_log_row(line);
-
-        pos += copy_len;
-        while (text[pos] == ' ') {
-            pos++;
-        }
-    }
-}
-
-static void nios_display_flush_partial(void)
-{
-    nios_vga_partial[nios_vga_partial_len] = '\0';
-    nios_display_log_line(nios_vga_partial);
-    nios_vga_partial_len = 0u;
-    nios_vga_partial[0] = '\0';
 }
 #endif
 
@@ -295,103 +365,44 @@ void nios_display_init_vga(void)
     unsigned int row;
 
     nios_vga_ready = 1;
-    nios_vga_partial_len = 0u;
-    nios_vga_partial[0] = '\0';
-
-    for (row = 0u; row < NIOS_VGA_LOG_ROWS; row++) {
-        nios_vga_log[row][0] = '\0';
-    }
 
     for (row = 0u; row < NIOS_VGA_CHAR_ROWS; row++) {
         nios_display_write_line(row, "");
     }
 
-    nios_display_draw_header();
-    nios_display_redraw_log();
+    nios_display_draw_dashboard(NULL);
 #endif
 }
 
 void nios_display_clear_console(void)
 {
 #ifdef NIOS_VGA_CHAR_BUFFER_BASE
-    unsigned int row;
-
     if (!nios_vga_ready) {
         nios_display_init_vga();
     }
 
-    nios_vga_partial_len = 0u;
-    nios_vga_partial[0] = '\0';
-
-    for (row = 0u; row < NIOS_VGA_LOG_ROWS; row++) {
-        nios_vga_log[row][0] = '\0';
-    }
-
-    nios_display_draw_header();
-    nios_display_redraw_log();
+    nios_display_draw_dashboard(NULL);
 #endif
 }
 
 void nios_display_log_line(const char *text)
 {
-#ifdef NIOS_VGA_CHAR_BUFFER_BASE
-    if (!nios_vga_ready) {
-        nios_display_init_vga();
-    }
-
-    nios_display_append_wrapped_line(text);
-    nios_display_redraw_log();
-#else
     (void)text;
-#endif
 }
 
 void nios_display_log_text(const char *text)
 {
-#ifdef NIOS_VGA_CHAR_BUFFER_BASE
-    char ch;
-
-    if (text == NULL) {
-        return;
-    }
-
-    if (!nios_vga_ready) {
-        nios_display_init_vga();
-    }
-
-    while ((ch = *text++) != '\0') {
-        if (ch == '\r') {
-            continue;
-        }
-
-        if (ch == '\n') {
-            nios_display_flush_partial();
-            continue;
-        }
-
-        if (nios_vga_partial_len >= NIOS_VGA_LOG_INPUT_LEN) {
-            nios_display_flush_partial();
-        }
-
-        nios_vga_partial[nios_vga_partial_len++] = ch;
-        nios_vga_partial[nios_vga_partial_len] = '\0';
-    }
-#else
     (void)text;
-#endif
 }
 
 int nios_display_write_vga(const nios_command_state_t *state)
 {
 #ifdef NIOS_VGA_CHAR_BUFFER_BASE
-    (void)state;
-
     if (!nios_vga_ready) {
         nios_display_init_vga();
     }
 
-    nios_display_draw_header();
-    nios_display_redraw_log();
+    nios_display_draw_dashboard(state);
     return 0;
 #else
     (void)state;

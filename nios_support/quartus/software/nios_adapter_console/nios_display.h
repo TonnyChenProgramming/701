@@ -4,7 +4,7 @@
 #include "nios_command.h"
 #include "nios_packet.h"
 
-#define NIOS_DISPLAY_LINE_COUNT 8
+#define NIOS_DISPLAY_LINE_COUNT 24
 #define NIOS_DISPLAY_LINE_LEN   80
 
 #define NIOS_DISPLAY_CFG_ADC (1u << NIOS_ADDR_ADC_ASP)

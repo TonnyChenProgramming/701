@@ -24,12 +24,19 @@ typedef struct {
     uint32_t last_status_source;
     uint32_t last_status_code;
     uint32_t last_status_detail;
+    uint32_t last_demo_count;
+    uint32_t last_capture_requested;
+    uint32_t last_capture_received;
+    uint32_t last_capture_overflow;
+    uint32_t peak_event_packets;
+    char last_demo_name[16];
     nios_noc_adapter_t *adapter;
     int has_last_tx;
     int has_last_rx;
     int has_peak_count;
     int has_peak_value;
     int has_last_status;
+    int board_demo_armed;
 } nios_command_state_t;
 
 void nios_command_init(nios_command_state_t *state);
@@ -67,6 +74,12 @@ int nios_command_control_asp(
     nios_command_state_t *state,
     uint32_t dest,
     uint32_t command
+);
+void nios_command_note_demo(
+    nios_command_state_t *state,
+    const char *name,
+    uint32_t requested,
+    int board_armed
 );
 void nios_command_record_rx(nios_command_state_t *state, uint32_t packet);
 int nios_command_poll_adapter(nios_command_state_t *state);

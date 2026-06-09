@@ -329,6 +329,7 @@ static int nios_run_demo(
         if (requested == 0u) {
             requested = 16u;
         }
+        nios_command_note_demo(state, "adc", requested, 0);
 
         nios_demo_hwclear(state);
         nios_demo_hwloop(state, 0);
@@ -352,6 +353,7 @@ static int nios_run_demo(
         if (requested == 0u) {
             requested = 8u;
         }
+        nios_command_note_demo(state, "avg", requested, 0);
 
         nios_demo_hwclear(state);
         nios_demo_hwloop(state, 0);
@@ -385,6 +387,7 @@ static int nios_run_demo(
         if (requested == 0u) {
             requested = 8u;
         }
+        nios_command_note_demo(state, "full", requested, 0);
 
         nios_demo_hwclear(state);
         nios_demo_hwloop(state, 0);
@@ -420,6 +423,7 @@ static int nios_run_demo(
         if (requested == 0u) {
             requested = 8u;
         }
+        nios_command_note_demo(state, "board", requested, 1);
 
         nios_demo_hwclear(state);
         nios_demo_hwloop(state, 0);
@@ -570,6 +574,8 @@ static int nios_handle_line(nios_command_state_t *state, char *line)
     } else {
         printf("ERR: unknown command\n");
     }
+
+    nios_display_write_vga(state);
 
     return 1;
 }
